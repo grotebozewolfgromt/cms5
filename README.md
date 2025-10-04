@@ -1,5 +1,5 @@
 # NOT FOSS
-This project is: "source available", not Free and Open-Source Software!<br>
+This project is: "source available", *not* Free and Open-Source Software!<br>
 For Licensing, see: https://www.archimedescms.com/en/software-license-standard/
 
 # Contributions
