@@ -101,7 +101,7 @@ class step2 extends TInstallerScreen
 				$sBody.= '- zip: is used to extract modules on installation, without the user having to unzip them manually.<br>';
 
 			if (in_array(PHP_EXT_INTL, $arrMods))
-				$sBody.= '- php_intl: is used by 3rd party software ESCPOS, which is used to print to Epson ticket printers.<br>';
+				$sBody.= '- intl: is support for international languages; used by 3rd party software ESCPOS, which is used to print to Epson ticket printers.<br>';
 
 			if (in_array(PHP_EXT_GD, $arrMods))
 				$sBody.= '- gd: is used to resize images, like the images you upload to your website.<br>';

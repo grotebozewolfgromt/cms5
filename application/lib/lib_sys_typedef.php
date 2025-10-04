@@ -548,7 +548,7 @@ define('PHP_EXT_MBSTRING', 'mbstring');
 define('PHP_EXT_JSON', 'json'); 
 define('PHP_EXT_BCMATH', 'bcmath'); 
 define('PHP_EXT_OPENSSL', 'openssl'); 
-define('PHP_EXT_INTL', 'php_intl'); 
+define('PHP_EXT_INTL', 'intl'); 
 define('PHP_EXT_FILEINFO', 'fileinfo'); 
 define('PHP_EXT_EXIF', 'exit'); 
 

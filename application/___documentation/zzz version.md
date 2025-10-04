@@ -46,6 +46,7 @@
 * admindr directory => application directory
 * constants rename 'GLOBAL_*' => 'APP_*'
 * rename config files 'framework_' => 'application_'
+* PHP_EXT_INTL value changed: 'php_intl' => 'intl' 
 
 ## 2 okt: 
 * TDBPreparedStatementMySQL begonnen met quicksearch query werkt in principe, echter sql fout op rijen die indexes niet matchen 
