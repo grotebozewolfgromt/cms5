@@ -1,0 +1,102 @@
+There are 2 ways to read a script while looking into the camera:
+1) with a little investment, and you need some skills 
+2) is free and everybody can do it
+
+Teleprompter
+The first and obvious one is a teleprompter. 
+This is basically a piece of glass that bounces light of a screen with text.
+The beauty is, that the camera doesnâ€™t pick up on this light, so it is invisible for the viewer.
+There is one condition, that the space in between the camera lens and the glass needs to be dark.
+
+A teleprompter can be attached to a DSLR camera or system camera lens and some even to a mobile phone.
+Therefore you need to make sure that the teleprompter fits the diameter of the lens, otherwise it isnâ€™t dark enough.
+
+A teleprompter usually has a remote to control the speed and position of the text.
+You can connect a remote via Bluetooth to your tablet or phone.
+
+Downsides to teleprompters
+There are a couple of downsides to teleprompters
+
+1) A lot of cheap teleprompter solutions like this involve a mobile phone or tablet.
+The cheap teleprompters are usually produced in China, but the software sucks.
+That means that you have to install a Chinese app on your phone or tablet.
+
+In this case, the website of the manufacturer is offline, the ipad version doesnâ€™t work and the version for my phone what wants to know my location.
+There is no valid reason for a teleprompter app to use my location.
+Iâ€™ve had another one before this and the app didnâ€™t work because the keyword was over the display button, so I couldnâ€™t use it.
+
+
+2) 2nd the remote, it sucks.
+Then you need to connect every time you want to use it
+These remotes only work with that app, otherwise the buttons are mixed up, yes, Iâ€™ve tried it.
+
+3) transporting scripts is cumbersome
+Not only is typing on a mobile phone or tablet is annoying, you can also type it on your computer and then transfer it to your phone.
+You need to email to yourself and copy paste it.
+If you see an error, it is really hard to edit, because you canâ€™t directly edit the text, you need to go to the edit mode, edit the text, start the teleprompter mode, find where you left off.
+
+4) a lot of people have shifting eyes from left to right when they read the teleprompter, which looks unnatural
+
+5) The other big downside is, is that reading a script from a teleprompter takes skill,
+First, You need to learn how to write speaking-language and then perform it I a way that is sounds natural 
+
+
+Iâ€™d like to argue that by the time you got your teleprompter up and running, you could have recorded half your video already.
+
+I am looking for a solution where I can connect the teleprompter as a second screen to my laptop.
+This way I can write and edit on the spot.
+My idea was to connect a small monitor like you have on your camera, only it needs to be able to mirror the image.
+I havenâ€™t found that one yet or the setting in windows to do that.
+
+Reading the script
+But there is a way that makes it much more natural: winging it, but with a with a twist.
+
+You can write the script, or outline it with bullet points.
+
+Personally Iâ€™d like to use a script because English isnâ€™t my first language, and I can think about how you can formulate sentences. 
+I often get blackouts on camera.
+With bullet points when I have to do 5 or 10 takes, halfway I donâ€™t know what I said in this take and I say things twice or omit things, which takes so long in the edit to fix that.
+
+So what I do
+
+    â€ I write the script with all the content as you normally would. 
+I have a free script template and example script that you can download, the link is in the description. 
+    â€ Now I add scene numbers. Every 2,3 or 4 sentences is a scene. 
+If you use bullet points, every bullet point is a scene.
+    â€ Every scene is a jump cut in the edit. So for every scene a change the camera position or I zoom in or out. Since a lot of my videos are talking head videos this is a pattern interrupt, so it is less boring to look at. 
+    â€ I use my laptop to display the script, so I can make little changes in between scenes if necessary.
+    â€ I don't have to stick to sentences literally but it gives me a direction to phrase the topic, I allow myself freedom to wing it
+    â€ In the beginning of every take a mention the scene and take number, so I can separate them in post. 
+    â€ I keep an administration of all the good and bad takes.
+This saves me a tremendous amount of time in the edit because I don't have to scout all the footage.
+
+The trick
+Now the trick is, I look at my script every single time between scenes.
+You don't have to remember to whole script, but only 2 or 3 sentences at a time.
+
+    â€ note scene number
+    â€ read the script 
+    â€ record talking into the camera
+    â€ note scene number
+    â€ read a scene of the script 
+    â€ record talking into the camera
+    â€ etc
+
+By using your own words and not reading the script literally (like you would with a teleprompter), your content looks instantly more natural.
+
+Separate files
+By working this way, every scene is a separate  file on the camera
+In the edit, I drag all the footage to the software.
+Because of the administration, I know I had 7 takes, so 6 mistakes so 6 times pressing delete on the timeline. 
+
+Another approach
+For bullet point lists I use a different approach.
+You can do one scene per bullet point, but that is mostly one sentence, but keep the camera running while looking at your script.
+You have to edit out those later of course.
+When you screw up and clap in your hand, you can see a spike in the edit
+So you know to disregard the previous portion.
+
+
+Camera performance will get easier over time, but I do have some hacks for you in my article to overcome camera shyness.
+
+

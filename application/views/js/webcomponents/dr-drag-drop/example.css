@@ -1,0 +1,30 @@
+dr-drag-drop .draggable
+{
+    cursor: move;
+}
+
+dr-drag-drop .draggable.dragging
+{
+    opacity: 0.4;
+}
+
+dr-drag-drop .dragcursor
+{
+    outline-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));   
+    /* max-height: 0px; */
+    /* overflow: hidden; */
+    /* width: 100%; */
+    outline-width: 2px;
+    outline-style: dashed ;
+}
+
+dr-drag-drop .droptarget
+{
+    outline-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));   
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));   
+    /* max-height: 0px; */
+    /* overflow: hidden; */
+    /* width: 100%; */
+    outline-width: 2px;
+    outline-style: dashed;
+}

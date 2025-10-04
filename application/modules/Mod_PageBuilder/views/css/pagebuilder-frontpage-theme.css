@@ -1,0 +1,64 @@
+<?php
+/**
+* pagebuilder-frontpage-theme.css
+*
+* CSS styles of the frontpage
+*
+* @author Dennis Renirie
+* 
+* 29 may 2024 pagebuilder-frontpage-theme.css created
+*/
+?>
+body
+{
+    font-family: Arial;
+}
+
+h1
+{
+    font-size: 2em;
+    margin-top:0;
+    margin-bottom: 0.5em;    
+}
+
+h2
+{
+    font-size: 1.6em;
+    margin-top:0.5em;
+    margin-bottom: 0.5em;    
+}
+
+h3
+{
+    font-size: 1.4em;
+    margin-top:0.3em;
+    margin-bottom: 0.3em;    
+}
+
+h4
+{    
+    font-size: 1.2em;
+    margin-top:0.2em;
+    margin-bottom: 0.2em;    
+}
+
+h5
+{
+    font-size: 1.1em;
+    margin-top:0.1em;
+    margin-bottom: 0.1em;    
+
+}
+
+h6
+{
+    font-size: 1em;
+    margin-top:0.1em;
+    margin-bottom: 0.1em;    
+}
+
+p
+{
+    margin-top: 1.3em;
+    margin-bottom: 1.2em;
+}

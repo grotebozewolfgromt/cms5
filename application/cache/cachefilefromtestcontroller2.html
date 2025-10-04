@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>htmltitle</title>
+	<meta name="description" content="metadescription">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" type="image/png" href="http://nasischijf/cms5/www/admindr/images/projecticons/icon128.png">
+        <meta name="viewport" content="width=800, initial-scale=1">       
+                            <link href="http://nasischijf/cms5/www/admindr/css/reset.css" rel="stylesheet" type="text/css">               
+                    <link href="http://nasischijf/cms5/www/admindr/css/std.css" rel="stylesheet" type="text/css">               
+                    <link href="http://nasischijf/cms5/www/admindr/css/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css">               
+
+                    <script src="http://nasischijf/cms5/www/admindr/js/jquery-3.4.1.min.js"></script> 
+                    <script src="http://nasischijf/cms5/www/admindr/js/jquery-ui-1.12.1.min.js"></script>
+                        <style>
+                    </style>          
+        <style>
+            /* JQuery UI image path correction */
+            .ui-icon,
+            .ui-widget-content .ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_444444_256x240.png");
+            }
+            .ui-widget-header .ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_444444_256x240.png");
+            }
+            .ui-state-hover .ui-icon,
+            .ui-state-focus .ui-icon,
+            .ui-button:hover .ui-icon,
+            .ui-button:focus .ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_555555_256x240.png");
+            }
+            .ui-state-active .ui-icon,
+            .ui-button:active .ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_ffffff_256x240.png");
+            }
+            .ui-state-highlight .ui-icon,
+            .ui-button .ui-state-highlight.ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_777620_256x240.png");
+            }
+            .ui-state-error .ui-icon,
+            .ui-state-error-text .ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_cc0000_256x240.png");
+            }
+            .ui-button .ui-icon {
+                    background-image: url("http://nasischijf/cms5/www/admindr/images/jquery-ui/ui-icons_777777_256x240.png");
+            }            
+        </style>
+        <script>
+                    </script>            
+	<script>            
+            
+            /**
+             * asks if you want to log out
+             * 
+             * @returns null
+             */
+            function confirmLogout()
+            {
+                    var bLogOut;
+                    bLogOut = window.confirm("Want to log out of CMS 5?");
+                    if (bLogOut)
+                    {
+                            location.href = "http://nasischijf/cms5/www/admindr/?logout=1&cuid=a4759ed51fe2bf3dfca8ee51fb929cc4";
+                    }
+            }
+            
+            /**
+             * toggle checkboxes on overview form
+             * 
+             * @param object objSource
+             * @param string sCheckboxNames
+             * @returns null             
+             * */
+            function toggleAllCheckboxes(objSource, sCheckboxNames) 
+            {
+                checkboxes = document.getElementsByName(sCheckboxNames);
+                for(var i=0, n=checkboxes.length;i<n;i++)
+                {
+                    checkboxes[i].checked = objSource.checked;
+                }
+            }
+        
+            /**
+             * submit quicksearch form when pressing the X
+             * 
+             * @param  object objInput
+             * @returns null             
+             * */
+            function onQuickSearch(objInput) 
+            {                
+                if(objInput.value == "") 
+                {
+                    document.getElementById('frmQuickSearch').submit();
+                }
+            }       
+            
+            /**
+             * asks if you want to execute bulk action
+             * 
+             * @returns null
+             */
+             
+            function confirmBulkAction(sIDOptionBox)
+            {
+                var bExecute;
+                objSelect = document.getElementById(sIDOptionBox);
+                objOption = getSelectedOption(objSelect);
+                
+                bExecute = window.confirm("Want to execute action on selected items?\n"+objOption.value);
+                if (bExecute)
+                {
+                     document.getElementById('frmBulkActions').submit();
+                }
+            }        
+            
+            
+            /**
+             * get option of selected html SELECT tag.
+             * 
+             * @param {type} sel
+             * @returns {getSelectedOption.opt}
+             */
+            
+            function getSelectedOption(sel) 
+            {
+                var opt;
+                for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+                    opt = sel.options[i];
+                    if ( opt.selected === true ) {
+                        break;
+                    }
+                }
+                return opt;
+            }
+
+            /**
+             * copy the contents of an editbox to clipboard
+             * 
+             * @param string sElementID
+             * @returns null
+             */
+            function copyToClipboardEditBox(sElementID) 
+            {
+                /* Get the text field */
+                var objEditBox = document.getElementById(sElementID);
+
+                if (objEditBox != null)
+                {
+                    /* Select the text field */
+                    objEditBox.select(); 
+                    objEditBox.setSelectionRange(0, 99999); /*For mobile devices*/
+
+                    /* Copy the text inside the text field */
+                    document.execCommand("copy");
+
+                    /* Alert the copied text */
+                    alert("Copied to clipboard:\n" + objEditBox.value);
+                }
+                else
+                    alert("COULDNT FIND TEXTBOX ELEMENT WITH ID: " + sElementID);
+            }        
+            
+            function setCookie(cname, cvalue, exdays) {
+              var d = new Date();
+              d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+              var expires = "expires="+d.toUTCString();
+              document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+              var name = cname + "=";
+              var ca = document.cookie.split(';');
+              for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                  c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                  return c.substring(name.length, c.length);
+                }
+              }
+              return "";
+            }      
+            
+            /**
+             * copy the content of a contenteditable html element to <input type="hidden"> so you can submit it in a form
+             */
+            function copyContentEditableToHidden(sContentEditableID, sHiddenID)
+            {
+                document.getElementById(sHiddenID).value = document.getElementById(sContentEditableID).innerHTML;
+                return true;                
+            }
+
+            /**
+            * open url in new tab 
+            * for example:
+            * <div onclick="openInNewTab('www.test.com');">Something To Click On</div>
+             */
+            function openInNewTab(url) 
+            {
+                var win = window.open(url, '_blank');
+                win.focus();
+            }
+            
+        </script>	
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<meta charset="UTF-8">	
+</head>
+<body>
+
+
+
+<div id="page">
+
+	
+
+	<div class="header">
+            <div class="headertop">
+                <div class="headerlogouticon">
+                    <a href="#" onclick="confirmLogout();"><img src="http://nasischijf/cms5/www/admindr/images/icon-logout.png" alt="logout"></a>
+		        </div> <!-- end headerlogouticon -->   
+                
+                <div class="headerhomeicon">
+                    <a href="http://nasischijf/cms5/www/admindr/home"><img src="http://nasischijf/cms5/www/admindr/images/icon-home.png" alt="home"></a>
+                </div> <!-- end headerhomeicon -->   
+                
+                                            <div class="headersettingsicon"> <!-- door de float right worden menuicon en callicon omgedraaid -->
+                                <a href="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Settings/"><img src="http://nasischijf/cms5/www/admindr/images/icon-settings.png" alt="settings"></a>
+                            </div> <!-- end headersettingsicon  -->
+                        
+            </div>
+
+               
+            
+                        
+	</div> <!-- end header -->				
+	<div class="content">
+	
+        <div class="leftcolumn">
+                    
+			    <h1>modules</h1>
+                    <ul class="leftcolumn_modules">
+                    <li>system management<ul><li><img src="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_CMSUsers/images/icon-module16x16.png"><a href="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_CMSUsers/index.php">Users + permissions</a></li><li><img src="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Localisation/images/icon-module16x16.png"><a href="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Localisation/index.php">localisation</a></li><li><img src="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Modules/images/icon-module16x16.png"><a href="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Modules/index.php">modules</a></li><li><img src="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Websites/images/icon-module16x16.png"><a href="http://nasischijf/cms5/www/admindr/modules/Mod_Sys_Websites/index.php">websites</a></li></ul></li><li>tools<ul><li class="selected"><img src="http://nasischijf/cms5/www/admindr/modules/Mod_Dev/images/icon-module16x16.png"><a href="http://nasischijf/cms5/www/admindr/modules/Mod_Dev/index.php">dev mod</a></li><li><img src="http://nasischijf/cms5/www/admindr/modules/Mod_HTMLTools/images/icon-module16x16.png"><a href="http://nasischijf/cms5/www/admindr/modules/Mod_HTMLTools/index.php">html tools</a></li></ul></li>                    </ul>
+                        
+                                                        <br>
+                                    <b>1&nbsp;website</b><br>
+                                &nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/adressen_module/materiaalindex.php?titelsub=Adressen"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/adressen_module/materiaalindex.php?titelsub=Adressen">Adressen</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/tekstenopwebsite_module/sitecontentindex.php?titelsub=Teksten op website"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/tekstenopwebsite_module/sitecontentindex.php?titelsub=Teksten op website">Teksten&nbsp;op&nbsp;website</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/weblinks/materiaalindex.php?titelsub=Weblinks"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/weblinks/materiaalindex.php?titelsub=Weblinks">Weblinks</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/weblog_module/materiaalindex.php?titelsub=Weblog"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/1_website/weblog_module/materiaalindex.php?titelsub=Weblog">Weblog</a><br>
+                                <!-- EINDE ================= 1_website ===================================== -->
+                                                                    <br>
+                                    <b>2&nbsp;uitjes</b><br>
+                                &nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/gelegenheden_module/materiaalindex.php?titelsub=Gelegenheden"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/gelegenheden_module/materiaalindex.php?titelsub=Gelegenheden">Gelegenheden</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/plaatsen_module/materiaalindex.php?titelsub=Plaatsen"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/plaatsen_module/materiaalindex.php?titelsub=Plaatsen">Plaatsen</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/materiaalindex.php?titelsub=Uitjes"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/materiaalindex.php?titelsub=Uitjes">Uitjes</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/catindex.php?titelsub=Uitjes categorien"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/catindex.php?titelsub=Uitjes categorien">Uitjes&nbsp;categorien</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/reviewsindex.php?titelsub=Uitjes reviews"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/reviewsindex.php?titelsub=Uitjes reviews">Uitjes&nbsp;reviews</a><br>
+&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/plaatsenuitjesindex.php?titelsub=Uitjes plaatsen"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/2_uitjes/uitjes_module/plaatsenuitjesindex.php?titelsub=Uitjes plaatsen">Uitjes&nbsp;plaatsen</a><br>
+                                <!-- EINDE ================= 2_uitjes ===================================== -->
+                                                                    <br>
+                                    <b>4&nbsp;cms</b><br>
+                                &nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/4_cms/websites/materiaalindex.php?titelsub=Websites"><img border="0" src="http://nasischijf/cms5/www/admindr/images/icon-module16x16.png"></a>&nbsp;<a href="http://nasischijf/cms5/www/admindr/modulescms2/4_cms/websites/materiaalindex.php?titelsub=Websites">Websites</a><br>
+                                <!-- EINDE ================= 4_cms ===================================== -->
+                                
+                                    
+                                    
+                                    
+                    		</div> <!-- end left column -->
+                
+		<div class="maincolumn">
+            <h1>title</h1>
+            			test from tpl_test<br>
+early binding: blaat<br>
+late binding: [sLateBinding]		</div> <!-- end maincolumn -->		
+
+
+	</div> <!-- end content -->
+	
+	
+</div><!-- end page-->
+
+    <!-- javascript that the page need to be fully loaded for -->
+    <script>
+            /**** FILE DRAG AND DROP ****/
+                                const sMessageDragDropNumberOfFilesDragged = "files";
+
+                // for all .file-dropzone-input elements 
+                document.querySelectorAll(".file-dropzone-input").forEach(inputElement => 
+                {
+                    // look for element with class .file-dropzone 
+                    const objDropZoneElement = inputElement.closest(".file-dropzone")
+                    
+
+
+                    //if user clicked: show file dialog
+                    objDropZoneElement.addEventListener("click", objEvent => 
+                    {
+                        inputElement.click(); //trigger click of inputElement
+                    });
+
+                    //when user selected a file from filedialog
+                    inputElement.addEventListener("change", objEvent => 
+                    {
+                        if (inputElement.files.length) //if at least 1 file is selected
+                        {
+                            updateFileDragThumbnail(objDropZoneElement, inputElement.files[0], inputElement.files.length);
+                        }
+                    })
+
+
+
+                    // if file dragging, add class .file-dropzone-ondragover 
+                    objDropZoneElement.addEventListener("dragover", objEvent => 
+                    {
+                        objEvent.preventDefault();//prevent default behavior of browser opening a file when dropping
+
+                        objDropZoneElement.classList.add("file-dropzone-dragover");
+                    });
+
+                    // if file dragging-out of dropregion or cancel (like hitting escape), remove class .file-dropzone-ondragover
+                    ["dragleave", "dragend"].forEach(type => 
+                    {
+                        objDropZoneElement.addEventListener(type, objEvent =>
+                        {
+                            objDropZoneElement.classList.remove("file-dropzone-dragover");
+                        })
+                    })
+
+
+
+                    //handling the actual file drop
+                    objDropZoneElement.addEventListener("drop", objEvent =>
+                    {
+                        objEvent.preventDefault();//prevent default behavior of browser opening a file when dropping
+                        
+                        if (objEvent.dataTransfer.files.length)
+                        {
+                            inputElement.files = objEvent.dataTransfer.files; //copy the dragged file properties to the actual html upload element in the form
+                            updateFileDragThumbnail(objDropZoneElement, objEvent.dataTransfer.files[0], objEvent.dataTransfer.files.length);
+                        }
+
+                        //remove the file-dropzone-dragover class since the drag-over action is completed with a drop action
+                        objDropZoneElement.classList.remove("file-dropzone-dragover");
+                    })
+                })
+
+
+                //update thumbnail
+                function updateFileDragThumbnail(objDropZoneElement, objFile, iNumberOfFilesDragged)
+                {
+                    let objThumbnailElement = objDropZoneElement.querySelector(".file-dropzone-thumbnail");
+
+                    //if prompt text "drag here" exists, remove it
+                    if (objDropZoneElement.querySelector(".file-dropzone-prompt"))
+                    {
+                        objDropZoneElement.querySelector(".file-dropzone-prompt").remove();
+                    }
+
+                    //first time there is no thumbnail element, so let's create it
+                    if (!objThumbnailElement)
+                    {
+                        objThumbnailElement = document.createElement("div");
+                        objThumbnailElement.classList.add("file-dropzone-thumbnail");
+                        objDropZoneElement.appendChild(objThumbnailElement);
+                    }
+
+                    //update label with either filename or number of files
+                    if (iNumberOfFilesDragged == 1)
+                        objThumbnailElement.dataset.label = objFile.name;
+                    else
+                        objThumbnailElement.dataset.label = iNumberOfFilesDragged + " " + sMessageDragDropNumberOfFilesDragged;
+
+                    //show thumbnail for images
+                    if (objFile.type.startsWith("image/"))
+                    {
+                        const objReader = new FileReader();
+                        
+                        objReader.readAsDataURL(objFile);//read file as base64 data
+                        objReader.onload = () => //if reading file done
+                        {
+                            objThumbnailElement.style.backgroundImage = `url('${ objReader.result }')`; //need to be backticks `
+                        };
+                    }
+                    else
+                    {
+                        objThumbnailElement.style.backgroundImage = null; 
+                    }
+
+                }
+
+    </script>
+</body>
+</html>

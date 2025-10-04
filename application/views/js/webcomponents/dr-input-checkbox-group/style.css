@@ -1,0 +1,12 @@
+:root
+{
+    --lightmode-color-drinputcheckboxgroup-inputerrormin-border: rgb(179, 0, 0);
+    --lightmode-color-drinputcheckboxgroup-inputerrormin-background: rgba(252, 7, 215, 0.15);
+    --lightmode-color-drinputcheckboxgroup-inputerrormax-border: rgb(179, 0, 0);
+    --lightmode-color-drinputcheckboxgroup-inputerrormax-background: rgba(179, 0, 0, 0.14);
+
+    --darkmode-color-drinputcheckboxgroup-inputerrormin-border: rgb(249, 93, 93);
+    --darkmode-color-drinputcheckboxgroup-inputerrormin-background: rgba(249, 93, 93, 0.33);
+    --darkmode-color-drinputcheckboxgroup-inputerrormax-border: rgb(249, 93, 93);
+    --darkmode-color-drinputcheckboxgroup-inputerrormax-background: rgba(249, 93, 93, 0.33);
+}

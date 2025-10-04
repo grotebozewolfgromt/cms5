@@ -1,0 +1,80 @@
+/*
+<?php
+/**
+* theme_dialogs.css
+*
+* all css regarding modal dialogs
+
+* @author Dennis Renirie
+* 
+* 30 may 2024 pagebuilder-modals.css created
+*/
+?>
+*/
+
+:root
+{
+
+    /* LIGHT MODE */
+    --lightmode-color-drpopover-background: rgb(255, 255, 255);
+    --lightmode-color-drpopover-border: rgb(204, 204, 204);
+    --lightmode-color-drpopover-text: rgb(60, 60, 60);
+
+    /* DARK MODE */
+    --darkmode-color-drpopover-background: rgb(58, 58, 58);
+    --darkmode-color-drpopover-border: rgb(112, 112, 112);
+    --darkmode-color-drpopover-text: rgb(255, 255, 255);
+}
+
+dr-popover
+{
+    background-color: light-dark(var(--lightmode-color-drpopover-background), var(--darkmode-color-drpopover-background)); 
+    border-color: light-dark(var(--lightmode-color-drpopover-border), var(--darkmode-color-drpopover-border)); 
+    color: light-dark(var(--lightmode-color-drpopover-text), var(--darkmode-color-drpopover-text)); 
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: fit-content;
+    position: fixed;
+    z-index: 10000;
+    cursor: default;
+
+    /* animation */
+    /* display: hidden;  */
+    animation: drinfobubbleshow 500ms;    
+}  
+
+
+dr-popover[hidden]
+{
+    /* display: block; */
+    animation: drinfobubblehide 500ms;
+}
+
+
+@keyframes drinfobubbleshow 
+{
+    from 
+    {
+        opacity: 0;
+    }
+    to 
+    {
+        opacity: 1;
+    }
+} 
+
+@keyframes drinfobubblehide 
+{
+    from 
+    {
+        display: block;
+        opacity: 1;
+    }
+    to 
+    {
+        display: hidden;
+        opacity: 0;
+    }
+} 

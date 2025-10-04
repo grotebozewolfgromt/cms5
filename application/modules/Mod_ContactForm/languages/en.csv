@@ -1,0 +1,37 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+modulename_menu;Contact form submits;Contact form submits
+Mod_ContactForm;Contact form submits;Contact form submits
+overview_column_ticketid;Ticket #;Ticket #
+overview_column_dtRecordCreated;Date;Date
+overview_column_iSpamLikelyHood;Spam %;Spam %
+overview_column_iSpamMarkedManually;Spam;Spam
+overview_column_sCategoryName;Category;Category
+overview_column_sNE;Sender;Sender
+overview_column_sEAE;Email;Email
+overview_column_sTopic;Topic;Topic
+tab_title_submissions_nospam;Contact form submissions;Contact form submissions
+tabsheets_module_name_Submissions;Submissions;Submissions
+tabsheets_module_explanation_View submitted forms;View submitted forms;View submitted forms
+tabsheets_module_name_Categories;Categories;Categories
+tabsheets_module_explanation_Manage contact form categories;Manage contact form categories;Manage contact form categories
+list_column_sCategoryName;Category;Category
+list_column_sColorBackground;Color;Color
+list_column_i_volgorde;Order;Order
+tab_title_contactformcategories;Contact form categories;Contact form categories
+list_column_iOrder;Order;Order
+form_field_name;Name;Name
+form_field_colorforeground;Foreground color (hexadecimal value from #00000 to #FFFFFF) (including #-sign);Foreground color (hexadecimal value from #00000 to #FFFFFF) (including #-sign)
+form_field_colorbackground;Background color (hexadecimal value from #00000 to #FFFFFF) (including #-sign);Background color (hexadecimal value from #00000 to #FFFFFF) (including #-sign)
+pagetitle_detailsave_contactformcategories_edit;Edit category: [name];Edit category: [name]
+contactformsubmissions_form_field_category;Category;Category
+form_field_emailaddress;Email address;Email address
+form_field_topic;Topic;Topic
+form_field_message;Message;Message
+form_field_notesinternal;Internal notes (not seen by sender);Internal notes (not seen by sender)
+form_field_ipaddress;IP address;IP address
+form_field_spamlikelyhoodpercent;Spam likelyhood % (auto detected);Spam likelyhood % (auto detected)
+form_field_spammanual;Mark as Spam (manually);Mark as Spam (manually)
+pagetitle_detailsave_contactformsubmissions_new;Create new submissions;Create new submissions
+pagetitle_detailsave_contactformsubmissions_edit;Edit submission by [name];Edit submission by [name]
+menuitem_modulename;Contact form submits;Contact form submits
+list_column_iPosition;Order;Order

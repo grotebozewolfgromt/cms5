@@ -1,0 +1,181 @@
+<?php
+/**
+* pagebuilder-viewports.css
+* 
+* all css regarding viewports
+*
+* @author Dennis Renirie
+* 
+* 3 apr 2024 pagebuilder-viewports.css created
+*/
+?>
+#designviewport-container
+{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    background-color: light-dark(var(--lightmode-designviewportcontainer-background-color), var(--darkmode-designviewportcontainer-background-color));
+    
+    overflow-y: auto;    
+
+    display: flex;
+    flex-direction: row;
+}
+
+.designviewport-spacer
+{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+#designviewport-resizecontainer
+{
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    transition-duration: 0.2s;
+    transition-property: flex-basis;
+    transition-timing-function: ease-in-out;       
+
+    /* overflow-y: auto;     */
+    /* height: calc(100vh 
+                - var(--headerheight) 
+                - (2 * var(--headerpadding))
+                - var(--toolbarheight) 
+                - (2 * var(--toolbarpadding))
+                - (2 * var(--designviewportcontentmargin))
+                ); */
+    /* height: 100%; */
+    height: max-content;
+
+    margin-top: var(--designviewportcontentmargin);
+    margin-bottom: var(--designviewportcontentmargin);
+    padding: 20px;
+
+    color: light-dark(var(--lightmode-designviewportcontent-text-color), var(--darkmode-designviewportcontent-text-color));
+    background-color: light-dark(var(--lightmode-designviewportcontent-background-color), var(--darkmode-designviewportcontent-background-color));
+}
+
+/* extra class to define size of  viewport */
+.viewport-desktop
+{
+    flex-basis: 1024px;
+}
+
+.viewport-tablet
+{
+    flex-basis: 780px;
+}
+
+.viewport-mobile
+{
+    flex-basis: 360px; 
+}
+
+.designobject-designer
+{
+    display: block; /* custom elements by default don't have display: block */
+}
+
+.designobject-designer:hover
+{
+    outline-color: light-dark(var(--lightmode-designobject-border-selected-color), var(--darkmode-designobject-border-selected-color));
+    outline-width: 1px;
+    outline-style: dashed;
+}
+
+
+.designobject-designer.selected
+{
+    outline-color: light-dark(var(--lightmode-designobject-border-selected-color), var(--darkmode-designobject-border-selected-color));
+    background-color: light-dark(var(--lightmode-designobject-background-selected-color), var(--darkmode-designobject-background-selected-color));
+    outline-width: 1px;
+    outline-style: solid;
+}
+
+.designobject-designer.invisible-element
+{
+    background-color: light-dark(var(--lightmode-designobject-background-invisibleelement-color), var(--darkmode-designobject-background-invisibleelement-color));
+    opacity: 0.5;
+}
+
+.designobject-designer > .placeholder
+{
+    /* background-color: light-dark(var(--lightmode-designobject-background-invisibleelement-color), var(--darkmode-designobject-background-invisibleelement-color)); */
+    /* background: plum; */
+    opacity: 0.5; 
+    display: block;
+    margin: auto;
+    margin: auto;
+    min-height: 40px;
+}
+
+
+/* <pre> tag font in designer */
+pre.designobject-designer
+{
+    font-family: Consolas,monospace;
+    background-color: rgba(122, 122, 122, 0.168);
+}
+
+/* placeholder DesignObject: DOImage */
+.designobject-designer.placeholderdoimage 
+{
+
+    width: calc(100% - 10px - 10px); /* 100% width minus left + right border width */
+
+    height: 250px;
+
+    border-width: 10px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panel-add-border-color), var(--darkmode-panel-add-border-color));
+    border-radius: 20px;    
+    text-align: center;
+
+    position:relative; /* explicit for background/foreground image */
+}
+
+.designobject-designer.placeholderdoimage > .foreground
+{
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 0px;
+    left: 0px;    
+}
+
+.designobject-designer.placeholderdoimage button
+{
+    width: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-color: light-dark(var(--lightmode-panel-add-border-color), var(--darkmode-panel-add-border-color));
+    border-width: 1px;
+    border-style: solid;    
+    border-radius: 10px;
+}
+
+.designobject-designer.placeholderdoimage button svg
+{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.designobject-designer.placeholderdoimage svg.backgroundimage
+{
+    margin-top: 25px;
+    height: 200px;
+}
+
+/* Media query for mobile */
+@media (max-width: 600px) 
+{
+    #designviewport-resizecontainer
+    {
+        margin-top: 0px;
+    }
+  
+}    
+

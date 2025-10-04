@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: grid;
+            /* grid-template-columns: repeat(4, 1fr); */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));            
+            grid-gap: 5px;
+        }
+        .container div {
+            background-color: red;
+            aspect-ratio: 1; /* Keeps the aspect ratio 1:1 (square) */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>                
+        <!-- Add more squares as needed -->
+    </div>
+</body>
+</html>

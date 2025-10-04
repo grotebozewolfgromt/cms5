@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+        .grid-container-cell {
+            background-color: purple;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Align text at the bottom */
+            align-items: center; /* Center horizontally */
+
+            aspect-ratio: 1; /* Keeps the aspect ratio 1:1 (square) */            
+        }
+        .grid-container-cell-text {
+            vertical-align: bottom; /* Align text at the bottom */
+            text-align: center; /* Center horizontally */
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        <div class="grid-container-cell">
+            <div class="grid-container-text">
+                123
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

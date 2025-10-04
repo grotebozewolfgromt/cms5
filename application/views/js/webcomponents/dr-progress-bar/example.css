@@ -1,0 +1,9 @@
+:root
+{
+    --lightmode-color-drprogressbar-fill: rgb(255, 0, 251);
+    --lightmode-color-drprogressbar-background: rgb(252, 240, 13);
+    --darkmode-color-drprogressbar-fill: rgb(98, 255, 0);
+    --darkmode-color-drprogressbar-background: rgb(0, 255, 251);
+    --drprogressbar-width: 250px;
+    --drprogressbar-height: 40px;
+}

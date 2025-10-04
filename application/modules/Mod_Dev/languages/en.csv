@@ -1,0 +1,24 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+modulename_menu;dev mod;dev mod
+Mod_Dev;Mod_Dev;Mod_Dev
+tabsheets_module_name_script tests;script tests;script tests
+tabsheets_module_explanation_testing new php scripts;testing new php scripts;testing new php scripts
+tabsheets_module_name_file upload;file upload;file upload
+tabsheets_module_explanation_file upload;file upload;file upload
+tabsheets_module_name_file upload w fetch;file upload w fetch;file upload w fetch
+tabsheets_module_explanation_file upload w fetch;file upload w fetch;file upload w fetch
+tabsheets_module_name_file upload w progressbar;file upload w progressbar;file upload w progressbar
+
+modulename_menu;dev mod;dev mod
+Mod_Dev;Mod_Dev;Mod_Dev
+tabsheets_module_name_script tests;script tests;script tests
+tabsheets_module_explanation_testing new php scripts;testing new php scripts;testing new php scripts
+tabsheets_module_name_file upload;file upload;file upload
+tabsheets_module_explanation_file upload;file upload;file upload
+tabsheets_module_name_file upload w fetch;file upload w fetch;file upload w fetch
+tabsheets_module_explanation_file upload w fetch;file upload w fetch;file upload w fetch
+tabsheets_module_name_file upload w progressbar;file upload w progressbar;file upload w progressbar
+form_field_name;Name;Name
+form_field_isdefault;Is default;Is default
+pagetitle_detailsave_settings;Settings dev mod;Settings dev mod
+menuitem_modulename;dev mod;dev mod

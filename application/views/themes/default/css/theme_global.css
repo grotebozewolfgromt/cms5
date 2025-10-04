@@ -1,0 +1,1091 @@
+/**
+theme_global.css
+This stylesheet contains everything that applies to: all skins, all templates.
+Stylesheets for specific skins are in specific stylesheets with the same name.
+This stylesheet needs global_reset.css
+
+
+pixel em formule: 
+doel px / context(=verhouding) = resultaat in em
+
+darkmode code: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
+*/
+
+
+:root 
+{
+    
+    color-scheme: light dark; /* this has to be set to switch between light or dark */
+
+    /* LIGHT MODE */
+	--lightmode-color1: #558ed3; 		
+    --lightmode-color2: #f17211; 		    
+	--lightmode-color3: white; 		
+ 	--lightmode-color4: #8fadd2; 		
+  	--lightmode-color-background-site: rgb(245, 245, 245); 	
+  	--lightmode-color-background-content: white; 			
+  	--lightmode-color-background-menu: white; 	   
+    --lightmode-color-background-menu-selected: rgb(237, 243, 247);
+    --lightmode-color-menu-svg:rgb(54, 54, 54);
+    --lightmode-color-background-hamburgermenu: rgba(255, 255, 255, 0.7);     
+    --lightmode-color-border: #ebebeb;         
+  	--lightmode-color-font-site: #4d4d4d;		
+    --lightmode-color-font-site-links: #558ed3;
+    --lightmode-color-font-site-links-hover: rgb(80, 97, 117);	    
+    --lightmode-color-background-header: rgb(243, 243, 243);	
+
+    --lightmode-color-progressbar-1: #0a03d1;
+    --lightmode-color-progressbar-2: #b906dd;
+
+    --lightmode-color-font-header-title: white;
+
+    --lightmode-color-tabsheets-font: #202020;
+    --lightmode-color-tabsheets-font-selected: white;
+    --lightmode-color-tabsheets-font-background: rgb(232, 232, 232);
+    --lightmode-color-tabsheets-font-background-selected: #f17211;
+    --lightmode-color-tabsheets-border: #f17211;
+    --lightmode-color-tabsheets-border-selected: #f17211;
+    
+    --lightmode-color-tablerow-selected: #E9F0F9;
+    --lightmode-color-tablerow-unselected: #ffffff;
+    --lightmode-color-tablerow-separation: #eaeaea;
+    --lightmode-color-tablerow-hover: #cddbe9;  
+
+    --lightmode-color-form-background-input: rgb(243, 243, 243);      
+    --lightmode-color-form-label: #696969;       
+    --lightmode-color-form-input-focusborder: #696969;       
+
+    --lightmode-color-icon: rgb(50, 50, 50);    
+
+    /* --lightmode-color-chips-background: rgb(241, 241, 241); */
+    /* --lightmode-color-chips-highlight-background: rgb(212, 212, 212); */
+    /* --lightmode-color-chips-highlight-background-hover: rgb(228, 228, 228); */
+    /* --lightmode-color-chips-highlightinside-background-hover: rgb(214, 214, 214); */
+ 
+
+    /* DARK MODE */
+	--darkmode-color1: #558ed3; 			
+    --darkmode-color2: #f17211; 			
+    --darkmode-color3: white; 				
+ 	--darkmode-color4: #8fadd2; 			
+  	--darkmode-color-background-site: #1f1f1f; 	
+  	--darkmode-color-background-content: #242424; 	    
+  	--darkmode-color-background-menu: #1f2224;     
+    --darkmode-color-background-menu-selected: rgb(61, 61, 61);
+    --darkmode-color-menu-svg: white;  
+    --darkmode-color-background-hamburgermenu: rgba(38, 38, 38, 0.8);  
+    --darkmode-color-border: #474747;      
+  	--darkmode-color-font-site: #dfdfdf;	
+    --darkmode-color-font-site-links: #8fadd2;	
+    --darkmode-color-font-site-links-hover: white;	
+    --darkmode-color-background-header: rgb(46, 46, 46);	
+
+    --darkmode-progressbar-color1: #0a03d1;
+    --darkmode-color-progressbar-2: #b906dd;
+    
+    --darkmode-color-font-header-title: white;
+
+    --darkmode-color-tabsheets-font: #eaeaea;
+    --darkmode-color-tabsheets-font-selected: white;
+    --darkmode-color-tabsheets-font-background: rgb(70, 69, 69);
+    --darkmode-color-tabsheets-font-background-selected: #f17211;
+    --darkmode-color-tabsheets-border: #f17211;
+    --darkmode-color-tabsheets-border-selected: #f17211;    
+
+    --darkmode-color-tablerow-selected: #E9F0F9;
+    --darkmode-color-tablerow-unselected: #ffffff;
+    --darkmode-color-tablerow-separation: #474747;       
+    --darkmode-color-tablerow-hover: #548dd2;
+    
+    --darkmode-color-form-background-input: rgb(59, 59, 59);          
+    --darkmode-color-form-label: #e5e5e5;    
+    --darkmode-color-form-input-focusborder: #696969;           
+    
+    --darkmode-color-icon: rgb(50, 50, 50);
+
+    /* --darkmode-color-chips-background: rgb(58, 58, 58); */
+    /* --darkmode-color-chips-highlight-background: rgb(98, 98, 98); */
+    /* --darkmode-color-chips-highlight-background-hover: rgb(81, 81, 81); */
+    /* --darkmode-color-chips-highlightinside-background-hover: rgb(112, 112, 112);       */
+
+    /* MISC VARS */
+  	--padding-height-header: 1.0rem;
+    --font-family: Poppins, Century Gothic, arial, Helvetica, Verdana, sans-serif;    
+}
+
+
+/* GENERIC FOR ALL SCREENSIZES */
+
+/* fonts and font sizes */
+body
+{
+	font-family: var(--font-family);
+	background-color: light-dark(var(--lightmode-color-background-site), var(--darkmode-color-background-site));
+	/* font-size:0.85rem; */
+	font-size:0.7rem;
+	line-height: 150%;
+	letter-spacing: 0.07rem;
+ 	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+    color: light-dark(var(--lightmode-color-font-site), var(--darkmode-color-font-site));
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(<?php echo APP_URL_CMS_FONTS ?>/Poppins-Light.otf);
+}
+
+
+p
+{
+	display: block;
+	margin: 0rem;   
+    margin-top: 1rem;        
+}
+
+
+
+
+/* defining styles */
+
+h1
+{
+	font-weight: bold;
+	padding-bottom:1rem;
+	padding-top:1rem;
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color3));
+	font-size: 1rem;	
+	margin-top:0rem; /* altijd bovenaan pagina en mag maar 1x voorkomen */
+	margin-bottom:0rem;
+	line-height: 130%;
+    padding-left: 0rem;
+}
+
+h2
+{ 
+	font-weight: bold;
+	font-size: 0.95rem;
+	color: light-dark(var(--lightmode-color1), var(--darkmode-color1));
+	margin-top:2rem;
+	margin-bottom:1rem;		
+	letter-spacing: 0.1rem;	
+	text-decoration:none;
+}
+
+h3
+{
+    font-weight: bold;
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color1));
+	font-size: 0.9rem;
+	margin-top:2rem;
+	margin-bottom:0.4rem;
+	letter-spacing: 0.1rem;		
+}
+
+h4
+{
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color1));
+	font-size: 0.85rem;	
+	font-weight: bold;
+	margin-top:0.8rem;
+	margin-bottom:0.4rem;	
+	letter-spacing: 0.1rem;		
+}
+
+b
+{
+    font-weight:bold;
+}
+
+
+/* =============================== */
+
+
+
+.clearer 
+{ 
+	clear: both; 
+} /* gives floated elements a height if an empty div with this class is inserted */
+
+
+.fullwidthtag
+{
+    width: 100%;
+}
+
+.halfwidthtag
+{
+    width: 50%;
+    min-width: 20rem;
+}
+
+.quarterwidthtag
+{
+    width: 25%;
+    min-width: 10rem;
+}
+
+
+
+
+/* general behaviour links */
+a, a:link, a:visited, a:active
+{
+    color: light-dark(var(--lightmode-color-font-site-links), var(--darkmode-color-font-site-links));
+    text-decoration: underline;
+}
+
+a:hover
+{
+    /* text-decoration: double; */
+    color: light-dark(var(--lightmode-color-font-site-links-hover), var(--darkmode-color-font-site-links-hover));
+}
+
+
+
+/*lists */
+ul
+{
+    list-style-type: disc;    
+}
+
+li
+{
+    margin-left: 1.5rem;
+}
+
+
+
+
+/* ====  progressbar ==== */
+
+#progressbar
+{
+    position: fixed;
+    width: 100%;
+    height: 3px;
+    /* background-color: red; */
+
+    display: none;
+    border-style: none;
+    overflow: hidden; /* sometimes the progressbar can pop out, but we don't want scrollbars */
+    z-index: 1000;
+}
+
+#progressbar.visible
+{
+    display: block;
+}
+
+
+#progressbar-indicator
+{
+    position: relative;
+    /* background-color: red; */
+    
+    height: 100%;
+
+    animation-name: progressbaranimation;
+    animation-duration: 5s;    
+    animation-iteration-count: infinite;    
+}
+
+@keyframes progressbaranimation 
+{
+    0%   {width: 75px;      left:0px;                background-color:light-dark(var(--lightmode-color-progressbar-1), var(--darkmode-progressbar-color1))}
+    25%  {width: 125px;                              }
+    50%  {width: 75px;      left:calc(100% - 75px);  background-color:light-dark(var(--lightmode-color-progressbar-2), var(--darkmode-color-progressbar-2))}
+    75%  {width: 125px;                              }
+    100% {width: 75px;      left:0px;                background-color:light-dark(var(--lightmode-color-progressbar-1), var(--darkmode-progressbar-color1))}
+}
+
+/*END ====  progressbar ==== */
+
+/* ====  spinner ==== */
+.spinner
+{
+    animation-name: spinneranimation;
+    animation-duration: 1s;    
+    animation-iteration-count: infinite;   
+    animation-timing-function: linear; 
+    display: none; /* by default not visible, will become visible with function toggleSpinnerIcon() from lib_global_ui.js */
+}
+
+@keyframes spinneranimation 
+{
+    0%   {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/*END ====  spinner ==== */
+
+
+/* ==== icon color ==== */
+
+
+.iconchangefill
+{
+    /* fill: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon)); */
+    fill: light-dark(black, white) !important; /* some tags don't support css variables apparently */
+}
+
+
+.iconchangecolor
+{
+    /* color: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon));     */
+    color: light-dark(black, white) !important; /* some tags don't support css variables apparently */    
+} 
+
+.iconchangestroke
+{
+    /* stroke: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon)); */
+    stroke: light-dark(black, white) !important; /* some tags don't support css variables apparently */
+}
+
+@media (prefers-color-scheme: dark)
+{
+    .iconchangeinvert
+    {
+        filter: invert(100%);
+    }
+}
+
+/*END ==== icon color ==== */
+
+
+/* ==== MODULE TABSHEETS ==== */
+
+.scrollable-tabs-container
+{
+    max-width: 100%;
+    margin: 16px auto;
+    border-radius: 4px;
+    /* background-color: black;     */
+    overflow: hidden;
+    position: relative;
+    column-gap: 1px;
+}
+
+.scrollable-tabs-container svg
+{
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    cursor: pointer;
+    /* color: white; */
+    color: light-dark(var(--lightmode-color-tabsheets-font-selected), var(--darkmode-color-tabsheets-font-selected));    
+    background-color: light-dark(var(--lightmode-color-tabsheets-font-background-selected), var(--darkmode-color-tabsheets-font-background-selected));
+    border-radius: 50%;
+    pointer-events: auto;
+}
+
+.scrollable-tabs-container ul
+{
+    display: flex;
+    gap: 0.5rem;
+    padding: 12px 0px;
+    margin: 0px;
+    list-style: none;
+    overflow: scroll;
+    -ms-overflow-style: none; /* remove scrollbar ms */
+    scrollbar-width: none; /* remove scrollbar firefox */
+    scroll-behavior: smooth;
+}
+
+ .scrollable-tabs-container ul li
+{
+    margin-left: 0px;
+} 
+
+.scrollable-tabs-container ul.dragging
+{
+    scroll-behavior: auto;
+}
+
+.scrollable-tabs-container ul.dragging a
+{
+    pointer-events: none; /* prevent <a> tags from interacting when dragging */
+}
+
+.scrollable-tabs-container ul::-webkit-scrollbar
+{
+    display: none; /*  remove scrollbar webkit */
+}
+
+
+.scrollable-tabs-container a
+{
+    /* color: white; */
+    color: light-dark(var(--lightmode-color-tabsheets-font), var(--darkmode-color-tabsheets-font)); 
+    text-decoration: none;
+    /* background: #333; */
+    background-color: light-dark(var(--lightmode-color-tabsheets-font-background), var(--darkmode-color-tabsheets-font-background)); 
+    padding: 0.3rem 0.8rem;
+    display: inline-block;
+    border-radius: 0.5rem;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.scrollable-tabs-container a.active
+{
+    /* background-color: white;
+    color: black; */
+    color: light-dark(var(--lightmode-color-tabsheets-font-selected), var(--darkmode-color-tabsheets-font-selected));
+    background-color: light-dark(var(--lightmode-color-tabsheets-font-background-selected), var(--darkmode-color-tabsheets-font-background-selected));
+
+}
+
+.scrollable-tabs-container .right-arrow,
+.scrollable-tabs-container .left-arrow{
+    position: absolute;
+    height: 100%;
+    width: 100px;
+    top: 0;
+    display: none;
+    align-items: center;
+    padding: 0 0px;    
+    pointer-events: none;
+}
+
+.scrollable-tabs-container .right-arrow.active,
+.scrollable-tabs-container .left-arrow.active
+{
+    display: flex; /* so it can be aligned to left and right */
+}
+
+.scrollable-tabs-container .right-arrow
+{
+    right: 0;
+    background:linear-gradient(to left, light-dark(var(--lightmode-color-background-site), var(--darkmode-color-background-site)) 20%, transparent);
+    justify-content: flex-end;
+}
+
+.scrollable-tabs-container .left-arrow
+{
+    left: 0px;
+    background:linear-gradient(to right, light-dark(var(--lightmode-color-background-site), var(--darkmode-color-background-site)) 20%, transparent);
+}
+
+/* .scrollable-tabs-container svg:hover
+{} */
+
+
+
+.tabexplanation
+{
+    min-height: 0px;
+    margin-bottom: 1rem;
+    margin-top: -1rem;
+}
+
+/* ==== FORMS ==== */
+
+.labelnextline
+{
+    display: block;
+    font-weight: bold;    
+    margin-bottom: 0.2rem;    
+}
+
+.labelnextlinesub
+{
+    display: block;
+    font-weight: lighter; 
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;    
+}
+
+.labelsub
+{
+    display: inline;
+    font-weight: lighter; 
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;    
+}
+
+input[type=text]
+{
+    /* width: 100%; */
+    height: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 0.9rem;   
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    /* border: 1px solid #dddddd; */
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+    font-family: var(--font-family);
+}
+
+input[type=password]
+{
+    /* width: 100%; */
+    height: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 0.9rem;    
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+}
+
+input[type=number]
+{
+    /* width: 100%; */
+    height: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 0.9rem;   
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+    font-family: var(--font-family);
+}
+
+select
+{
+    /*width: 100%;*/
+    height: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 0.9rem;  
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+    font-family: var(--font-family);
+}
+
+input[type=checkbox]
+{
+    /*transform : scale(2);*/
+    margin:0.8rem;
+    /* it's not really a great way to enlarge the checkboxes but it works */
+    
+/*    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 1.1rem;   
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    border: 1px solid #b9b9b9;*/
+}
+
+input[type=email]
+{
+    /* width: 100%; */
+    height: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 0.9rem;   
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    /* border: 1px solid #dddddd; */
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+}
+
+
+.editbox_normal
+{
+    /*width:100rem;*/
+    height: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;     
+    box-sizing: border-box;
+    font-size: 0.9rem;    
+    padding: 0.2rem;  
+    padding-left: 0.5rem;
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+}
+
+
+
+textarea
+{
+    height: 5rem;
+    /* width: 100%; */
+    margin-bottom: 1rem;    
+    border-radius: 0.3rem; 
+    box-sizing: border-box;
+    font-size: 0.9rem; ;   
+    padding: 0.2rem;
+    padding-left: 0.5rem;    
+    border: 1px solid light-dark(var(--lightmode-color-border), var(--darkmode-color-border)); 
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));     
+}
+
+input[type=submit]
+{
+    /* background-color: var(--theme-color-background-header);  */
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));
+    /* color: var(--theme-color3); */
+    color: var(--lightmode-color3);
+    
+    font-size: 1rem;
+    height: 2.5rem;
+    line-height: 1rem;    
+    border-radius: 0.3rem; 
+    padding: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.2rem;
+    margin:0.3rem;  
+    min-width: 5rem; 
+    
+    border-width:0px;
+    font-size: 1.1rem;   
+    box-sizing: border-box;
+    
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+}
+
+
+input[type=button]
+{
+    /*background-color: var(--theme-color-background-header); overridden by classes, this tag (input[type=button]) has a higher priority */ 
+    /* color: var(--theme-color3); */
+    color: light-dark(var(--lightmode-color3), var(--darkmode-color3));
+    text-decoration:none;   
+    display: inline-block;
+
+    height: 2.5rem;
+    line-height: 1rem;    
+    border-radius: 0.3rem; 
+    padding: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.2rem;
+    margin:0.3rem;  
+    min-width: 5rem; 
+
+    border-width:0px;
+    font-size: 0.8rem;   
+    box-sizing: border-box;
+    
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+
+}
+
+/* remove focus border */
+textarea:focus, input:focus
+{
+    outline: none;
+    /* outline-style: solid;
+    outline-color: light-dark(var(--lightmode-color-form-input-focusborder), var(--darkmode-color-form-input-focusborder));
+    outline-width: 1px; */
+    border: 1px solid light-dark(var(--lightmode-color-form-input-focusborder), var(--darkmode-color-form-input-focusborder));
+
+}
+
+.button_cancel
+{
+    /* background-color: var(--theme-color5) ; */
+    background-color: light-dark(var(--lightmode-color2), var(--darkmode-color2));
+    color: white;
+
+    font-size: 1rem;
+    height: 2.5rem;
+    line-height: 1rem;    
+    border-radius: 0.3rem; 
+    padding: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.2rem;
+    margin:0.3rem;  
+    min-width: 5rem;     
+}
+
+.button_normal
+{
+    /* background-color: var(--theme-color-background-header); */
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));
+    color: white;
+
+    height: 2.5rem;
+    line-height: 1rem;    
+    border-radius: 0.3rem; 
+    padding: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.4rem;
+    min-width: 5rem;
+}
+
+.button_normal:hover
+{
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1)) !important;
+    color: white;
+    filter: brightness(110%);
+}
+
+
+
+button
+{
+    font-family: var(--font-family);
+}
+
+button:hover
+{
+}
+
+
+
+/* ==== TILES ==== */
+
+
+/* kader voor alle uitje  */
+.tilesenclosure
+{
+/*    background-color: var(--theme-color-background-grey);
+    border: 1px;
+    border-color: var(--theme-color-border-grey);
+    border-style:solid;*/
+    
+    display: block;
+    width: 100%;
+
+    float: left;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    
+    border-radius: 0.1rem;
+
+}
+
+/* kader voor 1 uitje  */
+.tilebox 
+{
+/*    background-color: var(--theme-color-background-tiles);
+    border: 1px;
+    border-color: black;    
+    border-style:solid;*/
+    
+    
+    display: inline-block;
+    width: 10rem;
+    min-width: 11rem;
+    overflow: hidden;
+    float: left;
+/*    position: relative;  hierdoor kan position: absolute voor childs */
+    z-index: 0;
+    text-align: center;
+    line-height: 1.4rem;
+    font-size:0.95rem; /* default, wordt straks overschreven */
+    box-sizing: border-box;
+    
+    
+}
+
+.tileboxwithsub
+{
+     height: 19rem;
+
+}
+
+
+.tilebox a:link, .tilebox a:visited, .tilebox a:active, .tilebox a:hover
+{
+    display: block; /* alle links in footer onder elkaar plaatsen */
+    /* color: var(--theme-color-font-site);	 */
+    color: light-dark(var(--lightmode-color-font-site), var(--darkmode-color-font-site));
+    text-decoration: none;
+
+}
+
+.tileboxinner
+{
+    margin: 0.5rem;
+    display: block;
+    box-sizing: border-box;    
+    
+    /* temp */
+/*    background-color: var(--theme-color-background-tiles);
+    border: 1px;
+    border-color: black;    
+    border-style:solid;*/
+
+    box-shadow: 0 0.1em 0.5em 0 rgba(0, 0, 0, 0.2), 0 0.2em 0.6em 0 rgba(0, 0, 0, 0.19);    
+}
+
+
+.tileboxinner:hover  /* groter maken als muis eroverheen */
+{ 
+    /*background-color: var(--theme-color-background-grey);*/
+    margin: 0.2rem;
+    margin-bottom: 0.8rem; /* verschil in margin-top + margin-bottom compenseren: om te voorkomen dat elementen op de volgende regel schuiven */
+    opacity: 0.8;
+}
+
+.tileimage
+{
+    overflow: hidden;
+    width: 100%; 
+    height: 10rem;
+    
+/*        background-color: var(--theme-color-background-tiles);
+    border: 1px;
+    border-color: black;    
+    border-style:solid;*/
+}
+
+.tileimage img
+{
+    width: 100%; 
+    min-height: 100%;
+}
+
+.tiletitle
+{
+    /*position: absolute;  tov box --> die moet position: relative hebben*/
+    height: 2.7rem;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    padding: 0.3rem;
+    padding-bottom: 0rem;    
+    padding-top: 0.5rem;    
+    font-size: 0.75rem; /* wordt overschreven voor groter scherm */
+    box-sizing: border-box; /* anders tellen de margins en paddings ook mee en dan komen er scrollbalken, en met percentages 70/30 gaat het ook mis */
+    line-height: 2rem;
+    
+    font-weight: bold;
+}
+
+.tilesub
+{
+    /*position: absolute;  tov box --> die moet position: relative hebben*/
+    height: 2.7rem;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    padding: 0.3rem;
+    padding-top: 0rem;
+    font-size: 0.75rem; /* wordt overschreven voor groter scherm */
+    box-sizing: border-box; /* anders tellen de margins en paddings ook mee en dan komen er scrollbalken, en met percentages 70/30 gaat het ook mis */
+    line-height: 2rem;
+
+    
+    font-weight: normal;    
+}
+
+
+
+/* === command panel with buttons SAVE and CANCEL === */
+.div_commandpanel
+{
+    /* background-color: #f6f6f6;
+    
+    border-color: #dfdfdf;
+    border-width: 1px;
+    border-style: solid;     */
+    
+    /*margin: 1rem;*/
+    /* padding: 1rem; */
+}
+
+/* don't show headers of command panels */
+.div_commandpanel .formsection-header
+{
+   height:0px;
+   visibility: hidden;
+   margin-top: 0rem;
+   margin-bottom: 0rem;
+}
+
+.formsection-header
+{
+    margin-top: 0.7rem;
+    margin-bottom: 1.2rem;
+    font-weight: bolder;
+    font-size: 1.0rem;
+}
+
+/* form section on the form generator */
+.formsection
+{
+    box-sizing: border-box;
+    padding: 1rem;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0rem;
+    margin-bottom: 1rem;
+    /* background-color: var(--theme-color-background-content); */
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));
+
+    border-radius: 0.5rem;    
+    /* border-color: var(--theme-color-border-grey); */
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-style: solid;
+    border-width: 1px;   
+    
+    /* box-shadow: 0 0.1em 0.4em 0 rgba(0, 0, 0, 0.1), 0 0.2em 0.6em 0 rgba(0, 0, 0, 0.1);         */
+}
+
+/* every line on a form */
+.formsection-line
+{
+    /* margin-top: 0.5rem; */
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+
+/* message on top of the form saying that the user needs to correct input */
+/* we don't show the message, because the CMS gives message on top of screen */
+.formsection-line-toperrormessage
+{
+    color: red;
+    /*padding: 1rem;*/
+    visibility: hidden;
+    height:0px;
+}
+
+
+/* a formline with an error (color border red) */
+.formsection-line-error
+{
+    border-color: red;
+    border-width: 3px;
+    border-style: dashed;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #ff000020;
+    margin-bottom: 1rem;
+}
+
+/* the list of errors per form line */
+.formsection-line-errorlist
+{
+    color: red;
+    font-weight: bold;  
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-description
+{
+    display:block;
+    color: light-dark(var(--lightmode-color-form-label), var(--darkmode-color-form-label));
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* === DRAG & DROP file uploads === */
+
+.file-dropzone
+{
+    max-width: 200px;
+    height: 200px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    color:#909090;
+    border: 4px dashed #6e9aff;
+    border-radius: 20px;
+}
+
+.file-dropzone-dragover
+{
+    /* make the dotted border solid on dragover */
+    border-style:solid;
+}
+
+.file-dropzone-input
+{
+    display: none;
+}
+
+.file-dropzone-thumbnail
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden; /* if data-label text is larger than div */
+    background-color:#909090;
+    background-size: cover; /* take up entire space that is available and not repeating itself */
+    position: relative; /* label possible at bottom */
+}
+
+.file-dropzone-thumbnail::after
+{
+    content: attr(data-label); /* using the data-label="blabla" property of the div tag as text to display */
+    position: absolute; /* so we can use absolute position from the bottom */
+    bottom: 0; /* display at the bottom */
+    left: 0;
+    width: 100%; /* entire width of the thumbnail */
+    padding: 5px 0;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.75); /* black background 75% opague */
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* file upload progressbar */
+.fileupload-progressbar
+{
+    border:#558ed3;
+    border-style: solid;
+    border-width: 2px;
+    width: 100%;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+
+}
+
+.fileupload-progressbar-fill
+{
+    height: 100%;
+    width: 0%;
+    background: lightblue;
+    display: flex; /* vertically align text of percentage */
+    align-items: center; /* vertically align text of percentage */
+    transition: width 0.25s; /* animate the progress in a nice way on width change */
+}
+
+.fileupload-progressbar-text
+{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+
+
+
+/* Media query for mobile devices */
+@media (max-width: 500px) 
+{
+    .fullwidthtag
+    {
+        width: 100%;
+    }
+    
+    .halfwidthtag
+    {
+        width: 100%;
+    }
+    
+    .quarterwidthtag
+    {
+        width: 100%;
+    }
+}
+

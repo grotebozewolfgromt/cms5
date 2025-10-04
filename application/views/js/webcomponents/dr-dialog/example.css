@@ -1,0 +1,58 @@
+
+
+:root
+{
+
+    /* LIGHT MODE */
+    --lightmode-drdialog-background-color: rgba(0, 0, 0, 0.479);
+    --lightmode-drdialog-border-color: rgba(94, 94, 94, 0.479);
+    --lightmode-drdialog-header-background-color: white;
+    --lightmode-drdialog-header-font-color: rgb(56, 56, 56);
+    --lightmode-drdialog-header-button-x-color:  rgb(112, 112, 112);
+    --lightmode-drdialog-header-button-x-hover-color:  rgb(61, 61, 61);
+    --lightmode-drdialog-header-button-x-background-color:  white;
+    --lightmode-drdialog-header-button-x-background-hover-color: rgb(214, 214, 214);
+    --lightmode-drdialog-body-background-color: white;
+    --lightmode-drdialog-body-font-color: rgb(56, 56, 56);
+    --lightmode-drdialog-footer-border-color: rgb(235, 235, 235);
+    --lightmode-drdialog-footer-background-color: rgb(245, 245, 245);
+    --lightmode-drdialog-footer-button-border-color: rgb(193, 193, 193);
+    --lightmode-drdialog-footer-button-border-default-color: rgb(1, 61, 180);
+    --lightmode-drdialog-footer-button-background-color: rgb(234, 234, 234);
+    --lightmode-drdialog-footer-button-background-hover-color: rgb(228, 228, 228);    
+    --lightmode-drdialog-footer-button-background-default-color: rgb(64, 134, 255);    
+    --lightmode-drdialog-footer-button-background-default-hover-color: rgb(52, 115, 223);
+    --lightmode-drdialog-footer-button-font-color: rgb(56, 56, 56);
+    --lightmode-drdialog-footer-button-font-default-color:white;
+
+    /* DARK MODE */
+    --darkmode-drdialog-background-color: rgba(157, 157, 157, 0.718);
+    --darkmode-drdialog-border-color: rgba(149, 149, 149, 0.479);    
+    --darkmode-drdialog-header-background-color: rgb(45, 45, 45);
+    --darkmode-drdialog-header-font-color: white;
+    --darkmode-drdialog-header-button-x-color: rgb(209, 209, 209);
+    --darkmode-drdialog-header-button-x-hover-color: rgb(0, 0, 0);
+    --darkmode-drdialog-header-button-x-background-color: var(--darkmode-drdialog-header-background-color);
+    --darkmode-drdialog-header-button-x-background-hover-color: rgb(121, 121, 121);
+    --darkmode-drdialog-body-background-color: white;
+    --darkmode-drdialog-body-font-color: rgb(56, 56, 56);
+    --darkmode-drdialog-footer-border-color: rgb(81, 81, 81);
+    --darkmode-drdialog-footer-background-color: var(--darkmode-drdialog-header-background-color);
+    --darkmode-drdialog-footer-button-border-color: var(--darkmode-drdialog-footer-border-color);
+    --darkmode-drdialog-footer-button-border-default-color: rgb(1, 61, 180);    
+    --darkmode-drdialog-footer-button-background-color: rgb(53, 53, 53);
+    --darkmode-drdialog-footer-button-background-hover-color: rgb(73, 73, 73);    
+    --darkmode-drdialog-footer-button-background-default-color: rgba(24, 109, 255, 0.92);        
+    --darkmode-drdialog-footer-button-background-default-hover-color: rgb(21, 121, 252);        
+    --darkmode-drdialog-footer-button-font-color: rgb(232, 232, 232);
+    --darkmode-drdialog-footer-button-font-default-color:white;
+
+
+    /* sizes --> needed for height calculations for overflow-y:auto in dialogs */
+    --drdialog-header-height:30px;
+    --drdialog-footer-height:50px;
+    --drdialog-font-family: Poppins, Century Gothic, arial, Helvetica, Verdana, sans-serif;    
+}
+
+
+

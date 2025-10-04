@@ -1,0 +1,143 @@
+<?php
+/**
+* theme_detailsaveajax.css
+*
+* all css regarding detail-save javaxscreen
+*
+* @author Dennis Renirie
+* 
+* 16 jan 2025 theme_detailsaveajax.csscreated
+*/
+?>
+
+.maincolumn-contentwrapper
+{
+    display: grid;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#detailsave-header 
+{
+    background-color: light-dark(var(--lightmode-header-background-color), var(--darkmode-header-background-color));
+    color: light-dark(var(--lightmode-header-text-color), var(--darkmode-header-text-color));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--headerpadding);
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    gap: 10px;
+
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-bottom-width: 1px; 
+
+    height: 40px;
+}
+
+
+.headercolumn
+{
+    margin: 0px 0px;       
+    padding: 0px;     
+}
+
+.headercolumn-exit, 
+.headercolumn-save,
+.headercolumn-preview
+{
+    flex: 0 0 auto; /* Do not grow or shrink */
+}
+
+.headercolumn-title
+{
+    flex: 1; /* Grow and shrink */
+    text-align: center;
+}          
+
+
+#lblTitleHeader
+{
+    font-size: 13px;
+    max-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+    display: block;
+} 
+
+
+
+#btnSave
+{
+    width: 120px;
+    font-family: var(--font-family);
+}
+
+#btnExit
+{
+    width: 120px;
+    font-family: var(--font-family);    
+}    
+
+#detailsave-body
+{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    /* height: 300px; */
+    overflow-y: scroll;
+}
+
+/* ==== Buttons ==== */
+button
+{
+    height: 45px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0px;
+
+    background-color: light-dark(var(--lightmode-button-background-color), var(--darkmode-button-background-color));
+
+    border-style: none;
+    border-width: 1px;
+    border-color: light-dark(var(--lightmode-button-border-color), var(--darkmode-button-border-color));
+    /* border-radius: 5px; */
+
+    cursor: pointer;            
+}  
+
+button.pressed,
+button:hover
+{
+    background-color: light-dark(var(--lightmode-button-pressed-background-color), var(--darkmode-button-pressed-background-color)) !important;
+}
+
+button svg
+{
+    height: 20px;
+    width: 20px;
+
+    display: inline-block;
+}
+
+
+.buttontext
+{
+    display: inline-block;
+    margin-left: 8px;
+    position: relative;
+    top: -4px;
+    font: inherit;
+    font-size: 15px;
+    color: light-dark(var(--lightmode-button-font-color), var(--darkmode-button-font-color));
+    font-family: var(--font-family);
+}

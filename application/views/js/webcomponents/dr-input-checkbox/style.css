@@ -1,0 +1,14 @@
+:root
+{
+    --lightmode-color-drinputcheckbox-box-border: rgb(98, 98, 98);
+    --darkmode-color-drinputcheckbox-box-border: rgb(151, 151, 151);
+    --value-drinputcheckbbox-box-height: 10px;
+}
+
+/* 
+dr-input-checkbox
+{     
+    background-color: blue;
+    color: red;
+}      
+           */

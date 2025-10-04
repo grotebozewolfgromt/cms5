@@ -1,0 +1,32 @@
+:root
+{
+    --lightmode-color-drinputdate-border: rgb(234, 234, 234);
+    --lightmode-color-drinputdate-button-border: rgb(234, 234, 234);
+    --lightmode-color-drinputdate-button-background: rgb(212, 212, 212);
+    --lightmode-color-drinputdate-calendar-daycurrentmonth-background: rgb(236, 236, 236);
+    --lightmode-color-drinputdate-calendar-daycurrentday-background: rgb(1, 63, 180);
+    --lightmode-color-drinputdate-calendar-daycurrentmonth-background: rgb(239, 239, 239);
+    --lightmode-color-drinputdate-calendar-daysaturdaysunday-background: rgba(236, 236, 236, 0.48);
+    --lightmode-color-drinputdate-calendar-dayothermonth: rgb(212, 212, 212);
+
+    --darkmode-color-drinputdate-border: rgb(71, 71, 71);
+    --darkmode-color-drinputdate-button-border: rgb(71, 71, 71);
+    --darkmode-color-drinputdate-button-background: rgb(107, 107, 107);
+    --darkmode-color-drinputdate-calendar-daycurrentmonth-background: rgb(107, 107, 107);
+    --darkmode-color-drinputdate-calendar-daycurrentday-background: rgb(255, 255, 255);
+    --darkmode-color-drinputdate-calendar-daycurrentmonth-background: rgb(107, 107, 107);
+    --darkmode-color-drinputdate-calendar-daysaturdaysunday-background: rgba(97, 97, 97, 0.41);
+    --darkmode-color-drinputdate-calendar-dayothermonth: rgb(107, 107, 107);
+}
+
+dr-input-date
+{
+    background-color: rgba(0, 255, 255, 0);
+    width: 100px;
+}
+
+/* dr-input-date input
+{
+    background-color: magenta;
+    border-color: green;
+}   */

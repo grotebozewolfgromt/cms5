@@ -1,0 +1,111 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+userrolesdetail_formsectionname_assignuserstoroles;ASSIGN USERS TO ROLES;ASSIGN USERS TO ROLES
+userrolesdetail_formsectionname_permissions;PERMISSIONS;PERMISSIONS
+userrolesdetail_form_field_groupname;Role name;Role name
+userrolesdetail_form_field_description;Description;Description
+userrolesdetail_form_field_maxusersinorganization;Maximum number of users allowed per Organization (0=unlimited, -1=no users);Maximum number of users allowed per Organization (0=unlimited, -1=no users)
+userrolesdetail_form_field_anonymous;is anonymous (represents users that are not logged-in, users with this role can never log in);is anonymous (represents users that are not logged-in, users with this role can never log in)
+userrolesdetail_form_label_permissionsallowassignusersroles;This role is allowed to assign users to the following roles:;This role is allowed to assign users to the following roles:
+userrolesdetail_form_label_permissionsbelow;Permissions of modules and system:;Permissions of modules and system:
+pagetitle_detailsave_usersgroups_edit;Edit role: [role];Edit role: [role]
+modulename_menu;Users + permissions;Users + permissions
+overview_column_sRoleName;Role;Role
+overview_column_sDescription;Description;Description
+overview_column_iMaxUsersInAccount;Max users;Max users
+overview_column_bIsAnonymous;Anonymous;Anonymous
+overview_column_bIsSystemRole;System;System
+modulename_title_userroles;User roles and permissions;User roles and permissions
+tabsheets_module_name_Users;Users;Users
+tabsheets_module_explanation_Users of the cms;Users of the cms;Users of the cms
+tabsheets_module_name_Organizations;Organizations;Organizations
+tabsheets_module_explanation_When CMS5 is deployed as a web-application service (like MailChimp, Shopify, Calendly etc) it can have multiple organizations/companies using CMS5<br>An organisation can have 0, 1 or multiple employees (with each their own username and password) logging in on behalf of the organisation.<br>Every organisation gets 1 bill for their associated users.<br>The amount of users per organization can be restricted via 'roles & permissions'.<br>;When CMS5 is deployed as a web-application service (like MailChimp, Shopify, Calendly etc) it can have multiple organizations/companies using CMS5<br>An organisation can have 0, 1 or multiple employees (with each their own username and password) logging in on behalf of the organisation.<br>Every organisation gets 1 bill for their associated users.<br>The amount of users per organization can be restricted via 'roles & permissions'.<br>;When CMS5 is deployed as a web-application service (like MailChimp, Shopify, Calendly etc) it can have multiple organizations/companies using CMS5<br>An organisation can have 0, 1 or multiple employees (with each their own username and password) logging in on behalf of the organisation.<br>Every organisation gets 1 bill for their associated users.<br>The amount of users per organization can be restricted via 'roles & permissions'.<br>
+tabsheets_module_name_Roles & permissions;Roles & permissions;Roles & permissions
+tabsheets_module_explanation_Manage user roles and permissions;Manage user roles and permissions;Manage user roles and permissions
+tabsheets_module_name_Permitted countries;Permitted countries;Permitted countries
+tabsheets_module_explanation_Manage countries with access to the system;Manage countries with access to the system;Manage countries with access to the system
+tabsheets_module_name_Invite codes;Invite codes;Invite codes
+tabsheets_module_explanation_Manage access invite codes for account creation in the system;Manage access invite codes for account creation in the system;Manage access invite codes for account creation in the system
+Mod_Sys_CMSUsers;Users + permissions;Users + permissions
+users_overview_column_sUsername;username;username
+users_overview_column_sUsernamePublic;public;public
+users_overview_column_sEAE;email;email
+users_overview_column_bLoEn;enabled;enabled
+users_overview_column_dtLoEx;expires;expires
+users_overview_column_dtLastLogin;last login;last login
+users_overview_column_sLanguage;language;language
+users_overview_column_sRoleName;role;role
+users_overview_column_sCustomIdentifier;account;account
+modulename_title_usercms;Users;Users
+overview_column_sCustomIdentifier;Label identifier;Label identifier
+overview_column_bLoEn;Enabled;Enabled
+overview_column_sCompanyName;Company;Company
+modulename_title_cmsuseraccounts;User accounts;User accounts
+userdetail_form_field_username;username;username
+userdetail_form_field_usernamepublic;public username (published on websites etc);public username (published on websites etc)
+form_field_passwordold_hint_existingrecord_leaveempty;(only if you want to change password, otherwise leave empty);(only if you want to change password, otherwise leave empty)
+userdetail_form_field_passwordold;current password;current password
+form_field_passwordnew_hint_existingrecord_leaveempty;(if you want to change password, otherwise leave empty);(if you want to change password, otherwise leave empty)
+userdetail_form_field_passwordnew;new password;new password
+form_field_passwordrepeat_hint_existingrecord_leaveempty;(only if you want to change password);(only if you want to change password)
+userdetail_form_field_passwordnewrepeat;repeat new password;repeat new password
+userdetail_form_field_emailaddress;email address;email address
+userdetail_form_field_loginexpires;login expires (user can't log in after this date) (leave empty for no expiration);login expires (user can't log in after this date) (leave empty for no expiration)
+form_field_passwordexpires;password expires (prompts user to change password on login) (leave empty for no expiration);password expires (prompts user to change password on login) (leave empty for no expiration)
+userdetail_form_field_scheduleddeletion;Auto delete user after (deleted by cron job, leave empty for no expiration);Auto delete user after (deleted by cron job, leave empty for no expiration)
+section_accessibility_title;Accessibility & ownership;Accessibility & ownership
+userdetail_form_field_enabled;able to log in;able to log in
+userdetail_form_field_userrole;user role;user role
+userdetail_form_field_useraccount;part of user acount;part of user acount
+section_localization_title;Localization;Localization
+userdetail_form_field_language;language;language
+form_field_timezone;time zone;time zone
+form_field_dateformat;date format (Europe: "d-m-Y", USA: "m/d/Y");date format (Europe: "d-m-Y", USA: "m/d/Y")
+form_field_dateformatlong;date format long (Europe: "d-m-Y", USA: "m/d/Y");date format long (Europe: "d-m-Y", USA: "m/d/Y")
+form_field_timeformat;time format (Europe: "H:i", USA: "g:i a");time format (Europe: "H:i", USA: "g:i a")
+form_field_timeformatlong;time format long (Europe: "H:i:s", USA: "g:i:s a");time format long (Europe: "H:i:s", USA: "g:i:s a")
+form_field_weekstartsone;week starts on;week starts on
+form_field_thousandseparator;thousand separator (. or ,);thousand separator (. or ,)
+form_field_decimalseparator;decimal separator (. or ,);decimal separator (. or ,)
+section_sessions_title;Open login sessions;Open login sessions
+form_label_sessions_userloggedinhere;User is logged in [times] time(s) on these devices:;User is logged in [times] time(s) on these devices:
+form_label_sessions_checktodelete;(to delete session: click checkbox and click save);(to delete session: click checkbox and click save)
+message_sessions_iscurrentsession;(CURRENT SESSION);(CURRENT SESSION)
+section_loginhistory_title;Login history;Login history
+form_label_loginhistory_explanation;User has [times] entries in history on the following devices:;User has [times] entries in history on the following devices:
+pagetitle_detailsave_user_edit;Edit user: [username];Edit user: [username]
+form_FIELD_CUSTOMID;Label (used to identify this account just to you);Label (used to identify this account just to you)
+form_field_contactid;Contact;Contact
+form_field_enabled;able to log in (users in this account);able to log in (users in this account)
+form_field_loginexpires;Login expires after (users in account can't log in after this date, empty = no expiration);Login expires after (users in account can't log in after this date, empty = no expiration)
+form_field_deleteafter;Auto delete account after (also deleting ALL users in account, empty = no deletion);Auto delete account after (also deleting ALL users in account, empty = no deletion)
+section_useraccounts_detail_usersinaccount_title;Users in this account;Users in this account
+section_useraccounts_detail_usersinaccount_explanation;[amount] user(s) are part of this account:;[amount] user(s) are part of this account:
+pagetitle_detailsave_useraccount_edit;Edit user account: [identifier];Edit user account: [identifier]
+overview_column_sCodeName;Name;Name
+overview_column_sRedemptionCode;Code;Code
+overview_column_iCurrentRedeems;Redeemed;Redeemed
+overview_column_dtDateEnd;Expires on;Expires on
+overview_column_bIsEnabled;Enabled;Enabled
+modulename_title;Invitation codes;Invitation codes
+form_field_namecode;name (only you can see it);name (only you can see it)
+form_field_invitationcode;Invitation code (allowed: [allowed]);Invitation code (allowed: [allowed])
+form_field_currentredeems;Amount of times code is redeemed;Amount of times code is redeemed
+form_field_maxredeems;Limit redemptions (0=unlimited);Limit redemptions (0=unlimited)
+form_field_invitationcodes_startdatetime;Start date;Start date
+form_field_invitationcodes_enddatetime;End date;End date
+form_field_invitationcode_isenabled;Enabled;Enabled
+pagetitle_detailsave_invitationcodes_new;Create new invitation code;Create new invitation code
+overview_column_sCountryName;country;country
+modulename_title_permissionscountries;Which countries are permitted to use the system?;Which countries are permitted to use the system?
+form_field_country;country;country
+pagetitle_detailsave_permissionscountries_edit;Change country;Change country
+pagetitle_detailsave_permissionscountries_new;Add new country;Add new country
+message_countryalreadyexists;Country NOT SAVED, country already exists;Country NOT SAVED, country already exists
+pagetitle_detailsave_user_new;Create new user;Create new user
+userdetail_form_field_organisation;Part of organisation;Part of organisation
+message_usernamenotunique;User NOT SAVED, choose another username;User NOT SAVED, choose another username
+message_user_needstochangepassword;This user needs to change password for security reasons;This user needs to change password for security reasons
+form_label_sessions_nosessions;User isn't logged in anywhere;User isn't logged in anywhere
+form_label_loginhistory_nosessions;User hasn't any history yet;User hasn't any history yet
+menuitem_modulename;Users + permissions;Users + permissions
+tabsheets_module_explanation_When Archimedes CMS is deployed as a web-application service (like MailChimp, Shopify, Calendly etc) it can have multiple organizations/companies using Archimedes CMS<br>An organisation can have 0, 1 or multiple employees (with each their own username and password) logging in on behalf of the organisation.<br>Every organisation gets 1 bill for their associated users.<br>The amount of users per organization can be restricted via 'roles & permissions'.<br>;When Archimedes CMS is deployed as a web-application service (like MailChimp, Shopify, Calendly etc) it can have multiple organizations/companies using Archimedes CMS<br>An organisation can have 0, 1 or multiple employees (with each their own username and password) logging in on behalf of the organisation.<br>Every organisation gets 1 bill for their associated users.<br>The amount of users per organization can be restricted via 'roles & permissions'.<br>;When Archimedes CMS is deployed as a web-application service (like MailChimp, Shopify, Calendly etc) it can have multiple organizations/companies using Archimedes CMS<br>An organisation can have 0, 1 or multiple employees (with each their own username and password) logging in on behalf of the organisation.<br>Every organisation gets 1 bill for their associated users.<br>The amount of users per organization can be restricted via 'roles & permissions'.<br>

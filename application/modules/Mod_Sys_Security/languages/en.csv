@@ -1,0 +1,40 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+overview_column_dtDateAttempt;Date;Date
+overview_column_binIPAddress;IP addr;IP addr
+overview_column_sUNE;User;User
+overview_column_bIsFailedLoginAttempt;Login fail;Login fail
+overview_column_bIsSucceededLoginAttempt;Login succ;Login succ
+overview_column_bIsPasswordReset;Pwd rst;Pwd rst
+overview_column_bIsCreateAccountAttempt;Cr acnt;Cr acnt
+overview_column_bIsCreateDuplicateUsernameAttempt;dpl acnt;dpl acnt
+overview_column_bIsDirectoryTraversalAttempt;dir trav;dir trav
+overview_column_sUA;User Agent;User Agent
+floodlogs_list_title;Flood detection logs;Flood detection logs
+modulename_menu;Security;Security
+tabsheets_module_name_Login flood logs;Login flood logs;Login flood logs
+tabsheets_module_explanation_Log of the access attempts of the system.<br>This way you gain some security insight whether your system is possibly under attack or not.;Log of the access attempts of the system.<br>This way you gain some security insight whether your system is possibly under attack or not.;Log of the access attempts of the system.<br>This way you gain some security insight whether your system is possibly under attack or not.
+tabsheets_module_name_Login IP black- &amp whitelist;Login IP black- &amp whitelist;Login IP black- &amp whitelist
+tabsheets_module_explanation_Blacklisted and whitelisted IP addresses for logging in.<br><b>Whitelisted</b> means that specified IP address is allowed to log in.<br><b>Blacklisted</b> means that specified address is <b>NOT allowed</b> to log in.<br>Blacklisted and whitelisted IP address can contradict.<br>When this happens <b>BLACKLISTED WILL TAKE PRIORITY</b> over whitelisted IPs for security reasons.<br>A user might whitelist an IP address, but when that user misbehaves, the system must be able to blacklist the user.<br>Whether whitelists are enabled depends on the setting bCMSLoginOnlyWhitelistedIPs in config file.;Blacklisted and whitelisted IP addresses for logging in.<br><b>Whitelisted</b> means that specified IP address is allowed to log in.<br><b>Blacklisted</b> means that specified address is <b>NOT allowed</b> to log in.<br>Blacklisted and whitelisted IP address can contradict.<br>When this happens <b>BLACKLISTED WILL TAKE PRIORITY</b> over whitelisted IPs for security reasons.<br>A user might whitelist an IP address, but when that user misbehaves, the system must be able to blacklist the user.<br>Whether whitelists are enabled depends on the setting bCMSLoginOnlyWhitelistedIPs in config file.;Blacklisted and whitelisted IP addresses for logging in.<br><b>Whitelisted</b> means that specified IP address is allowed to log in.<br><b>Blacklisted</b> means that specified address is <b>NOT allowed</b> to log in.<br>Blacklisted and whitelisted IP address can contradict.<br>When this happens <b>BLACKLISTED WILL TAKE PRIORITY</b> over whitelisted IPs for security reasons.<br>A user might whitelist an IP address, but when that user misbehaves, the system must be able to blacklist the user.<br>Whether whitelists are enabled depends on the setting bCMSLoginOnlyWhitelistedIPs in config file.
+Mod_Sys_Security;Security;Security
+overview_column_dtRecordChanged;Changed;Changed
+overview_column_dtStartDate;Starts;Starts
+overview_column_dtEndDate;Ends;Ends
+overview_column_sNotes;Notes;Notes
+overview_column_bEnabled;Enable;Enable
+overview_column_bBlacklisted;Black;Black
+overview_column_bWhitelisted;White;White
+blackwhitelist_notification_whitelist_disabled;Whitelist is DISABLED in config file.<br>So, whitelist items are ignored;Whitelist is DISABLED in config file.<br>So, whitelist items are ignored
+ipblackwhitelist_list_title;IP address login blacklist &amp whitelist;IP address login blacklist &amp whitelist
+loginipblackwhitelistdetail_notification_whitelistenabledconfig_disabled;Note: whitelist is DISABLED in config file.;Note: whitelist is DISABLED in config file.
+loginipblackwhitelistdetail_notification_logiclistrulesresult_allowed;Based on all rules present in database:<br>[ip] is ALLOWED to log in.<br>[configwhitelistmessage];Based on all rules present in database:<br>[ip] is ALLOWED to log in.<br>[configwhitelistmessage]
+loginipblackwhitelist_form_field_startdate;Start date (goes in effect on);Start date (goes in effect on)
+loginipblackwhitelist_form_field_enddate;End date (stops on);End date (stops on)
+loginipblackwhitelist_form_field_ipaddress;IP address (IPv4 or IPv6);IP address (IPv4 or IPv6)
+loginipblackwhitelist_form_field_notes;Notes (like: reason or who ip belongs to);Notes (like: reason or who ip belongs to)
+loginipblackwhitelist_form_field_enabled;Enabled;Enabled
+loginipblackwhitelist_form_field_blacklisted;Blacklisted - NOT allowed to log in;Blacklisted - NOT allowed to log in
+loginipblackwhitelist_form_field_whitelisted;Whitelisted - allowed to log in;Whitelisted - allowed to log in
+loginipblackwhitelist_pagetitle_detailsave_record_edit;Edit rule: [ipaddress];Edit rule: [ipaddress]
+loginipblackwhitelist_pagetitle_detailsave_record_new;Create new blacklist/whitelist rule;Create new blacklist/whitelist rule
+menuitem_modulename;Security;Security
+tabsheets_module_name_Login IP black- &amp whitelist;Login IP black- &amp whitelist;Login IP black- &amp whitelist
