@@ -1,0 +1,105 @@
+
+
+
+
+Which
+YouTube Impressions Click Through Rate would you rather have? 4
+or 10?
+10,
+right?
+Because
+when
+10
+viewers
+out
+of 100 click, results
+in more views
+than when
+4
+people out of a 100 click.
+
+
+
+Click
+Through Rates (or
+Impression-Click-Through-Rates, commonly
+abbreviated as CTR) is
+one of the key metrics that the YouTube algorithm looks at to
+determine whether it should promote your video or not.
+However,
+Click Through Rates are misleading and
+comparing them is next to impossible. Because
+CTR doesn't tell what
+you think it does.
+
+
+
+A
+higher Click Through Rate doesn’t always equal more views.
+In
+the example above:
+Video
+	1: 10 CTR: 7K views
+	Video
+	2: 4 CTR: 330K views.
+
+
+
+
+What is the meaning of Impressions
+Click Through Rate (CTR) on YouTube?
+Click
+Through Rate (or
+CTR)
+is the percentage of viewers that see your title and thumbnail and
+click on it.
+The
+CTR is expressed in a percentage.
+
+
+
+Click
+Through Rate is a broad marketing term and not exclusively used in
+the context of YouTube.
+Also
+for online advertisements and links in marketing emails are Click
+Through Rates measured.
+
+
+
+YouTube
+uses Click Through Rates combined with Average View Duration, Average
+Percentage Viewed and returning-viewers as the
+most important
+metrics to
+promote a video in the algorithms like Suggested, Home and Search.
+
+
+
+Why
+is CTR not reliable?
+Besides
+the above mentioned metrics, there are more metrics that
+YouTube looks at: like/dislike ratio, time on watch page, amount of
+comments and probably 100 other factors that YouTube won’t reveal.
+
+
+
+Herein
+lies also the problem for using CTR as a reliable metric.
+Click
+Through Rate is only one
+factor for the algorithm to consider whether it promotes your video
+or not.
+How is YouTube Impressions Click
+Through Rate calculated?
+The
+formula for calculating Click Through Rate:
+CTR
+  (clicks / impressions) * 100
+
+
+
+CTR
+  Click Through Rate measured in percentages.
+

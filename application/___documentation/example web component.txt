@@ -1,0 +1,36 @@
+//https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
+
+class ToolTip extends HTMLElement {
+  constructor() {
+    super();
+    this._msg = '';
+    this._value = '';
+  }
+  
+  static get observedAttributes() {
+    return [ 'value', 'msg' ];
+  }
+
+  connectedCallback() {
+    this._render();
+  }
+  
+  attributeChangedCallback(attr, oldVal, newVal) {
+    if (oldVal !== newVal) {
+      this['_'+attr] = newVal; // This will set either `this._msg` or `this._value`
+      this._render();
+    }
+  }
+  
+  _render() {
+    this.innerHTML = `${this._msg} - ${this._value}`;
+  }
+}
+
+customElements.define('mdm-tooltip', ToolTip);
+
+setTimeout(() => {
+  var el = document.querySelector('mdm-tooltip');
+  el.setAttribute('value', 'Free');
+  el.setAttribute('msg', 'I like getting stuff for');
+}, 1000);

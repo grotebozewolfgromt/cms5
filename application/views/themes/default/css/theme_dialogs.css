@@ -1,0 +1,244 @@
+/*
+<?php
+/**
+* theme_dialogs.css
+*
+* all css regarding modal dialogs
+
+* @author Dennis Renirie
+* 
+* 30 may 2024 pagebuilder-modals.css created
+*/
+?>
+*/
+
+:root
+{
+
+    /* LIGHT MODE */
+    --lightmode-dialogs-background-color: rgba(0, 0, 0, 0.479);
+    --lightmode-dialogs-border-color: rgba(94, 94, 94, 0.479);
+    --lightmode-dialogs-header-background-color: white;
+    --lightmode-dialogs-header-font-color: rgb(56, 56, 56);
+    --lightmode-dialogs-header-button-x-color:  rgb(112, 112, 112);
+    --lightmode-dialogs-header-button-x-hover-color:  rgb(61, 61, 61);
+    --lightmode-dialogs-header-button-x-background-color:  white;
+    --lightmode-dialogs-header-button-x-background-hover-color: rgb(214, 214, 214);
+    --lightmode-dialogs-body-background-color: white;
+    --lightmode-dialogs-body-font-color: rgb(56, 56, 56);
+    --lightmode-dialogs-footer-border-color: rgb(235, 235, 235);
+    --lightmode-dialogs-footer-background-color: rgb(245, 245, 245);
+    --lightmode-dialogs-footer-button-border-color: rgb(193, 193, 193);
+    --lightmode-dialogs-footer-button-border-default-color: rgb(1, 61, 180);
+    --lightmode-dialogs-footer-button-background-color: rgb(234, 234, 234);
+    --lightmode-dialogs-footer-button-background-hover-color: rgb(228, 228, 228);    
+    --lightmode-dialogs-footer-button-background-default-color: rgb(64, 134, 255);    
+    --lightmode-dialogs-footer-button-background-default-hover-color: rgb(52, 115, 223);
+    --lightmode-dialogs-footer-button-font-color: rgb(56, 56, 56);
+    --lightmode-dialogs-footer-button-font-default-color:white;
+
+    /* DARK MODE */
+    --darkmode-dialogs-background-color: rgba(157, 157, 157, 0.718);
+    --darkmode-dialogs-border-color: rgba(149, 149, 149, 0.479);    
+    --darkmode-dialogs-header-background-color: rgb(45, 45, 45);
+    --darkmode-dialogs-header-font-color: white;
+    --darkmode-dialogs-header-button-x-color: rgb(209, 209, 209);
+    --darkmode-dialogs-header-button-x-hover-color: rgb(0, 0, 0);
+    --darkmode-dialogs-header-button-x-background-color: var(--darkmode-dialogs-header-background-color);
+    --darkmode-dialogs-header-button-x-background-hover-color: rgb(121, 121, 121);
+    --darkmode-dialogs-body-background-color: white;
+    --darkmode-dialogs-body-font-color: rgb(56, 56, 56);
+    --darkmode-dialogs-footer-border-color: rgb(81, 81, 81);
+    --darkmode-dialogs-footer-background-color: var(--darkmode-dialogs-header-background-color);
+    --darkmode-dialogs-footer-button-border-color: var(--darkmode-dialogs-footer-border-color);
+    --darkmode-dialogs-footer-button-border-default-color: rgb(1, 61, 180);    
+    --darkmode-dialogs-footer-button-background-color: rgb(53, 53, 53);
+    --darkmode-dialogs-footer-button-background-hover-color: rgb(73, 73, 73);    
+    --darkmode-dialogs-footer-button-background-default-color: rgba(24, 109, 255, 0.92);        
+    --darkmode-dialogs-footer-button-background-default-hover-color: rgb(21, 121, 252);        
+    --darkmode-dialogs-footer-button-font-color: rgb(232, 232, 232);
+    --darkmode-dialogs-footer-button-font-default-color:white;
+
+
+    /* sizes --> needed for height calculations for overflow-y:auto in dialogs */
+    --dialogs-header-height:30px;
+    --dialogs-footer-height:50px;
+}
+
+  
+/* Modal container */
+dialog
+{
+    /* position: relative; */
+    /* background-color: #fefefe; */
+    /* margin: auto; */
+    padding: 0;
+    border: 1px solid light-dark(var(--lightmode-dialogs-border-color), var(--darkmode-dialogs-border-color));
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: var(--font-family);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+dialog::backdrop 
+{
+    background-color: light-dark(var(--lightmode-dialogs-background-color), var(--darkmode-dialogs-background-color));
+    /* opacity: 0.75; */
+}
+
+.dialog-header 
+{
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 0.9rem;
+
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    height: var(--dialogs-header-height);
+
+    background-color: light-dark(var(--lightmode-dialogs-header-background-color), var(--darkmode-dialogs-header-background-color));
+    color: light-dark(var(--lightmode-dialogs-header-font-color), var(--darkmode-dialogs-header-font-color));
+
+    vertical-align: middle;
+}
+  
+.dialog-title
+{
+    text-align: center;
+    padding-top: 9px;
+}
+
+/* The Close X Button */
+.dialog-button-x
+{
+    position: absolute;
+    color: light-dark(var(--lightmode-dialogs-header-button-x-color), var(--darkmode-dialogs-header-button-x-color));
+    /* float: right; */
+    /* font-size: 28px; */
+    /* font-weight: bold; */
+    height: 20px;
+    width: 20px;
+    right: 5px;
+    top: 5px;
+
+    padding: 5px;
+
+    border-radius: 50%;
+    background-color: light-dark(var(--lightmode-dialogs-header-button-x-background-color), var(--darkmode-dialogs-header-button-x-background-color));
+}
+  
+.dialog-button-x:hover,
+.dialog-button-x:focus 
+{
+    color: light-dark(var(--lightmode-dialogs-header-button-x-hover-color), var(--darkmode-dialogs-header-button-x-hover-color));    
+    text-decoration: none;
+    cursor: pointer;
+    background-color: light-dark(var(--lightmode-dialogs-header-button-x-background-hover-color), var(--darkmode-dialogs-header-button-x-background-hover-color));
+}
+
+/* .dialog-button-x svg
+{
+    height: 30px;
+    width: 30px;
+} */
+    
+.dialog-body 
+{
+    padding: 20px;
+    font-family: var(--font-family);
+    font-size: 0.75rem;
+    line-height: 1.0rem;
+    text-align: center;    
+}
+  
+.dialog-footer
+{
+    padding: 0px;
+    background-color: light-dark(var(--lightmode-dialogs-footer-background-color), var(--darkmode-dialogs-footer-background-color));    
+    /* color: white; */
+
+    border-width: 0px;
+    /*
+    border-top-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-dialogs-footer-border-color), var(--darkmode-dialogs-footer-border-color)); */
+
+    text-align: center;
+
+    height: var(--dialogs-footer-height);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+}
+
+.dialog-footer button
+{
+    font-family: var(--font-family);
+    font-weight: bolder;
+    font-size: 0.75rem;
+
+    height: var(--dialogs-footer-height);
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-color), var(--darkmode-dialogs-footer-button-background-color));    
+    color: light-dark(var(--lightmode-dialogs-footer-button-font-color), var(--darkmode-dialogs-footer-button-font-color));    
+
+    border-width: 0px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-dialogs-footer-button-border-color), var(--darkmode-dialogs-footer-button-border-color));
+    /* border-radius: 10px; */
+
+
+    cursor: pointer;
+}
+
+.dialog-footer button:hover
+{                                    
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-hover-color), var(--darkmode-dialogs-footer-button-background-hover-color)) !important;
+}
+
+.dialog-footer button.default
+{
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-default-color), var(--darkmode-dialogs-footer-button-background-default-color)) !important;
+    color: light-dark(var(--lightmode-dialogs-footer-button-font-default-color), var(--darkmode-dialogs-footer-button-font-default-color));
+    /* border-color: light-dark(var(--lightmode-dialogs-footer-button-border-default-color), var(--darkmode-dialogs-footer-button-border-default-color)); */
+}
+
+.dialog-footer button.default:hover
+{
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-default-hover-color), var(--darkmode-dialogs-footer-button-background-default-hover-color)) !important;
+}
+
+  
+
+
+/* ======================================= SMALL SIZE SCREENS =========================== */
+@media all and (max-width: 768px)
+{
+
+}
+
+/* ======================================= MEDIUM SIZE SCREENS ========================= */
+@media all and (min-width: 768px) AND (max-width: 1024px)
+{
+    .dialog-body 
+    {
+        min-height: 75px;
+        min-width: 500px;
+    }         
+
+}
+
+/* ======================================= LARGE SIZE SCREENS ========================== */
+@media all and (min-width: 1024px)
+{
+    .dialog-body 
+    {
+        min-height: 75px;
+        min-width: 500px;
+    }         
+}

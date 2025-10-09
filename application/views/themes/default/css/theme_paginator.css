@@ -1,0 +1,125 @@
+/**
+<?php
+/**
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! THIS APPLIES ONLY TO THE OLD PAGINATOR!!!!!!!!!!!!!
+
+* theme_paginator.css
+*
+* all css regarding paginator
+*
+* @author Dennis Renirie
+* 
+* 4 mrt 2025 theme_paginator.css created
+*/
+?>
+*/
+
+
+
+/* ==== PAGINATOR ==== */
+.paginator
+{
+    margin: 0rem;  
+    
+    font-size:0.75rem; 
+    font-weight: bold;
+    
+    /*display: block;*/
+    display: inline-block;
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));
+
+    border-radius: 0.5rem;    
+    /* border-color: var(--theme-color-border-grey); */
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+
+/* links AND no links */
+.paginator li a, .paginator li a:link, .paginator li a:visited, .paginator li a:active, .paginator li a:hover, .paginator .nolink
+{   
+    display: inline-block;
+    padding: 1rem;    
+    padding-left:1.2rem;
+    padding-right:1.2rem;
+    text-decoration:none;
+    
+    border-left-width: 1px;
+    /* border-left-color: var(--theme-color-border-grey); */
+    border-left-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-left-style: solid;    
+    
+    /* color: var(--theme-color-font-site);  */
+    color: light-dark(var(--lightmode-color-font-site), var(--darkmode-color-font-site));
+}
+
+.paginator li:last-child a
+{
+    border-right-width: 1px;
+    /* border-right-color: var(--theme-color-border-grey); */
+    border-right-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-right-style: solid;     
+}
+
+.paginator .selected a
+{   
+    /* background-color: var(--theme-color-background-header); */
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));
+    /* color: var(--theme-color3) !important; */
+    color: light-dark(var(--lightmode-color3), var(--darkmode-color3)) !important;
+}
+
+
+.paginator li a:hover
+{
+    /* background-color: #e9e9e9; */
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));
+    /* color: var(--theme-color-background-header) !important;     */
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1)) !important;    
+}
+
+
+
+.paginator li
+{
+    display: inline;
+
+    margin:0px;
+    padding:0px;
+    /*background-color:#007ead;*/
+}
+
+.paginator li:first-child, .paginator li:first-child a /* not division line in first item */
+{
+    border-left-width: 0px; /* disable border on first item */
+}
+
+.paginator_textshowingXfromY
+{
+    display: inline;
+    float: right;
+    margin-left: 2rem;
+    line-height: 3rem;/* on mobile it may show on the bottom of the paginator */
+
+    font-weight: bold;
+}
+
+
+.overview_paginator
+{
+    width: 100%;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    height:3.7rem;
+    padding-top:0.5;
+    padding-bottom:0.5;
+    
+}

@@ -1,0 +1,20 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+detailsave_websites_sectiontitle_database;Database:;Database:
+detailsave_websites_sectiontitle_configfile;Configuration file: [filename];Configuration file: [filename]
+detailsave_websites_form_field_websitename;website name;website name
+detailsave_websites_form_field_url;url;url
+detailsave_websites_form_field_defaultlanguage;default language;default language
+detailsave_websites_form_field_systemdefault;Is system default;Is system default
+detailsave_websites_form_field_pathdomain;Domain (i.e. mywebsite.com);Domain (i.e. mywebsite.com)
+detailsave_websites_form_field_pathlocal;Local path (i.e. C:\xampp\htdocs);Local path (i.e. C:\xampp\htdocs)
+detailsave_websites_form_field_pathwww;Website URL (i.e. https://www.mywebsite.com);Website URL (i.e. https://www.mywebsite.com)
+detailsave_websites_form_field_theme;Theme;Theme
+pagetitle_detailsave_websites_edit;Edit website: [website];Edit website: [website]
+modulename_menu;Websites;Websites
+overview_column_sWebsiteName;website name;website name
+overview_column_sURL;url;url
+overview_column_sLanguage;default;default
+modulename_title;Websites;Websites
+Mod_Sys_Websites;Websites;Websites
+menuitem_modulename;Websites;Websites
+pagetitle_detailsave_websites_new;Create new website;Create new website

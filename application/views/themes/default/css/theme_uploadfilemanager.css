@@ -1,0 +1,271 @@
+/*
+<?php
+/**
+* theme_uploadfilemanager.css
+*
+* all css regarding the upload file manager
+*
+* @author Dennis Renirie
+* 
+* 26 jan 2025 theme_uploadfilemanager.css created
+*/
+?>
+*/
+
+
+:root
+{
+    /* sizes --> needed for height calculations for overflow-y:auto in dialogs */
+    --uploadfilemanagerdialog-toolbar-height: 50px;    
+}
+
+
+#dlgUploadFileManager
+{
+    width: 100%;
+    /* height: max-content; */
+    box-sizing: border-box;
+}
+
+#dlgUploadFileManagerBody
+{
+    font-size: 0.7rem;
+    padding: 0;
+    /* font-family: var(--font-family);
+    font-size: 0.7rem;
+    line-height: 0.7rem;     */
+    /* background-color: green; */
+    display: flex;    
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+
+#uploadfilemanager-toolbar
+{
+    /* background-color: aqua; */
+    display: flex;
+    gap: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    background-color: light-dark(var(--lightmode-dialogs-footer-background-color), var(--darkmode-dialogs-footer-background-color));    
+    /* color: white; */
+
+    border-width: 0px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-dialogs-footer-border-color), var(--darkmode-dialogs-footer-border-color));
+
+    /* text-align: center;     */
+    height: var(--uploadfilemanagerdialog-toolbar-height);
+}
+
+
+#uploadfilemanager-toolbar * label
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /* background-color: brown; */
+    display: block;
+}
+
+#uploadfilemanager-toolbar button
+{
+    width: 25px;    
+    height: 25px;
+    padding:5px;
+}
+
+#uploadfilemanager-toolbar button:hover
+{
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-hover-color), var(--darkmode-dialogs-footer-button-background-hover-color));
+}
+
+#uploadfilemanager-toolbar button .pressed
+{
+    background-color: green;
+    /* background-color: light-dark(var(--lightmode-dialogs-footer-button-background-hover-color), var(--darkmode-dialogs-footer-button-background-hover-color)); */
+}
+
+#uploadfilemanager-toolbar button svg
+{
+    height: 15px;
+    width: 15px;    
+}
+
+#uploadfilemanager-toolbar-column-filter
+{
+    margin-left: 10px;
+}
+
+#uploadfilemanager-toolbar-column-upload
+{
+    margin-right: 10px;
+}
+
+#uploadfilemanager-toolbar-column-filter,
+#uploadfilemanager-toolbar-column-sorton,
+#uploadfilemanager-toolbar-column-sortorder
+#uploadfilemanager-toolbar-column-view,
+#uploadfilemanager-toolbar-column-upload
+{
+    flex: 0 0 auto; /* Do not grow or shrink */
+}
+
+#uploadfilemanager-toolbar-column-search,
+#uploadfilemanager-toolbar-column-space
+{
+    flex: 1; /* Grow and shrink */
+}
+
+#uploadfilemanager-toolbar-column-upload
+{
+    flex-basis: 250px;
+    text-align: center;
+}
+
+#btn-uploadfilemanager-upload
+{
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+    height: 40px !important; 
+    min-width: 100px;
+    width: 100% !important;
+    cursor: pointer;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-dialogs-footer-button-border-color), var(--darkmode-dialogs-footer-button-border-color));
+    border-radius: 10px;    
+
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-default-color), var(--darkmode-dialogs-footer-button-background-default-color)) !important;
+    color: light-dark(var(--lightmode-dialogs-footer-button-font-default-color), var(--darkmode-dialogs-footer-button-font-default-color));
+    border-color: light-dark(var(--lightmode-dialogs-footer-button-border-default-color), var(--darkmode-dialogs-footer-button-border-default-color));
+}
+
+#btn-uploadfilemanager-upload:hover
+{
+    background-color: light-dark(var(--lightmode-dialogs-footer-button-background-default-hover-color), var(--darkmode-dialogs-footer-button-background-default-hover-color)) !important;
+}
+
+#btn-uploadfilemanager-upload svg
+{
+    margin-right: 8px;
+}
+
+#uploadfilemanager-filespanel
+{
+    /* background-color: rgb(255, 0, 225); */
+    display: flex;    
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;    
+    gap: 4px;
+}
+
+#uploadfilemanager-filelistpanel
+{
+    /* background-color: rgb(255, 0, 225); */
+    flex: 1; /* Grow and shrink */
+    overflow-y: auto;
+    height: calc(100vh 
+                - var(--dialogs-header-height) 
+                - var(--uploadfilemanagerdialog-toolbar-height)
+                - var(--dialogs-footer-height)
+                - 100px 
+                ); /* 100px takes into account some auto margins by browser of dialog */   
+}
+
+#uploadfilemanager-previewpanel
+{
+    /* background-color: rgb(0, 162, 255); */
+    flex: 0 0 auto;
+    flex-basis: 250px;
+
+    border-width: 0px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-dialogs-footer-border-color), var(--darkmode-dialogs-footer-border-color));
+    padding: 10px;
+}
+
+#uploadfilemanager-previewpanel-flexbox
+{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;    
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#uploadfilemanager-previewpanel-flexbox div
+{
+    max-width: 200px;
+}
+
+#uploadfilemanager-previewpanel-flexbox-filename
+{
+    overflow-wrap: break-word;
+}
+
+#uploadfilemanager-previewpanel-flexbox-image
+{
+    max-width: 200px;
+    max-height: 200px;
+    width: 100%;
+
+    border-width: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-dialogs-footer-border-color), var(--darkmode-dialogs-footer-border-color));
+}
+
+
+/* Media query for desktop */
+@media (min-width: 1024px)
+{
+
+} 
+
+/* Media query for tablets */
+@media (min-width: 600px) and (max-width: 1024px) 
+{
+    #uploadfilemanager-toolbar-column-upload
+    {
+        flex-basis: auto;
+    }
+
+
+    #uploadfilemanager-previewpanel
+    {
+        flex-basis: 150px;
+    }    
+}        
+
+
+/* Media query for mobile */
+@media (max-width: 600px) 
+{
+
+    #uploadfilemanager-toolbar-column-sorton,
+    #uploadfilemanager-toolbar-column-sortorder,
+    #uploadfilemanager-toolbar-column-view,
+    #uploadfilemanager-toolbar-column-space,
+    #uploadfilemanager-previewpanel
+    {
+        display: none;
+    }            
+  
+    #uploadfilemanager-toolbar-column-upload
+    {
+        flex-basis: auto;
+    }    
+    /* background-color: rgb(255, 0, 225); */
+}       

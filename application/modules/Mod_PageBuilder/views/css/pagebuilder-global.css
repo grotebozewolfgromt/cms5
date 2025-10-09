@@ -1,0 +1,464 @@
+<?php
+/**
+* pagebuilder-global.css
+*
+* generic/global css definitions
+*
+* darkmode code: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
+*
+* @author Dennis Renirie
+* 
+* 3 apr 2024 pagebuilder-global.css created
+*
+*/
+?>
+
+:root 
+{    
+    color-scheme: light dark; /* this has to be set to switch between light or dark mode */
+
+    /* LIGHT MODE */
+    --lightmode-highlight-color: #f17211;
+    --lightmode-highlight-background-color: #ed670129;
+
+    --lightmode-color-progressbar-1: #036ad1;
+    --lightmode-color-progressbar-2: #db36fc;
+
+    --lightmode-panels-border-color: rgb(235, 235, 235);
+
+    --lightmode-inputelements-border-color: var(--lightmode-panels-border-color);
+    --lightmode-inputelements-border-color-error: red;
+    --lightmode-inputelements-background-color: rgb(247, 247, 247);
+    --lightmode-inputelements-focus-border-color: var(--lightmode-highlight-color);
+
+    --lightmode-header-background-color: white;
+    --lightmode-header-text-color: rgb(56, 56, 56);
+    --lightmode-header-inputtypetext-border-color: rgb(233, 233, 233);
+    --lightmode-header-inputtypetext-focus-border-color: rgb(104, 104, 104);
+
+    --lightmode-toolbar-background-color: white;
+
+    --lightmode-panel-newdetails-desktop-background-color: white;
+    --lightmode-panel-newdetails-font-color: rgb(50, 50, 50);
+
+    --lightmode-panel-newdetails-mobile-background-color:rgb(241, 241, 241);
+    --lightmode-panel-shadow-color: rgb(70, 70, 70);
+
+    --lightmode-panel-add-border-color: var(--lightmode-panels-border-color);
+
+    --lightmode-tab-selected-border-color: rgb(54, 54, 54);
+    --lightmode-tab-selected-font-color: var(--lightmode-highlight-color);
+
+    --lightmode-designviewportcontainer-background-color: rgb(240, 247, 248);
+    --lightmode-designviewportcontent-text-color: black;
+    --lightmode-designviewportcontent-background-color: white;
+
+    --lightmode-button-background-color: white;
+    --lightmode-button-pressed-background-color: rgb(234, 234, 234);  
+    --lightmode-button-font-color: rgb(50, 50, 50);      
+
+    --lightmode-label-font-color:  rgb(120, 120, 120);
+
+    --lightmode-designobject-background-color: #ffffff;
+    --lightmode-designobject-border-selected-color: var(--lightmode-highlight-color);
+    --lightmode-designobject-background-selected-color: var(--lightmode-highlight-background-color);
+    --lightmode-designobject-background-invisibleelement-color: rgb(235, 235, 235);
+
+    --lightmode-color-icon: rgb(50, 50, 50);
+
+    /* DARK MODE */
+    --darkmode-highlight-color: #f17211;
+    --darkmode-highlight-background-color: #ed670140;
+
+    --darkmode-progressbar-color1: #036dd1;
+    --darkmode-color-progressbar-2: #b906dd;
+
+    --darkmode-panels-border-color: rgb(84, 84, 84);
+
+    --darkmode-inputelements-border-color: var(--darkmode-panels-border-color);
+    --darkmode-inputelements-border-color-error: red;    
+    --darkmode-inputelements-background-color: rgb(104, 104, 104);
+    --darkmode-inputelements-focus-border-color: var(--darkmode-highlight-color);
+
+    --darkmode-header-background-color: #3b3b3b; 		
+    --darkmode-header-text-color: white;
+    --darkmode-header-inputtypetext-border-color: rgb(105, 105, 105);
+    --darkmode-header-inputtypetext-focus-border-color: rgb(195, 195, 195);
+
+    --darkmode-toolbar-background-color: #3b3b3b; 	
+
+    --darkmode-panel-newdetails-desktop-background-color: #3b3b3b;
+    --darkmode-panel-newdetails-font-color: rgb(209, 209, 209);
+
+    --darkmode-panel-newdetails-mobile-background-color:  #494949;
+    --darkmode-panel-shadow-color: rgb(70, 70, 70);            
+    
+    --darkmode-panel-add-border-color: var(--darkmode-panels-border-color);    
+
+    --darkmode-tab-selected-border-color: rgb(200, 200, 200);
+    --darkmode-tab-selected-font-color: white;
+
+    --darkmode-designviewportcontainer-background-color: rgb(45, 45, 45);
+    --darkmode-designviewportcontent-text-color: rgb(219, 219, 219);
+    --darkmode-designviewportcontent-background-color: rgb(60, 60, 60);      
+
+
+    --darkmode-button-background-color:  #3b3b3b;                        
+    --darkmode-button-pressed-background-color: #4c4c4c;      
+    --darkmode-button-font-color: rgb(213, 213, 213);      
+
+    --darkmode-label-font-color:  rgb(188, 188, 188);
+
+    --darkmode-designobject-background-color: #5d5d5d;    
+    --darkmode-designobject-border-selected-color: var(--darkmode-highlight-color);
+    --darkmode-designobject-background-selected-color: var(--darkmode-highlight-background-color);
+    --darkmode-designobject-background-invisibleelement-color: #858585;;
+
+    --darkmode-color-icon: white;            
+    
+    /* Misc vars */
+    --font-family: Verdana, Century Gothic, Poppins, arial, Helvetica, sans-serif;
+    --headerheight: 45px;
+    --headerpadding: 0px;       
+    --headerborderwidth: 1px;     
+    --toolbarheight: 47px; /* same as header-height + 2 borderline pixels (headerbar & toolbar) */
+    --toolbarpadding: 0px;
+    --toolbarborderwidth: 1px;
+    --newpaneldesktopwidth: 250px;  /* also set in pagebuilder-panels.js */
+    --newpaneldesktoppadding: 0px;
+    --detailpaneldesktopwidth: 250px; /* also set in pagebuilder-panels.js */
+    --detailpaneldesktoppadding: 0px;
+    --newpanelmobileheight: 200px;
+    --newpanelmobilepadding: 10px;
+    --detailpanelmobileheight: 200px;
+    --detailpanelmobilepadding: 10px;
+    --designviewportcontentmargin: 20px;
+}
+
+/* Reset default margin and padding */
+body, html 
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Set background color and text color */
+body 
+{
+    /* background-color: #f0f0f0;
+    color: #333; */
+    font-family: var(--font-family);
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(<?php echo APP_URL_CMS_FONTS ?>/Poppins-Light.otf);
+}
+
+/* all input elements */
+input, textarea, select
+{
+    /* background-color: orange; */
+
+    font: inherit;
+    font-size: 0.7rem;
+
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-inputelements-border-color), var(--darkmode-inputelements-border-color));
+    background-color: light-dark(var(--lightmode-inputelements-background-color), var(--darkmode-inputelements-background-color));
+
+    box-sizing: border-box;
+
+    width: 100%;
+}
+
+input:focus, textarea:focus, select:focus
+{
+    outline: none; /* remove focus border */
+    border: 1px solid light-dark(var(--lightmode-inputelements-focus-border-color), var(--darkmode-inputelements-focus-border-color));
+}
+
+input[type='checkbox']
+{
+    width: inherit; /* get rid of 100% width */
+    margin-right: 10px;
+}
+
+input.inputerror ,textarea.inputerror, select.inputerror
+{
+    border-color: light-dark(var(--lightmode-inputelements-border-color-error), var(--darkmode-inputelements-border-color-error));
+}
+/* END: all input elements */
+
+
+/* ====  iconsheet (preloads icons) ==== */
+
+#iconsheet
+{
+    display: none;
+}
+
+
+/* ====  END: iconsheet ==== */
+
+
+/* ====  progressbar ==== */
+
+#progressbar
+{
+    position: fixed;
+    width: 100%;
+    height: 3px;
+    /* background-color: red; */
+
+    display: none;
+    border-style: none;
+    overflow: hidden; /* sometimes the progressbar can pop out, but we don't want scrollbars */
+    z-index: 1000;
+}
+
+#progressbar.visible
+{
+    display: block;
+}
+
+#progressbar-indicator
+{
+    position: relative;
+    /* background-color: red; */
+    
+    height: 100%;
+
+    animation-name: progressbaranimation;
+    animation-duration: 5s;    
+    animation-iteration-count: infinite;    
+}
+
+@keyframes progressbaranimation 
+{
+    0%   {width: 75px;      left:0px;                background-color:light-dark(var(--lightmode-color-progressbar-1), var(--darkmode-progressbar-color1))}
+    25%  {width: 125px;                              }
+    50%  {width: 75px;      left:calc(100% - 75px);  background-color:light-dark(var(--lightmode-color-progressbar-2), var(--darkmode-color-progressbar-2))}
+    75%  {width: 125px;                              }
+    100% {width: 75px;      left:0px;                background-color:light-dark(var(--lightmode-color-progressbar-1), var(--darkmode-progressbar-color1))}
+}
+
+/*END ====  progressbar ==== */
+
+
+/* ====  spinner ==== */
+.spinner
+{
+    animation-name: spinneranimation;
+    animation-duration: 1s;    
+    animation-iteration-count: infinite;   
+    animation-timing-function: linear; 
+    display: none; /* by default not visible, will become visible with function toggleSpinnerIcon() from lib_global_ui.js */
+}
+
+@keyframes spinneranimation 
+{
+    0%   {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/*END ====  spinner ==== */
+
+.page
+{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh 
+                - var(--headerheight) 
+                - (2 * (var(--headerpadding)))
+                - (1 * (var(--headerborderwidth))) 
+                - (2 * (var(--toolbarpadding)))
+                - (1 * (var(--toolbarborderwidth)))
+                - var(--designviewportcontentmargin)
+                );
+    /* height: calc(100vh - var(--headerheight) - var(--headerborderwidth)); */
+}
+
+/* toolbars */
+
+.toolbar
+{
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(var(--toolbarheight) - (1 * var(--headerborderwidth)) - (1 * var(--toolbarborderwidth)));
+    background-color: light-dark(var(--lightmode-toolbar-background-color), var(--darkmode-toolbar-background-color));
+
+    padding: var(--toolbarpadding);
+
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-bottom-width: 1px; 
+}
+
+/* ==== Buttons ==== */
+button
+{
+    height: 45px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0px;
+
+    background-color: light-dark(var(--lightmode-button-background-color), var(--darkmode-button-background-color));
+
+    border-style: none;
+    border-width: 1px;
+    border-color: light-dark(var(--lightmode-button-border-color), var(--darkmode-button-border-color));
+    /* border-radius: 5px; */
+
+    cursor: pointer;            
+}  
+
+button.pressed,
+button:hover
+{
+    background-color: light-dark(var(--lightmode-button-pressed-background-color), var(--darkmode-button-pressed-background-color)) !important;
+}
+
+button svg
+{
+    height: 20px;
+    width: 20px;
+
+    display: inline-block;
+}
+
+
+.buttontext
+{
+    display: inline-block;
+    margin-left: 8px;
+    position: relative;
+    top: -4px;
+    font: inherit;
+    font-size: 15px;
+    color: light-dark(var(--lightmode-button-font-color), var(--darkmode-button-font-color));
+    font-family: var(--font-family);
+}
+    
+
+/* ==== icon color ==== */
+
+/* svg 
+{
+    fill: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon));
+    color: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon));    
+} */
+
+svg.iconchangefill
+{
+    fill: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon));
+}
+
+svg.iconchangecolor
+{
+    color: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon));    
+} 
+
+svg.iconchangestroke
+{
+    stroke: light-dark(var(--lightmode-color-icon), var(--darkmode-color-icon));
+}
+
+
+/* ==== DRAG & DROP ==== */
+
+/* dragging object itself */
+.draggable.dragging
+{
+    /* opacity: .5; */
+    background-color: #b906dd;
+}
+
+/* dragging object on original/old location */
+.draggable.dragging.selected
+{
+    opacity: .5;
+}
+
+.droppable.acceptdragging
+{
+    background-color: light-dark(var(--lightmode-highlight-background-color), var(--darkmode-highlight-background-color));    
+}
+
+.dropcursor-horizontal /* indicates where an element is going to be dropped */
+{
+    /* we want no mass in the drop cursor, because that will reposition elements while dragging */
+    width: 100%;
+    height: 0px; 
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: light-dark(var(--lightmode-highlight-color), var(--darkmode-highlight-color));
+    /* background-color: light-dark(var(--lightmode-highlight-color), var(--darkmode-highlight-color)); */
+}
+
+.dropcursor-vertical /* indicates where an element is going to be dropped */
+{
+    /* we want no mass in the drop cursor, because that will reposition elements while dragging */
+    width: 0px;
+    height: 100%;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: light-dark(var(--lightmode-highlight-color), var(--darkmode-highlight-color));
+    /* background-color: light-dark(var(--lightmode-highlight-color), var(--darkmode-highlight-color)); */
+}
+
+/* Media query for desktop */
+/* @media (min-width: 1024px)
+{
+}  */
+
+/* Media query for tablets */
+/* @media (min-width: 600px) and (max-width: 1024px) 
+{
+} */
+
+
+/* .formsection-line {} */
+.formsection-line-error 
+{
+    outline-color: rgb(255, 80, 80);
+    outline-width: 1px;
+    outline-style: dashed;
+    background-color: rgba(255, 105, 105, 0.258);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.formsection-line-errorlist
+{
+    color: rgb(255, 98, 98);
+    margin-left: 1em;
+    margin-bottom: 8px;
+}
+
+
+
+/* Media query for mobile */
+@media (max-width: 600px) 
+{
+    .buttontext
+    {
+        display: none;   
+    }
+    
+} 

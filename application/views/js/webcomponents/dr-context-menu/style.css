@@ -1,0 +1,59 @@
+/*
+.contextmenu
+{
+    border-color: light-dark(var(--lightmode-color-contextmenu-border, rgb(214, 214, 214)), var(--darkmode-color-contextmenu-border, rgb(151, 151, 151))); 
+    border-width: 1px;
+    border-style: solid;
+    background-color: light-dark(var(--lightmode-color-contextmenu-background, rgb(234, 234, 234)), var(--darkmode-color-contextmenu-background, rgb(48, 48, 48))); 
+    color: light-dark(var(--lightmode-color-contextmenu-text,  rgb(18, 18, 18)), var(--darkmode-color-contextmenu-text,  rgb(255, 255, 255)));     
+    user-select: none;
+    border-radius: var(--borderradius-contextmenu, 5px);
+    border-collapse: inherit; 
+    cursor: pointer;
+    font-size: 12px;
+} 
+
+
+.contextmenu td
+{
+    padding: 5px; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
+}
+
+.contextmenu tr:hover
+{
+    background-color: light-dark(var(--lightmode-color-contextmenu-hover, rgb(54, 127, 255)), var(--darkmode-color-contextmenu-hover, rgb(54, 117, 255))); 
+    color: light-dark(var(--lightmode-color-contextmenu-hover-text, rgb(252, 252, 252)), var(--darkmode-color-contextmenu-hover-text, rgb(255, 255, 255))); 
+}
+
+.contextmenu tr.notallowed:hover
+{
+    background-color: light-dark(var(--lightmode-color-contextmenu-background, rgb(234, 234, 234)), var(--darkmode-color-contextmenu-background, rgb(48, 48, 48)));             
+    cursor: default;
+}
+
+.contextmenu svg
+{
+    width: 16px;
+    height: 16px;
+}    
+
+.contextmenu td
+{
+    white-space: nowrap;
+}
+
+
+.contextmenu hr
+{
+    margin: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;   
+    height: 1px;
+    background: light-dark(var(--lightmode-color-contextmenu-hr, rgb(179, 179, 179)), var(--darkmode-color-contextmenu-hr, rgb(130, 130, 130))); 
+    font-size: 0;
+    border: 0;            
+}
+*/

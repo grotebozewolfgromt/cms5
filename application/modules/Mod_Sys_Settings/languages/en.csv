@@ -1,0 +1,104 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+form_cmsmenu_field_nameinit_description;Name;Name
+form_cmsmenu_field_nameinit_iconinfo;This is the default text for the menu item.<br>Be aware that this name will be overwritten by contents of a language file of a module when a translation is available;This is the default text for the menu item.<br>Be aware that this name will be overwritten by contents of a language file of a module when a translation is available
+form_cmsmenu_field_module_description;Module;Module
+form_cmsmenu_field_module_infoicon;The module you want to link to in menu.<br>The module is ignored when specifying a custom URL;The module you want to link to in menu.<br>The module is ignored when specifying a custom URL
+form_cmsmenu_field_modulecontroller_description;URL slug;URL slug
+form_cmsmenu_field_modulecontroller_infoicon;This URL slug points to page in the module you set above.<br>A URL slug is the last part of a URL.;This URL slug points to page in the module you set above.<br>A URL slug is the last part of a URL.
+form_cmsmenu_field_customurl_description;Custom URL;Custom URL
+form_cmsmenu_field_customurl_infoicon;Instead of linking to a module, you can link also link to a custom url (starting with http://).<br>When you submit a URL here, the system completely ignores the "module" and the "module-url-slug" you set above.<br>In other words: leave this field empty when you want to link to an internal module;Instead of linking to a module, you can link also link to a custom url (starting with http://).<br>When you submit a URL here, the system completely ignores the "module" and the "module-url-slug" you set above.<br>In other words: leave this field empty when you want to link to an internal module
+form_cmsmenu_field_permissionresource_description;Permission resource;Permission resource
+form_cmsmenu_field_permissionresource_infoicon;Depending on the permissions of the user, the system shows only certain menu items to users who have the proper permissions.<br>Which permission resource would you like to use to show this menu item?<br>You can assign/retract permissions to users in the user module under "roles and permissions";Depending on the permissions of the user, the system shows only certain menu items to users who have the proper permissions.<br>Which permission resource would you like to use to show this menu item?<br>You can assign/retract permissions to users in the user module under "roles and permissions"
+form_cmsmenu_field_svgicon_description;SVG icon;SVG icon
+form_cmsmenu_field_svgicon_infoicon;Use the full HTML tag, like &ltSVG&gt&ltCIRCLE&gt etc...;Use the full HTML tag, like &ltSVG&gt&ltCIRCLE&gt etc...
+form_cmsmenu_field_favorite;Is favorite<dr-icon-info>When an item is favorited, it will show up at the top of the menu so you can quickly find it.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>;Is favorite<dr-icon-info>When an item is favorited, it will show up at the top of the menu so you can quickly find it.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>
+form_cmsmenu_field_visiblemenu;Is visible in menu<dr-icon-info>The menu is on the left side of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>;Is visible in menu<dr-icon-info>The menu is on the left side of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>
+form_cmsmenu_field_visibletoolbar;Is visible in toolbar<dr-icon-info>The toolbar is on top of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>;Is visible in toolbar<dr-icon-info>The toolbar is on top of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>
+form_cmsmenu_field_opennewtab;Open link in new browser tab;Open link in new browser tab
+form_cmsmenu_permissionresource_empty;[EVERYONE];[EVERYONE]
+pagetitle_detailsave_cmsmenu_edit_title;Edit menu item;Edit menu item
+detailsave_button_exit;Exit;Exit
+detailsavetemplate_button_save;Save;Save
+detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
+list_cmsmenu_column_iID;ID;ID
+list_cmsmenu_column_sSVGIcon;Icon;Icon
+list_cmsmenu_column_sNameDefault;Name default;Name default
+list_cmsmenu_column_bIsFavorite;Favorite;Favorite
+list_cmsmenu_column_bIsVisibleMenu;Menu;Menu
+list_cmsmenu_column_bIsVisibleToolbar;Toolbar;Toolbar
+list_cmsmenu_column_bOpenNewTab;New tab;New tab
+dbfilter_column_sNameDefault;Name default;Name default
+dbfilter_column_sController;Module URL;Module URL
+dbfilter_column_sURL;URL;URL
+dbfilter_column_sPermissionResource;Permission resource;Permission resource
+dbfilter_column_bIsVisibleToolbar;Visible in toolbar;Visible in toolbar
+dbfilter_column_bOpenNewTab;Open in new tab;Open in new tab
+tab_title_cmsmenu;CMS menu;CMS menu
+tabsheets_module_name_User settings;User settings;User settings
+tabsheets_module_explanation_settings that apply only to current user;settings that apply only to current user;settings that apply only to current user
+tabsheets_module_name_Global settings;Global settings;Global settings
+tabsheets_module_explanation_settings that apply to the whole system;settings that apply to the whole system;settings that apply to the whole system
+tabsheets_module_name_Maintainance;Maintainance;Maintainance
+tabsheets_module_explanation_Execute a cron job;Execute a cron job;Execute a cron job
+tabsheets_module_name_CMS Menu + toolbar;CMS Menu + toolbar;CMS Menu + toolbar
+tabsheets_module_explanation_Edit menu and toolbar items of CMS;Edit menu and toolbar items of CMS;Edit menu and toolbar items of CMS
+form_field_username;username;username
+form_field_usernamepublic;public username (published on websites etc);public username (published on websites etc)
+form_field_passwordold_hint_existingrecord_leaveempty;(only if you want to change password, otherwise leave empty);(only if you want to change password, otherwise leave empty)
+form_field_passwordold;current password;current password
+form_field_passwordnew_hint_existingrecord_leaveempty;(if you want to change password, otherwise leave empty);(if you want to change password, otherwise leave empty)
+form_field_passwordnew;new password;new password
+form_field_passwordrepeat_hint_existingrecord_leaveempty;(only if you want to change password);(only if you want to change password)
+form_field_passwordnewrepeat;repeat new password;repeat new password
+form_field_emailaddress;email address;email address
+section_localization_title;Localization;Localization
+form_field_language;language;language
+form_field_timezone;time zone;time zone
+form_field_dateformatshort;date format short (Europe: "d-m-Y", USA: "m/d/Y");date format short (Europe: "d-m-Y", USA: "m/d/Y")
+form_field_dateformatlong;date format long (Europe: "d-m-Y", USA: "m/d/Y");date format long (Europe: "d-m-Y", USA: "m/d/Y")
+form_field_timeformatshort;time format short (Europe: "H:i", USA: "g:i a");time format short (Europe: "H:i", USA: "g:i a")
+form_field_timeformatlong;time format long (Europe: "H:i:s", USA: "g:i:s a");time format long (Europe: "H:i:s", USA: "g:i:s a")
+form_field_weekstartsone;week starts on;week starts on
+form_field_thousandseparator;thousand separator (. or ,);thousand separator (. or ,)
+form_field_decimalseparator;decimal separator (. or ,);decimal separator (. or ,)
+section_sessions_title;Open login sessions;Open login sessions
+form_label_sessions_userloggedinhere;You are logged in [times] times on these devices:;You are logged in [times] times on these devices:
+form_label_sessions_dontrecognisethendelete;If you don't recognize any of these sessions, delete it and change your password NOW!;If you don't recognize any of these sessions, delete it and change your password NOW!
+form_label_sessions_checktodelete;(to delete session: click checkbox and click save);(to delete session: click checkbox and click save)
+message_sessions_iscurrentsession;(CURRENT SESSION);(CURRENT SESSION)
+pagetitle_settingsuser_edit;Settings user: [username];Settings user: [username]
+pagetitle_settings_maintenance;System maintenance;System maintenance
+settings_cronjob_iconinfo_text;A cronjob performs maintenance on regular basis (once a day is preferred) to keep this system running fast and smooth.<br>Things that happen are for example: emptying caches, deleting old users.<br>It also performs necessary actions that need to happen without user input.<br>For example: checking for intrusion, sending notification emails, sending invoices to clients etc.<br><br>Examples:<br>;A cronjob performs maintenance on regular basis (once a day is preferred) to keep this system running fast and smooth.<br>Things that happen are for example: emptying caches, deleting old users.<br>It also performs necessary actions that need to happen without user input.<br>For example: checking for intrusion, sending notification emails, sending invoices to clients etc.<br><br>Examples:<br>
+settings_cronjob_explanation;Point the Linux cronjob manager or Windows task scheduler to url:<br><br><b>[url]</b><br>;Point the Linux cronjob manager or Windows task scheduler to url:<br><br><b>[url]</b><br>
+settings_cronjob_executemanuallyexplanation;You can trigger the Cronjob also manually with the button below:;You can trigger the Cronjob also manually with the button below:
+settings_cronjob_lastexecution;Last execution:;Last execution:
+settings_cronjob_pleaseexecute;<br>Recommendation: Run CronJob ASAP! The last one ran more than 24 hours ago.;<br>Recommendation: Run CronJob ASAP! The last one ran more than 24 hours ago.
+settings_installer_explanation;The installer installs, updates and removes the installation of [applicationname].<br>To use the installer, it needs to be enabled and you need a password to prevent others from using it.<br><br><b>Disable the installer when you don't use it to prevent malicious actors manipulating and removing data from the system.</b>;The installer installs, updates and removes the installation of [applicationname].<br>To use the installer, it needs to be enabled and you need a password to prevent others from using it.<br><br><b>Disable the installer when you don't use it to prevent malicious actors manipulating and removing data from the system.</b>
+settings_installer_enabled_false;disabled;disabled
+settings_installer_enabled;Status: [value];Status: [value]
+settings_installer_password;Password: [value];Password: [value]
+settings_installer_message_disablwhennotuse;Disable the installer for security reasons when you are not actively using it.;Disable the installer for security reasons when you are not actively using it.
+settings_installer_enabled_true;enabled;enabled
+menuitem_modulename;settings;settings
+sectiontitle_cms;System;System
+sectiontitle_cms_security;System: security;System: security
+sectiontitle_cms_layout;System: layout;System: layout
+sectiontitle_cms_images;System: images;System: images
+form_field_emailsysadmin;Email address system administrator (whole system, all sites, all login controllers etc;Email address system administrator (whole system, all sites, all login controllers etc
+form_field_paginatormaxresultsperpage;# Records shown per page;# Records shown per page
+form_field_mailbot_from_emailaddress;FROM Email address mailbot (i.e. used for password recovery);FROM Email address mailbot (i.e. used for password recovery)
+form_field_mailbot_from_name;FROM name mailbot (i.e. used for password recovery);FROM name mailbot (i.e. used for password recovery)
+form_field_anyonecanregister;Anyone can create account;Anyone can create account
+form_field_loginonlyallowedwhitelistedips;Login only allowed from whitelisted IP addresses;Login only allowed from whitelisted IP addresses
+form_field_stealthmodewhitelistedips;Enable stealth mode for unfamiliar IP addresses (system will produce 404-errors pretending it doesn't exist ==> only works when login-only-whitelisted-ip is enabled);Enable stealth mode for unfamiliar IP addresses (system will produce 404-errors pretending it doesn't exist ==> only works when login-only-whitelisted-ip is enabled)
+form_field_usergroup;Default role new users;Default role new users
+form_field_userpasswordexpiresdays;Users need to change password after X days (0 = never, 1 = 1 day, 2 = 2 days etc.);Users need to change password after X days (0 = never, 1 = 1 day, 2 = 2 days etc.)
+form_field_websitesinnavigation;Show websites in navigation;Show websites in navigation
+form_field_savesuccessnotification;Show notification when save is successful;Show notification when save is successful
+form_field_theme;Theme;Theme
+form_label_resizeimages;Images are automatically resized when uploading. Here you can set the resolutions for the resized images:;Images are automatically resized when uploading. Here you can set the resolutions for the resized images:
+form_field_image_size_max;Maximum size (width px, height px);Maximum size (width px, height px)
+form_field_image_size_large;Large size (width px, height px);Large size (width px, height px)
+form_field_image_size_medium;Medium size (width px, height px);Medium size (width px, height px)
+form_field_image_size_thumbnail;Small/thumbnail size (width px, height px);Small/thumbnail size (width px, height px)
+pagetitle_settingsglobal_edit;Settings global;Settings global

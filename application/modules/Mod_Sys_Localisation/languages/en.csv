@@ -1,0 +1,70 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+languages_form_field_locale;Locale code (format: AA-AA);Locale code (format: AA-AA)
+languages_form_field_language;Language name (in English);Language name (in English)
+languages_form_field_iscmslanguage;is CMS language (makes CMS available in this language, creates language files);is CMS language (makes CMS available in this language, creates language files)
+languages_form_field_isfavorite;is favorite (only favorites are shown in User Interface elements where not all languages are shown, prevents having 400 languages to scroll through);is favorite (only favorites are shown in User Interface elements where not all languages are shown, prevents having 400 languages to scroll through)
+languages_form_field_isdefaultsystem;Is system default (system assumes this language by default, only 1 language can be default);Is system default (system assumes this language by default, only 1 language can be default)
+form_notification_defaultlocale_cantchangelocale;This is the default locale of the system, you cant change the locale itself;This is the default locale of the system, you cant change the locale itself
+pagetitle_detailsave_languages_edit;Edit language: [language];Edit language: [language]
+detailsave_button_exit;Exit;Exit
+detailsavetemplate_button_save;Save;Save
+detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
+modulename_menu;Localisation;Localisation
+languages_overview_column_sLanguage;Language;Language
+languages_overview_column_sLocale;Locale;Locale
+languages_overview_column_bIsCMSLanguage;CMS lang;CMS lang
+languages_overview_column_bIsFavorite;Favorite;Favorite
+languages_overview_column_bIsDefault;Default;Default
+modulename_title_languages;All system languages;All system languages
+tabsheets_module_name_Languages;Languages;Languages
+tabsheets_module_explanation_manage all available languages;manage all available languages;manage all available languages
+tabsheets_module_name_languages per website;languages per website;languages per website
+tabsheets_module_explanation_manage language that are available on a website;manage language that are available on a website;manage language that are available on a website
+tabsheets_module_name_Countries;Countries;Countries
+tabsheets_module_explanation_manage all available countries;manage all available countries;manage all available countries
+tabsheets_module_name_Currencies;Currencies;Currencies
+tabsheets_module_explanation_manage all available currencies;manage all available currencies;manage all available currencies
+Mod_Sys_Localisation;Localisation;Localisation
+overview_column_sWebsiteName;website;website
+overview_column_sLanguage;language;language
+overview_column_sLocale;locale;locale
+modulename_title_languagespersite;Languages on sites;Languages on sites
+countries_overview_column_sCountryName;Country;Country
+countries_overview_column_sISO2;ISO 2;ISO 2
+countries_overview_column_sISO3;ISO 3;ISO 3
+countries_overview_column_bIsEEA;In EU;In EU
+countries_overview_column_bIsDefault;Default;Default
+countries_overview_column_bIsFavorite;Favorite;Favorite
+countries_overview_column_bIsUnknown;Unknown;Unknown
+modulename_title_countries;All system Countries;All system Countries
+currencies_overview_column_sCurrencyName;Currency;Currency
+currencies_overview_column_sCurrencySymbol;Symbol;Symbol
+currencies_overview_column_sISOAlphabetic;ISO A;ISO A
+currencies_overview_column_iISONumeric;ISO N;ISO N
+currencies_overview_column_iDecimalPrecision;Dec;Dec
+currencies_overview_column_bIsFavorite;Favorite;Favorite
+currencies_overview_column_bIsDefault;Default;Default
+currencies_overview_column_iPosition;Order;Order
+modulename_title_currencies;All system currencies;All system currencies
+menuitem_modulename;Localisation;Localisation
+countries_overview_column_iCountryCodePhone;Phone;Phone
+form_field_country;country;country
+form_field_iso2;alpha iso2 code;alpha iso2 code
+form_field_iso3;alpha iso3 code;alpha iso3 code
+form_field_isineea;in European Economic Area (thus enjoying the single market);in European Economic Area (thus enjoying the single market)
+form_field_issystemdefault;Is system default;Is system default
+form_field_isfavorite;Is favorite (in GUI elements sometimes only favorites are shown);Is favorite (in GUI elements sometimes only favorites are shown)
+form_field_isunknowncountry;Is unknown country (this record represents when no country is known or found);Is unknown country (this record represents when no country is known or found)
+pagetitle_detailsave_countries_edit;Edit country: [country];Edit country: [country]
+currenciesdetail_form_field_currencyname;Name;Name
+currenciesdetail_form_field_currencysymbol;Symbol;Symbol
+currenciesdetail_form_field_isoalphabetic;Alphabetical ISO code;Alphabetical ISO code
+currenciesdetail_form_field_isonumeric;Numeric ISO code;Numeric ISO code
+currenciesdetail_form_field_minorunit;Decimals after separator;Decimals after separator
+currenciesdetail_form_field_issystemdefault;Is system default;Is system default
+currenciesdetail_form_field_isfavorite;Is favorite (favorites are shown in GUI elements where only a selected number of currencies are shown);Is favorite (favorites are shown in GUI elements where only a selected number of currencies are shown)
+currenciesdetail_form_field_exchangerate;Exchange rate (Exchange rates are calculated from a unit of a store's default currency);Exchange rate (Exchange rates are calculated from a unit of a store's default currency)
+pagetitle_detailsave_currencies_edit;Edit currency: [currency];Edit currency: [currency]
+form_field_website;website;website
+form_field_language;language (missing languages? go to: "all languages", "edit" and check: "is favorite");language (missing languages? go to: "all languages", "edit" and check: "is favorite")
+pagetitle_detailsave_activelanguagespersite_edit;Edit site language;Edit site language

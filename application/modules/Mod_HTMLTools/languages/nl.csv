@@ -1,0 +1,22 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+modulename_menu;html tools;html tools
+plaintext2html_form_field_plaintext;Input: plain text;Input: plain text
+plaintext2html_form_field_relnofollow;Links: rel="nofollow";Links: rel="nofollow"
+plaintext2html_form_field_targetblank;Links: target="_blank";Links: target="_blank"
+plaintext2html_form_button_convert;convert;convert
+Mod_HTMLTools;Mod_HTMLTools;Mod_HTMLTools
+plaintext2html_title;plain text to html;plain text to html
+plaintext2html_explanation;With this tool you can convert plain text to html layout;With this tool you can convert plain text to html layout
+tabsheets_module_name_txt 2 html;txt 2 html;txt 2 html
+tabsheets_module_explanation_convert plain text into html;convert plain text into html;convert plain text into html
+tabsheets_module_name_list 2 ul;list 2 ul;list 2 ul
+tabsheets_module_explanation_convert lists into html ul-li-tags;convert lists into html ul-li-tags;convert lists into html ul-li-tags
+tabsheets_module_name_word letter counter;word letter counter;word letter counter
+tabsheets_module_explanation_count words and characters;count words and characters;count words and characters
+tabsheets_module_name_csv 2 table;csv 2 table;csv 2 table
+tabsheets_module_explanation_make a table out of CSV data;make a table out of CSV data;make a table out of CSV data
+tabsheets_module_name_html markup cleaner;html markup cleaner;html markup cleaner
+tabsheets_module_explanation_cleanup ugly html from WYSIWYG-editors;cleanup ugly html from WYSIWYG-editors;cleanup ugly html from WYSIWYG-editors
+
+modulename_menu;html tools;html tools
+Mod_HTMLTools;html tools;html tools

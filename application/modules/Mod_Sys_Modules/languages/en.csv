@@ -1,0 +1,47 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+overview_column_sNameTransDefault;Default name;Default name
+overview_column_sNameInternal;internal name;internal name
+overview_column_sModuleType;type;type
+overview_column_bVisibleCMS;cms;cms
+overview_column_bVisibleFrontEnd;front;front
+overview_column_i_volgorde;order;order
+overview_column_sName;category;category
+modulename_title;modules;modules
+overview_column_checks;checks;checks
+overview_column_settings;settings;settings
+item_uploadmodule;upload;upload
+cmsmodulelist_moduleexists_folder_yes;folder exists;folder exists
+cmsmodulelist_moduleexists_index_yes;index file exists;index file exists
+modulename_menu;Modules;Modules
+tabsheets_module_name_installed;installed;installed
+tabsheets_module_explanation_manage all available modules in system;manage all available modules in system;manage all available modules in system
+tabsheets_module_name_not installed;not installed;not installed
+tabsheets_module_explanation_manage modules that are not installed yet;manage modules that are not installed yet;manage modules that are not installed yet
+tabsheets_module_name_module categories;module categories;module categories
+tabsheets_module_explanation_manage categories of modules;manage categories of modules;manage categories of modules
+form_field_internalname;internal name (read-only);internal name (read-only)
+form_field_category;category;category
+form_field_isvisiblecms;is visible in cms (in menus etc);is visible in cms (in menus etc)
+form_field_isvisiblefrontend;is visible in frontend (in menus etc);is visible in frontend (in menus etc)
+pagetitle_detailsave_installedmodules_edit;Edit module: [modulename];Edit module: [modulename]
+button_install;install;install
+button_delete;delete;delete
+column-display-on-mobile-header;Module;Module
+installmodule_install;installing module [module];installing module [module]
+installmodule_install_success;installing module [module] successful!;installing module [module] successful!
+installmodule_install_success_clickclose;after clicking "close" [module] will be available;after clicking "close" [module] will be available
+form_button_upload;upload;upload
+label_progressmessages;Progress messages;Progress messages
+pagetitle_uploadmodule;Mod_Sys_Modules: upload module;Mod_Sys_Modules: upload module
+message_nomodulestodisplay;[ all available modules are installed ];[ all available modules are installed ]
+Mod_Sys_Modules;Modules;Modules
+overview_column_sNameNiceTransDefault;Default name;Default name
+overview_column_iOrder;order;order
+checkbox_installafterupload;install module after upload;install module after upload
+cmsmodulelist_moduleexists_folder_no;folder missing;folder missing
+cmsmodulelist_moduleexists_index_no;index file missing;index file missing
+form_field_categoryname;category name;category name
+pagetitle_detailsave_modulecategories_edit;Edit category: [modulecategory];Edit category: [modulecategory]
+overview_column_iPosition;order;order
+menuitem_modulename;Modules;Modules
+message_moduleuninstall_notallowed;You are not allowed to uninstall modules;You are not allowed to uninstall modules

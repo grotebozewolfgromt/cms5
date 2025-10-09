@@ -1,0 +1,19 @@
+#disable multiviews
+#with multiviews On: when "home.php" exist it will throw a 404 when "home" (without file extension) is used 
+#and will NOT properly use the rewriterules
+Options -MultiViews
+
+RewriteEngine On
+
+
+
+
+#directory exists?
+###NOT USED: RewriteCond %{REQUEST_FILENAME} !-d
+#file exists?
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ urlroutercms.php
+
+# ErrorDocument 404 /error404.php --> is the file in the root, not the current directory
+ErrorDocument 404 "<h1>Oops, 404</h1>Sorry, error 404: file not found"

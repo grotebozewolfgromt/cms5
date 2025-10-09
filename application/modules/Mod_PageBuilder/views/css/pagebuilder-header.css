@@ -1,0 +1,145 @@
+<?php
+/**
+* pagebuilder-header.css
+*
+* all css regarding the header toolbar
+
+* @author Dennis Renirie
+* 
+* 3 apr 2024 pagebuilder-header.css created
+*/
+?>
+
+
+/* Style the header bars */
+.header 
+{
+    background-color: light-dark(var(--lightmode-header-background-color), var(--darkmode-header-background-color));
+    color: light-dark(var(--lightmode-header-text-color), var(--darkmode-header-text-color));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--headerpadding);
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    gap: 10px;
+
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-bottom-width: 1px; 
+}
+
+
+
+.headercolumn
+{
+    margin: 0px 0px;       
+    padding: 0px;     
+}
+
+.headercolumn-exit, 
+.headercolumn-darklightmode,
+.headercolumn-panels,
+.headercolumn-viewports,
+.headercolumn-cursormode,
+.headercolumn-save,
+.headercolumn-preview
+{
+    flex: 0 0 auto; /* Do not grow or shrink */
+}
+
+.headercolumn-title
+{
+    flex: 1; /* Grow and shrink */
+    text-align: center;
+}          
+
+
+#lblTitleHeader
+{
+    font-size: 15px;
+    max-height: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+    display: block;
+} 
+
+
+
+#btnSave
+{
+    width: 120px;
+    font-family: var(--font-family);
+}
+
+#btnExit
+{
+    width: 120px;
+    font-family: var(--font-family);    
+}
+
+
+/* Media query for desktop */
+@media (min-width: 1024px)
+{
+    #btnNewMobile,
+    #btnDetailsMobile
+    {
+        display: none;
+    }             
+
+} 
+
+/* Media query for tablets */
+@media (min-width: 600px) and (max-width: 1024px) 
+{
+    .header
+    {
+        gap: 0px;
+    }
+
+    .buttontext
+    {
+        display: none;
+    }
+
+
+    #btnNewMobile, 
+    #btnDetailsMobile,
+    #lblTitleHeader
+    {
+        display: none;
+    }
+ 
+}        
+
+
+/* Media query for mobile */
+@media (max-width: 600px) 
+{
+    #btnSave,
+    #btnExit
+    {
+        width: 45px;
+    }
+
+
+
+    #btnDetailsDesktop,
+    #btnNewDesktop, 
+    #btnMobileViewport,
+    #btnTabletViewport,
+    #btnDesktopViewport,
+    .headercolumn-darklightmode,
+    .headercolumn-preview,
+    #lblTitleHeader
+    {
+        display: none;
+    }            
+  
+}       

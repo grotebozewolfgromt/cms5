@@ -1,0 +1,661 @@
+/**
+theme_withmenu.css
+This stylesheet contains everything that layout specific of the skin WITH menu.
+Everthing else is located in theme_global.css
+
+pixel em formule: 
+doel px / context(=verhouding) = resultaat in em
+
+darkmode code: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
+*/
+
+
+/* layout */
+#page 
+{
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: var(--theme-color-background-content); */
+    color: light-dark(var(--lightmode-color-font-site), var(--darkmode-color-font-site));
+    /*box-shadow: 0 0.2em 2em 0 rgba(0, 0, 0, 0.2), 0 0.2px 2em 0 rgba(0, 0, 0, 0.19);*/ 
+    width: 100%;
+    display: block;
+}
+
+.header 
+{
+	
+    background-color: light-dark(var(--lightmode-color-background-header), var(--darkmode-color-background-header));
+	
+        
+	display:block;
+	position:fixed;
+    z-index: 100; /* over alles heen */
+	width:100%;
+	max-width: var(--max-width-site); /* TE breed verkleint het overzicht en leesbaarheid */
+	top:0; /* bovenaan */
+    height: 3rem;
+    max-height: 3rem;
+
+    overflow: hidden;
+
+    font-size: 1rem;
+    font-weight: bolder;
+    
+    box-shadow: 0 0.2em 0.5em 0 rgba(0, 0, 0, 0.2), 0 0.2px 2em 0 rgba(0, 0, 0, 0.19);
+    
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;    
+    gap: 10px;
+}
+
+/*
+.header h1
+{
+    color: light-dark(var(--lightmode-color-font-header-title), var(--darkmode-color-font-header-title));
+    padding-top:0.87rem;
+    font-size: 0.8rem;	  
+    text-align: center;  
+}
+*/
+
+.header .headerdemo
+{
+    top:40px; /* bovenaan */
+	display:block;
+	position:fixed;
+
+    font-size: 10px;
+    font-weight: normal;
+    width: 100%;    
+
+    border-color: red;
+    border-width: 1px;
+    border-style: solid;
+    color: red;
+    background-color: #ffbdbd;
+    padding: 5px;
+}
+
+.header .header-menuicon
+{
+    flex-grow: 0;
+    flex-basis: 50px; 
+    margin-left: 14px;
+}
+
+.header .header-logo
+{
+    flex-grow: 0;
+    flex-basis: 150px; 
+    font-size: 12px;
+    margin-top: 14px;
+}
+
+.header .header-search
+{
+    flex-grow: 1;
+    flex-basis: 50%; 
+}
+
+.header .header-shortcuts
+{
+    flex-grow: 0;
+    /* flex-basis: 0px;  */
+    /* justify-self: end; */
+    margin-right: 15px;
+}
+
+.header svg
+{
+    margin-top: 7px;
+    height: 32px;
+}
+
+.hamburgermenu-container
+{
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* height: calc(100% + 3rem); */
+    background: light-dark(var(--lightmode-color-background-hamburgermenu), var(--darkmode-color-background-hamburgermenu));
+    z-index: 99; /* Keep it at the top, but under menu */
+    overflow-y: scroll;
+    display: none; /* don't display by default */
+    backdrop-filter: blur(10px);
+    padding: 0rem;
+    /* margin-top: 10em; */
+    /* box-sizing: border-box; */
+}
+
+.hamburgermenu
+{
+    top: 0rem;
+    left: 0;
+    height: 100%;
+    /* width: 100%; */
+    width: calc(100% -1rem); /* padding causes scrollbars */
+    padding: 1rem;
+    padding-top: 3.5rem;
+}
+
+
+.leftcolumn
+{
+	box-sizing: border-box; /* anders tellen de margins en paddings ook mee en dan komen er scrollbalken, en met percentages 70/30 gaat het ook mis */
+    /* height: 100%; */
+    display: block;
+    background-color: light-dark(var(--lightmode-color-background-menu), var(--darkmode-color-background-menu));
+    /* background-color:white; */
+}
+
+
+.maincolumn
+{
+	box-sizing: border-box; /* anders tellen de margins en paddings ook mee en dan komen er scrollbalken, en met percentages 70/30 gaat het ook mis */
+    /* background-color: #F4F4F4; */
+}
+
+.maincolumn-centerwrapper
+{
+    margin-top: 5rem;
+    /* max-width: 80rem; */
+    margin-left: auto;
+    margin-right: auto;
+    display:block; 
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+.maincolumn-contentwrapper
+{
+    /* margin-top: 2rem; */
+    /* background-color: #ffffff; */
+    display:block; 
+    width: 100%;   
+    /* border-color: var(--theme-color-border-grey);
+    border-width: 1px;
+    border-style: solid; */
+    border-radius: 0.3rem;
+    box-sizing: border-box
+}
+
+
+.header img /*icoontjes van menu en telefoon */
+{
+	width: auto;
+	height: 1.4rem;
+}
+
+
+.headermenuicon
+{
+    /* float: left; */
+    position: absolute;
+    left: 0.7rem;
+    width: 1.4rem;
+    top:0.7rem; /* doesnt fit good in header */
+}
+
+
+.headerselectedwebsite
+{
+    position:fixed;
+    top: 2.8rem;
+    left: 0rem;
+    overflow: hidden;
+    height: 1.4rem;
+    display: block;
+    background-color: light-dark(var(--lightmode-color4), var(--darkmode-color4));
+    width: 100%;
+    text-align: center; 
+    font-size: 0.8em;
+} 
+
+
+/* === LEFT COLUMN === */
+
+/* left column: modules */
+
+.leftcolumn_modules
+{
+    white-space: nowrap;
+}
+
+
+.leftcolumn_modules ul
+{
+   list-style-type: none;
+   margin-left: 0rem;   
+        
+}
+
+
+.leftcolumn_modules li
+{
+    margin-top:1em;
+    /* padding-bottom:1rem; */
+    margin-left: 0.0rem;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.leftcolumn_modules li li
+{
+    list-style-type: none;
+    font-weight: normal;
+    margin-top:0.1rem;
+    border-radius: 6px;
+}
+
+.leftcolumn_modules li li a
+{
+    padding: 0.5rem;
+    display: block;
+    text-decoration: none;        
+}
+
+
+.leftcolumn_modules li li a:hover
+{
+    background-color: light-dark(var(--lightmode-color-background-menu-selected), var(--darkmode-color-background-menu-selected));
+    border-radius: 6px;    
+}
+
+.leftcolumn_modules li li img,
+.leftcolumn_modules svg
+{
+    width: 100%;
+    max-width: 1rem;  
+    margin-left: 0rem;
+    margin-right: 1rem; 
+    color: light-dark(var(--lightmode-color-menu-svg), var(--darkmode-color-menu-svg));
+}
+
+
+.leftcolumn_modules .selected
+{
+    font-weight: bold;
+    background-color: light-dark(var(--lightmode-color-background-menu-selected), var(--darkmode-color-background-menu-selected));
+}
+
+.leftcolumn_modules li li li
+{
+    margin-left: 2.5rem;
+    list-style-type: none;
+    font-weight: normal;
+}
+
+
+
+
+/* left column: websites */
+.leftcolumn_websites ul
+{
+   list-style-type: none;
+   margin-left: 0rem;    
+}
+
+
+.leftcolumn_websites li
+{
+    margin-left: 1rem;
+    list-style-type: none;
+    font-weight: normal;
+    font-size: 0.9rem;
+    max-width: 17rem;
+    /* overflow: hidden; */
+}
+
+
+.leftcolumn_websites .selected
+{
+    font-weight: bold;
+}
+
+
+#selChangeWebsite
+{
+    /* box-sizing: border-box; */
+    max-width: 100%;
+    min-width: 100%;
+}
+
+
+
+/* === dashboard === */
+#demomessagedashboard
+{
+    border-color: red;
+    border-width: 1px;
+    border-style: solid;
+    color: red;
+    background-color: #ff00001e;
+    border-radius: 0.3rem;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+/* ======================================= SMALL SIZE SCREENS =========================== */
+@media all and (max-width: 768px)
+{
+
+	
+	/* menu behaviour */
+
+	/* .topnavigation
+	{			
+		width: 100%;
+		display: none; 
+		overflow-y: scroll;
+        overflow-style: scrollbar;                
+	} */
+	
+		
+    /* .headersettingsicon
+    {
+        display: inline;             
+    } */
+         
+	.headermenuicon
+	{
+		display: inline; /* icons visible */
+	}
+	
+
+    .headerhomeicon
+    {
+        display: inline; /* icons visible */
+    }        
+    
+        
+        
+	.maincolumn
+	{
+        position: absolute;
+        top: 0rem;
+        padding: 0rem; /* smaller on small screens */
+
+        width: 100% ;
+        /* height: 100%;       */
+	}
+	
+	.leftcolumn
+	{
+		/*background-color: red;*/
+        display:none;
+	}
+	
+	
+	.row-centered
+	{
+		text-align:left; /* overwrites default for big screens */ 
+	}
+	
+	.col-centered
+	{
+		display:block; /* overwrites default for big screens */ 
+	}
+	 
+
+        /* ==== TILES ==== */
+        /* default gespecificeerd eerder in de stylesheet */ 
+        
+        
+        /* ==== TABLES ==== */
+        .overview_table th, .overview_table td
+        {
+            padding: 0.5rem;   /* overwrites default */
+            padding-left:0.5rem;
+            padding-right:0.1rem;
+        }
+
+        .overview_table tr img,
+        .overview_table tr svg
+        {
+            /* the height of the images determines the row height */
+            height:32px; /* overwrites default */
+        }	        
+
+        .column-display-on-mobile
+        {
+            display: inline-block;
+            /*visibility:collapse;*/
+            max-width: 200px !important;
+            /* width: fit-content !important; */
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;            
+        }
+        
+        .column-display-on-desktop
+        {
+            /*visibility:visible;*/
+            display: none;
+        }       
+}
+
+/* ======================================= MEDIUM SIZE SCREENS ========================= */
+@media all and (min-width: 768px) AND (max-width: 1024px)
+{
+
+
+	
+	/* menu behaviour */
+    /* .headerhomeicon
+    {
+        display: inline;
+    }           */
+	
+	.headermenuicon
+    {
+        display: inline; 
+    }
+        
+    /* .headersettingsicon
+	{
+        display: inline; 
+	} */
+
+    .headertitle
+	{	
+        display: inline; /* icon visible */
+	}    
+	
+        
+	.leftcolumn
+	{
+		padding: 0.6rem; /* smaller on small screens */
+        display:none;    
+        /* overflow-y: scroll; */
+	}
+        
+	.maincolumn
+	{
+            position: absolute;
+            top: 0rem;
+            padding: 0rem; /* smaller on small screens */
+
+            width: 100% ;
+              
+	}
+	
+       
+        
+    /* ==== TILES ==== */
+    .tilebox
+    {
+        /*width: 33.3%;*/
+
+    }       
+    
+    .tiletitle
+    {
+        font-size: 1rem; /* overschrijft waarde kleiner scherm */
+    }
+    
+    .tilesub
+    {
+        font-size: 0.9rem; /* overschrijft waarde kleiner scherm */
+    }        
+
+    /* ==== TABLES ==== */
+    .overview_table th, .overview_table td
+    {
+        padding: 0.5rem;   /* overwrites default */
+
+    }
+
+    .overview_table tr img,
+    .overview_table tr svg
+    {
+        /* the height of the images determines the row height */
+        height:32px; /* overwrites default */
+    }
+    
+    .column-display-on-mobile
+    {
+        display: none;
+        /*visibility:collapse;*/
+    }
+    
+    .column-display-on-desktop
+    {
+        /*visibility:visible;*/
+        display: table-cell;
+
+    }        
+}
+
+/* ======================================= LARGE SIZE SCREENS ========================== */
+@media all and (min-width: 1024px)
+{
+
+	/* menu behaviour */
+
+    /* .headerhomeicon
+    {
+        display: inline;
+    }   */
+        
+	.headermenuicon
+    {
+        display: none; /* icon not visible */
+        /* display: inline; temp for testing purposes */
+    }
+        
+    /* .headersettingsicon
+	{
+        display: inline; 
+	} */
+        
+    .headertitle
+	{	
+        display: inline; /* icon visible */
+	}            
+                
+
+	.leftcolumn
+	{
+        position: absolute;
+        top: 3rem;
+        left: 0rem;
+        padding: 1rem; 
+        padding-top: 1rem; /* header is taking up the first part of the menu */
+        padding-bottom: 1rem; /* header is taking up the first part of the menu */
+        margin: 0rem;
+        width: 15rem;
+        display: block;   
+        box-sizing: border-box;
+        /* overflow-y: scroll; */
+	}
+
+	.maincolumn
+	{
+            position: absolute;
+            top: 0rem;
+            left: 15rem;
+            padding: 0rem; 
+            box-sizing: border-box;
+
+            width: calc(100% - 15rem);
+            display: block;
+            
+            /* on a big screen I have a menu on the left. i need to draw a line. if I do that on the left menu and you scroll down, the line stops */
+            /* border-left-width: 1px;
+            border-left-style: solid;
+            border-left-color: var(--theme-color-border-grey); */
+	}        
+        
+        
+    /* first image on page */
+    .topimage_inner
+    {
+        max-height:40rem;
+    }
+
+    .topimage
+    {
+
+    }
+    
+    
+    /* ==== TILES ==== */
+    .tilebox
+    {
+        /*width: 25%;*/
+    }    
+    
+    .tiletitle
+    {
+        font-size: 1rem; /* overschrijft waarde kleiner scherm */
+    }
+    
+    .tilesub
+    {
+        font-size: 0.9rem; /* overschrijft waarde kleiner scherm */
+    } 
+    
+    /* ==== TABLES ==== */
+    .overview_table th, .overview_table td
+    {
+        padding: 0rem;   /* overwrites default */
+        padding-left: 0.2rem;   /* overwrites default */
+    }
+
+    .overview_table tr img,
+    .overview_table tr svg
+    {
+        /* the height of the images determines the row height */
+        height:16px; /* overwrites default */
+    }     
+
+    .column-display-on-mobile
+    {
+        display: none;
+        /*visibility:collapse;*/
+    }
+    
+    .column-display-on-desktop
+    {
+        /*visibility:visible;*/
+        display: table-cell;
+    }          
+}
+
+
+
+
+
+
+
+
+

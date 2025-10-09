@@ -1,0 +1,493 @@
+/**
+<?php
+/**
+* theme_recordlist.css
+*
+* all css regarding recordlist javaxscreen
+*
+* @author Dennis Renirie
+* 
+* 4 mrt 2025 theme_recordlist.css created
+*/
+?>
+*/
+
+
+
+.pagetitlewrapper
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.pagetitlewrapper h1
+{
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.pagetitlewrapper button
+{
+    flex-grow: 0;
+    flex-basis: 200px;    
+}
+
+/* ==== TABLES ==== */
+.overview_table
+{
+    margin: 0rem;
+    width: 100%;
+
+    /* border-radius: 10px; */
+    /* border-width: 1px;
+    border-style: solid;     */
+    /* border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border)); */
+
+
+}
+
+.overview_table_background
+{
+    /* background-color: var(--theme-color-background-content); */
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));
+
+    border-radius: 10px;
+    /* border-color: var(--theme-color-border-grey); */
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-width: 0px; /* tables rows have grey 1px lines  at the bottom, this prevents us from having 2px lines */
+}
+
+.overview_table
+{
+    border-radius: 10px;
+}
+
+/* make checkboxes smaller than default so the rows in table aren't that high */
+.overview_table input[type="checkbox"] 
+{
+    margin: 0px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.overview_table a
+{
+    text-decoration: none;
+}
+
+
+.overview_table thead
+{
+    font-weight:700;
+    /* font-size:1.0rem; */
+    /* text-transform: uppercase; */
+    text-decoration:none;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    /* background-color: #f8f8f8; */
+    background-color: light-dark(#dcdcdc30, #5c5c5c69);
+}
+
+
+.overview_table tr
+{
+    border-bottom-color: light-dark(var(--lightmode-color-tablerow-separation), var(--darkmode-color-tablerow-separation));
+    border-bottom-width: 1px;
+    border-bottom-style: solid;   
+    vertical-align:top; 
+}
+
+
+.overview_table tbody tr:hover 
+{   
+    background-color: light-dark(var(--lightmode-color-tablerow-hover), var(--darkmode-color-tablerow-hover));
+}
+/* 
+.overview_table tr:nth-child(even) {background: #ffffff}
+.overview_table tr:nth-child(odd) {background: #fdfdfd} */
+
+.overview_table th, .overview_table td
+{
+    text-align: left;
+    padding: 0rem;   /* default, is overwritten later */
+    /* height: 0.5rem; */
+    max-width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+
+/* last column stay away from border */
+.overview_table td:last-child
+{
+    padding-right: 10px;
+}
+
+.overview_table tr img,
+.overview_table tr svg
+{
+    /* the height of the images determines the row height */
+    height: 16px; /* default, is overwritten later */
+    /* margin-left: 0.5rem;  */
+}
+
+.norecords
+{
+    text-align: center;
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color1)) !important;  
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content)) !important;   
+    padding: 10px;
+}
+.norecords:hover
+{
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content)) !important;   
+}
+
+.treeinvisibleident
+{
+    color: rgba(0, 0, 255, 0);
+}
+
+.btnTablePaginatorPage
+{
+    /* color: light-dark(var(--lightmode-color3), var(--darkmode-color3));     */
+    /* color: white;     */
+    /* background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));    
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color1));     */
+
+    /* background-color: light-dark(var(--lightmode-color3), var(--darkmode-color3)) !important;     */
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color1)) !important;     
+
+    width: 100%;  
+    padding-top: 10px;
+    padding-bottom: 13px; /* not sure why, but this is nessesary to vertically center the item */
+    text-align: center;
+    user-select: none;
+}
+
+.btnTablePaginatorPage:hover
+{
+    /* color: light-dark(var(--lightmode-color3), var(--darkmode-color3));     */
+    /* color: white;     */
+    /* background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));    
+    color: light-dark(var(--lightmode-color1), var(--darkmode-color1));     */
+
+    background-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border)) !important;    
+    color: light-dark(var(--lightmode-color2), var(--darkmode-color2)) !important;       
+    cursor: pointer;
+}
+
+
+/* === quicksearch on top of a module === OLD NON-AJAX VERSION */
+.overview_quicksearch
+{
+    width: 100%;
+    /* border-color: var(--theme-color-border-grey); */
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.5rem;
+    /* background-color: white; */
+    /* background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content)); */
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));    
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+    height:3rem;
+    padding-top:0.5;
+    padding-bottom:0.5;
+}
+
+
+.overview_quicksearch input[type=image]
+{
+    margin:0.0rem;
+    margin-right: 0.1rem;
+    margin-top:0.3rem;
+    margin-left:0.5rem;
+
+    padding:0px;
+    border-style: none;
+    height:2.4rem;
+    float: left;
+}
+
+.overview_quicksearch input[type=search]
+{
+    /* input type search is pretty persistent in styling, we have to switch it off manually */
+    -moz-appearance: none;/* older firefox */
+    -webkit-appearance: none; /* safari, chrome, edge and ie mobile */
+    appearance: none; /* rest */
+  
+    margin:0.0rem;
+    margin-top:0.3rem;
+    padding:0.0rem;
+    padding-left: 1rem;
+    border-style: none;
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    background-color: light-dark(var(--lightmode-color-form-background-input), var(--darkmode-color-form-background-input));
+    height:2.4rem;
+    width:calc(100% - 3.5rem);
+    font-size: 1.2rem;       
+}
+
+
+
+
+/* ==== FILTERS (overview pages) === OLD NON-AJAX VERSION */
+
+.overview_filters
+{
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));   
+    display: block;
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+        
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-width: 1px;
+    border-style: solid;  
+    border-radius: 5px;
+
+}
+
+
+
+
+
+.overview_header
+{
+    width: 100%;
+    display:block;
+    font-size: 0.6rem;
+    color: light-dark(var(--lightmode-color-form-label), var(--darkmode-color-form-label));
+    padding: 0px;
+    margin: 0px;
+    line-height: 0.5rem;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-left: 3px;
+}
+/* 
+.overview_header dr-icon-info
+{
+    background-color: blue;;
+} */
+
+
+
+
+
+.overview_filters_content
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.overview_filters_content .chip
+{
+    background-color: light-dark(var(--lightmode-color-chips-background), var(--darkmode-color-chips-background));
+    flex-grow: 0;
+    display: inline-flex;
+    border-radius: 25px;
+    height: 1.9rem;
+
+    line-height: 1.2rem;
+    font-size: 0.7rem;
+}
+
+.overview_filters_content .highlight:hover
+{
+    cursor: pointer;
+    background-color: light-dark(var(--lightmode-color-chips-highlight-background-hover), var(--darkmode-color-chips-highlight-background-hover));
+}
+
+.overview_filters_content .highlightinside:hover
+{
+    background-color: light-dark(var(--lightmode-color-chips-highlightinside-background-hover), var(--darkmode-color-chips-highlightinside-background-hover));
+}
+
+
+.overview_filters_content .chipinnertext
+{
+    padding: 5px;
+    padding-left: 15px;
+    padding-right:5px;
+
+    text-overflow: ellipsis;
+    max-width: 150px;
+    overflow: hidden; 
+    white-space: nowrap;
+}
+
+.overview_filters_content .chipinnertext:hover
+{
+    border-radius: 25px; repeat of .chip  
+}
+
+
+.overview_filters_content .chipicon
+{
+    border-radius: 20px;
+    margin: 0px;
+    height: 1.3rem;
+    width: 1.3rem;
+    padding: 5px;
+}
+
+
+.overview_filters_content .chipeditbox
+{
+    flex-grow: 1;    
+}
+
+.overview_filters_content .chipeditbox [type=text]
+{
+    width: 100%;
+    background-color: #00000000; 
+    border-width: 0px;
+    padding: 0px;
+    padding-bottom: 5px;
+    margin: 0px;
+    margin-left: 5px;
+}
+
+
+/* ==== BULK ACTIONS (overview pages) === */
+.overview_bulkactions
+{
+
+    background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));   
+    display: block;
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+        
+    border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+    border-width: 1px;
+    border-style: solid;  
+    border-radius: 5px;
+
+
+    margin-top: 1.5rem;
+/*    
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    padding-left: 0.2rem;
+    
+    font-weight: bold;
+*/
+}
+
+
+
+.overview_bulkactions input[type=button]
+{
+    height: 2.5rem !important;
+    line-height: 1rem !important;
+    margin: 0 !important;
+    padding: 0rem !important;    
+    padding-left: 1rem !important; 
+    padding-right: 1rem !important; 
+    padding-bottom: 0.2rem !important;    
+    font-size: 1rem;
+}
+
+.overview_bulkactions select
+{
+    height: 2.5rem !important;
+    line-height: 1rem !important;    
+    margin: 0 !important;
+    padding: 0rem !important;
+    padding-left: 0.7rem !important; 
+    padding-right: 0.7rem !important;
+    padding-bottom: 0.2rem !important;
+    /* background-color: var(--theme-color3); */
+    /* background-color: light-dark(var(--lightmode-color3), var(--darkmode-color3)); */
+}
+
+
+/* === create new record === */
+/* .overview_createnew
+{
+    margin-top: 0rem;
+    
+    display: block;
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 0.1rem;
+    
+
+    border-bottom-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));  
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+} */
+
+#divBtnNewWrapper
+{
+    text-align: right;
+}
+
+#btnNewRecord
+{
+    text-align: right;
+    max-width: fit-content;
+}
+
+#btnNewRecord:hover
+{
+}
+
+
+dr-paginator
+{
+    margin: 0;
+    margin-top: 20px;
+}
+
+/** drag and drop **/
+.dragdroprecordlist .draggable
+{
+    cursor: move;
+}
+
+.dragdroprecordlist .draggable.dragging
+{
+    opacity: 0.4;
+}
+
+.dragdroprecordlist .dragcursor
+{
+    outline-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));   
+    /* max-height: 0px; */
+    /* overflow: hidden; */
+    /* width: 100%; */
+    outline-width: 2px;
+    outline-style: dashed ;
+}
+
+.dragdroprecordlist .droptarget
+{
+    outline-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));   
+    background-color: light-dark(var(--lightmode-color1), var(--darkmode-color1));   
+    /* max-height: 0px; */
+    /* overflow: hidden; */
+    /* width: 100%; */
+    outline-width: 2px;
+    outline-style: dashed;
+}

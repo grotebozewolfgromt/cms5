@@ -1,0 +1,150 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+modulename_menu;Page builder;Page builder
+pagebuilder_detailpanel_tabdocument_description_nameinternal;Name (internal reference);Name (internal reference)
+pagebuilder_detailpanel_tabdocument_description_htmltitle;HTML Title;HTML Title
+pagebuilder_detailpanel_tabdocument_description_language;Language;Language
+pagebuilder_detailpanel_tabdocument_description_urlslug;URL slug;URL slug
+pagebuilder_detailpanel_tabdocument_description_website;Website;Website
+pagebuilder_detailpanel_tabdocument_description_author;Author;Author
+pagebuilder_detailpanel_tabdocument_description_needswork;Needs work;Needs work
+pagebuilder_detailpanel_tabdocument_description_status;Status;Status
+pagebuilder_detailpanel_tabdocument_description_metadescription;Short excerpt;Short excerpt
+pagebuilder_detailpanel_tabdocument_description_publishdate;Publish date;Publish date
+pagebuilder_detailpanel_tabdocument_description_visibility;Visibility (after pub.dat.);Visibility (after pub.dat.)
+pagebuilder_detailpanel_tabdocument_description_password;Password (empty = none);Password (empty = none)
+pagebuilder_detailpanel_tabdocument_description_canonicalurl;Canonical (start w https://);Canonical (start w https://)
+pagebuilder_detailpanel_tabdocument_description_301redirecturl;301 redirect (start w https://);301 redirect (start w https://)
+pagebuilder_detailpanel_tabdocument_description_notesinternal;Notes (internal);Notes (internal)
+pagetitle_detailsave_languages_edit;Edit document: [doc];Edit document: [doc]
+detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
+pagebuilder_tab_details_label_widthheight;Sizing;Sizing
+pagebuilder_tab_details_label_width;Width (px);Width (px)
+pagebuilder_tab_details_label_height;Height (px);Height (px)
+pagebuilder_tab_details_label_maxwidth;Max Width (px);Max Width (px)
+pagebuilder_tab_details_label_maxheight;Max Height (px);Max Height (px)
+pagebuilder_tab_details_label_padding;Padding (px);Padding (px)
+pagebuilder_tab_details_label_paddingtop;Top;Top
+pagebuilder_tab_details_label_paddingright;Right;Right
+pagebuilder_tab_details_label_paddingbottom;Bottom;Bottom
+pagebuilder_tab_details_label_paddingleft;Left;Left
+pagebuilder_tab_details_label_margin;Margin (px);Margin (px)
+pagebuilder_tab_details_label_margintop;Top;Top
+pagebuilder_tab_details_label_marginright;Right;Right
+pagebuilder_tab_details_label_marginbottom;Bottom;Bottom
+pagebuilder_tab_details_label_marginleft;Left;Left
+pagebuilder_tab_details_label_border;Border;Border
+pagebuilder_tab_details_label_borderradius;Rounded corners (px);Rounded corners (px)
+pagebuilder_tab_details_label_borderradiustopleft;Tp L;Tp L
+pagebuilder_tab_details_label_borderradiustopright;Tp R;Tp R
+pagebuilder_tab_details_label_borderradiusbottomright;Bt R;Bt R
+pagebuilder_tab_details_label_borderradiusbottomleft;Bt L;Bt L
+pagebuilder_tab_details_label_visibility;Visibility;Visibility
+pagebuilder_tab_details_label_visibleonpage;Visible on page;Visible on page
+pagebuilder_tab_details_label_move;Move;Move
+pagebuilder_tab_details_label_delete;Delete;Delete
+pagebuilder_tab_details_button_delete;Delete;Delete
+pagebuilder_designobject_layouts_grid_title;Grid;Grid
+pagebuilder_designobject_layouts_grid_searchlabelscsv;grid,table,columns;grid,table,columns
+pagebuilder_tab_elementproperties_grid_label_gridsize;Grid size;Grid size
+pagebuilder_tab_elementproperties_grid_label_columns;Columns;Columns
+pagebuilder_tab_elementproperties_grid_label_rows;Rows;Rows
+pagebuilder_tab_elementproperties_grid_label_gap;Gap (px);Gap (px)
+pagebuilder_designobject_text_placeholder;Enter text ...;Enter text ...
+pagebuilder_designobject_layout_2column_title;2column;2column
+pagebuilder_designobject_layout_2column_searchlabelscsv;2columns,2 columns,layout,structure;2columns,2 columns,layout,structure
+pagebuilder_designobject_layout_3column_title;3column;3column
+pagebuilder_designobject_layout_3column_searchlabelscsv;3columns,3 columns,layout,structure;3columns,3 columns,layout,structure
+pagebuilder_designobject_layouts_container_title;Container;Container
+pagebuilder_designobject_layouts_container_searchlabelscsv;container,placeholder,space,margin,padding;container,placeholder,space,margin,padding
+pagebuilder_designobject_layouts_container_placeholder;Drop element inside here...;Drop element inside here...
+pagebuilder_designobject_elements_h1_title;Head 1;Head 1
+pagebuilder_designobject_elements_h1_searchlabelscsv;header,heading,chapter,text;header,heading,chapter,text
+pagebuilder_designobject_elements_h2_title;Head 2;Head 2
+pagebuilder_designobject_elements_h2_searchlabelscsv;header,heading,chapter,text;header,heading,chapter,text
+pagebuilder_designobject_elements_h3_title;Head 3;Head 3
+pagebuilder_designobject_elements_h3_searchlabelscsv;header,heading,chapter,text;header,heading,chapter,text
+pagebuilder_designobject_elements_h4_title;Head 4;Head 4
+pagebuilder_designobject_elements_h4_searchlabelscsv;header,heading,chapter,text;header,heading,chapter,text
+pagebuilder_designobject_elements_h5_title;Head 5;Head 5
+pagebuilder_designobject_elements_h5_searchlabelscsv;header,heading,chapter,text;header,heading,chapter,text
+pagebuilder_designobject_elements_h6_title;Head 6;Head 6
+pagebuilder_designobject_elements_h6_searchlabelscsv;header,heading,chapter,text;header,heading,chapter,text
+pagebuilder_designobject_elements_p_title;Text;Text
+pagebuilder_designobject_elements_p_searchlabelscsv;paragraph,text;paragraph,text
+pagebuilder_designobject_elements_html_title;Custom HTML;Custom HTML
+pagebuilder_designobject_elements_html_searchlabelscsv;computercode,weblanguage;computercode,weblanguage
+pagebuilder_designobject_html_placeholder;<!-- Enter custom HTML code here ... -->;<!-- Enter custom HTML code here ... -->
+pagebuilder_designobject_elements_image_title;Image;Image
+pagebuilder_designobject_elements_image_searchlabelscsv;image,picture,graphic,photo,icon;image,picture,graphic,photo,icon
+pagebuilder_designobject_elements_image_button_fileuploaddialog;Open upload browser;Open upload browser
+pagebuilder_category_all_title;-- All objects --;-- All objects --
+pagebuilder_category_pagebuilderdocs_title;Other pagebuilder documents;Other pagebuilder documents
+pagebuilder_category_skeletons_title;Skeletons;Skeletons
+pagebuilder_category_layouts_title;Layouts;Layouts
+pagebuilder_category_blocks_title;Blocks;Blocks
+pagebuilder_category_forms_title;Forms;Forms
+pagebuilder_subcategory_allelements_title;All elements;All elements
+pagebuilder_subcategory_textelements_title;Text elements;Text elements
+pagebuilder_subcategory_multimedia_title;Multi media elements;Multi media elements
+pagebuilder_category_variables_title;Variables;Variables
+pagebuilder_category_emojis_title;Emojis;Emojis
+pagebuilder_category_favorites_title;Favorites;Favorites
+pagebuilder_panel_detail_defaulttext_selectelement;Select element in designer;Select element in designer
+pagebuilder_tab_nothingselected;Nothing selected;Nothing selected
+pagebuilder_tab_noelementsselected;Elements selected;Elements selected
+pagebuilder_dialog_hyperlink_title;Create or edit hyperlink;Create or edit hyperlink
+pagebuilder_dialog_hyperlink_label_hyperlinkdescription;Description;Description
+pagebuilder_dialog_hyperlink_label_hyperlinktarget;Target location URL;Target location URL
+pagebuilder_dialog_hyperlink_label_opennewtab;Open in new tab;Open in new tab
+pagebuilder_dialog_hyperlink_label_nofollow;Mark as: nofollow;Mark as: nofollow
+pagebuilder_dialog_hyperlink_label_sponsored;Mark as: sponsored link;Mark as: sponsored link
+pagebuilder_dialog_hyperlink_button_apply;Apply;Apply
+pagebuilder_dialog_hyperlink_button_cancel;Cancel;Cancel
+pagebuilder_button_exit;Exit;Exit
+pagebuilder_button_save;Save;Save
+pagebuilder_button_preview;Preview;Preview
+pagebuilder_newpanel_inputsearch_placeholder;Search;Search
+pagebuilder_tabhead_document_text;document;document
+pagebuilder_tabhead_structure_text;structure;structure
+pagebuilder_tabhead_element_text;element;element
+pagebuilder_designobject-grid_sectiontitle_headings;headings;headings
+pagebuilder_designobject_h1_seachslabelscsv;header1, header 1, heading1, heading 1;header1, header 1, heading1, heading 1
+pagebuilder_designobject_h1_text;heading 1;heading 1
+pagebuilder_designobject_h2_seachslabelscsv;header2, header 2, heading2, heading 2;header2, header 2, heading2, heading 2
+pagebuilder_designobject_h2_text;heading 2;heading 2
+pagebuilder_designobject_h3_seachslabelscsv;header3, header 3, heading3, heading 3;header3, header 3, heading3, heading 3
+pagebuilder_designobject_h3_text;heading 3;heading 3
+pagebuilder_designobject_h4_seachslabelscsv;header4, header 4, heading4, heading 4;header4, header 4, heading4, heading 4
+pagebuilder_designobject_h4_text;heading 4;heading 4
+pagebuilder_designobject_h5_seachslabelscsv;header5, header 5, heading5, heading 5;header5, header 5, heading5, heading 5
+pagebuilder_designobject_h5_text;heading 5;heading 5
+pagebuilder_designobject_h6_seachslabelscsv;header6, header 6, heading6, heading 6;header6, header 6, heading6, heading 6
+pagebuilder_designobject_h6_text;heading 6;heading 6
+pagebuilder_panel_adddragtarget_text_dragorclick;Drag new object here to add<br>or click plus-icon to add new object;Drag new object here to add<br>or click plus-icon to add new object
+pagebuilder_panel_adddesignobjects_text_goback;Go back;Go back
+list_column_sURLSlug;URL slug;URL slug
+list_column_sNameInternal;Name;Name
+list_column_sMetaModuleNameNice;Pagebuilder;Pagebuilder
+list_column_iModuleVersionNumber;Ver;Ver
+list_column_sLanguage;Language;Language
+list_column_s_domein;Website;Website
+list_column_enumVisibility;Visible;Visible
+list_column_dtPublishDate;Published;Published
+list_column_sName;Status;Status
+list_column_dtRecordChanged;Changed;Changed
+tab_title_pages;Pages;Pages
+tabsheets_module_name_Pages;Pages;Pages
+tabsheets_module_explanation_Manage webpages;Manage webpages;Manage webpages
+tabsheets_module_name_Statusses;Statusses;Statusses
+tabsheets_module_explanation_Manage webpage statusses;Manage webpage statusses;Manage webpage statusses
+Mod_BobPageBuilder;Page builder;Page builder
+list_column_bIsDefault;Default;Default
+tab_title_statusses;Web page statusses;Web page statusses
+form_field_name;Name;Name
+form_field_isdefault;Is default;Is default
+pagetitle_detailsave_statusses_new;Create new status;Create new status
+Mod_PageBuilder;Page builder;Page builder
+pagetitle_detailsave_settings;Settings page builder;Settings page builder
+list_column_sWebsiteName;Website;Website
+pagetitle_detailsave_statusses_edit;Edit status: [name];Edit status: [name]
+menuitem_modulename;Page builder;Page builder

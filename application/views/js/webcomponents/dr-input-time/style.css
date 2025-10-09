@@ -1,0 +1,18 @@
+:root
+{
+    --lightmode-color-drinputdate-border: rgb(234, 234, 234);
+    --lightmode-color-drinputdate-button-border: rgb(234, 234, 234);
+    --lightmode-color-drinputdate-button-background: rgb(212, 212, 212);
+
+    --darkmode-color-drinputdate-border: rgb(71, 71, 71);
+    --darkmode-color-drinputdate-button-border: rgb(71, 71, 71);
+    --darkmode-color-drinputdate-button-background:rgb(107, 107, 107);
+}
+
+dr-input-time
+{
+    background-color: rgba(0, 255, 255, 0);
+    width: 200px;
+
+
+}

@@ -1,0 +1,76 @@
+/**
+theme_withoutmenu.css
+This stylesheet contains everything that layout specific of the skin WITHOUT menu.
+Everthing else is located in theme_global.css
+
+pixel em formule: 
+doel px / context(=verhouding) = resultaat in em
+
+darkmode code: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
+*/
+        /* Reset default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Center the form horizontally and vertically */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container 
+        {
+            width: 500px;
+            background-color: light-dark(var(--lightmode-color-background-content), var(--darkmode-color-background-content));     
+            padding: 1rem;
+
+            border-color: light-dark(var(--lightmode-color-border), var(--darkmode-color-border));
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 0.3rem; 
+        }
+
+        #logindemomessage
+        {
+            border-color: red;
+            border-width: 1px;
+            border-style: solid;
+            color: red;
+            background-color: #ff00001e;
+            border-radius: 0.3rem;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        } */
+
+        /* .login-container input[type="submit"] {
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;            
+        } */
+
+
+        /* Media query for mobile devices */
+        @media (max-width: 500px) {
+            .login-container {
+                width: 100%;
+            }
+        }
+

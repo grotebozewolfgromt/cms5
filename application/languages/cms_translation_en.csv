@@ -1,0 +1,102 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+changed_website;You switched to managing another website;You switched to managing another website
+home_title;[applicationname] Dashboard;[applicationname] Dashboard
+home_htmltitle;[applicationname] Dashboard;[applicationname] Dashboard
+home_htmlmetadescription;[applicationname] Dashboard;[applicationname] Dashboard
+tpl_dashboard_h1_title;Welcome to [applicationname], [user];Welcome to [applicationname], [user]
+tpl_dashboard_h2_modules;modules;modules
+cms_dialog_surelogout_body;Want to log out of [applicationname]?;Want to log out of [applicationname]?
+cms_dialog_surelogout_button_stay;Stay;Stay
+cms_dialog_surelogout_button_exit;Log out;Log out
+cms_dialog_bulkaction_sureexecute_body;Want to execute bulk-action on selected items?<br>This is permanent and can not be undone.;Want to execute bulk-action on selected items?<br>This is permanent and can not be undone.
+cms_dialog_bulkaction_button_dontexecute;Don't execute;Don't execute
+skin_loggedin_message_surechangewebsite;Do you want to change website? Unsaved progress will be lost;Do you want to change website? Unsaved progress will be lost
+cms_dialog_changewebsite_sureexecute_body;Do you want to change to website:;Do you want to change to website:
+cms_dialog_changewebsite_sureexecute_body_wanttochange;Do you want to change to website:;Do you want to change to website:
+cms_dialog_changewebsite_sureexecute_body_changeslost;WARNING: Unsaved changes will be lost;WARNING: Unsaved changes will be lost
+cms_dialog_changewebsite_button_dontchange;Don't change;Don't change
+cms_dialog_changewebsite_button_change;Change site;Change site
+notification_title_notification;Notification;Notification
+cms_dialog_exitajaxformcontroller_button_stay;Stay;Stay
+cms_dialog_exitajaxformcontroller_button_exitnosave;Exit & DON'T save;Exit & DON'T save
+cms_dialog_exitajaxformcontroller_button_exitsave;Exit & save;Exit & save
+cms_dialog_uploadfilemanager_header_text;Upload file manager;Upload file manager
+cms_dialog_uploadfilemanager_label_filter;Filter;Filter
+cms_dialog_uploadfilemanager_label_sorton;Sort on;Sort on
+cms_dialog_uploadfilemanager_label_sortorder;Order;Order
+cms_dialog_uploadfilemanager_label_view;View;View
+cms_dialog_uploadfilemanager_label_search;Search;Search
+cms_dialog_uploadfilemanager_button_upload;Upload;Upload
+cms_dialog_uploadfilemanager_previewpanel_title_filesize;Size;Size
+cms_dialog_uploadfilemanager_previewpanel_title_date;Date;Date
+cms_dialog_uploadfilemanager_previewpanel_button_rename;Rename;Rename
+cms_dialog_uploadfilemanager_previewpanel_button_delete;Delete;Delete
+cms_dialog_uploadfilemanager_button_exit;Exit;Exit
+cms_dialog_uploadfilemanager_button_usefile;Use file;Use file
+skin_loggedin_menu_section_system_name;System;System
+menuitem_dashboard;Dashboard;Dashboard
+menuitem_darkmode;Dark/light Mode;Dark/light Mode
+menuitem_settings;Settings;Settings
+menuitem_logout;Log out;Log out
+modellist_bulkactions_title;[select action];[select action]
+overview_bulkactions_delete;delete;delete
+boolean_yes;yes;yes
+boolean_no;no;no
+recordlist_move_up;move record up;move record up
+recordlist_move_down;move record down;move record down
+recordlist_edit;edit record;edit record
+recordlist_translate;translate record to other language;translate record to other language
+overview_edit_quicksearch_default;search;search
+column-display-on-mobile-header;Record;Record
+item_create;New;New
+message_noitemstodisplay;[ no items to display ];[ no items to display ]
+overview_bulkactions_button_execute;execute;execute
+paginator_showingXtoYofZ_noentries;Showing 0 entries;Showing 0 entries
+modellist_bulkactions_delete;delete;delete
+modellist_bulkactions_checkout;lock auto (triggers check-out);lock auto (triggers check-out)
+modellist_bulkactions_checkin;unlock auto (triggers check-in);unlock auto (triggers check-in)
+modellist_bulkactions_lock;lock manual;lock manual
+modellist_bulkactions_unlock;unlock manual;unlock manual
+paginator_showingXtoYofZ;Showing [start] to [finish] of [total] entries;Showing [start] to [finish] of [total] entries
+index_htmltitle;[applicationname] login;[applicationname] login
+index_htmlmetadescription;Protected sitemanager environment;Protected sitemanager environment
+loginform_lostpassword_link;I forgot my password;I forgot my password
+loginform_cookiesettings_link;Cookie settings;Cookie settings
+loginform_darkmode;Dark/light Mode;Dark/light Mode
+login_serviceonlyavailable_countries;This service is available in:;This service is available in:
+file_dropzone_numberoffilesdragged;files;files
+changed_website_default;You switched to defaultwebsite;You switched to defaultwebsite
+form_button_save;save;save
+form_button_exit;exit;exit
+cms_dialog_changewebsite_title;Change website?;Change website?
+message_saverecord_inputerror;Please correct input error: record NOT saved;Please correct input error: record NOT saved
+notification_title_error;Error;Error
+modellistajax_createnew_button_text;Create new;Create new
+modellistajax_dbfilters_header;Database filters;Database filters
+modellistajax_dbfilters_explanation;Database filters are used to filter data from a database.<br>This allows you to search for specific values.<br><ul><li>Add filter: use the "New Filter"-button, the filter is added.</li><li>To enable or disable the filter: click on the filter-icon before the text.</li><li>To edit a filter: click on the filter text.</li><li>To search multiple columns at once (called: quicksearch):<br>Type your query next to "new filter" and press Enter</li></ul>;Database filters are used to filter data from a database.<br>This allows you to search for specific values.<br><ul><li>Add filter: use the "New Filter"-button, the filter is added.</li><li>To enable or disable the filter: click on the filter-icon before the text.</li><li>To edit a filter: click on the filter text.</li><li>To search multiple columns at once (called: quicksearch):<br>Type your query next to "new filter" and press Enter</li></ul>
+modellistajax_bulkactions_header;Bulk actions;Bulk actions
+modellistajax_bulkactions_explanation;With bulk-actions you can perform an action on multiple records in the database at once.<br>Select the appropriate action in the combobox and then click button: "Execute bulk action".;With bulk-actions you can perform an action on multiple records in the database at once.<br>Select the appropriate action in the combobox and then click button: "Execute bulk action".
+form_error_requiredfield;This is a required field;This is a required field
+cms_dialog_exitajaxformcontroller_title;Exit screen;Exit screen
+cms_dialog_exitajaxformcontroller_body;There are unsaved changes.<br>Are you sure you want to exit this screen?;There are unsaved changes.<br>Are you sure you want to exit this screen?
+cmsmenu_item_Website;Website;Website
+cmsmenu_item_Tools;Tools;Tools
+cmsmenu_item_POS;POS;POS
+cmsmenu_item_System management;System management;System management
+settings_cronjob_h2;Cron job;Cron job
+settings_execute_cronjobnow;Execute cron job;Execute cron job
+settings_installer_h2;Installer;Installer
+settings_button_enableinstaller;Enable installer;Enable installer
+settings_button_disableinstaller;Disable installer;Disable installer
+settings_execute_installer;Start installer;Start installer
+overview_bulkactions_uninstall;uninstall;uninstall
+overview_bulkactions;Bulk actions;Bulk actions
+recordlist_record_checkedout;Record CHECKED OUT by [source], not available for editing;Record CHECKED OUT by [source], not available for editing
+cmsmenu_item_settings;settings;settings
+cmsmenu_item_Localisation;Localisation;Localisation
+cmsmenu_item_Contacts;Contacts;Contacts
+message_saverecord_success;Record save successful;Record save successful
+notification_title_success;Success;Success
+cronjob_title;Cron job;Cron job
+cronjob_htmltitle;Cron job;Cron job
+cronjob_htmlmetadescription;Cron job;Cron job

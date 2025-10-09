@@ -1,0 +1,50 @@
+UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
+list_productcategories_column_iID;ID;ID
+list_productcategories_column_sName;Name;Name
+list_productcategories_column_sURLSlug;Slug;Slug
+list_productcategories_column_bIsDefault;Default;Default
+list_productcategories_column_bIsFavorite;Favorite;Favorite
+list_products_column_dtRecordCreated;Created;Created
+list_products_column_dtRecordChanged;Changed;Changed
+dbfilter_column_sName;Name;Name
+tab_title_productcategories;Product categories;Product categories
+tabsheets_module_name_Transactions;Transactions;Transactions
+tabsheets_module_explanation_Manage all invoices and orders;Manage all invoices and orders;Manage all invoices and orders
+tabsheets_module_name_Trans. Types;Trans. Types;Trans. Types
+tabsheets_module_explanation_Manage types of transactions;Manage types of transactions;Manage types of transactions
+tabsheets_module_name_VAT;VAT;VAT
+tabsheets_module_explanation_Manage VAT classes;Manage VAT classes;Manage VAT classes
+tabsheets_module_name_Products;Products;Products
+tabsheets_module_explanation_Manage products.<br><br>A product can have 1 or more SKU's (Stock Keeping Units).<br>The SKU's of a Tiger T-shirt could be:<ul><li>black L</li><li>black M</li><li>black S</li><li>green L</li><li>green M</li><li>green S</li></ul>;Manage products.<br><br>A product can have 1 or more SKU's (Stock Keeping Units).<br>The SKU's of a Tiger T-shirt could be:<ul><li>black L</li><li>black M</li><li>black S</li><li>green L</li><li>green M</li><li>green S</li></ul>;Manage products.<br><br>A product can have 1 or more SKU's (Stock Keeping Units).<br>The SKU's of a Tiger T-shirt could be:<ul><li>black L</li><li>black M</li><li>black S</li><li>green L</li><li>green M</li><li>green S</li></ul>
+tabsheets_module_name_Categories;Categories;Categories
+tabsheets_module_explanation_Make a structure to find your products more easily.<br>You can drag and drop a category into another to create a hierarchical structure.;Make a structure to find your products more easily.<br>You can drag and drop a category into another to create a hierarchical structure.;Make a structure to find your products more easily.<br>You can drag and drop a category into another to create a hierarchical structure.
+list_vatclasses_column_sName;Name;Name
+list_vatclasses_column_sDescription;Description;Description
+list_vatclasses_column_bIsDefault;Default;Default
+list_vatclasses_column_iPosition;Order;Order
+dbfilter_column_sDescription;Description;Description
+tab_title_vatclasses;VAT classes;VAT classes
+menuitem_modulename;POS + Webshop;POS + Webshop
+menuitem_products;products;products
+menuitem_transactions;transactions;transactions
+overview_column_dtDateFinalized;Date;Date
+overview_column_sIncrementNumber;Inc No;Inc No
+overview_column_crMETATotalPriceInclVAT;Total;Total
+tab_title_transactions;Transactions;Transactions
+list_products_column_iID;ID;ID
+list_products_column_sName;Name;Name
+list_products_column_sLanguage;Language;Language
+dbfilter_column_language;Language;Language
+tab_title_products;Products;Products
+form_productcategories_field_name_description;Name;Name
+form_productcategories_field_name_infoicon;Name of the product category, for example: "car radios" or "vacuum cleaners";Name of the product category, for example: "car radios" or "vacuum cleaners"
+form_productcategories_field_urlslug_description;URL slug;URL slug
+form_productcategories_field_urlslug_infoicon;A URL slug is the last part of a URL.<br>The URL slug identifies this category, so it must be unique.<br>The URL slug is only used for websites.<br>We aware that URL can not contain certain characters, like a space.;A URL slug is the last part of a URL.<br>The URL slug identifies this category, so it must be unique.<br>The URL slug is only used for websites.<br>We aware that URL can not contain certain characters, like a space.
+form_productcategories_field_image_description;Image;Image
+form_productcategories_field_image_infoicon;Add an image representing the products in the product category;Add an image representing the products in the product category
+form_productcategories_field_default;Is selected by default;Is selected by default
+form_productcategories_field_favorite;Is favorite;Is favorite
+pagetitle_detailsave_productcategoriess_edit_title;Edit product category;Edit product category
+detailsave_button_exit;Exit;Exit
+detailsavetemplate_button_save;Save;Save
+detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 

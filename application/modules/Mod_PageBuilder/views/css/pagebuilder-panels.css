@@ -1,0 +1,453 @@
+<?php
+/**
+* pagebuilder-panels.css
+*
+* all css regarding panels
+
+* @author Dennis Renirie
+* 
+* 3 apr 2024 pagebuilder-panels.css created
+*/
+?>
+
+.pagecolumn-panel-new-desktop
+{
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    transition-duration: 0.2s;
+    transition-property: flex-basis;
+    transition-timing-function: ease-in-out;    
+
+    padding: var(--newpaneldesktoppadding);
+
+    background-color: light-dark(var(--lightmode-panel-newdetails-desktop-background-color), var(--darkmode-panel-newdetails-desktop-background-color));
+    color: light-dark(var(--lightmode-panel-newdetails-font-color), var(--darkmode-panel-newdetails-font-color));
+    
+    display: flex;
+    flex-direction: column;
+
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-right-width: 1px;
+}        
+
+div.panelDesktopNotVisible
+{
+    flex-basis: 0px; 
+    overflow: hidden;
+}
+
+
+div.panelNewDesktopVisible
+{
+    flex-basis: var(--newpaneldesktopwidth); 
+    overflow: auto;
+}
+
+div.panelDetailsDesktopVisible
+{
+    flex-basis: var(--detailpaneldesktopwidth); 
+    overflow: auto;
+}
+
+
+
+
+.pagecolumn-middle
+{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.pagecolumn-panel-details-desktop
+{
+    flex-grow: 0;
+    flex-shrink: 0;          
+    
+    transition-duration: 0.2s;
+    transition-property: flex-basis;
+    transition-timing-function: ease-in-out;        
+    
+    padding: var(--detailpaneldesktoppadding); 
+
+    background-color: light-dark(var(--lightmode-panel-newdetails-desktop-background-color), var(--darkmode-panel-newdetails-desktop-background-color));
+    color: light-dark(var(--lightmode-panel-newdetails-font-color), var(--darkmode-panel-newdetails-font-color));
+    
+    display: flex;
+    flex-direction: column;    
+
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-left-width: 1px;    
+}
+
+.panel-new-mobile
+{
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    height: 0px; /* because of animation: set in class: panelNewMobileVisible */
+    width: calc(100% - 10px - 10px); /* minus padding left and right */
+    padding: 0px; /* default none */
+
+    transition-duration: 0.2s;
+    transition-property: height, padding;
+    transition-timing-function: ease-in-out;           
+
+    color: light-dark(var(--lightmode-panel-newdetails-font-color), var(--darkmode-panel-newdetails-font-color));
+    background: light-dark(var(--lightmode-panel-newdetails-mobile-background-color), var(--darkmode-panel-newdetails-mobile-background-color));
+    /* box-shadow: 0px 5px 5px 0px light-dark(var(--lightmode-panel-shadow-color), var(--darkmode-panel-shadow-color)); */
+
+    z-index: 99; /* Keep it at the top, but under menu */
+    overflow-y: hidden; /* don't display by default */
+    /* display: none; don't display by default */
+
+    margin-top: calc(
+                    var(--headerheight)
+                    + (2 * var(--headerpadding))
+                    /* + (2 * var(--headerborderwidth)) */
+                    + var(--toolbarheight)
+                    + (2 * var(--toolbarpadding))
+                    );
+                                      
+}
+
+.panel-details-mobile
+{
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    height: 0px; /* because of animation: set in class: panelDetailsMobileVisible */
+    width: calc(100% - 10px - 10px); /* minus padding left and right */
+    padding: 0px; /* default none */
+
+    transition-duration: 0.2s;
+    transition-property: height, padding;
+    transition-timing-function: ease-in-out;        
+
+    color: light-dark(var(--lightmode-panel-newdetails-font-color), var(--darkmode-panel-newdetails-font-color));
+    background: light-dark(var(--lightmode-panel-newdetails-mobile-background-color), var(--darkmode-panel-newdetails-mobile-background-color));
+    /* box-shadow: 0px 5px 5px 0px light-dark(var(--lightmode-panel-shadow-color), var(--darkmode-panel-shadow-color)); */
+    
+    z-index: 99; /* Keep it at the top, but under menu */
+    overflow-y: hidden;/* don't display by default */
+    /* display: none; don't display by default */
+    
+    margin-top: calc(
+                    var(--headerheight)
+                    + (2 * var(--headerpadding))
+                    /* + (2 * var(--headerborderwidth)) */
+                    + var(--toolbarheight)
+                    + (2 * var(--toolbarpadding))
+                    );
+                                  
+}        
+
+div.panelMobileNotVisible
+{
+    height: 0px; 
+    overflow: hidden;
+    padding: 0px;
+}
+
+div.panelNewMobileVisible
+{
+    height: var(--newpanelmobileheight);
+    overflow: auto;
+    padding: var(--newpanelmobilepadding);
+
+    /* only add border when menu is visible, otherwise the line of the border is shown when the panel is not visible */
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-bottom-width: 1px;        
+}
+
+div.panelDetailsMobileVisible
+{
+    height: var(--detailpanelmobileheight); 
+    overflow: auto;
+    padding: var(--detailpanelmobilepadding); 
+    
+    /* only add border when menu is visible, otherwise the line of the border is shown when the panel is not visible */    
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-bottom-width: 1px;    
+
+}
+
+.panel-newdesktop-types-search,
+.panel-newmobile-types-search
+{
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 35px;            
+    /* background-color: light-dark(var(--lightmode-panel-newdetails-desktop-background-color), var(--darkmode-panel-newdetails-desktop-background-color)); */
+
+    padding: 10px;
+
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+    border-width: 0px;
+    border-bottom-width: 1px;
+}
+
+.panel-newmobile-types-search
+{
+    padding: 10px;
+    padding-top:0px;
+    margin-bottom: 10px;
+}
+
+/*
+#selNewDesktopCategory, 
+#edtNewDesktopSearch
+{
+    font: inherit;
+    font-size: 13px;
+
+    width: 100%;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+}
+*/
+
+#edtNewDesktopSearch
+{
+    margin-top: 10px;
+}
+
+#selNewMobileCategory, 
+#edtNewMobileSearch
+{
+    font-family: inherit;
+    font-size: 13px;
+
+    width: 100%;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+}
+
+#edtNewMobileSearch
+{
+    margin-top: 10px;
+}
+
+.designobject-grid-sectiontitle
+{
+    height: 15px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    font-weight: normal;
+}
+
+.designobject-grid-sectiontitle:first-child
+{
+    margin-top: 0px;
+}
+
+
+.designobject-grid
+{
+    display: grid;
+    gap: 10px;
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    align-items: stretch;       
+}
+
+
+.designobject-createtab
+{
+    font-size: 11px;
+    text-align: center;
+    padding: 10px;
+
+
+    background-color: light-dark(var(--lightmode-designobject-background-color), var(--darkmode-designobject-background-color));
+
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+}
+
+
+.designobject-createtab.hiddenbysearch
+{
+    display: none;
+}
+
+.designobject-createtab svg
+{
+    width: 100%;
+    max-width: 60px;
+}
+
+.designobject-createtab svg
+{
+    width: 100%;
+    max-width: 60px;
+}
+
+.designobject-createtab-text
+{
+    height: 100%;
+    max-height: 25px;
+    overflow: hidden;
+}
+
+.designobject-createtab.selected
+{
+    background-color: light-dark(var(--lightmode-designobject-background-selected-color), var(--darkmode-designobject-background-selected-color));
+    border-color: light-dark(var(--lightmode-designobject-border-selected-color), var(--darkmode-designobject-border-selected-color)) !important;
+}
+
+
+.designobject-createtab.draggable
+{
+    cursor: move;
+}
+
+
+
+#panel-add
+{
+    width: calc(100% - 10px - 10px); /* 100% width minus left + right border width */
+
+    margin-top: 20px;
+
+    border-width: 10px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panel-add-border-color), var(--darkmode-panel-add-border-color));
+    border-radius: 20px;
+}
+
+
+#panel-add-dragtarget /* non visible version */
+{
+    margin-top: 0x;    
+    margin-bottom: 0px;   
+    max-height: 0px;    
+    overflow: hidden;
+
+    transition-duration: 0.2s;
+    transition-property: max-height, margin-top, margin-bottom;
+    transition-timing-function: ease-in-out;      
+}
+
+#panel-add-dragtarget.visible /* visible version */
+{
+    /* background-color: aquamarine; */
+    width: 100%;
+    margin-top: 10px;    
+    margin-bottom: 10px;    
+    max-height: 200px;
+
+    cursor:pointer;
+}
+
+#panel-add-dragtarget svg
+{
+    /* width: 50%; */
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /* background-color: blue; */
+}
+
+#panel-add-hinttext
+{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+ 
+    line-height: 20px;
+}
+
+#panel-add-designobjects /* non visible version */
+{
+    /* background-color: brown; */
+    overflow: hidden;
+    min-height: 0px;
+    max-height: 0px;
+    margin: 0px;
+
+    transition-duration: 0.2s;
+    transition-property: min-height, max-height, margin;
+    transition-timing-function: ease-in-out;  
+}
+
+#panel-add-designobjects.visible /* visible version */
+{
+    overflow-y: auto;
+    min-height: 300px;
+    max-height: 300px;
+    margin: 10px;
+}
+
+#panel-add-designobjects-back /* go back text */
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    /* bottom: 0px; */
+    cursor:pointer;    
+    /* background-color: purple; */
+    text-align: center;
+    background-color: light-dark(var(--lightmode-button-background-color), var(--darkmode-button-background-color));
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(var(--lightmode-panels-border-color), var(--darkmode-panels-border-color));
+}
+
+#panel-add-designobjects-back:hover
+{
+    background-color: light-dark(var(--lightmode-button-pressed-background-color), var(--darkmode-button-pressed-background-color));
+}
+
+/* Media query for desktop */
+@media (min-width: 1024px)
+{
+    .panel-new-mobile,
+    .panel-details-mobile
+    {
+        display: none;
+    }      
+          
+} 
+
+/* Media query for tablets */
+@media (min-width: 600px) and (max-width: 1024px) 
+{
+    .panel-details-mobile
+    {
+        display: none;        
+    }
+}     
+
+/* Media query for mobile */
+@media (max-width: 600px) 
+{
+    .pagecolumn-panel-new-desktop,
+    .pagecolumn-panel-details-desktop
+    {
+        display: none;
+    }      
+    
+}   
