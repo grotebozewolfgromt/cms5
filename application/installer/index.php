@@ -15,6 +15,7 @@ include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'lib_sy
 include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'lib_sys_inet.php');
 include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'lib_string.php');
 
+
 /**
  * New method installation file based on TInstallScreen
  * 
@@ -32,6 +33,7 @@ class index extends TInstallerScreen
 	 */
 	public function screenWhatwanttodo()
 	{
+
 		//init
 	    $sBody = '';
 		$this->enableNextButton();
@@ -39,6 +41,7 @@ class index extends TInstallerScreen
 		$this->setURLNextButton('?'.index::GETVARIABLE_ACTION.'=screenRedirect');
 		$this->setURLPreviousButton('https://www.archimedescms.com');
 		$this->setTextPreviousButton('Exit');
+		
 		$objConfigDefaults = $this->loadConfigDefaults();
 		$this->setTitle($this->getTitle().' to '.$objConfigDefaults->get('APP_CMS_APPLICATIONNAME').' '.$objConfigDefaults->get('APP_VERSION'));
 
@@ -61,7 +64,7 @@ class index extends TInstallerScreen
 		<?php
 	    $sBody = ob_get_contents();
 	    ob_end_clean();  
-
+		
 		$this->renderHTMLTemplate(get_defined_vars());
 	}
 

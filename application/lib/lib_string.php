@@ -528,42 +528,54 @@ function generateRandomString($iMinLength = 8, $iMaxLength = 8, $sPossibleChars 
  * 
  * @param int $iLength length of the string (generates string always in blocksizes)
  * @param int $iBlockSize how many characters should a block be
+ * @param bool $bNumbersOnly generates only numbers, otherwise it generates characters and numbers
  */
-function generateNiceID($iLength, $iBlockSize = 3)
+function generateNiceID($iLength, $iBlockSize = 3, $bNumbersOnly = true)
 {
     $sResult = '';
     $sRandom = '';
     $iCharChoice = 0;
     $iModLength = 0;
+    $iRandInt = 0;
+
 
     //always generate full blocks of characters
     $iModLength = ($iLength % $iBlockSize);
     if ($iModLength !== 0)
         $iLength = $iLength + ($iBlockSize - $iModLength);
 
+
     //generate random string of desired length
     for ($iIndex = 0; $iIndex < $iLength; $iIndex++)
     {
-        $iCharChoice = random_int(0, 3);
-
-        switch ($iCharChoice)
+        if ($bNumbersOnly) 
         {
-            case 0 : //uppercase A t/m H (I avoid)
-                    $iChar = random_int(65, 72);
-                    break;
-            case 1 :  //uppercase J t/m N (O avoid)
-                    $iChar = random_int(74, 78);
-                    break;
-            case 2 :  //uppercase P t/m Z
-                    $iChar = random_int(80, 90);
-                    break;
-            case 3 :  //digits 2 t/m 9 (0 en 1 avoid)
-                    $iChar = random_int(50, 57);
-                    break;
+            $sRandom.= strval(random_int(0, 9));
         }
+        else
+        {
+            $iCharChoice = random_int(0, 3);
 
-        $sRandom.= chr($iChar);        
+            switch ($iCharChoice)
+            {
+                case 0 : //uppercase A t/m H (I avoid)
+                        $iChar = random_int(65, 72);
+                        break;
+                case 1 :  //uppercase J t/m N (O avoid)
+                        $iChar = random_int(74, 78);
+                        break;
+                case 2 :  //uppercase P t/m Z
+                        $iChar = random_int(80, 90);
+                        break;
+                case 3 :  //digits 2 t/m 9 (0 en 1 avoid)
+                        $iChar = random_int(50, 57);
+                        break;
+            }
+
+            $sRandom.= chr($iChar);        
+        }
     }
+    
 
     //split in sections of 3 characters divided by a dash
     for ($iIndex = 0; $iIndex < $iLength; $iIndex++)

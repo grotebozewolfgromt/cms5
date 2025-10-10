@@ -34,7 +34,7 @@ use dr\classes\patterns\TConfigFile;
         include_once(APP_PATH_CMS_CONFIGFILE_APPLICATION);   
         if (!defined('APP_DEBUGMODE')) //check 1 value to see if config is loaded properly
         {
-            echo 'Error loading config file framework for host: '.$_SERVER['SERVER_NAME'].'!<br>Does the config file even exist?';
+            echo 'Error loading config file application for host: '.$_SERVER['SERVER_NAME'].'!<br>Does the config file even exist?';
             error_log('error loading config file: '.APP_PATH_CMS_CONFIGFILE_APPLICATION);
             die();
         }

@@ -203,16 +203,19 @@ abstract class TConfigFilePHPConstants
 		$sValue = '';
 		$fpFile = 0;//pointer
 
+
+
 		if (!file_exists($sConfigFilePath))
 			return false;
 
 		$fpFile = fopen($sConfigFilePath, 'r') or error_log(__FILE__.' loadfile(): cant open/create file '.$sConfigFilePath); //we use error log because the config file might not be read yet
-
+			
 		while(!feof($fpFile)) 
 		{
 			$sLine = fgets($fpFile);
 			if (startswith($sLine, 'define'))
 			{
+					
 				//====KEY
 					$sKey = '';
 					//search for position of first '

@@ -152,7 +152,7 @@ class step6 extends TInstallerScreen
 
 		//==== SAVE EMAIL ADDRESS IN CONFIG	
 		$objConfig = new dr\classes\TConfigFileApplication();
-		$sBody.= 'Open config file framework for host: '.$_SERVER['SERVER_NAME'].' ';
+		$sBody.= 'Open config file application for host: '.$_SERVER['SERVER_NAME'].' ';
 		if (file_exists($this->sConfigPathApplication))//load existing config file (so we can overwrite values)
 		{			
 			if (!$objConfig->loadFile($this->sConfigPathApplication))
@@ -168,7 +168,7 @@ class step6 extends TInstallerScreen
 			//set actual value in config file
 			$objConfig->set('APP_EMAIL_ADMIN', $this->sDefaultEmail);        
 
-			$sBody.= 'Save values to config file framework for host: '.$_SERVER['SERVER_NAME'].' ';
+			$sBody.= 'Save values to config file application for host: '.$_SERVER['SERVER_NAME'].' ';
 			if ($objConfig->saveFile($this->sConfigPathApplication))
 			{
 				$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';

@@ -3726,7 +3726,7 @@ abstract class TSysModel
                         $iDuplicateTries = 0;
                         while($bDuplicateID)
                         {
-                            $sNiceID = generateNiceID($iLengthNiceID);
+                            $sNiceID = generateNiceID($iLengthNiceID, 3, true);
                             $objTempModel->clear();
                             $objTempModel->findNiceID($sNiceID);
                             $objTempModel->countResults(TSysModel::FIELD_NICEID, 'countids');

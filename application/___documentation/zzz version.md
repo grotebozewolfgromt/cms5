@@ -37,8 +37,14 @@
     - minimaal 3 characters zoeken beperking verwijderen
     - number filter geeft met integer ook .0000 terug'
     - na <enter> in quicksearch field gefocussed blijven op quicksearch field
+* corrigeren contacten invoer
 
-## 9 okt:
+
+## 10 okt 2025:
+* generateNiceid() geeft nu nummers ipv characters en nummers
+
+
+## 9 okt 2025:
 * skip maintenance mode check is now a constant instead of variable
 * rename TConfigFileFramework => TConfigFileApplication
 * installer uses and sets maintenance mode
@@ -47,17 +53,17 @@
 * installer prompts for GDPR days retention and unencrypted fields
 * anonymize data after X days (cronjob)
 
-## 8 okt: 
+## 8 okt 2025: 
 * maintenance mode implemented in bootstrap and config file classes + config files
 
-## 4 okt: heavy renames
+## 4 okt 2025: heavy renames
 * added gitignores
 * admindr directory => application directory
 * constants rename 'GLOBAL_*' => 'APP_*'
 * rename config files 'framework_' => 'application_'
 * PHP_EXT_INTL value changed: 'php_intl' => 'intl' 
 
-## 2 okt: 
+## 2 okt 2025: 
 * TDBPreparedStatementMySQL begonnen met quicksearch query werkt in principe, echter sql fout op rijen die indexes niet matchen 
 * column sCountryIDCodePhone1 i ervoor
 * column sCountryIDCodePhone2 i ervoor
@@ -65,7 +71,7 @@
 * limit form submits seconds in config in te stellen
 * het steeds verder specificeren van een zoekopdracht met nieuwe quicksearches werkt nu
 
-## 1 okt: 
+## 1 okt 2025: 
 * TDBPreparedStatementMySQL ondersteunt nu Fulltext velden in createTableFromModel()
 * aparte formsections toegevoegd aan contacts-detail
 * recordid en niceid toegevoegd aan contacts-detail
@@ -74,7 +80,7 @@
 * TSysModel added extra fields for improved quicksearch
 * TDBPreparedStatementMySQL begonnen met quicksearch query bouwen 
 
-## 30 sept: 
+## 30 sept 2025: 
 * added function collateString()
 * collateString() changes
 * contacts: 2x postcodes zijn nu encrypted
@@ -92,7 +98,7 @@
 * lib_security: decrypt + encrypt beveiligd tegen null en ''
 * detailsave_contact geupdate met i-icons
 
-## 29 sept: 
+## 29 sept 2025: 
 * dr-input-upload.js translation "delete before upload"
 * de oude uploadmanager verwijderd
 * countrycodes phone toegevoegd bij landen
