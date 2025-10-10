@@ -6,6 +6,8 @@ use dr\classes\controllers\TCMSAuthenticationSystem;
 use dr\classes\dom\tag\form\Select;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSOrganizations;
 use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
+use dr\modules\Mod_Sys_Contacts\models\TSysContactsLastNamePrefixes;
+use dr\modules\Mod_Sys_Contacts\models\TSysContactsSalutations;
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
 
 include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
@@ -162,21 +164,13 @@ class createaccount_entercredentials extends TCreateAccountEnterCredentialsContr
         $objUsersNew->setUserRoleID(getSetting(SETTINGS_MODULE_CMS, SETTINGS_CMS_MEMBERSHIP_NEWUSER_ROLEID)); //11-10-2023: changed getUserRoleID to setUserRoleID
         $objUsersNew->setUsernamePublic($objUsersNew->getUsername());
 
-        //lookup: default country (needed for contact)
-        $objCountries = new TSysCountries();
-        $objCountries->loadFromDBByIsDefault();
-        if ($objCountries->count() == 0)
-        {
-            error_log(__CLASS__.': '.__FUNCTION__.': '.__LINE__.': loading countries failed');
-            return false; //it is gonna error out anyway, because country is obligatory, so might as well stop now
-        }
+          
 
         //create new contact (needed for user-account)
         $objContact = new TSysContacts();
+        $objContact->createContactDefaultsDB();
         $objContact->setIsClient(true);
         $objContact->setCustomIdentifier($objUsersNew->getUsername());
-        $objContact->setBillingCountryID($objCountries->getID());
-        $objContact->setDeliveryCountryID($objCountries->getID());
         $objContact->setEmailAddressDecrypted($this->objEdtEmailAddress->getValueSubmitted());
         $objContact->setBillingEmailAddressDecrypted($this->objEdtEmailAddress->getValueSubmitted());
         $objContact->saveToDB(true, false);

@@ -21,6 +21,7 @@ use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\form\Textarea;
 use dr\classes\dom\tag\webcomponents\DRInputCombobox;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
+use dr\classes\dom\validator\TCharacterWhitelist;
 use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\TMaximumLength;
 use dr\classes\dom\validator\TOnlyNumeric;
@@ -35,7 +36,8 @@ use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
 use dr\modules\Mod_Blog\controllers\detailsave_blog;
 use dr\modules\Mod_Sys_Contacts\Mod_Sys_Contacts;
-
+use dr\modules\Mod_Sys_Contacts\models\TSysContactsLastNamePrefixes;
+use dr\modules\Mod_Sys_Contacts\models\TSysContactsSalutations;
 
 include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
 
@@ -87,7 +89,12 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     private $objChkIsSupplier = null;//dr\classes\dom\tag\form\InputCheckbox
 
     private $objCountries = null;
+    private $objSalutations = null;
+    private $objLastNamePrefixes = null;
+
     private $iDefaultCountryID = 0;
+    private $iDefaultSalutation = 0;
+    private $iDefaultLastNamePrefix = 0;
 
 
     public function initModel()
@@ -351,7 +358,10 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TMaximumLength(10);
         $this->objEdtBillingPostalCode->addValidator($objValidator);          
         $objValidator = new TUppercase();
-        $this->objEdtBillingPostalCode->addValidator($objValidator);          
+        $this->objEdtBillingPostalCode->addValidator($objValidator); 
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
+        $this->objEdtBillingPostalCode->addValidator($objValidator); 
+
         $this->objEdtBillingPostalCode->setOnchange("validateField(this, true)");
         $this->objEdtBillingPostalCode->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip (encrypted)')); 
@@ -465,6 +475,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);   
         $objValidator = new TUppercase();
         $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);                   
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
+        $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator); 
         $this->objEdtDeliveryPostalCodeZip->setOnchange("validateField(this, true)");
         $this->objEdtDeliveryPostalCodeZip->setOnkeyup("setDirtyRecord()");         
         $this->getFormGenerator()->add($this->objEdtDeliveryPostalCodeZip, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip (encrypted)')); 
@@ -705,6 +717,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     public function onCreate() 
     {
         $this->objCountries = new TSysCountries();
+        $this->objSalutations = new TSysContactsSalutations();
+        $this->objLastNamePrefixes = new TSysContactsLastNamePrefixes();
     }      
 
     /**

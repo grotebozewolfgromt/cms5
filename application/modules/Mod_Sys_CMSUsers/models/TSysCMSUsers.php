@@ -9,6 +9,8 @@ use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSOrganizations;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsersRoles;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsersRolesAssignUsers;
 use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
+use dr\modules\Mod_Sys_Contacts\models\TSysContactsLastNamePrefixes;
+use dr\modules\Mod_Sys_Contacts\models\TSysContactsSalutations;
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
 use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
 
@@ -97,16 +99,10 @@ class TSysCMSUsers extends TSysUsersAbstract
         //language
 
 
-        //requesting country id for contacts       
-        $objCountries = new TSysCountries();
-        $objCountries->loadFromDBByIsDefault();
-        $iCountryID = $objCountries->getID();
-        unset($objCountries);        
-
-
         //create new contact 
         //(we need that to create a new account()
         $objNewContact = new TSysContacts();
+        $objNewContact->createContactDefaultsDB();
         $objNewContact->setEmailAddressDecrypted($objGoogle_account_info->email);
         $objNewContact->setFirstNameInitials($objGoogle_account_info->name);
         $objNewContact->setLastName($objGoogle_account_info->familyName);

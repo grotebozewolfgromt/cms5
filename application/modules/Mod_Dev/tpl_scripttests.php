@@ -10,6 +10,8 @@ use dr\classes\models\TCMSInvitationCodes;
 
 use dr\classes\patterns\TWeightedScores;
 use dr\classes\models\TIPGeoLocation;
+use dr\classes\models\TSysContactsSalutations;
+use dr\classes\models\TSysContactsLastNamePrefixes;
 use dr\modules\Mod_PageBuilder\models\TPageBuilderWebpages;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSPermissionsCountries;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSOrganizations;
@@ -75,7 +77,9 @@ includeJSDOMEnd( APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DI
 // echo $sTest;
 
 
-
+$objTemp = new TSysContactsLastNamePrefixes();
+vardump($objTemp->install());
+die();
 
 ?>
 <dr-dialog title="titeltje">

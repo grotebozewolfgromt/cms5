@@ -40,7 +40,6 @@
 * corrigeren contacten invoer
     * bic toevoegen
     * aanhef toevoegen
-    * verwijderen error css class na corrigeren fout
     * onchange en onkey automatisch aan ieder veld toevoegen
 * labels component maken
 
@@ -52,6 +51,11 @@
 * contacts: alles naar kleine letter converteren
 * bugfix: ajaxform.js: removeAllInputErrors() verwijderde de css class niet
 * rename validator classname => T and camelCase
+* correct postal code weird characters
+* lastnameprefixes als aparte tabel
+* salutations als aparte tabel
+* TSysContacts heeft geen parent TsysContactAbstract meer
+* added: TSysContacts: createContactDefaultsDB() voor snelle contact creatie
 
 
 ## 9 okt 2025:

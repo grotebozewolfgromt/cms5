@@ -1,6 +1,6 @@
 <?php
 
-use dr\classes\models\TSysContactsAbstract;
+use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
 use dr\classes\TInstallerScreen;
 
 define('APP_MAINTENANCEMODE_SKIPCHECK', true); //skip maintenance-mode check in bootstrap
@@ -203,25 +203,25 @@ class step7 extends TInstallerScreen
 					switch($sFormField)
 					{
 						case 'name':
-							$arrDBFields[] = TSysContactsAbstract::FIELD_LASTNAME;
+							$arrDBFields[] = TSysContacts::FIELD_LASTNAME;
 							break;
 						case 'address':
-							$arrDBFields[] = TSysContactsAbstract::FIELD_BILLINGADDRESSMISC;
-							$arrDBFields[] = TSysContactsAbstract::FIELD_BILLINGADDRESSSTREET;
-							$arrDBFields[] = TSysContactsAbstract::FIELD_DELIVERYADDRESSMISC;
-							$arrDBFields[] = TSysContactsAbstract::FIELD_DELIVERYADDRESSSTREET;					
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGADDRESSMISC;
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGADDRESSSTREET;
+							$arrDBFields[] = TSysContacts::FIELD_DELIVERYADDRESSMISC;
+							$arrDBFields[] = TSysContacts::FIELD_DELIVERYADDRESSSTREET;					
 							break;
 						case 'postalcode':
-							$arrDBFields[] = TSysContactsAbstract::FIELD_BILLINGPOSTALCODEZIP;
-							$arrDBFields[] = TSysContactsAbstract::FIELD_DELIVERYPOSTALCODEZIP;
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGPOSTALCODEZIP;
+							$arrDBFields[] = TSysContacts::FIELD_DELIVERYPOSTALCODEZIP;
 							break;
 						case 'phone':
-							$arrDBFields[] = TSysContactsAbstract::FIELD_PHONENUMBER1;
-							$arrDBFields[] = TSysContactsAbstract::FIELD_PHONENUMBER2;
+							$arrDBFields[] = TSysContacts::FIELD_PHONENUMBER1;
+							$arrDBFields[] = TSysContacts::FIELD_PHONENUMBER2;
 							break;
 						case 'email':
-							$arrDBFields[] = TSysContactsAbstract::FIELD_EMAILADDRESSENCRYPTED;
-							$arrDBFields[] = TSysContactsAbstract::FIELD_BILLINGEMAILADDRESSENCRYPTED;
+							$arrDBFields[] = TSysContacts::FIELD_EMAILADDRESSENCRYPTED;
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED;
 							break;
 
 					}

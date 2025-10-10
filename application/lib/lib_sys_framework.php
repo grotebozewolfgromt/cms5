@@ -1392,7 +1392,9 @@ function getSystemModels()
         dr\modules\Mod_Sys_Localisation\models\TSysCountries::class,            //-
         dr\classes\models\TSysTableVersions::class,                             //-
         dr\modules\Mod_Sys_Modules\models\TSysModules::class,                   //needs module categories
-        dr\modules\Mod_Sys_Contacts\models\TSysContacts::class,                  //needs countries 
+        dr\modules\Mod_Sys_Contacts\models\TSysContactsLastNamePrefixes::class, //-
+        dr\modules\Mod_Sys_Contacts\models\TSysContactsSalutations::class,       //
+        dr\modules\Mod_Sys_Contacts\models\TSysContacts::class,                  //needs countries, last-name-prefixes and salutations
         dr\modules\Mod_Sys_Localisation\models\TSysCurrencies::class,            //-
         dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsersRoles::class,             //-
         dr\modules\Mod_Sys_CMSUsers\models\TSysCMSOrganizations::class,           //needs contacts 

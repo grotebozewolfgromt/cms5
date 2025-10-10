@@ -40,7 +40,6 @@ use dr\classes\dom\validator\DateMax;
 use dr\classes\dom\validator\DateTime;
 use dr\classes\dom\validator\Time;
 use dr\classes\locale\TTranslation;
-use dr\classes\models\TSysContactsAbstract;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSOrganizations;
 use dr\classes\types\TDateTime;
 
@@ -328,7 +327,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
         //currency
         $objCurr = new TSysCurrencies();
         $objCurr->sort(TSysCurrencies::FIELD_POSITION);
-        $objCurr->where(TSysCurrencies::FIELD_ISVISIBLE, true);
+        $objCurr->where(TSysCurrencies::FIELD_ISFAVORITE, true);
         $objCurr->loadFromDB();
         $objCurr->generateHTMLSelect($this->getModel()->get(TTransactions::FIELD_CURRENCYID), $this->objSelCurrency);
 
