@@ -30,10 +30,10 @@ use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\Script;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\ColorHex;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TColorHex;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -101,9 +101,9 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->setOnkeyup("setDirtyRecord()");        
         $this->objEdtName->setRequired(true);   
         $this->objEdtName->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtName->addValidator($objValidator);    
-        $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+        $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         $this->objEdtName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtName, '', transm(CMS_CURRENTMODULE, 'form_field_name', 'Name'));
 
@@ -115,9 +115,9 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDescription->setOnkeyup("setDirtyRecord()");        
         $this->objEdtDescription->setRequired(false);   
         $this->objEdtDescription->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtDescription->addValidator($objValidator);    
-        $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+        $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         $this->objEdtDescription->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtDescription, '', transm(CMS_CURRENTMODULE, 'form_field_description', 'Description'));
 
@@ -204,9 +204,9 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtColorForeground->setClass('fullwidthtag');   
         $this->objEdtColorForeground->setRequired(false);   
         $this->objEdtColorForeground->setMaxLength(8);
-        $objValidator = new Maximumlength(8);
+        $objValidator = new TMaximumLength(8);
         $this->objEdtColorForeground->addValidator($objValidator);    
-        $objValidator = new ColorHex(true, true);
+        $objValidator = new TColorHex(true, true);
         $this->objEdtColorForeground->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtColorForeground, '', transm(CMS_CURRENTMODULE, 'form_field_colorforeground', 'Foreground color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)'));
     
@@ -218,9 +218,9 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtColorBackground->setClass('fullwidthtag');   
         $this->objEdtColorBackground->setRequired(false);   
         $this->objEdtColorBackground->setMaxLength(8);
-        $objValidator = new Maximumlength(8);
+        $objValidator = new TMaximumLength(8);
         $this->objEdtColorBackground->addValidator($objValidator);    
-        $objValidator = new ColorHex(true, true);
+        $objValidator = new TColorHex(true, true);
         $this->objEdtColorBackground->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtColorBackground, '', transm(CMS_CURRENTMODULE, 'form_field_colorbackground', 'Background color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)'));
             
@@ -233,9 +233,9 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtLastNumber->setClass('fullwidthtag');   
         $this->objEdtNewNumber->setRequired(true);   
         $this->objEdtNewNumber->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtNewNumber->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtNewNumber->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtNewNumber, '', transm(CMS_CURRENTMODULE, 'form_field_newincrementednumber', 'New transaction starts at number'));
 
@@ -247,9 +247,9 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtPaymentDays->setClass('fullwidthtag');   
         // $this->objEdtPaymentDays->setRequired(true);   
         $this->objEdtPaymentDays->setMaxLength(4);
-        $objValidator = new Maximumlength(4);
+        $objValidator = new TMaximumLength(4);
         $this->objEdtPaymentDays->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtPaymentDays->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtPaymentDays, '', transm(CMS_CURRENTMODULE, 'form_field_paymentwithindays', 'Must be payed within (amount of days)'));
 

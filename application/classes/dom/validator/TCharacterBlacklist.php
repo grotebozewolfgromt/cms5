@@ -8,7 +8,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * alleen bepaalde karakaters zijn toegestaan
  */
-class Characterblacklist extends ValidatorAbstract
+class TCharacterBlacklist extends ValidatorAbstract
 {
 	private $sCharsNotAllowed;
 

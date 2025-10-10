@@ -19,7 +19,7 @@ use dr\classes\locale\TLocalisation;
  * -min 8 characters long, max 255
  * 
  */
-class StrongPassword extends ValidatorAbstract
+class TStrongPassword extends ValidatorAbstract
 {	
         private $bIgnoreEmpty = false;
 
@@ -74,10 +74,10 @@ class StrongPassword extends ValidatorAbstract
                 //==== characters that are not allowed
                 //filter the password and compare with the original string
                 $sPasswordFiltered = filterBadCharsWhiteListLiteral($mFormInput, 
-                                                                StrongPassword::LOWERCASELETTERS.
-                                                                StrongPassword::UPPERCASELETTERS.
-                                                                StrongPassword::DIGITS.
-                                                                StrongPassword::SPECIALCHARS);
+                                                                TStrongPassword::LOWERCASELETTERS.
+                                                                TStrongPassword::UPPERCASELETTERS.
+                                                                TStrongPassword::DIGITS.
+                                                                TStrongPassword::SPECIALCHARS);
                 if ($sPasswordFiltered != $mFormInput)    
                 {
                         $this->setErrorMessage(transg('validator_strongpassword_error_notbypasswordrules', 'This is not a strong password. Here are the rules: [rules]', 'rules', implode('<br>\n', $this->getRules())));
@@ -85,28 +85,28 @@ class StrongPassword extends ValidatorAbstract
                 }
 
                 //==== at least one lowercase character
-                if (!$this->doCharsExistInPassword($mFormInput, StrongPassword::LOWERCASELETTERS))
+                if (!$this->doCharsExistInPassword($mFormInput, TStrongPassword::LOWERCASELETTERS))
                 {
                         $this->setErrorMessage('validator_strongpassword_error_needslowercasecharacter', 'Input needs at least 1 lowercase character');
                         return false;
                 }
                 
                 //==== at least one uppercase character
-                if (!$this->doCharsExistInPassword($mFormInput, StrongPassword::UPPERCASELETTERS))
+                if (!$this->doCharsExistInPassword($mFormInput, TStrongPassword::UPPERCASELETTERS))
                 {
                         $this->setErrorMessage('validator_strongpassword_error_needsuppercasecharacter', 'Input needs at least 1 uppercase character');
                         return false;
                 }
                         
                 //==== at least one digit
-                if (!$this->doCharsExistInPassword($mFormInput, StrongPassword::DIGITS))
+                if (!$this->doCharsExistInPassword($mFormInput, TStrongPassword::DIGITS))
                 {
                         $this->setErrorMessage('validator_strongpassword_error_needs1digit', 'Input needs at least 1 digit');
                         return false;
                 }
 
                 //==== at least one special character
-                if (!$this->doCharsExistInPassword($mFormInput, StrongPassword::SPECIALCHARS))
+                if (!$this->doCharsExistInPassword($mFormInput, TStrongPassword::SPECIALCHARS))
                 {
                         $this->setErrorMessage('validator_strongpassword_error_needs1specialchar', 'Input needs at least 1 special character');
                         return false;                        
@@ -162,8 +162,8 @@ class StrongPassword extends ValidatorAbstract
                 //space out the special characters
                 $sSpecialCharsWithSpaces = '';
                 $iStrLen = 0;
-                $iStrLen = strlen(StrongPassword::SPECIALCHARS);
-                $sSpecialChars = StrongPassword::SPECIALCHARS;
+                $iStrLen = strlen(TStrongPassword::SPECIALCHARS);
+                $sSpecialChars = TStrongPassword::SPECIALCHARS;
                 for ($iCounter = 0; $iCounter < $iStrLen; $iCounter++)
                 {
                         if ($iCounter > 0) //skip the first space

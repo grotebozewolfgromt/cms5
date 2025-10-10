@@ -8,7 +8,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * postcode
  */
-class Dutchzipcode extends ValidatorAbstract
+class TPostalCodeDutch extends ValidatorAbstract
 {
 	private $bIgnoreEmpty = false;
 

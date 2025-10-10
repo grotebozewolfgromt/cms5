@@ -43,7 +43,7 @@
     * verwijderen error css class na corrigeren fout
     * onchange en onkey automatisch aan ieder veld toevoegen
 * labels component maken
-* rename validators => T
+
 
 ## 10 okt 2025:
 * generateNiceid() geeft nu nummers ipv characters en nummers
@@ -51,6 +51,7 @@
 * contacts: alles naar hoofdletter converteren
 * contacts: alles naar kleine letter converteren
 * bugfix: ajaxform.js: removeAllInputErrors() verwijderde de css class niet
+* rename validator classname => T and camelCase
 
 
 ## 9 okt 2025:

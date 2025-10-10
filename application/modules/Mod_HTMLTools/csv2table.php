@@ -4,7 +4,7 @@
  */
     use dr\classes\dom\TPaginator;
     use dr\classes\dom\FormGenerator;
-    use dr\classes\dom\validator\Required;
+    use dr\classes\dom\validator\TRequired;
     use dr\classes\dom\tag\Div;
     use dr\classes\dom\tag\form\InputCheckbox;
     use dr\classes\dom\tag\form\InputButton;
@@ -45,7 +45,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
     $objEdtCSV->setRequired(true);   
     $objEdtCSV->setAutofocus(true);
     $objEdtCSV->setRows(10);  
-    $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+    $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
     $objEdtCSV->addValidator($objValidator);
     if ($objForm->isFormSubmitted())
         $objEdtCSV->setText($objEdtCSV->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));

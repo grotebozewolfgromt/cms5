@@ -8,7 +8,7 @@ use dr\classes\dom\tag\I;
 /**
  * nederlands telefoonnummer
  */
-class Dutchphonenumber extends ValidatorAbstract
+class TPhoneNumberDutch extends ValidatorAbstract
 {
     private $bIgnoreEmpty = false;
 

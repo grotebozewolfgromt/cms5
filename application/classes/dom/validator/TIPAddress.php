@@ -7,7 +7,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * IPv4 or IPv6 IP address
  */
-class IPAddress extends ValidatorAbstract
+class TIPAddress extends ValidatorAbstract
 {
 	private $bIgnoreEmpty = false;
 

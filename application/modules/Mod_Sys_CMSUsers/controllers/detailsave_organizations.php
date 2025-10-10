@@ -27,9 +27,9 @@ use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\Script;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -84,9 +84,9 @@ class detailsave_organizations extends TCRUDDetailSaveController
         $this->objEdtCustomIdentifier->setClass('fullwidthtag');   
         $this->objEdtCustomIdentifier->setRequired(true);   
         $this->objEdtCustomIdentifier->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtCustomIdentifier->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtCustomIdentifier->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtCustomIdentifier, '', transm($this->getModule(), 'form_FIELD_CUSTOMID', 'Label (used to identify this account just to you)'));
 

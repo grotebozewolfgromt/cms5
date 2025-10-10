@@ -15,10 +15,10 @@ use dr\classes\dom\tag\form\InputText;
 use dr\classes\dom\tag\form\InputCheckbox;
 use dr\classes\dom\tag\form\InputNumber;
 use dr\classes\dom\tag\webcomponents\DRInputNumber;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlyalphabetical;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyAlphabetical;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
@@ -56,9 +56,9 @@ class detailsave_currencies extends TCRUDDetailSaveController
         $this->objEdtCurrencyName->setClass('fullwidthtag');         
         $this->objEdtCurrencyName->setRequired(true);   
         $this->objEdtCurrencyName->setMaxLength(100);                
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtCurrencyName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtCurrencyName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtCurrencyName, '', transm($this->getModule(), 'currenciesdetail_form_field_currencyname', 'Name'));
 
@@ -68,9 +68,9 @@ class detailsave_currencies extends TCRUDDetailSaveController
         $this->objEdtCurrencySymbol->setClass('fullwidthtag');         
         $this->objEdtCurrencySymbol->setRequired(true);   
         // $this->objEdtCurrencySymbol->setMaxLength(3);                
-        $objValidator = new Maximumlength(3);
+        $objValidator = new TMaximumLength(3);
         $this->objEdtCurrencySymbol->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtCurrencySymbol->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtCurrencySymbol, '', transm($this->getModule(), 'currenciesdetail_form_field_currencysymbol', 'Symbol'));
     
@@ -81,11 +81,11 @@ class detailsave_currencies extends TCRUDDetailSaveController
         // $this->objEdtISOAlphabetic->setClass('fullwidthtag');                 
         $this->objEdtISOAlphabetic->setRequired(true); 
         $this->objEdtISOAlphabetic->setMaxLength(3);    
-        $objValidator = new Maximumlength(3);
+        $objValidator = new TMaximumLength(3);
         $this->objEdtISOAlphabetic->addValidator($objValidator);  
-        $objValidator = new Onlyalphabetical();
+        $objValidator = new TOnlyAlphabetical();
         $this->objEdtISOAlphabetic->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtISOAlphabetic->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtISOAlphabetic, '', transm($this->getModule(), 'currenciesdetail_form_field_isoalphabetic', 'Alphabetical ISO code')); 
 
@@ -95,11 +95,11 @@ class detailsave_currencies extends TCRUDDetailSaveController
         // $this->objEdtISONumeric->setClass('fullwidthtag');                 
         $this->objEdtISONumeric->setRequired(true); 
         $this->objEdtISONumeric->setMaxLength(3);    
-        $objValidator = new Maximumlength(3);
+        $objValidator = new TMaximumLength(3);
         $this->objEdtISONumeric->addValidator($objValidator);  
-        $objValidator = new Onlynumeric();
+        $objValidator = new TOnlyNumeric();
         $this->objEdtISONumeric->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtISONumeric->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtISONumeric, '', transm($this->getModule(), 'currenciesdetail_form_field_isonumeric', 'Numeric ISO code')); 
     
@@ -109,11 +109,11 @@ class detailsave_currencies extends TCRUDDetailSaveController
         // $this->objEdtISONumeric->setClass('fullwidthtag');                 
         $this->objEdtDecimalPrecision->setRequired(true); 
         $this->objEdtDecimalPrecision->setMaxLength(3);    
-        $objValidator = new Maximumlength(3);
+        $objValidator = new TMaximumLength(3);
         $this->objEdtDecimalPrecision->addValidator($objValidator);  
-        $objValidator = new Onlynumeric();
+        $objValidator = new TOnlyNumeric();
         $this->objEdtDecimalPrecision->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtDecimalPrecision->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtDecimalPrecision, '', transm($this->getModule(), 'currenciesdetail_form_field_minorunit', 'Decimals after separator')); 
 

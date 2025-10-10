@@ -18,8 +18,8 @@ use dr\classes\dom\tag\form\InputCheckbox;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;

@@ -8,7 +8,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * alleen numerieke karaters (0-9)
  */
-class Onlynumeric extends ValidatorAbstract
+class TOnlyNumeric extends ValidatorAbstract
 {
     /**
      * @param boolean $bIgnoreEmpty ignore validation when email field is empty

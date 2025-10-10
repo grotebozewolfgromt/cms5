@@ -7,7 +7,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * waarde mag maximale lengte hebben
  */
-class Maximumlength extends ValidatorAbstract
+class TMaximumLength extends ValidatorAbstract
 {
 	private $iMaxLength = 0;
 	private $bIgnoreEmpty = false;

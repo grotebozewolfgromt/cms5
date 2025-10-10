@@ -30,9 +30,9 @@ use dr\classes\dom\tag\webcomponents\DRInputNumber;
 use dr\classes\dom\tag\webcomponents\DRInputText;
 use dr\classes\dom\tag\webcomponents\DRInputUpload;
 use dr\classes\dom\validator\ColorHex;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -117,9 +117,9 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->setRequired(true);  
         $this->objEdtName->setMinLength(5);         
         $this->objEdtName->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);   
         $this->objEdtName->setWhitelist(WHITELIST_SAFE);                 
         // $this->getFormGenerator()->add($this->objEdtName, '', transm(CMS_CURRENTMODULE, 'form_productcategories_field_name', 'Name'));
@@ -143,9 +143,9 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtURLSlug->setShowCharCounter(true);
         $this->objEdtURLSlug->setMinLength(5);
         $this->objEdtURLSlug->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtURLSlug->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtURLSlug->addValidator($objValidator);  
         $this->objEdtURLSlug->setWhitelist(WHITELIST_URLSLUG);
         $this->getFormGenerator()->addQuick(

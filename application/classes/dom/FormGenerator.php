@@ -17,9 +17,9 @@ use dr\classes\dom\tag\form\InputNumber;
 use dr\classes\dom\tag\form\InputHidden;
 use dr\classes\dom\tag\form\InputSubmit;
 use dr\classes\dom\tag\form\InputButton;
-use dr\classes\dom\validator\Onlynumeric;
+use dr\classes\dom\validator\TOnlyNumeric;
 use dr\classes\dom\tag\form\Textarea;
-use dr\classes\dom\validator\Maximumlength;
+use dr\classes\dom\validator\TMaximumLength;
 use dr\classes\dom\tag\HTMLTag;
 use dr\classes\dom\tag\form\InputRadio;
 use dr\classes\dom\tag\form\InputTel;
@@ -118,11 +118,11 @@ use Exception;
  *       $this->objEdtUsername->setClass('input_type_text');                 
  *       $this->objEdtUsername->setRequired(true); 
  *       $this->objEdtUsername->setMaxLength(255);    
- *       $objValidator = new Maximumlength(transg('form_error_maxlengthexceeded', 'The maximumlength [length] of this field is exceeded', 'length', '100'), 100);
+ *       $objValidator = new TMaximumLength(transg('form_error_maxlengthexceeded', 'The maximumlength [length] of this field is exceeded', 'length', '100'), 100);
  *       $this->objEdtUsername->addValidator($objValidator);        
- *       $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+ *       $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
  *       $this->objEdtUsername->addValidator($objValidator);       
- *       $objValidator = new Characterwhitelist(transcms('form_error_charactersnotallowed', 'One or more characters are not allowed'), TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
+ *       $objValidator = new TCharacterwhitelist(transcms('form_error_charactersnotallowed', 'One or more characters are not allowed'), TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
  *       $this->objEdtUsername->addValidator($objValidator);
  *       $this->objFormLogin->add($this->objEdtUsername, '', transg('loginform_field_username', 'username')); 
  *   
@@ -1306,7 +1306,7 @@ class FormGenerator
     					if ($objModel->getFieldNullable($sFieldName))
     						$objNewDomElement->addValidator(new Onlynumericorempty(transg('detailmodel_onlynumericorempty', 'Only numeric values or empty allowed')));
     					else
-    						$objNewDomElement->addValidator(new Onlynumeric(transg('detailmodel_onlynumeric', 'Only numeric values allowed')));
+    						$objNewDomElement->addValidator(new TOnlyNumeric(transg('detailmodel_onlynumeric', 'Only numeric values allowed')));
     					$objNewDomElement->setID($sID);
     					$objNewDomElement->setName($sName);
     					$this->add($objNewDomElement, '', $sTransDescription);
@@ -1317,9 +1317,9 @@ class FormGenerator
     					$objNewDomElement = new InputNumber();
     					$objNewDomElement->setClass(FormGenerator::CSS_CLASS_INPUTTEXT);
     					if ($objModel->getFieldNullable($sFieldName))
-    						$objNewDomElement->addValidator(new Onlynumeric(transg('detailmodel_onlynumericorempty', 'Only numeric values or empty allowed')));
+    						$objNewDomElement->addValidator(new TOnlyNumeric(transg('detailmodel_onlynumericorempty', 'Only numeric values or empty allowed')));
     					else
-    						$objNewDomElement->addValidator(new Onlynumeric(transg('detailmodel_onlynumeric', 'Only numeric values allowed')));
+    						$objNewDomElement->addValidator(new TOnlyNumeric(transg('detailmodel_onlynumeric', 'Only numeric values allowed')));
     					$objNewDomElement->setID($sID);
     					$objNewDomElement->setName($sName);
     					$this->add($objNewDomElement, '', $sTransDescription);
@@ -1347,7 +1347,7 @@ class FormGenerator
     					$objNewDomElement = new InputText();
     					$objNewDomElement->setMaxLength($iMaxLength);
     					$objNewDomElement->setClass(FormGenerator::CSS_CLASS_INPUTTEXT);
-    					$objNewDomElement->addValidator(new Maximumlength($iMaxLength));
+    					$objNewDomElement->addValidator(new TMaximumLength($iMaxLength));
     					$objNewDomElement->setID($sID);
     					$objNewDomElement->setName($sName);
     					$this->add($objNewDomElement, '', $sTransDescription);

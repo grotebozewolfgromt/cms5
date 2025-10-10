@@ -21,10 +21,10 @@ use dr\classes\dom\tag\form\Label;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Settings\models\TSysSettings;
@@ -135,7 +135,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtEmailSysAdmin->setClass('fullwidthtag');   
         $this->objEdtEmailSysAdmin->setRequired(true);   
         $this->objEdtEmailSysAdmin->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtEmailSysAdmin->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtEmailSysAdmin, $sTransSectionCMS, transm($this->getModule(), 'form_field_emailsysadmin', 'Email address system administrator (whole system, all sites, all login controllers etc'));
 
@@ -152,7 +152,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtMailbotFromEmailaddress->setClass('fullwidthtag');   
         // $this->objEdtMailbotFromEmailaddress->setRequired(true);   
         $this->objEdtMailbotFromEmailaddress->setMaxLength(255);
-        $objValidator = new Emailaddress(false);
+        $objValidator = new TEmailAddress(false);
         $this->objEdtMailbotFromEmailaddress->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtMailbotFromEmailaddress, $sTransSectionCMS, transm($this->getModule(), 'form_field_mailbot_from_emailaddress', 'FROM Email address mailbot (i.e. used for password recovery)'));
     
@@ -162,7 +162,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtMailbotFromName->setClass('fullwidthtag');   
         $this->objEdtMailbotFromName->setRequired(true);   
         $this->objEdtMailbotFromName->setMaxLength(100);
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtMailbotFromName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtMailbotFromName, $sTransSectionCMS, transm($this->getModule(), 'form_field_mailbot_from_name', 'FROM name mailbot (i.e. used for password recovery)'));
     
@@ -222,7 +222,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgWidthMax->setClass('quarterwidthtag');   
         $this->objEdtImgWidthMax->setRequired(true);   
         $this->objEdtImgWidthMax->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgWidthMax->addValidator($objValidator);    
 
         $this->objEdtImgHeightMax = new InputNumber();
@@ -230,7 +230,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgHeightMax->setClass('quarterwidthtag');   
         $this->objEdtImgHeightMax->setRequired(true);   
         $this->objEdtImgHeightMax->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgHeightMax->addValidator($objValidator);    
 
         $this->getFormGenerator()->addArray(array($this->objEdtImgWidthMax, $this->objEdtImgHeightMax), $sTransSectionCMSImages, transm($this->getModule(), 'form_field_image_size_max', 'Maximum size (width px, height px)'));
@@ -241,7 +241,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgWidthLarge->setClass('quarterwidthtag');   
         $this->objEdtImgWidthLarge->setRequired(true);   
         $this->objEdtImgWidthLarge->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgWidthLarge->addValidator($objValidator);    
 
         $this->objEdtImgHeightLarge = new InputNumber();
@@ -249,7 +249,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgHeightLarge->setClass('quarterwidthtag');   
         $this->objEdtImgHeightLarge->setRequired(true);   
         $this->objEdtImgHeightLarge->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgHeightLarge->addValidator($objValidator);    
 
         $this->getFormGenerator()->addArray(array($this->objEdtImgWidthLarge, $this->objEdtImgHeightLarge), $sTransSectionCMSImages, transm($this->getModule(), 'form_field_image_size_large', 'Large size (width px, height px)'));
@@ -260,7 +260,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgWidthMedium->setClass('quarterwidthtag');   
         $this->objEdtImgWidthMedium->setRequired(true);   
         $this->objEdtImgWidthMedium->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgWidthMedium->addValidator($objValidator);    
 
         $this->objEdtImgHeightMedium = new InputNumber();
@@ -268,7 +268,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgHeightMedium->setClass('quarterwidthtag');   
         $this->objEdtImgHeightMedium->setRequired(true);   
         $this->objEdtImgHeightMedium->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgHeightMedium->addValidator($objValidator);    
 
         $this->getFormGenerator()->addArray(array($this->objEdtImgWidthMedium, $this->objEdtImgHeightMedium), $sTransSectionCMSImages, transm($this->getModule(), 'form_field_image_size_medium', 'Medium size (width px, height px)'));
@@ -279,7 +279,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgWidthThumbnail->setClass('quarterwidthtag');   
         $this->objEdtImgWidthThumbnail->setRequired(true);   
         $this->objEdtImgWidthThumbnail->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgWidthThumbnail->addValidator($objValidator);    
 
         $this->objEdtImgHeightThumbnail = new InputNumber();
@@ -287,7 +287,7 @@ class settings_global extends TCRUDDetailSaveController
         $this->objEdtImgHeightThumbnail->setClass('quarterwidthtag');   
         $this->objEdtImgHeightThumbnail->setRequired(true);   
         $this->objEdtImgHeightThumbnail->setMaxLength(10);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtImgHeightThumbnail->addValidator($objValidator);    
 
         $this->getFormGenerator()->addArray(array($this->objEdtImgWidthThumbnail, $this->objEdtImgHeightThumbnail), $sTransSectionCMSImages, transm($this->getModule(), 'form_field_image_size_thumbnail', 'Small/thumbnail size (width px, height px)'));

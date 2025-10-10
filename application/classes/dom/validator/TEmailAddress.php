@@ -13,7 +13,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
  * 11jan 2020- Emailaddress validator - can ignore an empty field
  * 
  */
-class Emailaddress extends ValidatorAbstract
+class TEmailAddress extends ValidatorAbstract
 {
     private $bIgnoreEmpty = false;
     private $bCheckDNS = false;

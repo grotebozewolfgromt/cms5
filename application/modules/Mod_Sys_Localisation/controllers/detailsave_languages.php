@@ -13,17 +13,17 @@ use dr\classes\dom\tag\form\InputCheckbox;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Characterwhitelist;
+use dr\classes\dom\validator\TCharacterWhitelist;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\Dutchzipcode;
-use dr\classes\dom\validator\Emailaddress;
-use dr\classes\dom\validator\IPAddress;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\MinimumLength;
+use dr\classes\dom\validator\TEmailAddress;
+use dr\classes\dom\validator\TIPAddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TMinimumLength;
 use dr\classes\dom\validator\Onlyalfanumeric;
-use dr\classes\dom\validator\Onlyalphabetical;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TOnlyAlphabetical;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
 use dr\classes\dom\validator\Time;
 use dr\classes\dom\validator\URL;
 //don't forget ;)
@@ -67,11 +67,11 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         // $this->objEditLocale->setMaxLength(11);                
         $this->objEditLocale->setOnchange("validateField(this, true)");
         $this->objEditLocale->setOnkeyup("setDirtyRecord()");
-        $objValidator = new Maximumlength(11);
+        $objValidator = new TMaximumLength(11);
         $this->objEditLocale->addValidator($objValidator);    
-        $objValidator = new MinimumLength(2);
+        $objValidator = new TMinimumLength(2);
         $this->objEditLocale->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEditLocale->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEditLocale, '', transm(CMS_CURRENTMODULE, 'languages_form_field_locale', 'Locale code (format: AA-AA)'));
 
@@ -83,11 +83,11 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         $this->objEditLanguage->setMaxLength(100);    
         $this->objEditLanguage->setOnchange("validateField(this, true)");        
         $this->objEditLanguage->setOnkeyup("setDirtyRecord()");        
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEditLanguage->addValidator($objValidator);  
-        $objValidator = new Minimumlength(3);
+        $objValidator = new TMinimumLength(3);
         $this->objEditLanguage->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEditLanguage->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEditLanguage, '', transm(CMS_CURRENTMODULE, 'languages_form_field_language', 'Language name (in English)')); 
 

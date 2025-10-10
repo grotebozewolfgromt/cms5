@@ -23,9 +23,9 @@ use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\Script;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -107,9 +107,9 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtUsername->setClass('fullwidthtag');   
         $this->objEdtUsername->setRequired(true);   
         $this->objEdtUsername->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtUsername->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtUsername->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtUsername, '', transm($this->getModule(), 'userdetail_form_field_username', 'username'));
 
@@ -119,7 +119,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtUsernamePublic->setClass('fullwidthtag');   
         $this->objEdtUsernamePublic->setRequired(true);   
         $this->objEdtUsernamePublic->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtUsernamePublic->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtUsernamePublic, '', transm($this->getModule(), 'userdetail_form_field_usernamepublic', 'public username (published on websites etc)'));        
 
@@ -131,7 +131,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtPasswordOld->setNameAndID('edtPasswordOld');
         $this->objEdtPasswordOld->setClass('fullwidthtag');   
         $this->objEdtPasswordOld->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         if (!$this->getModel()->getNew())//existing record
             $this->getFormGenerator()->add($this->objEdtPasswordOld, '', transm($this->getModule(), 'userdetail_form_field_passwordold', 'current password').$sPassHint); 
 
@@ -143,7 +143,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtPasswordNew->setNameAndID('edtPasswordNew');
         $this->objEdtPasswordNew->setClass('fullwidthtag');   
         $this->objEdtPasswordNew->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->getFormGenerator()->add($this->objEdtPasswordNew, '', transm($this->getModule(), 'userdetail_form_field_passwordnew', 'new password').$sPassHint); 
 
             //password repeat
@@ -154,7 +154,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtPasswordRepeat->setNameAndID('edtPasswordRepeat');
         $this->objEdtPasswordRepeat->setClass('fullwidthtag');   
         $this->objEdtPasswordRepeat->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->getFormGenerator()->add($this->objEdtPasswordRepeat, '', transm($this->getModule(), 'userdetail_form_field_passwordnewrepeat', 'repeat new password').$sPassHint); 
         
         
@@ -163,9 +163,9 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtEmail->setNameAndID('edtEmail');   
         $this->objEdtEmail->setClass('fullwidthtag');   
         $this->objEdtEmail->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtEmail->addValidator($objValidator);    
-        $objValidator = new Emailaddress(true);
+        $objValidator = new TEmailAddress(true);
         $this->objEdtEmail->addValidator($objValidator);            
         $this->getFormGenerator()->add($this->objEdtEmail, '', transm($this->getModule(), 'userdetail_form_field_emailaddress', 'email address'));
         
@@ -247,7 +247,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtDateFormatShort->setClass('quarterwidthtag');   
         $this->objEdtDateFormatShort->setRequired(true);   
         $this->objEdtDateFormatShort->setMaxLength(20);
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtDateFormatShort->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtDateFormatShort, $sTransSectionLocalization, transm($this->getModule(), 'form_field_dateformat', 'date format (Europe: "d-m-Y", USA: "m/d/Y")'));        
 
@@ -257,7 +257,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtDateFormatLong->setClass('quarterwidthtag');   
         $this->objEdtDateFormatLong->setRequired(true);   
         $this->objEdtDateFormatLong->setMaxLength(20);
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtDateFormatLong->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtDateFormatLong, $sTransSectionLocalization, transm($this->getModule(), 'form_field_dateformatlong', 'date format long (Europe: "d-m-Y", USA: "m/d/Y")'));        
         
@@ -267,7 +267,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtTimeFormatShort->setClass('quarterwidthtag');   
         $this->objEdtTimeFormatShort->setRequired(true);   
         $this->objEdtTimeFormatShort->setMaxLength(20);
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtTimeFormatShort->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtTimeFormatShort, $sTransSectionLocalization, transm($this->getModule(), 'form_field_timeformat', 'time format (Europe: "H:i", USA: "g:i a")'));
 
@@ -277,7 +277,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtTimeFormatLong->setClass('quarterwidthtag');   
         $this->objEdtTimeFormatLong->setRequired(true);   
         $this->objEdtTimeFormatLong->setMaxLength(20);
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtTimeFormatLong->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtTimeFormatLong, $sTransSectionLocalization, transm($this->getModule(), 'form_field_timeformatlong', 'time format long (Europe: "H:i:s", USA: "g:i:s a")'));
 
@@ -293,7 +293,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtThousandSeparator->setClass('quarterwidthtag');   
         $this->objEdtThousandSeparator->setRequired(true);   
         $this->objEdtThousandSeparator->setMaxLength(1);
-        $objValidator = new Maximumlength(1);
+        $objValidator = new TMaximumLength(1);
         $this->objEdtThousandSeparator->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtThousandSeparator, $sTransSectionLocalization, transm($this->getModule(), 'form_field_thousandseparator', 'thousand separator (. or ,)'));        
 
@@ -303,7 +303,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $this->objEdtDecimalSeparator->setClass('quarterwidthtag');   
         $this->objEdtDecimalSeparator->setRequired(true);   
         $this->objEdtDecimalSeparator->setMaxLength(1);
-        $objValidator = new Maximumlength(1);
+        $objValidator = new TMaximumLength(1);
         $this->objEdtDecimalSeparator->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtDecimalSeparator, $sTransSectionLocalization, transm($this->getModule(), 'form_field_decimalseparator', 'decimal separator (. or ,)'));        
 

@@ -18,9 +18,9 @@ use dr\classes\dom\tag\form\InputCheckbox;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
@@ -60,9 +60,9 @@ class detailsave_languages extends TCRUDDetailSaveController
         // $this->objEditLocale->setClass('fullwidthtag');         
         $this->objEditLocale->setRequired(true);   
         $this->objEditLocale->setMaxLength(11);                
-        $objValidator = new Maximumlength(11);
+        $objValidator = new TMaximumLength(11);
         $this->objEditLocale->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEditLocale->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEditLocale, '', transm($this->getModule(), 'languages_form_field_locale', 'Locale code (format: AA-AA)'));
 
@@ -72,11 +72,11 @@ class detailsave_languages extends TCRUDDetailSaveController
         $this->objEditLanguage->setClass('fullwidthtag');                 
         $this->objEditLanguage->setRequired(true); 
         $this->objEditLanguage->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEditLanguage->addValidator($objValidator);  
-        // $objValidator = new Onlynumeric('test: allen numeriek ');
+        // $objValidator = new TOnlyNumeric('test: allen numeriek ');
         // $this->objEditLanguage->addValidator($objValidator);       
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEditLanguage->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEditLanguage, '', transm($this->getModule(), 'languages_form_field_language', 'Language name (in English)')); 
 

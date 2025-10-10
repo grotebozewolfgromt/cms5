@@ -26,9 +26,9 @@ use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\Script;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\form\Label;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -87,9 +87,9 @@ class detailsave_usersroles extends TCRUDDetailSaveController
         $this->objEdtGroupname->setClass('fullwidthtag');   
         $this->objEdtGroupname->setRequired(true);   
         $this->objEdtGroupname->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtGroupname->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtGroupname->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtGroupname, '', transm($this->getModule(), 'userrolesdetail_form_field_groupname', 'Role name'));
 
@@ -98,7 +98,7 @@ class detailsave_usersroles extends TCRUDDetailSaveController
         $this->objEdtDescription->setNameAndID('edtRoleDescription');
         $this->objEdtDescription->setClass('fullwidthtag');   
         $this->objEdtDescription->setMaxLength(100);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtDescription->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtDescription, '', transm($this->getModule(), 'userrolesdetail_form_field_description', 'Description'));
 
@@ -107,7 +107,7 @@ class detailsave_usersroles extends TCRUDDetailSaveController
         $this->objEdtMaxUsersInOrganization->setNameAndID('edtMaxUsersInOrganization');
         // $this->objEdtMaxUsersInOrganization->setClass('fullwidthtag');   
         $this->objEdtMaxUsersInOrganization->setMaxLength(20);
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtMaxUsersInOrganization->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtMaxUsersInOrganization, '', transm($this->getModule(), 'userrolesdetail_form_field_maxusersinorganization', 'Maximum number of users allowed per Organization (0=unlimited, -1=no users)'));
         

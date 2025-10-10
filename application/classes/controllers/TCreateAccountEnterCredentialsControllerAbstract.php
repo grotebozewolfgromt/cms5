@@ -9,12 +9,12 @@ use dr\classes\dom\tag\form\InputEmail;
 use dr\classes\dom\tag\form\InputPassword;
 use dr\classes\dom\tag\form\InputSubmit;
 use dr\classes\dom\tag\form\InputText;
-use dr\classes\dom\validator\Characterwhitelist;
-use dr\classes\dom\validator\Emailaddress;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Repeatfieldvalue;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\StrongPassword;
+use dr\classes\dom\validator\TCharacterwhitelist;
+use dr\classes\dom\validator\TEmailAddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRepeatFieldValue;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TStrongPassword;
 use dr\classes\mail\TMailSend;
 use dr\classes\models\TSysUsersAbstract;
 use dr\classes\types\TDateTime;
@@ -130,11 +130,11 @@ abstract class TCreateAccountEnterCredentialsControllerAbstract extends TControl
         $this->objEdtUsername->setClass('fullwidthtag');                 
         $this->objEdtUsername->setRequired(true); 
         $this->objEdtUsername->setMaxLength(255);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtUsername->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtUsername->addValidator($objValidator);       
-        // $objValidator = new Characterwhitelist(transcms('form_error_charactersnotallowed', 'One or more characters are not allowed'), TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
+        // $objValidator = new TCharacterwhitelist(transcms('form_error_charactersnotallowed', 'One or more characters are not allowed'), TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
         // $this->objEdtUsername->addValidator($objValidator);
         $this->objFormCreateAccount->add($this->objEdtUsername, '', transg('createaccountform_field_username', 'Username')); 
     
@@ -146,11 +146,11 @@ abstract class TCreateAccountEnterCredentialsControllerAbstract extends TControl
         $this->objEdtEmailAddress->setClass('fullwidthtag');                 
         $this->objEdtEmailAddress->setRequired(true); 
         $this->objEdtEmailAddress->setMaxLength(100);    
-        $objValidator = new Emailaddress();
+        $objValidator = new TEmailAddress();
         $this->objEdtEmailAddress->addValidator($objValidator);        
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtEmailAddress->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtEmailAddress->addValidator($objValidator);       
         $this->objFormCreateAccount->add($this->objEdtEmailAddress, '', transg('createaccountform_field_emailaddress', 'Email address')); 
         
@@ -161,13 +161,13 @@ abstract class TCreateAccountEnterCredentialsControllerAbstract extends TControl
         $this->objEdtPassword->setClass('fullwidthtag');                 
         $this->objEdtPassword->setRequired(true); 
         $this->objEdtPassword->setMaxLength(255);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtPassword->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtPassword->addValidator($objValidator);       
-        $objValidator = new StrongPassword();
+        $objValidator = new TStrongPassword();
         $this->objEdtPassword->addValidator($objValidator);        
-        $objValidator = new Characterwhitelist(TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
+        $objValidator = new TCharacterwhitelist(TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
         $this->objEdtPassword->addValidator($objValidator);
         $this->objFormCreateAccount->add($this->objEdtPassword, '', transg('createaccount_field_password', 'Password'));         
 
@@ -177,7 +177,7 @@ abstract class TCreateAccountEnterCredentialsControllerAbstract extends TControl
         $this->objEdtPasswordRepeat->setNameAndID('edtPasswordConfirm');
         $this->objEdtPasswordRepeat->setClass('fullwidthtag');                 
         $this->objEdtPasswordRepeat->setRequired(true); 
-        $objValidator = new Repeatfieldvalue('', $this->objEdtPassword);
+        $objValidator = new TRepeatFieldValue('', $this->objEdtPassword);
         $this->objEdtPasswordRepeat->addValidator($objValidator);                
         $this->objFormCreateAccount->add($this->objEdtPasswordRepeat, '', transg('createaccount_field_passwordrepeat', 'Repeat password'));         
     

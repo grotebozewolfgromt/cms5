@@ -25,9 +25,9 @@ use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\Script;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\validator\ColorHex;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -72,9 +72,9 @@ class settings extends TCRUDConfigFileController
         $this->objEdtName->setClass('fullwidthtag');   
         $this->objEdtName->setRequired(true);   
         $this->objEdtName->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtName, '', transm($this->getModule(), 'form_field_name', 'Name'));
            

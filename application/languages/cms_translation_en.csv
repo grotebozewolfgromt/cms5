@@ -100,3 +100,10 @@ notification_title_success;Success;Success
 cronjob_title;Cron job;Cron job
 cronjob_htmltitle;Cron job;Cron job
 cronjob_htmlmetadescription;Cron job;Cron job
+form_button_close;close;close
+passwordrecover_enteremail_title;Request a new password;Request a new password
+passwordrecover_enteremail_htmltitle;Request a new password;Request a new password
+passwordrecover_enteremail_htmlmetadescription;Request a new password;Request a new password
+passwordrecover_message_enteremailaccount;Enter the emailaddress that is associated with your account;Enter the emailaddress that is associated with your account
+passwordrecover_message_enteremailinstructrions;We'll email you instructions on how to reset your password;We'll email you instructions on how to reset your password
+passwordrecover_link_backtologin;Back to login page;Back to login page

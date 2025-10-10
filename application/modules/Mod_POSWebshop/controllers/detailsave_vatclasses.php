@@ -26,9 +26,9 @@ use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\webcomponents\DRInputCheckbox;
 use dr\classes\dom\tag\webcomponents\DRInputNumber;
 use dr\classes\dom\validator\ColorHex;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -86,9 +86,9 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->setClass('fullwidthtag');   
         $this->objEdtName->setRequired(true);   
         $this->objEdtName->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtName, '', transm(CMS_CURRENTMODULE, 'form_field_name', 'Name'));
 
@@ -100,9 +100,9 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDescription->setClass('fullwidthtag');           
         $this->objEdtDescription->setRequired(false);   
         $this->objEdtDescription->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtDescription->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtDescription->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtDescription, '', transm(CMS_CURRENTMODULE, 'form_field_description', 'Description'));  
 

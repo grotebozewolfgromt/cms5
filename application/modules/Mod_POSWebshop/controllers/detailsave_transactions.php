@@ -31,9 +31,9 @@ use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\Script;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\validator\ColorHex;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -140,7 +140,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
         $this->objEdtPurchaseOrderNo->setNameAndID('edtPurchaseOrderNo');
         // $this->objEdtPurchaseOrderNo->setClass('fullwidthtag');   
         $this->objEdtPurchaseOrderNo->setMaxLength(50);
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtPurchaseOrderNo->addValidator($objValidator);
         // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
 
@@ -152,7 +152,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
             $this->objEdtQuantity->setName('edtQuantity');
             // $this->objEdtQuantity->setClass('fullwidthtag');   
             $this->objEdtQuantity->setMaxLength(10);
-            $objValidator = new Maximumlength(10);
+            $objValidator = new TMaximumLength(10);
             $this->objEdtQuantity->addValidator($objValidator);
             // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
 
@@ -162,7 +162,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
             $this->objEdtDescription->setName('edtDescription');
             // $this->objEdtDescription->setClass('fullwidthtag');   
             $this->objEdtDescription->setMaxLength(50);
-            $objValidator = new Maximumlength(50);
+            $objValidator = new TMaximumLength(50);
             $this->objEdtDescription->addValidator($objValidator);
             // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
 
@@ -172,7 +172,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
             $this->objEdtVATPercentage->setName('edtVATPercentage');
             // $this->objEdtVATPercentage->setClass('fullwidthtag');   
             $this->objEdtVATPercentage->setMaxLength(10);
-            $objValidator = new Maximumlength(10);
+            $objValidator = new TMaximumLength(10);
             $this->objEdtVATPercentage->addValidator($objValidator);
             // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
         
@@ -182,7 +182,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
             $this->objEdtPurchasePriceExclVAT->setName('edtPurchasePrice');
             // $this->objEdtPurchasePriceExclVAT->setClass('fullwidthtag');   
             $this->objEdtPurchasePriceExclVAT->setMaxLength(10);
-            $objValidator = new Maximumlength(10);
+            $objValidator = new TMaximumLength(10);
             $this->objEdtPurchasePriceExclVAT->addValidator($objValidator);
             // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
 
@@ -192,7 +192,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
             $this->objEdtDiscountPriceExclVAT->setName('edtDiscountPrice');
             // $this->objEdtDiscountPriceExclVAT->setClass('fullwidthtag');   
             $this->objEdtDiscountPriceExclVAT->setMaxLength(10);
-            $objValidator = new Maximumlength(10);
+            $objValidator = new TMaximumLength(10);
             $this->objEdtDiscountPriceExclVAT->addValidator($objValidator);
             // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
             
@@ -202,7 +202,7 @@ class detailsave_transactions extends TCRUDDetailSaveController
             $this->objEdtPriceExclVAT->setName('edtUnitPrice');
             // $this->objEdtPriceExclVAT->setClass('fullwidthtag');   
             $this->objEdtPriceExclVAT->setMaxLength(10);
-            $objValidator = new Maximumlength(10);
+            $objValidator = new TMaximumLength(10);
             $this->objEdtPriceExclVAT->addValidator($objValidator);
             // $this->getFormGenerator()->add($this->objEdtPurchaseOrderNo, '', transm($this->getModule(), 'form_field_newincrementednumber', 'New transaction starts at number'));
                  

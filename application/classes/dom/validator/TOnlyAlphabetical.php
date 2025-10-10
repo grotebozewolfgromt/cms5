@@ -7,7 +7,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * alfabetische karakters
  */
-class Onlyalphabetical extends ValidatorAbstract
+class TOnlyAlphabetical extends ValidatorAbstract
 {
     /**
      * @param boolean $bIgnoreEmpty ignore validation when email field is empty

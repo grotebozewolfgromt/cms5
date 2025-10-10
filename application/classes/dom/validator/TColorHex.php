@@ -13,7 +13,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
  * 3 nov 2023- Color hex validator
  * 
  */
-class ColorHex extends ValidatorAbstract
+class TColorHex extends ValidatorAbstract
 {
     private $bIgnoreEmpty = false;
     private $bTrailingHash = false;

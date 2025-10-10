@@ -20,10 +20,10 @@ use dr\classes\dom\tag\form\InputPassword;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Settings\models\TSysSettings;

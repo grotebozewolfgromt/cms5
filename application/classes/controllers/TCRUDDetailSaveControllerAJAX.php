@@ -519,12 +519,15 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
             }                    
 
             //check lock
-            if ($this->objModel->getLocked())
+            if ($this->objModel->getTableUseLock())
             {
-                error_log(__CLASS__.': loadFromDB() record locked: '.$_GET[ACTION_VARIABLE_ID].' by '.$this->objModel->getLockedSource());
-                showAccessDenied(transg('tcruddetailsavecontrollerajax_message_error_recordlocked', 'Record with id [id] is locked by "[lockedsource]".<br>The other user should unlock this record before you are able to view/edit it.', 'id', $_GET[ACTION_VARIABLE_ID], 'lockedsource', $this->objModel->getLockedSource()));
-                die();
-            } 
+                if ($this->objModel->getLocked())
+                {
+                    error_log(__CLASS__.': loadFromDB() record locked: '.$_GET[ACTION_VARIABLE_ID].' by '.$this->objModel->getLockedSource());
+                    showAccessDenied(transg('tcruddetailsavecontrollerajax_message_error_recordlocked', 'Record with id [id] is locked by "[lockedsource]".<br>The other user should unlock this record before you are able to view/edit it.', 'id', $_GET[ACTION_VARIABLE_ID], 'lockedsource', $this->objModel->getLockedSource()));
+                    die();
+                } 
+            }
 
             //check checksum
             if (!$this->objModel->isChecksumValid())

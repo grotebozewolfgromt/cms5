@@ -7,9 +7,9 @@ use dr\classes\dom\FormGenerator;
 use dr\classes\dom\tag\form\InputButton;
 use dr\classes\dom\tag\form\InputEmail;
 use dr\classes\dom\tag\form\InputSubmit;
-use dr\classes\dom\validator\Emailaddress;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TEmailAddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
 use dr\classes\mail\TMailSend;
 use dr\classes\models\TSysUsersAbstract;
 use dr\classes\types\TDateTime;
@@ -123,11 +123,11 @@ abstract class TPasswordRecoverEnterEmailControllerAbstract extends TControllerA
         $this->objEdtEmailAddress->setClass('fullwidthtag');                 
         $this->objEdtEmailAddress->setRequired(true); 
         $this->objEdtEmailAddress->setMaxLength(100);    
-        $objValidator = new Emailaddress();
+        $objValidator = new TEmailAddress();
         $this->objEdtEmailAddress->addValidator($objValidator);        
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtEmailAddress->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtEmailAddress->addValidator($objValidator);       
         $this->getFormPasswordRecover()->add($this->objEdtEmailAddress, '', transg('loginform_field_emailaddress', 'email address')); 
         

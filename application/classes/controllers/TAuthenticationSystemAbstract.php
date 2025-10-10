@@ -21,12 +21,12 @@ use dr\classes\dom\tag\form\InputText;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Characterwhitelist;
-use dr\classes\dom\validator\Emailaddress;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\StrongPassword;
-use dr\classes\dom\validator\Repeatfieldvalue;
+use dr\classes\dom\validator\TCharacterWhitelist;
+use dr\classes\dom\validator\TEmailAddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TStrongPassword;
+use dr\classes\dom\validator\TRepeatFieldValue;
 use dr\classes\locale\TLocalisation;
 use dr\classes\types\TDateTime;
 use dr\classes\mail\TMailSend;
@@ -160,7 +160,7 @@ abstract class TAuthenticationSystemAbstract
 
     // const RECAPTCHA_SITEVERIFYURL = 'https://www.google.com/recaptcha/api/siteverify';
 
-    const CHARSALLOWED_FORMFIELDS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:;_+=.,!@#$%^&*(){}?'; //all fields: username, password, email etc. First line of defense agains attackers -- these need to be consistent with the StrongPassword class, otherwise they could mutually exclude each other
+    const CHARSALLOWED_FORMFIELDS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:;_+=.,!@#$%^&*(){}?'; //all fields: username, password, email etc. First line of defense agains attackers -- these need to be consistent with the TStrongPassword class, otherwise they could mutually exclude each other
 
 
     //AK=Array Key

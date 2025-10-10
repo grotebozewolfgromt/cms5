@@ -48,3 +48,49 @@ pagetitle_detailsave_productcategoriess_edit_title;Edit product category;Edit pr
 detailsave_button_exit;Exit;Exit
 detailsavetemplate_button_save;Save;Save
 detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
+list_column_sName;Type name;Type name
+list_column_sDescription;Description;Description
+list_column_bAvailableStockAdd;Avail +;Avail +
+list_column_bAvailableStockSubtract;Avail -;Avail -
+list_column_bReservedStockAdd;Res +;Res +
+list_column_bReservedStockSubtract;Res -;Res -
+list_column_bFinancialAdd;$ +;$ +
+list_column_bFinancialSubtract;$ -;$ -
+list_column_bIsDefault;Default;Default
+list_column_bIsFavorite;Fav;Fav
+list_column_bIsDefaultInvoice;Invoice;Invoice
+list_column_bIsDefaultOrder;0rder;0rder
+list_column_sColorBackground;Color;Color
+list_column_iNewNumberIncrement;Start;Start
+list_column_iPaymentMadeWithinDays;Pay;Pay
+list_column_iPosition;Order;Order
+dbfilter_column_iNewNumberIncrement;Start increment number;Start increment number
+dbfilter_column_iPaymentMadeWithinDays;Payment within # days;Payment within # days
+dbfilter_column_bAvailableStockAdd;Available Stock +;Available Stock +
+dbfilter_column_bAvailableStockSubtract;Available Stock -;Available Stock -
+dbfilter_column_bReservedStockAdd;Reserved Stock +;Reserved Stock +
+dbfilter_column_bReservedStockSubtract;Reserved Stock -;Reserved Stock -
+dbfilter_column_bFinancialAdd;Financial Transaction +;Financial Transaction +
+dbfilter_column_bFinancialSubtract;Financial Transaction -;Financial Transaction -
+tab_title_transactiontypes;Transaction types;Transaction types
+form_field_name;Name;Name
+form_field_description;Description;Description
+form_field_availablestockadd;Add AVAILABLE stock (available stock reduced or increased when transaction completed);Add AVAILABLE stock (available stock reduced or increased when transaction completed)
+form_field_availablestocksubtract;Subtract AVAILABLE stock (available stock reduced or increased when transaction completed);Subtract AVAILABLE stock (available stock reduced or increased when transaction completed)
+form_field_reservedstockadd;Add RESERVED stock (reserved stock reduced or increased when transaction completed);Add RESERVED stock (reserved stock reduced or increased when transaction completed)
+form_field_reservedstocksubtract;Subtract RESERVED stock (reserved stock reduced or increased when transaction completed);Subtract RESERVED stock (reserved stock reduced or increased when transaction completed)
+form_field_financialadd;Add money;Add money
+form_field_financialsubtract;Subtracts money;Subtracts money
+form_field_isdefaultselected;Is selected by default (in user interface elements);Is selected by default (in user interface elements)
+form_field_isfavorite;Is favorite (in some GUI elements only favorites are shown);Is favorite (in some GUI elements only favorites are shown)
+form_field_isdefaultinvoice;Is default invoice (i.e. when an invoice in webshop is needed, this type is used);Is default invoice (i.e. when an invoice in webshop is needed, this type is used)
+form_field_isdefaultorder;Is default order (i.e. when an order in webshop is needed, this type is used);Is default order (i.e. when an order in webshop is needed, this type is used)
+form_field_colorforeground;Foreground color (hexadecimal value from #00000 to #FFFFFF) (without #-sign);Foreground color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)
+form_field_colorbackground;Background color (hexadecimal value from #00000 to #FFFFFF) (without #-sign);Background color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)
+form_field_newincrementednumber;New transaction starts at number;New transaction starts at number
+form_field_paymentwithindays;Must be payed within (amount of days);Must be payed within (amount of days)
+pagetitle_detailsave_transactionstypes_edit;Edit transaction type: [name];Edit transaction type: [name]
+form_field_default;Is default;Is default
+form_field_vatpercent;VAT percentage;VAT percentage
+form_field_vatpercentintraeea;VAT percentage inside European Economic Area (EEA);VAT percentage inside European Economic Area (EEA)
+pagetitle_detailsave_vatclasses_edit;Edit VAT class: [name];Edit VAT class: [name]

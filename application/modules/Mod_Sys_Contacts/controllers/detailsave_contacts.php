@@ -21,10 +21,10 @@ use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\form\Textarea;
 use dr\classes\dom\tag\webcomponents\DRInputCombobox;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
-use dr\classes\dom\validator\Emailaddress;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TEmailAddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
 use dr\classes\dom\validator\TLowercase;
 use dr\classes\dom\validator\TUppercase;
 use dr\classes\dom\validator\TUppercaseFirstChar;
@@ -172,7 +172,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCustomIdentifier->setNameAndID('edtCustomIdentifier');
         $this->objEdtCustomIdentifier->setClass('quarterwidthtag');         
         $this->objEdtCustomIdentifier->setMaxLength(50);                
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtCustomIdentifier->addValidator($objValidator);    
         $this->objEdtCustomIdentifier->setOnchange("validateField(this, true)");
         $this->objEdtCustomIdentifier->setOnkeyup("setDirtyRecord()");          
@@ -185,7 +185,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objTagKeywords->setNameAndID('edtTagSearchKeywords');
         $this->objTagKeywords->setClass('fullwidthtag');         
         $this->objTagKeywords->setMaxLength(255);                
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objTagKeywords->addValidator($objValidator);    
         $this->objTagKeywords->setOnchange("validateField(this, true)");
         $this->objTagKeywords->setOnkeyup("setDirtyRecord()");          
@@ -198,7 +198,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCompanyName->setNameAndID('edtCompanyName');
         $this->objEdtCompanyName->setClass('fullwidthtag');                         
         $this->objEdtCompanyName->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtCompanyName->addValidator($objValidator);       
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtCompanyName->addValidator($objValidator);       
@@ -211,7 +211,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtChamberCommerce->setNameAndID('edtChamberOfCommerceNumber');
         $this->objEdtChamberCommerce->setClass('fullwidthtag');                         
         $this->objEdtChamberCommerce->setMaxLength(25);    
-        $objValidator = new Maximumlength(25);
+        $objValidator = new TMaximumLength(25);
         $this->objEdtChamberCommerce->addValidator($objValidator);       
         $this->objEdtChamberCommerce->setOnchange("validateField(this, true)");
         $this->objEdtChamberCommerce->setOnkeyup("setDirtyRecord()");               
@@ -224,7 +224,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtFirstNameInitials->setNameAndID('edtFirstName');
         $this->objEdtFirstNameInitials->setClass('fullwidthtag');                         
         $this->objEdtFirstNameInitials->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtFirstNameInitials->addValidator($objValidator);    
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtFirstNameInitials->addValidator($objValidator);             
@@ -237,7 +237,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtLastName->setNameAndID('edtLastName');
         $this->objEdtLastName->setClass('fullwidthtag');                         
         $this->objEdtLastName->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtLastName->addValidator($objValidator);   
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtLastName->addValidator($objValidator);           
@@ -251,7 +251,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtLastNamePrefix->setNameAndID('edtLastNamePrefix');
         // $this->objEdtLastName->setClass('fullwidthtag');                         
         $this->objEdtLastNamePrefix->setMaxLength(20);    
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtLastNamePrefix->addValidator($objValidator);          
         $this->objEdtLastNamePrefix->setOnchange("validateField(this, true)");
         $this->objEdtLastNamePrefix->setOnkeyup("setDirtyRecord()");                            
@@ -264,9 +264,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtEmailAddress->setNameAndID('edtEmailAddress');
         $this->objEdtEmailAddress->setClass('fullwidthtag');                         
         $this->objEdtEmailAddress->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtEmailAddress->addValidator($objValidator); 
-        $objValidator = new Emailaddress(true, true, true);
+        $objValidator = new TEmailAddress(true, true, true);
         $this->objEdtEmailAddress->addValidator($objValidator); 
         $objValidator = new TLowercase();
         $this->objEdtEmailAddress->addValidator($objValidator);         
@@ -287,7 +287,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone1->setNameAndID('edtPhone1');
         $this->objEdtPhone1->setClass('halfwidthtag');                         
         $this->objEdtPhone1->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtPhone1->addValidator($objValidator);   
         $this->objEdtPhone1->setOnchange("validateField(this, true)");
         $this->objEdtPhone1->setOnkeyup("setDirtyRecord()");                            
@@ -306,7 +306,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone2->setNameAndID('edtPhone2');
         $this->objEdtPhone2->setClass('halfwidthtag');                         
         $this->objEdtPhone2->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtPhone2->addValidator($objValidator);  
         $this->objEdtPhone2->setOnchange("validateField(this, true)");
         $this->objEdtPhone2->setOnkeyup("setDirtyRecord()");                            
@@ -318,7 +318,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingAddressMisc->setNameAndID('edtBillingAddressLineStreet');
         $this->objEdtBillingAddressMisc->setClass('fullwidthtag');                         
         $this->objEdtBillingAddressMisc->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtBillingAddressMisc->addValidator($objValidator); 
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtBillingAddressMisc->addValidator($objValidator);                     
@@ -333,7 +333,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingAddressStreet->setNameAndID('edtBillingAddressLineMisc');
         $this->objEdtBillingAddressStreet->setClass('fullwidthtag');                         
         $this->objEdtBillingAddressStreet->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtBillingAddressStreet->addValidator($objValidator);    
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtBillingAddressStreet->addValidator($objValidator);                     
@@ -348,7 +348,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingPostalCode->setNameAndID('edtBillingPostalCode');
         // $this->objEdtBillingPostalCode->setClass('fullwidthtag');                         
         $this->objEdtBillingPostalCode->setMaxLength(10);    
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtBillingPostalCode->addValidator($objValidator);          
         $objValidator = new TUppercase();
         $this->objEdtBillingPostalCode->addValidator($objValidator);          
@@ -361,7 +361,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingCity->setNameAndID('edtBillingCity');
         $this->objEdtBillingCity->setClass('fullwidthtag');                         
         $this->objEdtBillingCity->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtBillingCity->addValidator($objValidator);    
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtBillingCity->addValidator($objValidator);           
@@ -374,7 +374,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingStateRegion->setNameAndID('edtBillingState');
         $this->objEdtBillingStateRegion->setClass('fullwidthtag');                         
         $this->objEdtBillingStateRegion->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtBillingStateRegion->addValidator($objValidator);          
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtBillingStateRegion->addValidator($objValidator);           
@@ -394,7 +394,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingVatNumber->setNameAndID('edtBillingVATNumber');
         $this->objEdtBillingVatNumber->setClass('fullwidthtag');                         
         $this->objEdtBillingVatNumber->setMaxLength(20);    
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtBillingVatNumber->addValidator($objValidator);       
         $this->objEdtBillingVatNumber->setOnchange("validateField(this, true)");
         $this->objEdtBillingVatNumber->setOnkeyup("setDirtyRecord()");             
@@ -406,7 +406,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingBankAccountNo->setNameAndID('edtBillingBankAccountNumber');
         $this->objEdtBillingBankAccountNo->setClass('fullwidthtag');                         
         $this->objEdtBillingBankAccountNo->setMaxLength(20);    
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtBillingBankAccountNo->addValidator($objValidator);    
         $this->objEdtBillingBankAccountNo->setOnchange("validateField(this, true)");
         $this->objEdtBillingBankAccountNo->setOnkeyup("setDirtyRecord()");             
@@ -418,7 +418,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingEmailAddress->setNameAndID('edtBillingEmailAddress');
         $this->objEdtBillingEmailAddress->setClass('fullwidthtag');                         
         $this->objEdtBillingEmailAddress->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtBillingEmailAddress->addValidator($objValidator);          
         $this->objEdtBillingEmailAddress->setOnchange("validateField(this, true)");
         $this->objEdtBillingEmailAddress->setOnkeyup("setDirtyRecord()");             
@@ -431,7 +431,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryAddressStreet->setNameAndID('edtDeliveryAddressLineStreet');
         $this->objEdtDeliveryAddressStreet->setClass('fullwidthtag');                         
         $this->objEdtDeliveryAddressStreet->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtDeliveryAddressStreet->addValidator($objValidator); 
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryAddressStreet->addValidator($objValidator);                    
@@ -446,7 +446,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryAddressMisc->setNameAndID('edtDeliveryAddressLineMisc');
         $this->objEdtDeliveryAddressMisc->setClass('fullwidthtag');                         
         $this->objEdtDeliveryAddressMisc->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtDeliveryAddressMisc->addValidator($objValidator);  
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryAddressMisc->addValidator($objValidator);             
@@ -461,7 +461,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryPostalCodeZip->setNameAndID('edtDeliveryPostalCode');
         // $this->objEdtDeliveryPostalCodeZip->setClass('fullwidthtag');                         
         $this->objEdtDeliveryPostalCodeZip->setMaxLength(10);    
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);   
         $objValidator = new TUppercase();
         $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);                   
@@ -474,7 +474,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryCity->setNameAndID('edtDeliveryCity');
         $this->objEdtDeliveryCity->setClass('fullwidthtag');                         
         $this->objEdtDeliveryCity->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtDeliveryCity->addValidator($objValidator);   
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryCity->addValidator($objValidator);          
@@ -487,7 +487,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryStateRegion->setNameAndID('edtDeliveryState');
         $this->objEdtDeliveryStateRegion->setClass('fullwidthtag');                         
         $this->objEdtDeliveryStateRegion->setMaxLength(50);    
-        $objValidator = new Maximumlength(50);
+        $objValidator = new TMaximumLength(50);
         $this->objEdtDeliveryStateRegion->addValidator($objValidator);    
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryStateRegion->addValidator($objValidator);             

@@ -21,9 +21,9 @@ use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
-use dr\classes\dom\validator\IPAddress;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TIPAddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
 use dr\classes\dom\validator\Time;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSLoginIPBlackWhitelist;
 //don't forget ;)
@@ -82,11 +82,11 @@ class detailsave_loginipblackwhitelist extends TCRUDDetailSaveController
         $this->objEdtIPAdress->setClass('fullwidthtag');         
         $this->objEdtIPAdress->setRequired(true);   
         $this->objEdtIPAdress->setMaxLength(LENGTH_STRING_IPV6);
-        $objValidator = new Maximumlength(LENGTH_STRING_IPV6);
+        $objValidator = new TMaximumLength(LENGTH_STRING_IPV6);
         $this->objEdtIPAdress->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtIPAdress->addValidator($objValidator);    
-        $objValidator = new IPAddress();
+        $objValidator = new TIPAddress();
         $this->objEdtIPAdress->addValidator($objValidator);    
 
         $this->getFormGenerator()->add($this->objEdtIPAdress, '', transm($this->getModule(), 'loginipblackwhitelist_form_field_ipaddress', 'IP address (IPv4 or IPv6)'));
@@ -96,7 +96,7 @@ class detailsave_loginipblackwhitelist extends TCRUDDetailSaveController
         $this->objEdtNotes->setNameAndID('edtNotes');
         $this->objEdtNotes->setClass('fullwidthtag');                 
         $this->objEdtNotes->setMaxLength(255);    
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtNotes->addValidator($objValidator);        
         $this->getFormGenerator()->add($this->objEdtNotes, '', transm($this->getModule(), 'loginipblackwhitelist_form_field_notes', 'Notes (like: reason or who ip belongs to)')); 
 

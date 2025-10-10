@@ -13,8 +13,8 @@ use dr\classes\controllers\TCRUDDetailSaveController;
 
 use dr\classes\dom\tag\form\InputText;
 use dr\classes\dom\tag\form\InputCheckbox;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
@@ -50,9 +50,9 @@ class detailsave_countries extends TCRUDDetailSaveController
         $this->objEdtCountry->setClass('fullwidthtag');         
         $this->objEdtCountry->setRequired(true);   
         $this->objEdtCountry->setMaxLength(100);                
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtCountry->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtCountry->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtCountry, '', transm($this->getModule(), 'form_field_country', 'country'));
 
@@ -62,9 +62,9 @@ class detailsave_countries extends TCRUDDetailSaveController
         $this->objEdtISO2->setClass('fullwidthtag');                 
         $this->objEdtISO2->setRequired(true); 
         $this->objEdtISO2->setMaxLength(2);    
-        $objValidator = new Maximumlength(2);
+        $objValidator = new TMaximumLength(2);
         $this->objEdtISO2->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtISO2->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtISO2, '', transm($this->getModule(), 'form_field_iso2', 'alpha iso2 code')); 
 
@@ -74,9 +74,9 @@ class detailsave_countries extends TCRUDDetailSaveController
         $this->objEdtISO3->setClass('fullwidthtag');                 
         $this->objEdtISO3->setRequired(true); 
         $this->objEdtISO3->setMaxLength(3);    
-        $objValidator = new Maximumlength(3);
+        $objValidator = new TMaximumLength(3);
         $this->objEdtISO3->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtISO3->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtISO3, '', transm($this->getModule(), 'form_field_iso3', 'alpha iso3 code')); 
     

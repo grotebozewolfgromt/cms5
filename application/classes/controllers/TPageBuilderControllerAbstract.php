@@ -16,9 +16,9 @@ use dr\classes\dom\tag\form\InputText;
 use dr\classes\dom\tag\form\InputTime;
 use dr\classes\dom\tag\form\Textarea;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
 use dr\classes\locale\TLocalisation;
 use dr\modules\Mod_PageBuilder\models\TPageBuilderDocumentsStatusses;
 use dr\modules\Mod_PageBuilder\models\TPageBuilderWebpages;
@@ -531,9 +531,9 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         $this->objEdtNameInternal->setOnKeyUp("updateTitle(this.value);");
         $this->objEdtNameInternal->setRequired(true);   
         $this->objEdtNameInternal->setMaxLength(100);
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtNameInternal->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtNameInternal->addValidator($objValidator);   
         $this->arrFormHTMLElements[] = $this->objEdtNameInternal;
 

@@ -14,11 +14,11 @@ use dr\classes\dom\tag\form\InputDate;
 use dr\classes\dom\tag\form\InputNumber;
 use dr\classes\dom\tag\form\InputTime;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
-use dr\classes\dom\validator\Characterwhitelist;
+use dr\classes\dom\validator\TCharacterWhitelist;
 use dr\classes\dom\validator\DateMin;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Onlynumeric;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TOnlyNumeric;
+use dr\classes\dom\validator\TRequired;
 use dr\classes\dom\validator\Time;
 //don't forget ;)
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSInvitationCodes;
@@ -60,9 +60,9 @@ class detailsave_invitationcodes extends TCRUDDetailSaveController
         $this->objEdtName->setClass('fullwidthtag');         
         $this->objEdtName->setRequired(true);   
         $this->objEdtName->setMaxLength(100);                
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtName, '', transm($this->getModule(), 'form_field_namecode', 'name (only you can see it)'));
 
@@ -72,11 +72,11 @@ class detailsave_invitationcodes extends TCRUDDetailSaveController
         $this->objEdtCode->setClass('fullwidthtag');                 
         $this->objEdtCode->setRequired(true); 
         $this->objEdtCode->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtCode->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtCode->addValidator($objValidator);       
-        $objValidator = new Characterwhitelist(TSysCMSInvitationCodes::ALLOWEDCHARSCODE);
+        $objValidator = new TCharacterwhitelist(TSysCMSInvitationCodes::ALLOWEDCHARSCODE);
         $this->objEdtCode->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtCode, '', transm($this->getModule(), 'form_field_invitationcode', 'Invitation code (allowed: [allowed])','allowed',  TSysCMSInvitationCodes::ALLOWEDCHARSCODE)); 
    
@@ -85,11 +85,11 @@ class detailsave_invitationcodes extends TCRUDDetailSaveController
         $this->objEdtRedeems->setNameAndID('edtRedeems');
         $this->objEdtRedeems->setRequired(true); 
         $this->objEdtRedeems->setMaxLength(10);    
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtRedeems->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtRedeems->addValidator($objValidator);       
-        $objValidator = new Onlynumeric();
+        $objValidator = new TOnlyNumeric();
         $this->objEdtRedeems->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtRedeems, '', transm($this->getModule(), 'form_field_currentredeems', 'Amount of times code is redeemed')); 
         
@@ -98,11 +98,11 @@ class detailsave_invitationcodes extends TCRUDDetailSaveController
         $this->objEdtMaxRedeems->setNameAndID('edtMaxRedeems');
         $this->objEdtMaxRedeems->setRequired(true); 
         $this->objEdtMaxRedeems->setMaxLength(10);    
-        $objValidator = new Maximumlength(10);
+        $objValidator = new TMaximumLength(10);
         $this->objEdtMaxRedeems->addValidator($objValidator);  
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtMaxRedeems->addValidator($objValidator);       
-        $objValidator = new Onlynumeric();
+        $objValidator = new TOnlyNumeric();
         $this->objEdtMaxRedeems->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtMaxRedeems, '', transm($this->getModule(), 'form_field_maxredeems', 'Limit redemptions (0=unlimited)')); 
     

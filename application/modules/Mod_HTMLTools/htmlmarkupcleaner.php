@@ -4,7 +4,7 @@
  */
     use dr\classes\dom\TPaginator;
     use dr\classes\dom\FormGenerator;
-    use dr\classes\dom\validator\Required;
+    use dr\classes\dom\validator\TRequired;
     use dr\classes\dom\tag\Div;
     use dr\classes\dom\tag\form\InputRadio;
     use dr\classes\dom\tag\form\InputCheckbox;

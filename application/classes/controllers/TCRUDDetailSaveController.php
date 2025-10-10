@@ -49,7 +49,7 @@ use dr\classes\dom\tag\form\InputText;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
-use dr\classes\dom\validator\Maximumlength;
+use dr\classes\dom\validator\TMaximumLength;
 use dr\classes\locale\TLocalisation;
 use dr\classes\patterns\TModuleAbstract;
 

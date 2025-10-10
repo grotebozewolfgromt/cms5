@@ -9,7 +9,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * alleen alfanumerieke karaters (0-9) en a-z
  */
-class Onlyalphanumeric extends ValidatorAbstract
+class TOnlyAlphaNumeric extends ValidatorAbstract
 {
 
     /**

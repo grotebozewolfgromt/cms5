@@ -4,7 +4,7 @@
  */
     use dr\classes\dom\TPaginator;
     use dr\classes\dom\FormGenerator;
-    use dr\classes\dom\validator\Required;
+    use dr\classes\dom\validator\TRequired;
     use dr\classes\dom\tag\Div;
     use dr\classes\dom\tag\form\InputCheckbox;
     use dr\classes\dom\tag\form\InputRadio;
@@ -44,7 +44,7 @@
     $objPlainText->setRequired(true);   
     $objPlainText->setRows(10);  
     $objPlainText->setAutofocus(true);
-    $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+    $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
     $objPlainText->addValidator($objValidator);    
     if ($objForm->isFormSubmitted())
         $objPlainText->setText($objPlainText->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
@@ -79,7 +79,7 @@
     $objBulletChar = new InputText();
     $objBulletChar->setNameAndID('edtBulletChar'); 
     $objBulletChar->setRequired(true);   
-    $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+    $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
     $objBulletChar->addValidator($objValidator);    
     if ($objForm->isFormSubmitted())
         $objBulletChar->setValue($objBulletChar->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));

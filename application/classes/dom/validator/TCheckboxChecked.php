@@ -7,7 +7,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * this checkbox needs to be checked
  */
-class CheckboxChecked extends ValidatorAbstract
+class TCheckboxChecked extends ValidatorAbstract
 {
 	private $sCheckboxValueChecked = ''; //the vaue of the checkbox when checked
 

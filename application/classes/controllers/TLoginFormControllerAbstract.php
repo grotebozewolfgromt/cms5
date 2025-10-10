@@ -9,9 +9,9 @@ use dr\classes\dom\tag\form\InputCheckbox;
 use dr\classes\dom\tag\form\InputPassword;
 use dr\classes\dom\tag\form\InputSubmit;
 use dr\classes\dom\tag\form\InputText;
-use dr\classes\dom\validator\Characterwhitelist;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TCharacterWhitelist;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSLoginIPBlackWhitelist;
 use dr\classes\models\TSysUsersFloodDetectAbstract;
 use dr\classes\models\TSysUsersSessionsAbstract;
@@ -206,11 +206,11 @@ abstract class TLoginFormControllerAbstract extends TControllerAbstract
         $this->objEdtUsername->setClass('fullwidthtag');                 
         $this->objEdtUsername->setRequired(true); 
         $this->objEdtUsername->setMaxLength(255);    
-        $objValidator = new Maximumlength(100, false);
+        $objValidator = new TMaximumLength(100, false);
         $this->objEdtUsername->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtUsername->addValidator($objValidator);       
-        $objValidator = new Characterwhitelist(TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
+        $objValidator = new TCharacterwhitelist(TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
         $this->objEdtUsername->addValidator($objValidator);
         $this->objFormLogin->add($this->objEdtUsername, '', transg('loginform_field_username', 'username')); 
 
@@ -221,11 +221,11 @@ abstract class TLoginFormControllerAbstract extends TControllerAbstract
         $this->objEdtPassword->setClass('fullwidthtag');                 
         $this->objEdtPassword->setRequired(true); 
         $this->objEdtPassword->setMaxLength(255);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtPassword->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtPassword->addValidator($objValidator);       
-        $objValidator = new Characterwhitelist(TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
+        $objValidator = new TCharacterwhitelist(TAuthenticationSystemAbstract::CHARSALLOWED_FORMFIELDS);
         $this->objEdtPassword->addValidator($objValidator);
         $this->objFormLogin->add($this->objEdtPassword, '', transg('loginform_field_password', 'password'));         
         

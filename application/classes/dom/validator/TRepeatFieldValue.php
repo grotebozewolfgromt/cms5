@@ -12,7 +12,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
  * 
  *  1 apr 2016: characterwhitelist created
  */
-class Repeatfieldvalue extends ValidatorAbstract
+class TRepeatFieldValue extends ValidatorAbstract
 {
 	private $objOtherField = null;
 

@@ -27,9 +27,9 @@ use dr\classes\dom\tag\webcomponents\DRInputCheckbox;
 use dr\classes\dom\tag\webcomponents\DRInputNumber;
 use dr\classes\dom\tag\webcomponents\DRInputText;
 use dr\classes\dom\validator\ColorHex;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
-use dr\classes\dom\validator\Emailaddress;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
+use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\Date;
 use dr\classes\dom\validator\DateMin;
 use dr\classes\dom\validator\DateMax;
@@ -117,9 +117,9 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->setRequired(true);  
         $this->objEdtName->setMinLength(5);         
         $this->objEdtName->setMaxLength(255);
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);    
 
         //product name short
@@ -134,9 +134,9 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
         $this->objEdtNameShort->setShowCharCounter(true);
         $this->objEdtNameShort->setMinLength(5);
         $this->objEdtNameShort->setMaxLength(20);
-        $objValidator = new Maximumlength(20);
+        $objValidator = new TMaximumLength(20);
         $this->objEdtNameShort->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtNameShort->addValidator($objValidator);    
     
     }

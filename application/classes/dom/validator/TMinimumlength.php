@@ -6,7 +6,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * waarde moet minimale lengte hebben
  */
-class MinimumLength extends ValidatorAbstract
+class TMinimumLength extends ValidatorAbstract
 {
 	private $iMinLength = 0;
 	private $bIgnoreEmpty = false;	

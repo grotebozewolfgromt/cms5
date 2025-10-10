@@ -19,8 +19,8 @@ use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\webcomponents\DRInputCheckbox;
-use dr\classes\dom\validator\Maximumlength;
-use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TMaximumLength;
+use dr\classes\dom\validator\TRequired;
 
 //don't forget ;)
 use dr\modules\Mod_Sys_Websites\models\TSysWebsites;
@@ -74,9 +74,9 @@ class detailsave_websites extends TCRUDDetailSaveController
         $this->objEdtWebsiteName->setClass('fullwidthtag');         
         $this->objEdtWebsiteName->setRequired(true);   
         $this->objEdtWebsiteName->setMaxLength(100);
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtWebsiteName->addValidator($objValidator);    
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtWebsiteName->addValidator($objValidator);    
         $this->getFormGenerator()->add($this->objEdtWebsiteName, $sTransSectionDatasebase, transm($this->getModule(), 'detailsave_websites_form_field_websitename', 'website name'));
 
@@ -86,9 +86,9 @@ class detailsave_websites extends TCRUDDetailSaveController
         $this->objEdtURL->setClass('fullwidthtag');                 
         $this->objEdtURL->setRequired(true); 
         $this->objEdtURL->setMaxLength(100);    
-        $objValidator = new Maximumlength(100);
+        $objValidator = new TMaximumLength(100);
         $this->objEdtURL->addValidator($objValidator);        
-        $objValidator = new Required();
+        $objValidator = new TRequired();
         $this->objEdtURL->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtURL, $sTransSectionDatasebase, transm($this->getModule(), 'detailsave_websites_form_field_url', 'url')); 
         
@@ -113,9 +113,9 @@ class detailsave_websites extends TCRUDDetailSaveController
         $this->objEdtPathDomain->setClass('fullwidthtag');                 
         // $this->objEdtPathDomain->setRequired(true); 
         $this->objEdtPathDomain->setMaxLength(255);    
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtPathDomain->addValidator($objValidator);        
-        // $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+        // $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         // $this->objEdtPathDomain->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtPathDomain, $sTransSectionConfigFile, transm($this->getModule(), 'detailsave_websites_form_field_pathdomain', 'Domain (i.e. mywebsite.com)')); 
     
@@ -125,9 +125,9 @@ class detailsave_websites extends TCRUDDetailSaveController
         $this->objEdtPathLocal->setClass('fullwidthtag');                 
         // $this->objEdtPathLocal->setRequired(true); 
         $this->objEdtPathLocal->setMaxLength(255);    
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtPathLocal->addValidator($objValidator);        
-        // $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+        // $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         // $this->objEdtPathLocal->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtPathLocal, $sTransSectionConfigFile, transm($this->getModule(), 'detailsave_websites_form_field_pathlocal', 'Local path (i.e. C:\xampp\htdocs)')); 
 
@@ -137,9 +137,9 @@ class detailsave_websites extends TCRUDDetailSaveController
         $this->objEdtPathWWW->setClass('fullwidthtag');                 
         // $this->objEdtPathWWW->setRequired(true); 
         $this->objEdtPathWWW->setMaxLength(255);    
-        $objValidator = new Maximumlength(255);
+        $objValidator = new TMaximumLength(255);
         $this->objEdtPathWWW->addValidator($objValidator);        
-        // $objValidator = new Required(transcms('form_error_requiredfield', 'This is a required field'));
+        // $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         // $this->objEdtPathWWW->addValidator($objValidator);       
         $this->getFormGenerator()->add($this->objEdtPathWWW, $sTransSectionConfigFile, transm($this->getModule(), 'detailsave_websites_form_field_pathwww', 'Website URL (i.e. https://www.mywebsite.com)')); 
 
@@ -223,10 +223,13 @@ class detailsave_websites extends TCRUDDetailSaveController
         $this->objEdtPathWWW->setValue($this->objConfigFile->get('WEBSITE_PATH_WWW'));
         //theme
         $arrThemeDirs = getFileFolderArray(APP_PATH_WEBSITE_VIEWS_THEMES, true, false);
-        $this->objSelTheme->clear();
-        foreach($arrThemeDirs as $sDir)
+        if ($arrThemeDirs !== false)
         {
-            $this->objSelTheme->addOption($sDir, $sDir, ($sDir == $this->objConfigFile->get('WEBSITE_THEME')));
+            $this->objSelTheme->clear();
+            foreach($arrThemeDirs as $sDir)
+            {
+                $this->objSelTheme->addOption($sDir, $sDir, ($sDir == $this->objConfigFile->get('WEBSITE_THEME')));
+            }
         }
 
     }

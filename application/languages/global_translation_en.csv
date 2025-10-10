@@ -102,3 +102,6 @@ tcruddetailsavecontrollerajax_message_save_nosuccess_csrftokeninvalid;Form valid
 tcruddetailsavecontrollerajax_message_error_checksuminvalid;Checksum failed for record with ID 14.<br>\nThe contents is changed outside this application and NOT TO BE TRUSTED.<br>\nCheck contents before saving!<br>\nWhen saving a new checksum will be calculated,<br>which re-validates the record;Checksum failed for record with ID 14.<br>\nThe contents is changed outside this application and NOT TO BE TRUSTED.<br>\nCheck contents before saving!<br>\nWhen saving a new checksum will be calculated,<br>which re-validates the record
 TAJAXFormController_error_inputerror;Input error: [error];Input error: [error]
 tcruddetailsavecontrollerajax_message_save_nosuccess_inputerror;Input error encountered, please correct mistakes;Input error encountered, please correct mistakes
+validator_colorhox_error_nothexcolor;This is not a valid hexadecimal color value;This is not a valid hexadecimal color value
+loginform_field_emailaddress;email address;email address
+passwordrecoverform_button_sendemail;send email;send email

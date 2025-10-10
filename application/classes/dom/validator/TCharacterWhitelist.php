@@ -6,7 +6,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * alleen bepaalde karakaters zijn toegestaan
  */
-class Characterwhitelist extends ValidatorAbstract
+class TCharacterWhitelist extends ValidatorAbstract
 {
 	private $sCharsAllowed;
 

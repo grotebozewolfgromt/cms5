@@ -7,7 +7,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
 /**
  * form validator for a regular expression
  */
-class Regex extends ValidatorAbstract
+class TRegex extends ValidatorAbstract
 {
 	private $sRegEx = '';
 
