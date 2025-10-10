@@ -21,9 +21,13 @@ use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\form\Textarea;
 use dr\classes\dom\tag\webcomponents\DRInputCombobox;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
+use dr\classes\dom\validator\Emailaddress;
 use dr\classes\dom\validator\Maximumlength;
 use dr\classes\dom\validator\Onlynumeric;
 use dr\classes\dom\validator\Required;
+use dr\classes\dom\validator\TLowercase;
+use dr\classes\dom\validator\TUppercase;
+use dr\classes\dom\validator\TUppercaseFirstChar;
 use dr\classes\patterns\TModuleAbstract;
 use dr\classes\types\TDateTime;
 //don't forget ;)
@@ -62,9 +66,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     private $objDTFirstContact = null;  //dr\classes\dom\tag\webcomponents\DRInputDateTime
     private $objDTLastContact = null;  //dr\classes\dom\tag\webcomponents\DRInputDateTime
     
-    private $objEdtBillingAddressLine1 = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingAddressLine2 = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingPostalCodeZip = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtBillingAddressStreet = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtBillingAddressMisc = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtBillingPostalCode = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingCity = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingStateRegion = null;//dr\classes\dom\tag\form\InputText
     private $objSelBillingCountryID = null;//dr\classes\dom\tag\form\Select
@@ -72,8 +76,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     private $objEdtBillingEmailAddress = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingBankAccountNo = null;//dr\classes\dom\tag\form\InputText    
 
-    private $objEdtDeliveryAddressLine1 = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtDeliveryAddressLine2 = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtDeliveryAddressMisc = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtDeliveryAddressStreet = null;//dr\classes\dom\tag\form\InputText
     private $objEdtDeliveryPostalCodeZip = null;//dr\classes\dom\tag\form\InputText
     private $objEdtDeliveryCity = null;//dr\classes\dom\tag\form\InputText
     private $objEdtDeliveryStateRegion = null;//dr\classes\dom\tag\form\InputText
@@ -196,6 +200,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCompanyName->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
         $this->objEdtCompanyName->addValidator($objValidator);       
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtCompanyName->addValidator($objValidator);       
         $this->objEdtCompanyName->setOnchange("validateField(this, true)");
         $this->objEdtCompanyName->setOnkeyup("setDirtyRecord()");               
         $this->getFormGenerator()->add($this->objEdtCompanyName, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_companyname', 'Company name')); 
@@ -219,7 +225,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtFirstNameInitials->setClass('fullwidthtag');                         
         $this->objEdtFirstNameInitials->setMaxLength(50);    
         $objValidator = new Maximumlength(50);
-        $this->objEdtFirstNameInitials->addValidator($objValidator);     
+        $this->objEdtFirstNameInitials->addValidator($objValidator);    
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtFirstNameInitials->addValidator($objValidator);             
         $this->objEdtFirstNameInitials->setOnchange("validateField(this, true)");
         $this->objEdtFirstNameInitials->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials')); 
@@ -230,7 +238,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtLastName->setClass('fullwidthtag');                         
         $this->objEdtLastName->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
-        $this->objEdtLastName->addValidator($objValidator);    
+        $this->objEdtLastName->addValidator($objValidator);   
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtLastName->addValidator($objValidator);           
         $this->objEdtLastName->setOnchange("validateField(this, true)");
         $this->objEdtLastName->setOnkeyup("setDirtyRecord()");                            
         // $this->getFormGenerator()->add($this->objEdtLastName, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastname', 'Last name (encrypted, not searchable)')); 
@@ -256,6 +266,10 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtEmailAddress->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
         $this->objEdtEmailAddress->addValidator($objValidator); 
+        $objValidator = new Emailaddress(true, true, true);
+        $this->objEdtEmailAddress->addValidator($objValidator); 
+        $objValidator = new TLowercase();
+        $this->objEdtEmailAddress->addValidator($objValidator);         
         $this->objEdtEmailAddress->setOnchange("validateField(this, true)");
         $this->objEdtEmailAddress->setOnkeyup("setDirtyRecord()");                            
         // $this->getFormGenerator()->add($this->objEdtEmailAddress, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_emailaddress', 'Email address (encrypted, not searchable)')); 
@@ -299,42 +313,48 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->getFormGenerator()->add($this->objEdtPhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (encrypted, not searchable)')); 
         $this->getFormGenerator()->addArray(array($this->objSelCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
     
-            //billing: address line 2
-        $this->objEdtBillingAddressLine2 = new InputText();
-        $this->objEdtBillingAddressLine2->setNameAndID('edtBillingAddressLine2');
-        $this->objEdtBillingAddressLine2->setClass('fullwidthtag');                         
-        $this->objEdtBillingAddressLine2->setMaxLength(100);    
+            //billing: address line 2: street
+        $this->objEdtBillingAddressMisc = new InputText();
+        $this->objEdtBillingAddressMisc->setNameAndID('edtBillingAddressLineStreet');
+        $this->objEdtBillingAddressMisc->setClass('fullwidthtag');                         
+        $this->objEdtBillingAddressMisc->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
-        $this->objEdtBillingAddressLine2->addValidator($objValidator);          
-        $this->objEdtBillingAddressLine2->setOnchange("validateField(this, true)");
-        $this->objEdtBillingAddressLine2->setOnkeyup("setDirtyRecord()");                            
-        // $this->getFormGenerator()->add($this->objEdtBillingAddressLine2, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressLine2, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet', 'Street + house number (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet_iconinfo', 'Street and house number is encrypted, thus not searchable.'));
+        $this->objEdtBillingAddressMisc->addValidator($objValidator); 
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtBillingAddressMisc->addValidator($objValidator);                     
+        $this->objEdtBillingAddressMisc->setOnchange("validateField(this, true)");
+        $this->objEdtBillingAddressMisc->setOnkeyup("setDirtyRecord()");                            
+        // $this->getFormGenerator()->add($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet', 'Street + house number (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet_iconinfo', 'Street and house number is encrypted, thus not searchable.'));
 
 
-            //billing: address line 1
-        $this->objEdtBillingAddressLine1 = new InputText();
-        $this->objEdtBillingAddressLine1->setNameAndID('edtBillingAddressLine1');
-        $this->objEdtBillingAddressLine1->setClass('fullwidthtag');                         
-        $this->objEdtBillingAddressLine1->setMaxLength(100);    
+            //billing: address line 1: misc
+        $this->objEdtBillingAddressStreet = new InputText();
+        $this->objEdtBillingAddressStreet->setNameAndID('edtBillingAddressLineMisc');
+        $this->objEdtBillingAddressStreet->setClass('fullwidthtag');                         
+        $this->objEdtBillingAddressStreet->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
-        $this->objEdtBillingAddressLine1->addValidator($objValidator);    
-        $this->objEdtBillingAddressLine1->setOnchange("validateField(this, true)");
-        $this->objEdtBillingAddressLine1->setOnkeyup("setDirtyRecord()");                            
-        // $this->getFormGenerator()->add($this->objEdtBillingAddressLine1, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressLine1, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc', 'Extra address info (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.'));
+        $this->objEdtBillingAddressStreet->addValidator($objValidator);    
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtBillingAddressStreet->addValidator($objValidator);                     
+        $this->objEdtBillingAddressStreet->setOnchange("validateField(this, true)");
+        $this->objEdtBillingAddressStreet->setOnkeyup("setDirtyRecord()");                            
+        // $this->getFormGenerator()->add($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc', 'Extra address info (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.'));
 
             
             //billing: postal code or zip
-        $this->objEdtBillingPostalCodeZip = new InputText();
-        $this->objEdtBillingPostalCodeZip->setNameAndID('edtBillingPostalCode');
-        // $this->objEdtBillingPostalCodeZip->setClass('fullwidthtag');                         
-        $this->objEdtBillingPostalCodeZip->setMaxLength(10);    
+        $this->objEdtBillingPostalCode = new InputText();
+        $this->objEdtBillingPostalCode->setNameAndID('edtBillingPostalCode');
+        // $this->objEdtBillingPostalCode->setClass('fullwidthtag');                         
+        $this->objEdtBillingPostalCode->setMaxLength(10);    
         $objValidator = new Maximumlength(10);
-        $this->objEdtBillingPostalCodeZip->addValidator($objValidator);          
-        $this->objEdtBillingPostalCodeZip->setOnchange("validateField(this, true)");
-        $this->objEdtBillingPostalCodeZip->setOnkeyup("setDirtyRecord()");                            
-        $this->getFormGenerator()->add($this->objEdtBillingPostalCodeZip, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip (encrypted)')); 
+        $this->objEdtBillingPostalCode->addValidator($objValidator);          
+        $objValidator = new TUppercase();
+        $this->objEdtBillingPostalCode->addValidator($objValidator);          
+        $this->objEdtBillingPostalCode->setOnchange("validateField(this, true)");
+        $this->objEdtBillingPostalCode->setOnkeyup("setDirtyRecord()");                            
+        $this->getFormGenerator()->add($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //billing: city
         $this->objEdtBillingCity = new InputText();
@@ -342,7 +362,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingCity->setClass('fullwidthtag');                         
         $this->objEdtBillingCity->setMaxLength(50);    
         $objValidator = new Maximumlength(50);
-        $this->objEdtBillingCity->addValidator($objValidator);          
+        $this->objEdtBillingCity->addValidator($objValidator);    
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtBillingCity->addValidator($objValidator);           
         $this->objEdtBillingCity->setOnchange("validateField(this, true)");
         $this->objEdtBillingCity->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtBillingCity, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcity', 'City')); 
@@ -354,6 +376,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingStateRegion->setMaxLength(50);    
         $objValidator = new Maximumlength(50);
         $this->objEdtBillingStateRegion->addValidator($objValidator);          
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtBillingStateRegion->addValidator($objValidator);           
         $this->objEdtBillingStateRegion->setOnchange("validateField(this, true)");
         $this->objEdtBillingStateRegion->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingstateregion', 'State/region')); 
@@ -403,29 +427,33 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
                             
     
             //delivery: address line 2
-        $this->objEdtDeliveryAddressLine2 = new InputText();
-        $this->objEdtDeliveryAddressLine2->setNameAndID('edtDeliveryAddressLine2');
-        $this->objEdtDeliveryAddressLine2->setClass('fullwidthtag');                         
-        $this->objEdtDeliveryAddressLine2->setMaxLength(100);    
+        $this->objEdtDeliveryAddressStreet = new InputText();
+        $this->objEdtDeliveryAddressStreet->setNameAndID('edtDeliveryAddressLineStreet');
+        $this->objEdtDeliveryAddressStreet->setClass('fullwidthtag');                         
+        $this->objEdtDeliveryAddressStreet->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
-        $this->objEdtDeliveryAddressLine2->addValidator($objValidator);          
-        $this->objEdtDeliveryAddressLine2->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryAddressLine2->setOnkeyup("setDirtyRecord()");          
-        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressLine2, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressLine2, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET_iconinfo', 'Address is encrypted, thus not searchable.'));
+        $this->objEdtDeliveryAddressStreet->addValidator($objValidator); 
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtDeliveryAddressStreet->addValidator($objValidator);                    
+        $this->objEdtDeliveryAddressStreet->setOnchange("validateField(this, true)");
+        $this->objEdtDeliveryAddressStreet->setOnkeyup("setDirtyRecord()");          
+        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET_iconinfo', 'Address is encrypted, thus not searchable.'));
 
 
             //delivery: address line 1
-        $this->objEdtDeliveryAddressLine1 = new InputText();
-        $this->objEdtDeliveryAddressLine1->setNameAndID('edtDeliveryAddressLine1');
-        $this->objEdtDeliveryAddressLine1->setClass('fullwidthtag');                         
-        $this->objEdtDeliveryAddressLine1->setMaxLength(100);    
+        $this->objEdtDeliveryAddressMisc = new InputText();
+        $this->objEdtDeliveryAddressMisc->setNameAndID('edtDeliveryAddressLineMisc');
+        $this->objEdtDeliveryAddressMisc->setClass('fullwidthtag');                         
+        $this->objEdtDeliveryAddressMisc->setMaxLength(100);    
         $objValidator = new Maximumlength(100);
-        $this->objEdtDeliveryAddressLine1->addValidator($objValidator);       
-        $this->objEdtDeliveryAddressLine1->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryAddressLine1->setOnkeyup("setDirtyRecord()");          
-        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressLine1, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressLine2, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Extra address info (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.'));
+        $this->objEdtDeliveryAddressMisc->addValidator($objValidator);  
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtDeliveryAddressMisc->addValidator($objValidator);             
+        $this->objEdtDeliveryAddressMisc->setOnchange("validateField(this, true)");
+        $this->objEdtDeliveryAddressMisc->setOnkeyup("setDirtyRecord()");          
+        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Extra address info (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.'));
 
             
             //delivery: postal code or zip
@@ -434,7 +462,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtDeliveryPostalCodeZip->setClass('fullwidthtag');                         
         $this->objEdtDeliveryPostalCodeZip->setMaxLength(10);    
         $objValidator = new Maximumlength(10);
-        $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);          
+        $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);   
+        $objValidator = new TUppercase();
+        $this->objEdtDeliveryPostalCodeZip->addValidator($objValidator);                   
         $this->objEdtDeliveryPostalCodeZip->setOnchange("validateField(this, true)");
         $this->objEdtDeliveryPostalCodeZip->setOnkeyup("setDirtyRecord()");         
         $this->getFormGenerator()->add($this->objEdtDeliveryPostalCodeZip, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip (encrypted)')); 
@@ -446,6 +476,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryCity->setMaxLength(50);    
         $objValidator = new Maximumlength(50);
         $this->objEdtDeliveryCity->addValidator($objValidator);   
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtDeliveryCity->addValidator($objValidator);          
         $this->objEdtDeliveryCity->setOnchange("validateField(this, true)");
         $this->objEdtDeliveryCity->setOnkeyup("setDirtyRecord()");                     
         $this->getFormGenerator()->add($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycity', 'City')); 
@@ -457,6 +489,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryStateRegion->setMaxLength(50);    
         $objValidator = new Maximumlength(50);
         $this->objEdtDeliveryStateRegion->addValidator($objValidator);    
+        $objValidator = new TUppercaseFirstChar();
+        $this->objEdtDeliveryStateRegion->addValidator($objValidator);             
         $this->objEdtDeliveryStateRegion->setOnchange("validateField(this, true)");
         $this->objEdtDeliveryStateRegion->setOnkeyup("setDirtyRecord()");                     
         $this->getFormGenerator()->add($this->objEdtDeliveryStateRegion, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverystateregion', 'State/region')); 
@@ -531,9 +565,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->set(TSysContacts::FIELD_FIRSTCONTACT, $this->objDTFirstContact->getValueSubmittedAsTDateTimeISO());
         $this->getModel()->set(TSysContacts::FIELD_LASTCONTACT, $this->objDTLastContact->getValueSubmittedAsTDateTimeISO());
 
-        $this->getModel()->set(TSysContacts::FIELD_BILLINGADDRESSMISC, $this->objEdtBillingAddressLine1->getValueSubmitted(), '', true);
-        $this->getModel()->set(TSysContacts::FIELD_BILLINGADDRESSSTREET, $this->objEdtBillingAddressLine2->getValueSubmitted(), '', true);
-        $this->getModel()->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, $this->objEdtBillingPostalCodeZip->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_BILLINGADDRESSMISC, $this->objEdtBillingAddressStreet->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_BILLINGADDRESSSTREET, $this->objEdtBillingAddressMisc->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, $this->objEdtBillingPostalCode->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_BILLINGCITY, $this->objEdtBillingCity->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGSTATEREGION, $this->objEdtBillingStateRegion->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGCOUNTRYID, $this->objSelBillingCountryID->getValueSubmittedAsInt());
@@ -541,8 +575,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->setBillingEmailAddressDecrypted($this->objEdtBillingEmailAddress->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, $this->objEdtBillingBankAccountNo->getValueSubmitted(), '', true);
 
-        $this->getModel()->set(TSysContacts::FIELD_DELIVERYADDRESSMISC, $this->objEdtDeliveryAddressLine1->getValueSubmitted(), '', true);
-        $this->getModel()->set(TSysContacts::FIELD_DELIVERYADDRESSSTREET, $this->objEdtDeliveryAddressLine2->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_DELIVERYADDRESSMISC, $this->objEdtDeliveryAddressMisc->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_DELIVERYADDRESSSTREET, $this->objEdtDeliveryAddressStreet->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, $this->objEdtDeliveryPostalCodeZip->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYCITY, $this->objEdtDeliveryCity->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYSTATEREGION, $this->objEdtDeliveryStateRegion->getValueSubmitted());
@@ -588,9 +622,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objDTLastContact->setValueAsTDateTime($this->getModel()->get(TSysContacts::FIELD_LASTCONTACT));
 
         //billing adress
-        $this->objEdtBillingAddressLine1->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGADDRESSMISC, '', true));
-        $this->objEdtBillingAddressLine2->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGADDRESSSTREET, '', true));
-        $this->objEdtBillingPostalCodeZip->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, '', true));
+        $this->objEdtBillingAddressStreet->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGADDRESSMISC, '', true));
+        $this->objEdtBillingAddressMisc->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGADDRESSSTREET, '', true));
+        $this->objEdtBillingPostalCode->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, '', true));
         $this->objEdtBillingCity->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGCITY));
         $this->objEdtBillingStateRegion->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGSTATEREGION));
         if ($this->getModel()->getNew())//country default or existing id
@@ -602,8 +636,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingBankAccountNo->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, '', true));
 
         //delivery address
-        $this->objEdtDeliveryAddressLine1->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYADDRESSMISC, '', true));
-        $this->objEdtDeliveryAddressLine2->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYADDRESSSTREET, '', true));
+        $this->objEdtDeliveryAddressMisc->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYADDRESSMISC, '', true));
+        $this->objEdtDeliveryAddressStreet->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYADDRESSSTREET, '', true));
         $this->objEdtDeliveryPostalCodeZip->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, '', true));
         $this->objEdtDeliveryCity->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYCITY));
         $this->objEdtDeliveryStateRegion->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYSTATEREGION));

@@ -38,11 +38,18 @@
     - number filter geeft met integer ook .0000 terug'
     - na <enter> in quicksearch field gefocussed blijven op quicksearch field
 * corrigeren contacten invoer
-* labels component
-
+    * bic toevoegen
+    * aanhef toevoegen
+    * verwijderen error css class na corrigeren fout
+    * onchange en onkey automatisch aan ieder veld toevoegen
+* labels component maken
+* rename validators => T
 
 ## 10 okt 2025:
 * generateNiceid() geeft nu nummers ipv characters en nummers
+* contacts: eerste letter hoofdletter converteren
+* contacts: alles naar hoofdletter converteren
+* contacts: alles naar kleine letter converteren
 
 
 ## 9 okt 2025:
