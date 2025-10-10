@@ -56,6 +56,9 @@
 * salutations als aparte tabel
 * TSysContacts heeft geen parent TsysContactAbstract meer
 * added: TSysContacts: createContactDefaultsDB() voor snelle contact creatie
+* TSysContacts: nederlandse postcodes worden gecorrigeerd bij het saven
+* TSysContacts: nederlandse telefoonnummers worden gecorrigeerd bij het saven
+* detailsave_contacts: velden worden nu allemaal gefilterd of verkeerde karakters
 
 
 ## 9 okt 2025:

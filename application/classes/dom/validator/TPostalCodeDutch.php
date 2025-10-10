@@ -43,46 +43,7 @@ class TPostalCodeDutch extends ValidatorAbstract
 	 */
 	public function filterValue($mFormInput)
 	{
-		$sDigits = '1234';
-		$sChars = 'AB';
-		$iStartPosChars = 0;
-
-		//can be empty --> cancel further execution
-		if ($this->bIgnoreEmpty)
-		{
-			if ($mFormInput  == '')
-				return '';
-		}
-
-		//restrict length to 7 max
-		if (strlen($mFormInput) > 7)
-		{
-			$mFormInput = substr($mFormInput, 0, 7);
-		}
-
-		//uppercase
-		$mFormInput = strtoupper($mFormInput);
-
-		//digits
-		$sDigits = substr($mFormInput, 0, 4);
-		$sDigits = filterBadCharsWhiteList($sDigits, '0123456789');
-		$sDigits = str_pad($sDigits, 4, '0');
-
-
-		//alphabetical chars
-		if (strlen($mFormInput) > 4)
-		{
-			if ($mFormInput[4] == ' ')
-				$iStartPosChars = 5;
-			else
-				$iStartPosChars = 4;
-			$sChars = substr($mFormInput, $iStartPosChars, 2);
-			$sChars = filterBadCharsWhiteList($sChars, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-		}
-		$sChars = str_pad($sChars, 2, 'A');
-
-
-		return $sDigits.' '.$sChars; 
+		return formatPostalCodeDutch($mFormInput, $this->bIgnoreEmpty);
 	}
 }
 ?>

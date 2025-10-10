@@ -54,7 +54,7 @@ class TSysContactsLastNamePrefixes extends TSysModel
 
 				//default
 				$this->newRecord();
-				$this->setName('');				
+				$this->setName('[none]');				
 				$this->setIsDefault(true);
 				$this->setIsFavorite(true);
 				if (!$this->saveToDB())

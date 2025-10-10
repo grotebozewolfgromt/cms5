@@ -43,11 +43,7 @@ class TPhoneNumberDutch extends ValidatorAbstract
 
 	public function filterValue($mFormInput)
 	{	
-		if ($this->bIgnoreEmpty)
-			if ($mFormInput == '')
-				return '';
-
-		return filterBadCharsWhiteList($mFormInput, "0123456789- +()");
+		return formatPhoneNumberDutch($mFormInput, $this->bIgnoreEmpty);
 	}
 }
 ?>

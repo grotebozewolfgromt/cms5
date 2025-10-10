@@ -1,30 +1,8 @@
 UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
-overview_column_iID;Id;Id
-overview_column_sNiceID;Nice Id;Nice Id
-overview_column_sCustomID;Custom id;Custom id
-overview_column_sCompanyName;Company;Company
-overview_column_sFirstNameInitials;Initials;Initials
-overview_column_sLastName;Last name;Last name
-overview_column_sBillingAddressStreet;Address;Address
-overview_column_sBillingZipPostalCode;Postal/zip;Postal/zip
-overview_column_sBillingCity;City;City
-dbfilter_column_sCompanyName;Company name;Company name
-dbfilter_column_sCustomID;Custom Id;Custom Id
-dbfilter_column_iID;Record Id;Record Id
-dbfilter_column_sUniqueID;Unique Id;Unique Id
-dbfilter_column_sNiceID;Nice Id;Nice Id
-dbfilter_column_sNotes;Notes;Notes
-dbfilter_column_dtFirstContact;First contact;First contact
-dbfilter_column_dtLastContact;Last contact;Last contact
-dbfilter_column_sBillingCity;City (billing);City (billing)
-dbfilter_column_sDeliveryCity;City (delivery);City (delivery)
-dbfilter_column_sSearchKeywords;Search keywords;Search keywords
-modulename_title;Contacts;Contacts
-menuitem_modulename;Contacts;Contacts
 form_section_business;Business;Business
 form_section_identification;Indentification;Indentification
 form_section_personal;Personal;Personal
-form_section_billing;Billing;Billing
+form_section_billing;Address;Address
 form_section_delivery;Delivery;Delivery
 form_section_misc;Miscellaneous;Miscellaneous
 form_field_isclient;is client;is client
@@ -42,11 +20,13 @@ form_field_searchkeywords_iconinfo;Enter search keywords to find this contact.<b
 form_field_companyname;Company name;Company name
 form_field_chamberofcommerceno;Chamber of commerce # (encrypted);Chamber of commerce # (encrypted)
 form_field_chamberofcommerceno_iconinfo;Chamber of commerce registration number.<br>This data encrypted, thus not searchable.;Chamber of commerce registration number.<br>This data encrypted, thus not searchable.
+form_field_salutations;Salutation;Salutation
+form_field_salutation_iconinfo;How do you whish to address this contact? Mr. Mrs. Ms.;How do you whish to address this contact? Mr. Mrs. Ms.
 form_field_firstnameinitials;Initials;Initials
+form_field_lastnameprefix;Last name prefix;Last name prefix
+form_field_lastnameprefix_iconinfo;Like: van de, van, von der etc, von;Like: van de, van, von der etc, von
 form_field_lastname;Last name (encrypted);Last name (encrypted)
 form_field_lastname_iconinfo;Last name.<br>This data encrypted, thus not searchable.;Last name.<br>This data encrypted, thus not searchable.
-form_field_lastnameprefix;Last name prefix;Last name prefix
-form_field_lastnameprefix_iconinfo;Like: van de, von der etc, von.<br>This data not encrypted, thus searchable.;Like: van de, von der etc, von.<br>This data not encrypted, thus searchable.
 form_field_emailaddress;Email address (encrypted);Email address (encrypted)
 form_field_emailaddress_iconinfo;Email address is encrypted, thus not searchable.;Email address is encrypted, thus not searchable.
 form_field_phonenumber1;Phone number 1 (including area code, starting with 0);Phone number 1 (including area code, starting with 0)
@@ -82,3 +62,25 @@ pagetitle_detailsave_contact_edit;Edit contact: [contact]<dr-icon-info>To comply
 detailsave_button_exit;Exit;Exit
 detailsavetemplate_button_save;Save;Save
 detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
+menuitem_modulename;Contacts;Contacts
+overview_column_iID;Id;Id
+overview_column_sNiceID;Nice Id;Nice Id
+overview_column_sCustomID;Custom id;Custom id
+overview_column_sCompanyName;Company;Company
+overview_column_sFirstNameInitials;Initials;Initials
+overview_column_sLastName;Last name;Last name
+overview_column_sBillingAddressStreet;Address;Address
+overview_column_sBillingZipPostalCode;Postal/zip;Postal/zip
+overview_column_sBillingCity;City;City
+dbfilter_column_sCompanyName;Company name;Company name
+dbfilter_column_sCustomID;Custom Id;Custom Id
+dbfilter_column_iID;Record Id;Record Id
+dbfilter_column_sUniqueID;Unique Id;Unique Id
+dbfilter_column_sNiceID;Nice Id;Nice Id
+dbfilter_column_sNotes;Notes;Notes
+dbfilter_column_dtFirstContact;First contact;First contact
+dbfilter_column_dtLastContact;Last contact;Last contact
+dbfilter_column_sBillingCity;City (billing);City (billing)
+dbfilter_column_sDeliveryCity;City (delivery);City (delivery)
+dbfilter_column_sSearchKeywords;Search keywords;Search keywords
+modulename_title;Contacts;Contacts

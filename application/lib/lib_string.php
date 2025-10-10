@@ -1770,6 +1770,107 @@ function filterAccents($sStringWithAccents)
 {
     return collateString($sStringWithAccents);
 }
+
+/**
+ * formats a dutch postal code
+ */
+function formatPostalCodeDutch($sDirtyPostalCode, $bIgnoreEmpty = true)
+{
+    $sDigits = '1234';
+    $sChars = 'AB';
+    $iStartPosChars = 0;
+
+    //can be empty --> cancel further execution
+    if ($bIgnoreEmpty)
+    {
+        if ($sDirtyPostalCode  == '')
+            return '';
+    }
+
+    //restrict length to 7 max
+    if (strlen($sDirtyPostalCode) > 7)
+    {
+        $sDirtyPostalCode = substr($sDirtyPostalCode, 0, 7);
+    }
+
+    //uppercase
+    $sDirtyPostalCode = strtoupper($sDirtyPostalCode);
+
+    //digits
+    $sDigits = substr($sDirtyPostalCode, 0, 4);
+    $sDigits = filterBadCharsWhiteList($sDigits, '0123456789');
+    $sDigits = str_pad($sDigits, 4, '0');
+
+
+    //alphabetical chars
+    if (strlen($sDirtyPostalCode) > 4)
+    {
+        if ($sDirtyPostalCode[4] == ' ')
+            $iStartPosChars = 5;
+        else
+            $iStartPosChars = 4;
+        $sChars = substr($sDirtyPostalCode, $iStartPosChars, 2);
+        $sChars = filterBadCharsWhiteList($sChars, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    }
+    $sChars = str_pad($sChars, 2, 'A');
+
+	return $sDigits.' '.$sChars;     
+}
+
+/**
+ * formats a dutch postal code
+ */
+function formatPhoneNumberDutch($sDirtyPhoneNumber, $bIgnoreEmpty = true)
+{
+    $sPhoneNumber = '';
+    $arrKeys = array();
+    $sDirtyPart = '';
+    $sCleanPart = '';
+    $iLenReplaceArray = 0;
+    $iLenDirtyPart = 0;
+    $iLenPhoneNumber = 0;
+
+    //can be empty --> cancel further execution
+    if ($bIgnoreEmpty)
+    {
+        if ($sDirtyPhoneNumber  == '')
+            return '';
+    }
+
+    //basic cleanup
+    $sPhoneNumber = filterBadCharsWhiteList($sDirtyPhoneNumber, WHITELIST_ALPHANUMERIC.' -');
+
+    //define start string and replacement
+    $arrReplaceStartString = array(
+        '06' => '06 - ',
+        '026' => '026 - ',
+        '024' => '024 - ',
+        '073' => '073 - ',
+    );
+
+    //replace first part of string
+    $iLenPhoneNumber = strlen($sPhoneNumber);
+    $arrKeys = array_keys($arrReplaceStartString);
+    $iLenReplaceArray  = count($arrReplaceStartString);
+    for ($iIndex = 0; $iIndex < $iLenReplaceArray; ++$iIndex)
+    {
+        $sDirtyPart = $arrKeys[$iIndex];
+        $sCleanPart = $arrReplaceStartString[$arrKeys[$iIndex]];
+        $iLenDirtyPart = strlen($sDirtyPart);
+
+        if (str_starts_with($sDirtyPhoneNumber, $sDirtyPart))
+        {
+            if (!str_starts_with($sDirtyPhoneNumber, $sCleanPart)) //exclude string that are already sanitized
+            {
+                $sPhoneNumber = $sCleanPart.ltrim(substr($sPhoneNumber, $iLenDirtyPart, $iLenPhoneNumber-$iLenDirtyPart));
+                return $sPhoneNumber; //exit
+            }
+        }
+    }
+
+    return $sPhoneNumber;
+}
+
 ?>
 
 

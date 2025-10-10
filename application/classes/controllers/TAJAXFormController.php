@@ -334,7 +334,7 @@ abstract class TAJAXFormController
   
 
     /**
-     * You can check a field if it valid
+     * You can check a field if is valid
      * Then it looks at the validators
      */
     protected function handleValidateField()
@@ -344,6 +344,7 @@ abstract class TAJAXFormController
         $arrFGElements = array(); //FG = Form Generator
         $sFilteredValue = '';
         $iCountVal = 0;
+        $arrJSONResponse = array();
         
         //although the code of both arrays (internal + form generator) is the same, the array structure is NOT the same
 
