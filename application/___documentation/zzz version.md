@@ -50,6 +50,7 @@
 * contacts: eerste letter hoofdletter converteren
 * contacts: alles naar hoofdletter converteren
 * contacts: alles naar kleine letter converteren
+* bugfix: ajaxform.js: removeAllInputErrors() verwijderde de css class niet
 
 
 ## 9 okt 2025:

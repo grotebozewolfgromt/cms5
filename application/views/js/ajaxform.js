@@ -585,7 +585,8 @@ function validateField(objHTMLElement, bReplaceByFilteredValue = false)
  */
 function removeAllInputErrors()
 {
-    const arrErrFields = document.getElementsByClassName("formsection-line");
+    // const arrErrFields = document.getElementsByClassName("formsection-line");
+    const arrErrFields = document.getElementsByClassName("formsection-line-error");
     const arrErrLists = document.getElementsByClassName("formsection-line-errorlist");
     const iLenFields = arrErrFields.length;
     const iLenLists= arrErrLists.length;
