@@ -218,7 +218,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtCompanyName->addValidator($objValidator);     
         $this->objEdtCompanyName->setOnchange("validateField(this, true)");
-        $this->objEdtCompanyName->setOnkeyup("setDirtyRecord()");               
+        // $this->objEdtCompanyName->setOnkeyup("setDirtyRecord()");               
         $this->getFormGenerator()->add($this->objEdtCompanyName, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_companyname', 'Company name')); 
 
             //chamber of commerce number

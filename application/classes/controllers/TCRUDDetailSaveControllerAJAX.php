@@ -43,7 +43,6 @@ namespace dr\classes\controllers;
  * -getTemplatePath() returns now: return APP_PATH_CMS_TEMPLATES.DIRECTORY_SEPARATOR.'tpl_modeldetailsaveajax.php';
  * -for each field add:
  *      $this->objEditLocale->setOnchange("validateField(this, true)");
- *      $this->objEditLocale->setOnkeyup("setDirtyRecord()");  
  * -$this->getModule() ==> CMS_CURRENTMODULE
  * 
  * 

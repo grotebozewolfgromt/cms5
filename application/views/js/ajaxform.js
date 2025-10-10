@@ -28,24 +28,14 @@ var iRecordID = <?php echo $iRecordID ?>; //-1 means: no ID assigned
 var bIgnoreInput = false; //ignore all input, for example when saving
 var bIgnorePageExit = false; //we always want to warn the user
 var arrAdditionalFields = []; //associative array where a key-value pair represents htmlfieldid (=key) and value (=value). format: arrAdditionalFields['edtFirstName'] = 'Hank'; 
-
-/**
- * make sure we set iRecordID when it is in url
- */
-// let iTempID = getValueFromURL("<?php echo ACTION_VARIABLE_ID ?>");
-// if (isInt(iTempID))
-// {
-//     if (strToInt(iTempID) > 0)
-//     {
-//         iRecordID = strToInt(iTempID);
-//     }
-// }
-// iTempID = 0;//reset
+var objAbortController = new AbortController();
+var objAbortControllerForm = new AbortController();
 
 /**
  * attach event listeners
  */
-window.addEventListener("beforeunload", onPageAFCExit);
+window.addEventListener("beforeunload", onPageAFCExit, { signal: this.objAbortController.signal });
+window.addEventListener("load", onPageLoad, { signal: this.objAbortController.signal });
 
 /**
  * prevent user from leaving when page is dirty
@@ -56,7 +46,83 @@ function onPageAFCExit(objEvent)
         return;
 
     if (bDirtyRecord)
-        objEvent.preventDefault();
+    {
+        objEvent.preventDefault();//stop exiting page
+    }
+    else //exit page
+    {
+        objAbortController.abort();
+        objAbortControllerForm.abort();
+    }
+
+
+};
+
+
+/**
+ * is called when page is fully loaded
+ */
+function onPageLoad(objEvent)
+{
+    let objElement = null;
+    let sElementValue = "";
+    
+    //==== attach events to form elements
+    // Construct a FormData instance
+    const objFormElement = document.getElementsByName("<?php echo $sFormName; ?>")[0];
+    const objFormData = new FormData(objFormElement);
+
+    // Display the key/value pairs
+    for (const arrPair of objFormData.entries()) 
+    {
+        objElement = document.getElementsByName(arrPair[0])[0];
+        sElementValue = arrPair[1];
+
+        console.log(objElement, sElementValue, arrPair);
+        if (objElement != null)
+        {
+            //CHANGE: for every element
+            objElement.addEventListener("change", ()=> 
+            {
+                console.log("Auto change-event was triggered");
+                setDirtyRecord(); //mark record as dirty
+            }, { signal: this.objAbortControllerForm.signal });         
+
+            //KEYUP: special treatment text input elements
+            switch(objElement.type)
+            {
+                case "text":
+                    console.log("attach keyup", objElement);
+                    objElement.addEventListener("keyup", ()=> 
+                    {
+                        console.log("Auto keyup-event was triggered");
+                        setDirtyRecord(); //mark record as dirty
+                    }, { signal: this.objAbortControllerForm.signal });          
+                    break;
+            }
+
+            //KEYUP: special treatment for other text input elements
+            switch(objElement.tagName.toLocaleLowerCase())
+            {
+                case "textarea":
+                    console.log("attach keyup", objElement);
+                    objElement.addEventListener("keyup", ()=> 
+                    {
+                        console.log("Auto keyup-event was triggered");
+                        setDirtyRecord(); //mark record as dirty
+                    }, { signal: this.objAbortControllerForm.signal });   
+                    break;
+            }     
+
+        }
+        else
+            console.warn("onPageLoad(): objElement is null", arrPair[0], arrPair[1], arrPair);
+ 
+    }
+
+    //@todo: request checkboxes and see if they have parent form
+    //checkboxes only exist when they are checked, hence event listeners are not attached
+    
 };
 
 
