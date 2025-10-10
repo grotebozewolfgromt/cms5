@@ -38,6 +38,7 @@
     - number filter geeft met integer ook .0000 terug'
     - na <enter> in quicksearch field gefocussed blijven op quicksearch field
 * corrigeren contacten invoer
+* labels component
 
 
 ## 10 okt 2025:
