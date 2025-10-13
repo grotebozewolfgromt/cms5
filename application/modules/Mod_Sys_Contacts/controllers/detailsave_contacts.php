@@ -141,32 +141,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $sFormSectionMisc = transm(CMS_CURRENTMODULE, 'form_section_misc', 'Miscellaneous');
 
 
-            //is client
-        $this->objChkIsClient = new InputCheckbox();
-        $this->objChkIsClient->setNameAndID('chkIsClient');
-        $this->objChkIsClient->setOnkeyup("setDirtyRecord()");          
-        $this->getFormGenerator()->add($this->objChkIsClient, '', transm(CMS_CURRENTMODULE, 'form_field_isclient', 'is client'));   
-            
-            //is supplier
-        $this->objChkIsSupplier = new InputCheckbox();
-        $this->objChkIsSupplier->setNameAndID('chkIsSupplier');
-        $this->objChkIsSupplier->setOnkeyup("setDirtyRecord()");                  
-        $this->getFormGenerator()->add($this->objChkIsSupplier,  '', transm(CMS_CURRENTMODULE, 'form_field_issupplier', 'is supplier'));         
-    
-
-            //on mailing list
-        $this->objChkOnMailingList = new InputCheckbox();
-        $this->objChkOnMailingList->setNameAndID('chkOnMailingList');
-        $this->objChkOnMailingList->setOnkeyup("setDirtyRecord()");                          
-        $this->getFormGenerator()->add($this->objChkOnMailingList, '', transm(CMS_CURRENTMODULE, 'form_field_onmailinglist', 'on mailing list'));   
-        
-                //on black list
-        $this->objChkOnBlackList = new InputCheckbox();
-        $this->objChkOnBlackList->setNameAndID('chkOnBlackList');
-        $this->objChkOnBlackList->setOnkeyup("setDirtyRecord()");                                  
-        $this->getFormGenerator()->add($this->objChkOnBlackList, '', transm(CMS_CURRENTMODULE, 'form_field_onblacklist', 'on blacklist'));   
-    
-
             //record id
         $this->objEdtRecordId = new InputText();
         $this->objEdtRecordId->setNameAndID('edtRecordId');
@@ -518,6 +492,33 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objSelDeliveryCountryID->setNameAndID('optDeliveryCountryID');
         $this->getFormGenerator()->add($this->objSelDeliveryCountryID, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycountry', 'Country'));
                
+
+            //is client
+        $this->objChkIsClient = new InputCheckbox();
+        $this->objChkIsClient->setNameAndID('chkIsClient');
+        $this->objChkIsClient->setOnkeyup("setDirtyRecord()");          
+        $this->getFormGenerator()->add($this->objChkIsClient, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_isclient', 'is client'));   
+            
+            //is supplier
+        $this->objChkIsSupplier = new InputCheckbox();
+        $this->objChkIsSupplier->setNameAndID('chkIsSupplier');
+        $this->objChkIsSupplier->setOnkeyup("setDirtyRecord()");                  
+        $this->getFormGenerator()->add($this->objChkIsSupplier,  $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_issupplier', 'is supplier'));         
+    
+
+            //on mailing list
+        $this->objChkOnMailingList = new InputCheckbox();
+        $this->objChkOnMailingList->setNameAndID('chkOnMailingList');
+        $this->objChkOnMailingList->setOnkeyup("setDirtyRecord()");                          
+        $this->getFormGenerator()->add($this->objChkOnMailingList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onmailinglist', 'on mailing list'));   
+        
+                //on black list
+        $this->objChkOnBlackList = new InputCheckbox();
+        $this->objChkOnBlackList->setNameAndID('chkOnBlackList');
+        $this->objChkOnBlackList->setOnkeyup("setDirtyRecord()");                                  
+        $this->getFormGenerator()->add($this->objChkOnBlackList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onblacklist', 'on blacklist'));   
+    
+
 
             //first contact
         $this->objDTFirstContact = new DRInputDateTime();
