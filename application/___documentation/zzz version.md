@@ -50,11 +50,11 @@
 * dr-input-date + dr-input-time: ADD: focusout triggert een 'change'-event wanneer waarde gewijzigd
 * ajaxform.js: validateField() default replace is false
 * ajaxform.js: validateField() supports validation via extern form field
+* ajaxform.js: onPageLoad() als al 'onchange' of 'onkeyup' of 'readonly' attribute, dan eventlistener niet toevoegen
 
-* todo: als al 'onchange' of 'onkeyup' attribute, dan eventlistener niet toevoegen
 * todo: setOnkeyup("setDirtyRecord()"); verwijderen in alle detailsave_ schermen
 * validate field automatisch attachen
-extra veld bij validate field kunnen toevoegen
+extra veld bij validate field kunnen toevoegen bij detailsave
 contactdetail: checkboxen naar beneden verplaatsen
 veld: mag op rekening kopen
 
