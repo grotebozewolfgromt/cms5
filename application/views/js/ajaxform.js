@@ -61,6 +61,8 @@ function onPageAFCExit(objEvent)
 
 /**
  * is called when page is fully loaded
+ * 
+ * this function attached event listeners to form objects
  */
 function onPageLoad(objEvent)
 {
@@ -85,34 +87,46 @@ function onPageLoad(objEvent)
             switch(objElement.type)
             {
                 case "text":
-                    console.log("attach keyup", objElement);
-                    objElement.addEventListener("keyup", ()=> 
+                    if ((objElement.getAttribute("onkeyup") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                     {
-                        console.log("Auto keyup-event was triggered");
-                        setDirtyRecord(); //mark record as dirty
-                    }, { signal: this.objAbortControllerForm.signal });          
-                    break;
-                case "checkbox":
-                    //do nothing: we deal with them later
-                    //it prevents us from going to default
-                    break;
-                default:
-                    if (objElement.tagName.toLocaleLowerCase() == "textarea") //textarea has no type
-                    {
-                        console.log("attach keyup", objElement);
+                        console.log("attach keyup", objElement, objElement.getAttribute("onkeyup"));
+
                         objElement.addEventListener("keyup", ()=> 
                         {
                             console.log("Auto keyup-event was triggered");
                             setDirtyRecord(); //mark record as dirty
-                        }, { signal: this.objAbortControllerForm.signal });   
+                        }, { signal: this.objAbortControllerForm.signal });          
+                        break;
+                    }
+                    else
+                        console.log("keyup not attached", objElement, objElement.getAttribute("onkeyup"));
+                case "checkbox":
+                    //do nothing: we deal with them later
+                    //it prevents us from going to default
+                    break;
+                default: //all OTHER elements
+                    if (objElement.tagName.toLocaleLowerCase() == "textarea") //textarea has no type
+                    {
+                        // console.log("attach keyup", objElement);                        
+                        if ((objElement.getAttribute("onkeyup") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
+                        {
+                            objElement.addEventListener("keyup", ()=> 
+                            {
+                                console.log("Auto keyup-event was triggered");
+                                setDirtyRecord(); //mark record as dirty
+                            }, { signal: this.objAbortControllerForm.signal });   
+                        }
                     }
                     else //all other elements
                     {
-                        objElement.addEventListener("change", ()=> 
+                        if ((objElement.getAttribute("onchange") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                         {
-                            console.log("Auto change-event was triggered");
-                            setDirtyRecord(); //mark record as dirty
-                        }, { signal: this.objAbortControllerForm.signal });
+                            objElement.addEventListener("change", ()=> 
+                            {
+                                console.log("Auto change-event was triggered");
+                                setDirtyRecord(); //mark record as dirty
+                            }, { signal: this.objAbortControllerForm.signal });
+                        }
                     }
             }   
         }
@@ -122,7 +136,9 @@ function onPageLoad(objEvent)
     }
 
     //checkboxes
-    //checkboxes only 'exist' in form when they are checked, hence event listeners are not attached when requesting form elements, so we have to add them explicitly
+    //checkboxes only 'exist' in form when they are checked, 
+    //hence event listeners are not attached on non-checked checkboxes when requesting form elements, 
+    //so we have to add them explicitly
     const arrCheckboxes = [...document.querySelectorAll("input[type='checkbox']")];
     const iLenCheck = arrCheckboxes.length;
     let objClosest = null;
@@ -132,11 +148,14 @@ function onPageLoad(objEvent)
         if (objClosest !== null)
         {
             //CHANGE: checkbox
-            arrCheckboxes[iIndex].addEventListener("change", ()=> 
+            if (arrCheckboxes[iIndex].getAttribute("change") === null)
             {
-                console.log("checkbox change-event was triggered");
-                setDirtyRecord(); //mark record as dirty
-            }, { signal: this.objAbortControllerForm.signal });    
+                arrCheckboxes[iIndex].addEventListener("change", ()=> 
+                {
+                    console.log("checkbox change-event was triggered");
+                    setDirtyRecord(); //mark record as dirty
+                }, { signal: this.objAbortControllerForm.signal });    
+            }
         }
     }
 
@@ -571,12 +590,19 @@ function exitAfterSave()
 }
 
 /**
- * validate field
+ * validate form field
+ * Function validates the value server-side with JSON.
+ * The server sends a sanitized value back when bReplaceByFilteredValue = true
  * 
- * @param {HTMLElement} objHTMLElement 
- * @param {bool} bReplaceByFilteredValue replaces value in edit box by calling .value on HTML object
+ * You can validate current field based on the value of another field by using objOtherHTMLElement parameter
+ * example: you want to sanitize a phone field based on the country. the country is stored in another field
+ * 
+ * @param {HTMLElement} objHTMLElement the current element you want to check
+ * @param {bool} bReplaceByFilteredValue replaces value in edit box by calling '.value' on the HTML object
+ * @param {string} sNameOtherHTMLElement the name attribute of other field to validate current field with (<input name="country">)
+ * @param {string} sValueOtherHTMLElement the value of the other field 
  */
-function validateField(objHTMLElement, bReplaceByFilteredValue = false)
+function validateField(objHTMLElement, bReplaceByFilteredValue = true, sNameOtherHTMLElement = "", sValueOtherHTMLElement = "")
 {
     const sValidateURL = addVariableToURL("<?php echo $sValidateFieldURL; ?>", "<?php echo $sValidateFieldURLVariable; ?>", objHTMLElement.id);
 
@@ -587,6 +613,8 @@ function validateField(objHTMLElement, bReplaceByFilteredValue = false)
     // Construct a FormData instance
     const objFormData = new FormData();
     objFormData.append(objHTMLElement.id, objHTMLElement.value);        
+    objFormData.append('otherfieldname', sNameOtherHTMLElement);        
+    objFormData.append('otherfieldvalue', sValueOtherHTMLElement);        
 
 
     const objRequest = new Request(sValidateURL,

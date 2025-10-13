@@ -46,14 +46,17 @@
 
 ## 13 okt 2025:
 * ajaxform.js: automatisch attachen event listeners verbetert
+* ajaxform.js: checkboxes worden waardes toegevoegd
 * dr-input-date + dr-input-time: ADD: focusout triggert een 'change'-event wanneer waarde gewijzigd
+* ajaxform.js: validateField() default replace is false
+* ajaxform.js: validateField() supports validation via extern form field
 
-
-* gestopt: midden in overschakeling naar auto attachen event listeners die het document dirty maken.
-* todo: afmaken onPageLoad() in ajaxform.js waarin 
-    1. checkbox events attachen
-    2. DRInputX events attachen
+* todo: als al 'onchange' of 'onkeyup' attribute, dan eventlistener niet toevoegen
 * todo: setOnkeyup("setDirtyRecord()"); verwijderen in alle detailsave_ schermen
+* validate field automatisch attachen
+extra veld bij validate field kunnen toevoegen
+contactdetail: checkboxen naar beneden verplaatsen
+veld: mag op rekening kopen
 
 
 ## 10 okt 2025:
