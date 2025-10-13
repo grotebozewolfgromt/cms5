@@ -61,9 +61,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     private $objEdtEmailAddress = null;//dr\classes\dom\tag\form\InputText
     private $objChkOnMailingList = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objChkOnBlackList = null;//dr\classes\dom\tag\form\InputCheckbox
-    private $objSelCountryCodePhone1 = null;//dr\classes\dom\tag\form\DRCombobox
+    private $objCbxCountryCodePhone1 = null;//dr\classes\dom\tag\form\DRCombobox
     private $objEdtPhone1 = null;//dr\classes\dom\tag\form\InputText
-    private $objSelCountryCodePhone2 = null;//dr\classes\dom\tag\form\DRCombobox    
+    private $objCbxCountryCodePhone2 = null;//dr\classes\dom\tag\form\DRCombobox    
     private $objEdtPhone2 = null;//dr\classes\dom\tag\form\InputText        
     private $objEdtChamberCommerce = null;//dr\classes\dom\tag\form\InputText        
     private $objTxtArNotes = null;//dr\classes\dom\tag\form\Textarea
@@ -75,7 +75,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     private $objEdtBillingPostalCode = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingCity = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingStateRegion = null;//dr\classes\dom\tag\form\InputText
-    private $objSelBillingCountryID = null;//dr\classes\dom\tag\form\Select
+    private $objCbxBillingCountryID = null;//dr\classes\dom\tag\form\Select
     private $objEdtBillingVatNumber = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingEmailAddress = null;//dr\classes\dom\tag\form\InputText
     private $objEdtBillingBankAccountNo = null;//dr\classes\dom\tag\form\InputText    
@@ -85,7 +85,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     private $objEdtDeliveryPostalCode = null;//dr\classes\dom\tag\form\InputText
     private $objEdtDeliveryCity = null;//dr\classes\dom\tag\form\InputText
     private $objEdtDeliveryStateRegion = null;//dr\classes\dom\tag\form\InputText
-    private $objSelDeliveryCountryID = null;//dr\classes\dom\tag\form\Select
+    private $objCbxDeliveryCountryID = null;//dr\classes\dom\tag\form\Select
 
     private $objChkIsClient = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objChkIsSupplier = null;//dr\classes\dom\tag\form\InputCheckbox
@@ -269,10 +269,10 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->addQuick($this->objEdtEmailAddress, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_emailaddress', 'Email address (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_emailaddress_iconinfo', 'Email address is encrypted, thus not searchable.'));
 
             //country code phone1
-        $this->objSelCountryCodePhone1 = new DRInputCombobox();
-        // $this->objSelCountryCodePhone1->setClass('quarterwidthtag');
-        $this->objSelCountryCodePhone1->setNameAndID('selCountryCodePhone1');
-        // $this->getFormGenerator()->add($this->objSelCountryCodePhone1, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone1', 'Country code'));
+        $this->objCbxCountryCodePhone1 = new DRInputCombobox();
+        // $this->objCbxCountryCodePhone1->setClass('quarterwidthtag');
+        $this->objCbxCountryCodePhone1->setNameAndID('selCountryCodePhone1');
+        // $this->getFormGenerator()->add($this->objCbxCountryCodePhone1, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone1', 'Country code'));
 
             //phone1
         $this->objEdtPhone1 = new InputText();
@@ -283,15 +283,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone1->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_NUMERIC.' -');
         $this->objEdtPhone1->addValidator($objValidator);                 
-        // $this->objEdtPhone1->setOnchange("validateField(this, true)");
-        $this->getFormGenerator()->addArray(array($this->objSelCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+        $this->objEdtPhone1->setOnchange("validateField(this, true, '".$this->objCbxCountryCodePhone1->getId()."')");
+        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
 
             //country code phone2
-        $this->objSelCountryCodePhone2 = new DRInputCombobox();
-        // $this->objSelCountryCodePhone2->setClass('quarterwidthtag');
-        $this->objSelCountryCodePhone2->setNameAndID('selCountryCodePhone2');
-        $this->objSelCountryCodePhone2->setOnchange("setDirtyRecord()");                            
-        // $this->getFormGenerator()->add($this->objSelCountryCodePhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone2', 'Country code'));
+        $this->objCbxCountryCodePhone2 = new DRInputCombobox();
+        // $this->objCbxCountryCodePhone2->setClass('quarterwidthtag');
+        $this->objCbxCountryCodePhone2->setNameAndID('selCountryCodePhone2');
+        // $this->getFormGenerator()->add($this->objCbxCountryCodePhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone2', 'Country code'));
 
             //phone2
         $this->objEdtPhone2 = new InputText();
@@ -304,8 +303,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone2->addValidator($objValidator);         
         // $this->objEdtPhone2->setOnchange("validateField(this, true)");
         // $this->getFormGenerator()->add($this->objEdtPhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addArray(array($this->objSelCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+        $this->objEdtPhone2->setOnchange("validateField(this, true, '".$this->objCbxCountryCodePhone2->getId()."')");
+        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
     
+            //billing: country
+        $this->objCbxBillingCountryID = new DRInputCombobox();
+        $this->objCbxBillingCountryID->setNameAndID('optBillingCountryID');
+        $this->getFormGenerator()->add($this->objCbxBillingCountryID, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcountry', 'Country'));
+
             //billing: address line 2: street
         $this->objEdtBillingAddressStreet = new InputText();
         $this->objEdtBillingAddressStreet->setNameAndID('edtBillingAddressLineStreet');
@@ -347,6 +352,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingPostalCode->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
         $this->objEdtBillingPostalCode->addValidator($objValidator); 
+        $this->objEdtBillingPostalCode->setOnchange("validateField(this, true, '".$this->objCbxBillingCountryID->getId()."')");
         $this->getFormGenerator()->add($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //billing: city
@@ -375,11 +381,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingStateRegion->addValidator($objValidator);     
         $this->getFormGenerator()->add($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingstateregion', 'State/region')); 
             
-
-            //billing: country
-        $this->objSelBillingCountryID = new DRInputCombobox();
-        $this->objSelBillingCountryID->setNameAndID('optBillingCountryID');
-        $this->getFormGenerator()->add($this->objSelBillingCountryID, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcountry', 'Country'));
 
             //billing: vat no
         $this->objEdtBillingVatNumber = new InputText();
@@ -414,8 +415,15 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingEmailAddress->addValidator($objValidator);                      
         // $this->getFormGenerator()->add($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress_iconinfo', 'Email address is encrypted, thus not searchable.'));
-                            
-    
+                        
+
+            //delivery: country
+        // $this->objCbxDeliveryCountryID = new Select();
+        $this->objCbxDeliveryCountryID = new DRInputCombobox();
+        $this->objCbxDeliveryCountryID->setNameAndID('optDeliveryCountryID');
+        $this->getFormGenerator()->add($this->objCbxDeliveryCountryID, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycountry', 'Country'));
+           
+
             //delivery: address line 2
         $this->objEdtDeliveryAddressStreet = new InputText();
         $this->objEdtDeliveryAddressStreet->setNameAndID('edtDeliveryAddressLineStreet');
@@ -456,7 +464,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TUppercase();
         $this->objEdtDeliveryPostalCode->addValidator($objValidator);                   
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
-        $this->objEdtDeliveryPostalCode->addValidator($objValidator);         
+        $this->objEdtDeliveryPostalCode->addValidator($objValidator);      
+        $this->objEdtDeliveryPostalCode->setOnchange("validateField(this, true, '".$this->objCbxDeliveryCountryID->getId()."')");
         $this->getFormGenerator()->add($this->objEdtDeliveryPostalCode, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //delivery: city
@@ -483,39 +492,31 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryStateRegion->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtDeliveryStateRegion->addValidator($objValidator);         
-        $this->getFormGenerator()->add($this->objEdtDeliveryStateRegion, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverystateregion', 'State/region')); 
-            
-
-            //delivery: country
-        // $this->objSelDeliveryCountryID = new Select();
-        $this->objSelDeliveryCountryID = new DRInputCombobox();
-        $this->objSelDeliveryCountryID->setNameAndID('optDeliveryCountryID');
-        $this->getFormGenerator()->add($this->objSelDeliveryCountryID, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycountry', 'Country'));
-               
+        $this->getFormGenerator()->add($this->objEdtDeliveryStateRegion, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverystateregion', 'State/region'));     
 
             //is client
         $this->objChkIsClient = new InputCheckbox();
         $this->objChkIsClient->setNameAndID('chkIsClient');
-        $this->objChkIsClient->setOnkeyup("setDirtyRecord()");          
+        // $this->objChkIsClient->setOnkeyup("setDirtyRecord()");          
         $this->getFormGenerator()->add($this->objChkIsClient, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_isclient', 'is client'));   
             
             //is supplier
         $this->objChkIsSupplier = new InputCheckbox();
         $this->objChkIsSupplier->setNameAndID('chkIsSupplier');
-        $this->objChkIsSupplier->setOnkeyup("setDirtyRecord()");                  
+        // $this->objChkIsSupplier->setOnkeyup("setDirtyRecord()");                  
         $this->getFormGenerator()->add($this->objChkIsSupplier,  $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_issupplier', 'is supplier'));         
     
 
             //on mailing list
         $this->objChkOnMailingList = new InputCheckbox();
         $this->objChkOnMailingList->setNameAndID('chkOnMailingList');
-        $this->objChkOnMailingList->setOnkeyup("setDirtyRecord()");                          
+        // $this->objChkOnMailingList->setOnkeyup("setDirtyRecord()");                          
         $this->getFormGenerator()->add($this->objChkOnMailingList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onmailinglist', 'on mailing list'));   
         
                 //on black list
         $this->objChkOnBlackList = new InputCheckbox();
         $this->objChkOnBlackList->setNameAndID('chkOnBlackList');
-        $this->objChkOnBlackList->setOnkeyup("setDirtyRecord()");                                  
+        // $this->objChkOnBlackList->setOnkeyup("setDirtyRecord()");                                  
         $this->getFormGenerator()->add($this->objChkOnBlackList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onblacklist', 'on blacklist'));   
     
 
@@ -573,9 +574,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->setEmailAddressDecrypted($this->objEdtEmailAddress->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_ONMAILINGLIST, $this->objChkOnMailingList->getValueSubmittedAsBool());                
         $this->getModel()->set(TSysContacts::FIELD_ONBLACKLIST, $this->objChkOnBlackList->getValueSubmittedAsBool());                
-        $this->getModel()->set(TSysContacts::FIELD_COUNTRYIDCODEPHONE1, $this->objSelCountryCodePhone1->getValueSubmittedAsInt());
+        $this->getModel()->set(TSysContacts::FIELD_COUNTRYIDCODEPHONE1, $this->objCbxCountryCodePhone1->getValueSubmittedAsInt());
         $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER1, $this->objEdtPhone1->getValueSubmitted(), '', true);
-        $this->getModel()->set(TSysContacts::FIELD_COUNTRYIDCODEPHONE2, $this->objSelCountryCodePhone2->getValueSubmittedAsInt());        
+        $this->getModel()->set(TSysContacts::FIELD_COUNTRYIDCODEPHONE2, $this->objCbxCountryCodePhone2->getValueSubmittedAsInt());        
         $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER2, $this->objEdtPhone2->getValueSubmitted(), '', true);        
         $this->getModel()->set(TSysContacts::FIELD_NOTES, $this->objTxtArNotes->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_FIRSTCONTACT, $this->objDTFirstContact->getValueSubmittedAsTDateTimeISO());
@@ -586,7 +587,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, $this->objEdtBillingPostalCode->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_BILLINGCITY, $this->objEdtBillingCity->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGSTATEREGION, $this->objEdtBillingStateRegion->getValueSubmitted());
-        $this->getModel()->set(TSysContacts::FIELD_BILLINGCOUNTRYID, $this->objSelBillingCountryID->getValueSubmittedAsInt());
+        $this->getModel()->set(TSysContacts::FIELD_BILLINGCOUNTRYID, $this->objCbxBillingCountryID->getValueSubmittedAsInt());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGVATNUMBER, $this->objEdtBillingVatNumber->getValueSubmitted(), '', true);
         $this->getModel()->setBillingEmailAddressDecrypted($this->objEdtBillingEmailAddress->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, $this->objEdtBillingBankAccountNo->getValueSubmitted(), '', true);
@@ -596,32 +597,32 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, $this->objEdtDeliveryPostalCode->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYCITY, $this->objEdtDeliveryCity->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYSTATEREGION, $this->objEdtDeliveryStateRegion->getValueSubmitted());
-        $this->getModel()->set(TSysContacts::FIELD_DELIVERYCOUNTRYID, $this->objSelDeliveryCountryID->getValueSubmittedAsInt());
+        $this->getModel()->set(TSysContacts::FIELD_DELIVERYCOUNTRYID, $this->objCbxDeliveryCountryID->getValueSubmittedAsInt());
     
         //==== correct for the Dutchies
-        //billing postal code
-        $objCountries = new TSysCountries();
-        $objCountries->loadFromDBByID($this->objSelBillingCountryID->getValueSubmittedAsInt());
-        if ($objCountries->getISO2() == 'NL')
-            $this->getModel()->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, formatPostalCodeDutch($this->objEdtBillingPostalCode->getValueSubmitted()), '', true);
+        // //billing postal code
+        // $objCountries = new TSysCountries();
+        // $objCountries->loadFromDBByID($this->objCbxBillingCountryID->getValueSubmittedAsInt());
+        // if ($objCountries->getISO2() == 'NL')
+        //     $this->getModel()->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, formatPostalCodeDutch($this->objEdtBillingPostalCode->getValueSubmitted()), '', true);
 
-        //delivery postal code
-        $objCountries = new TSysCountries();
-        $objCountries->loadFromDBByID($this->objSelDeliveryCountryID->getValueSubmittedAsInt());
-        if ($objCountries->getISO2() == 'NL')
-            $this->getModel()->set(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, formatPostalCodeDutch($this->objEdtDeliveryPostalCode->getValueSubmitted()), '', true);
+        // //delivery postal code
+        // $objCountries = new TSysCountries();
+        // $objCountries->loadFromDBByID($this->objCbxDeliveryCountryID->getValueSubmittedAsInt());
+        // if ($objCountries->getISO2() == 'NL')
+        //     $this->getModel()->set(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, formatPostalCodeDutch($this->objEdtDeliveryPostalCode->getValueSubmitted()), '', true);
 
-        //phone 1
-        $objCountries = new TSysCountries();
-        $objCountries->loadFromDBByID($this->objSelCountryCodePhone1->getValueSubmittedAsInt());
-        if ($objCountries->getISO2() == 'NL')
-            $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER1, formatPhoneNumberDutch($this->objEdtPhone1->getValueSubmitted()), '', true);
+        // //phone 1
+        // $objCountries = new TSysCountries();
+        // $objCountries->loadFromDBByID($this->objCbxCountryCodePhone1->getValueSubmittedAsInt());
+        // if ($objCountries->getISO2() == 'NL')
+        //     $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER1, formatPhoneNumberDutch($this->objEdtPhone1->getValueSubmitted()), '', true);
 
-        //phone 2
-        $objCountries = new TSysCountries();
-        $objCountries->loadFromDBByID($this->objSelCountryCodePhone2->getValueSubmittedAsInt());
-        if ($objCountries->getISO2() == 'NL')
-            $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER2, formatPhoneNumberDutch($this->objEdtPhone2->getValueSubmitted()), '', true);
+        // //phone 2
+        // $objCountries = new TSysCountries();
+        // $objCountries->loadFromDBByID($this->objCbxCountryCodePhone2->getValueSubmittedAsInt());
+        // if ($objCountries->getISO2() == 'NL')
+        //     $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER2, formatPhoneNumberDutch($this->objEdtPhone2->getValueSubmitted()), '', true);
         
 
         //==== search keywords NEEDS TO BE LAST, because it uses the values we set earlier
@@ -659,14 +660,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
             $this->objLastNamePrefixes->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_LASTNAMEPREFIXID), $this->objCbxLastNamePrefix);    
         $this->objEdtEmailAddress->setValue($this->getModel()->get(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, '', true));        
         if ($this->getModel()->getNew())//country default or existing id
-            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objSelCountryCodePhone1);    
+            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objCbxCountryCodePhone1);    
         else
-            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE1), $this->objSelCountryCodePhone1);    
+            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE1), $this->objCbxCountryCodePhone1);    
         $this->objEdtPhone1->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER1, '', true));   
         if ($this->getModel()->getNew())//country default or existing id
-            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objSelCountryCodePhone2);    
+            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objCbxCountryCodePhone2);    
         else
-            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE2), $this->objSelCountryCodePhone2);            $this->objEdtPhone2->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER2, '', true));        
+            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE2), $this->objCbxCountryCodePhone2);            $this->objEdtPhone2->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER2, '', true));        
         $this->objTxtArNotes->setValue($this->getModel()->get(TSysContacts::FIELD_NOTES));
         $this->objDTFirstContact->setValueAsTDateTime($this->getModel()->get(TSysContacts::FIELD_FIRSTCONTACT));
         $this->objDTLastContact->setValueAsTDateTime($this->getModel()->get(TSysContacts::FIELD_LASTCONTACT));
@@ -678,9 +679,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingCity->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGCITY));
         $this->objEdtBillingStateRegion->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGSTATEREGION));
         if ($this->getModel()->getNew())//country default or existing id
-            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objSelBillingCountryID);    
+            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objCbxBillingCountryID);    
         else
-            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_BILLINGCOUNTRYID), $this->objSelBillingCountryID);    
+            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_BILLINGCOUNTRYID), $this->objCbxBillingCountryID);    
         $this->objEdtBillingVatNumber->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGVATNUMBER, '', true));
         $this->objEdtBillingEmailAddress->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, '', true));
         $this->objEdtBillingBankAccountNo->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, '', true));
@@ -692,9 +693,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryCity->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYCITY));
         $this->objEdtDeliveryStateRegion->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYSTATEREGION));
         if ($this->getModel()->getNew())//country default or existing id
-            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objSelDeliveryCountryID);    
+            $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objCbxDeliveryCountryID);    
         else
-            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_DELIVERYCOUNTRYID), $this->objSelDeliveryCountryID);
+            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_DELIVERYCOUNTRYID), $this->objCbxDeliveryCountryID);
 
 
         unset($objCountries);
@@ -921,21 +922,139 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     /**
      * correct additional fields
      */
-    // protected function handleValidateField()
-    // {
-    //     $objCountry = null;
+    protected function handleValidateField()
+    {
+        $objCountry = null;
+        $sValueOtherField = "";
+        $sIdOtherField = "";
+        $sIdCurrentField = "";
+        $arrJSONResponse = array();
+        $bHandled = false;
 
-    //     $tmep = $this->objModel;
+        $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_HTMLFIELDID] = $_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD];
+        $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_FILTEREDFIELDVALUE] = $_POST[$_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD]];                
+        $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_ERRORS] = array();
 
-    //     if ($_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD] == $this->objEdtBillingPostalCode->getId())
-    //     {
-    //         $objCountry = new TSysCountries();
-    //         // $objCountry->load
-    //         // $itemp = $this->iDefaultCountryID;
-    //     }
 
+        //==== correct Dutch phone number and postal code
+        if (isset($_POST[TAJAXFormController::JSON_VALIDATEREQUEST_FIELD_OTHERFIELDID]) && isset($_POST[TAJAXFormController::JSON_VALIDATEREQUEST_FIELD_OTHERFIELDVALUE]))
+        {
+            $sIdOtherField = $_POST[TAJAXFormController::JSON_VALIDATEREQUEST_FIELD_OTHERFIELDID];
+            $sValueOtherField = $_POST[TAJAXFormController::JSON_VALIDATEREQUEST_FIELD_OTHERFIELDVALUE];
+            $sIdCurrentField = $_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD];
+
+            if (is_numeric($sValueOtherField))
+            {
+                $objCountry = new TSysCountries();
+                $objCountry->loadFromDBByID($sValueOtherField); //we are only dealing with countryid's here, so I can safely assume the value is always a countyid
+                if ($objCountry->getISO2() == 'NL')
+                {
+                    switch($sIdCurrentField)
+                    {
+                        case $this->objEdtPhone1->getID():
+                            $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_FILTEREDFIELDVALUE] = formatPhoneNumberDutch($_POST[$this->objEdtPhone1->getID()]);                
+                            $bHandled = true;
+                            break;
+                        case $this->objEdtPhone2->getID():
+                            $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_FILTEREDFIELDVALUE] = formatPhoneNumberDutch($_POST[$this->objEdtPhone2->getID()]);                
+                            $bHandled = true;
+                            break;                        
+                        case $this->objEdtBillingPostalCode->getID():
+                            $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_FILTEREDFIELDVALUE] = formatPostalCodeDutch($_POST[$this->objEdtBillingPostalCode->getID()]);                
+                            $bHandled = true;
+                            break;
+                        case $this->objEdtDeliveryPostalCode->getID():
+                            $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_FILTEREDFIELDVALUE] = formatPostalCodeDutch($_POST[$this->objEdtDeliveryPostalCode->getID()]);                
+                            $bHandled = true;
+                            break;
+                    }
+                }
+            }
+        }
+
+
+        if ($bHandled)
+        {
+            header(JSONAK_RESPONSE_HEADER);
+            echo json_encode($arrJSONResponse);               
+            return; //stop further execution
+        }
+        else
+        {
+            return parent::handleValidateField();
+        }
+    }
+ 
+    /**
+     * You can check a field if is valid
+     * Then it looks at the validators
+     */
+    /*
+    protected function handleValidateField()
+    {
+        //declare
+        $arrErrors = array();
+        $arrFGElements = array(); //FG = Form Generator
+        $sFilteredValue = '';
+        $iCountVal = 0;
+        $arrJSONResponse = array();
         
-    //     return parent::handleValidateField();
-    // }
+        //although the code of both arrays (internal + form generator) is the same, the array structure is NOT the same
+
+        //==== INTERNAL ARRAY: call validators
+        foreach ($this->arrFormHTMLElements as $objFormElement) 
+        {
+            //only check one field
+            if ($_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD] == $objFormElement->getID())
+            {
+                $iCountVal = $objFormElement->countValidators();
+                $sFilteredValue = $objFormElement->getValueSubmitted(); //init value
+                for ($iIndex = 0; $iIndex < $iCountVal; ++$iIndex) 
+                {
+                    $objValidator = $objFormElement->getValidator($iIndex);
+                    $sFilteredValue = $objValidator->filterValue($sFilteredValue);
+                    if (!$objValidator->isValid($sFilteredValue)) //check validators of fields
+                    {
+                        $arrErrors[] = array
+                        (
+                            TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_MESSAGE => $objValidator->getErrorMessage(),
+                        );       
+                    }
+                }
+            }
+        }
+
+        //==== FORM GENERATOR: call validators
+        $arrFGElements = $this->objFormGenerator->getElements();
+        foreach ($arrFGElements as $objFormElement) 
+        {
+            //only check one field
+            if ($_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD] == $objFormElement->getID())
+            {
+                $iCountVal = $objFormElement->countValidators();
+                $sFilteredValue = $objFormElement->getValueSubmitted(); //init value
+                for ($iIndex = 0; $iIndex < $iCountVal; ++$iIndex) 
+                {
+                    $objValidator = $objFormElement->getValidator($iIndex);
+                    $sFilteredValue = $objValidator->filterValue($sFilteredValue);                    
+                    if (!$objValidator->isValid($sFilteredValue)) //check validators of fields
+                    {
+                        $arrErrors[] = array
+                        (
+                            TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_MESSAGE => $objValidator->getErrorMessage(),
+                        );                       
+                    }
+                }
+            }
+        }
+
+        $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_HTMLFIELDID] = $_GET[TAJAXFormController::ACTION_VARIABLE_VALIDATEFIELD];
+        $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_FIELD_FILTEREDFIELDVALUE] = $sFilteredValue;                
+        $arrJSONResponse[TAJAXFormController::JSON_VALIDATERESPONSE_ERRORS] = $arrErrors;
     
+        header(JSONAK_RESPONSE_HEADER);
+        echo json_encode($arrJSONResponse);               
+        return; //stop further execution to display the error           
+    }    
+    */
 }

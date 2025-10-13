@@ -110,8 +110,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $this->objEdtNameDefault->setClass('fullwidthtag');   
         // $this->objEdtNameDefault->setValue('testvalue1');   
         // $this->objEdtNameDefault->setPlaceholder('full product name');   
-        $this->objEdtNameDefault->setOnchange("validateField(this, true)");
-        $this->objEdtNameDefault->setOnkeyup("setDirtyRecord()");
+        // $this->objEdtNameDefault->setOnchange("validateField(this, true)");
+        // $this->objEdtNameDefault->setOnkeyup("setDirtyRecord()");
         $this->objEdtNameDefault->setShowCharCounter(false);        
         $this->objEdtNameDefault->setRequired(true);  
         $this->objEdtNameDefault->setMinLength(5);         
@@ -135,7 +135,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $this->objEdtModule->setClass('fullwidthtag');   
         // $this->objEdtModule->setValue('testvalue1');   
         // $this->objEdtModule->setPlaceholder('full product name');   
-        $this->objEdtModule->setOnchange("validateField(this, true)");
+        // $this->objEdtModule->setOnchange("validateField(this, true)");
         // $this->objEdtModule->setOnkeyup("setDirtyRecord()");
         // $this->objEdtModule->setMaxLength(100);
         // $objValidator = new TMaximumLength(100);
@@ -158,8 +158,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtController->setRequired(true); 
         // $this->objEdtController->setValue('testvalue2');   
         // $this->objEdtController->setPlaceholder('URL slug');   
-        $this->objEdtController->setOnchange("validateField(this, true)");
-        $this->objEdtController->setOnkeyup("setDirtyRecord()");
+        // $this->objEdtController->setOnchange("validateField(this, true)");
+        // $this->objEdtController->setOnkeyup("setDirtyRecord()");
         // $this->objEdtController->setShowCharCounter(true);
         // $this->objEdtController->setMinLength(5);
         $this->objEdtController->setMaxLength(100);
@@ -183,8 +183,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtURLCustom->setRequired(true); 
         // $this->objEdtURLCustom->setValue('testvalue2');   
         // $this->objEdtURLCustom->setPlaceholder('URL slug');   
-        $this->objEdtURLCustom->setOnchange("validateField(this, true)");
-        $this->objEdtURLCustom->setOnkeyup("setDirtyRecord()");
+        // $this->objEdtURLCustom->setOnchange("validateField(this, true)");
+        // $this->objEdtURLCustom->setOnkeyup("setDirtyRecord()");
         // $this->objEdtURLCustom->setShowCharCounter(true);
         // $this->objEdtURLCustom->setMinLength(5);
         $this->objEdtURLCustom->setMaxLength(100);
@@ -209,7 +209,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtPermissionResource->setValue('testvalue2');   
         // $this->objEdtPermissionResource->setPlaceholder('URL slug');   
         // $this->objEdtPermissionResource->setOnchange("validateField(this, true)");
-        $this->objEdtPermissionResource->setOnchange("setDirtyRecord()");
+        // $this->objEdtPermissionResource->setOnchange("setDirtyRecord()");
         // $this->objEdtPermissionResource->setOnkeyup("setDirtyRecord()");
         // $this->objEdtPermissionResource->setShowCharCounter(true);
         // $this->objEdtPermissionResource->setMinLength(5);
@@ -234,8 +234,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtSVGIcon->setRequired(true); 
         // $this->objEdtSVGIcon->setValue('testvalue2');   
         // $this->objEdtSVGIcon->setPlaceholder('URL slug');   
-        $this->objEdtSVGIcon->setOnchange("validateField(this, true)");
-        $this->objEdtSVGIcon->setOnkeyup("setDirtyRecord()");
+        // $this->objEdtSVGIcon->setOnchange("validateField(this, true)");
+        // $this->objEdtSVGIcon->setOnkeyup("setDirtyRecord()");
         // $this->objEdtSVGIcon->setShowCharCounter(true);
         // $this->objEdtSVGIcon->setMinLength(5);
         // $this->objEdtSVGIcon->setMaxLength(255);
@@ -255,16 +255,16 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
             //favorite
         $this->objChkFavorite = new DRInputCheckbox();
         $this->objChkFavorite->setNameAndID('chkFavorite');
-        $this->objChkFavorite->setOnchange("setDirtyRecord()");
-        $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkFavorite->setOnchange("setDirtyRecord()");
+        // $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
         $this->objChkFavorite->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_favorite', 'Is favorite<dr-icon-info>When an item is favorited, it will show up at the top of the menu so you can quickly find it.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
         $this->getFormGenerator()->add($this->objChkFavorite); 
 
             //visible menu
         $this->objChkVisibleMenu = new DRInputCheckbox();
         $this->objChkVisibleMenu->setNameAndID('chkVisibleMenu');
-        $this->objChkVisibleMenu->setOnchange("setDirtyRecord()");
-        $this->objChkVisibleMenu->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkVisibleMenu->setOnchange("setDirtyRecord()");
+        // $this->objChkVisibleMenu->setOnkeyup("setDirtyRecord()");        
         $this->objChkVisibleMenu->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visiblemenu', 'Is visible in menu<dr-icon-info>The menu is on the left side of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
         $this->getFormGenerator()->add($this->objChkVisibleMenu);  
         // $this->getFormGenerator()->addQuick($this->objChkVisibleMenu, '', '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visiblemenu_iconinfo', 'It might take 1 hour for this change to take effect.<br>The menu is cached to ensure fast page loads.<br>This cached is renewed every hour.'));
@@ -272,8 +272,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
             //visible toolbar
         $this->objChkVisibleToolbar = new DRInputCheckbox();
         $this->objChkVisibleToolbar->setNameAndID('chkVisibleToolbar');
-        $this->objChkVisibleToolbar->setOnchange("setDirtyRecord()");
-        $this->objChkVisibleToolbar->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkVisibleToolbar->setOnchange("setDirtyRecord()");
+        // $this->objChkVisibleToolbar->setOnkeyup("setDirtyRecord()");        
         $this->objChkVisibleToolbar->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visibletoolbar', 'Is visible in toolbar<dr-icon-info>The toolbar is on top of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
         $this->getFormGenerator()->add($this->objChkVisibleToolbar);          
         // $this->getFormGenerator()->addQuick($this->objChkVisibleToolbar, '', '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visibletoolbar_iconinfo', ''));
@@ -281,8 +281,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
             //open new tab
         $this->objChkNewTab = new DRInputCheckbox();
         $this->objChkNewTab->setNameAndID('chkOpenNewTab');
-        $this->objChkNewTab->setOnchange("setDirtyRecord()");
-        $this->objChkNewTab->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkNewTab->setOnchange("setDirtyRecord()");
+        // $this->objChkNewTab->setOnkeyup("setDirtyRecord()");        
         $this->objChkNewTab->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_opennewtab', 'Open link in new browser tab'));
         $this->getFormGenerator()->add($this->objChkNewTab);  
 

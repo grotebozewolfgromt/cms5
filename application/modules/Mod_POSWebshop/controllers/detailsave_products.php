@@ -110,8 +110,8 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->setNameAndID('edtName');
         $this->objEdtName->setClass('fullwidthtag');   
         $this->objEdtName->setValue('testvalue1');  
-        $this->objEdtName->setOnchange("validateField(this, true)");
-        $this->objEdtName->setOnkeyup("setDirtyRecord()");        
+        // $this->objEdtName->setOnchange("validateField(this, true)");
+        // $this->objEdtName->setOnkeyup("setDirtyRecord()");        
         $this->objEdtName->setPlaceholder('full product name');   
         $this->objEdtName->setShowCharCounter(false);        
         $this->objEdtName->setRequired(true);  
@@ -128,8 +128,8 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
         $this->objEdtNameShort->setClass('fullwidthtag');   
         $this->objEdtNameShort->setRequired(true); 
         $this->objEdtNameShort->setValue('testvalue2');  
-        $this->objEdtNameShort->setOnchange("validateField(this, true)");
-        $this->objEdtNameShort->setOnkeyup("setDirtyRecord()");             
+        // $this->objEdtNameShort->setOnchange("validateField(this, true)");
+        // $this->objEdtNameShort->setOnkeyup("setDirtyRecord()");             
         $this->objEdtNameShort->setPlaceholder('short product name');   
         $this->objEdtNameShort->setShowCharCounter(true);
         $this->objEdtNameShort->setMinLength(5);

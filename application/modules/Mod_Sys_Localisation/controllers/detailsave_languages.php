@@ -65,8 +65,8 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         // $this->objEditLocale->setClass('fullwidthtag');         
         $this->objEditLocale->setRequired(true);   
         // $this->objEditLocale->setMaxLength(11);                
-        $this->objEditLocale->setOnchange("validateField(this, true)");
-        $this->objEditLocale->setOnkeyup("setDirtyRecord()");
+        // $this->objEditLocale->setOnchange("validateField(this, true)");
+        // $this->objEditLocale->setOnkeyup("setDirtyRecord()");
         $objValidator = new TMaximumLength(11);
         $this->objEditLocale->addValidator($objValidator);    
         $objValidator = new TMinimumLength(2);
@@ -81,8 +81,8 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         $this->objEditLanguage->setClass('fullwidthtag');                 
         $this->objEditLanguage->setRequired(true); 
         $this->objEditLanguage->setMaxLength(100);    
-        $this->objEditLanguage->setOnchange("validateField(this, true)");        
-        $this->objEditLanguage->setOnkeyup("setDirtyRecord()");        
+        // $this->objEditLanguage->setOnchange("validateField(this, true)");        
+        // $this->objEditLanguage->setOnkeyup("setDirtyRecord()");        
         $objValidator = new TMaximumLength(100);
         $this->objEditLanguage->addValidator($objValidator);  
         $objValidator = new TMinimumLength(3);
@@ -94,19 +94,19 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
             //is cms language
         $this->objChkCMSLanguage = new InputCheckbox();
         $this->objChkCMSLanguage->setNameAndID('chkCMSLanguage');
-        $this->objChkCMSLanguage->setOnchange("setDirtyRecord()");
+        // $this->objChkCMSLanguage->setOnchange("setDirtyRecord()");
         $this->getFormGenerator()->add($this->objChkCMSLanguage, '', transm(CMS_CURRENTMODULE, 'languages_form_field_iscmslanguage', 'is CMS language (makes CMS available in this language, creates language files)'));   
         
             //is shown in selectboxes
         $this->objChkFavorite = new InputCheckbox();
         $this->objChkFavorite->setNameAndID('chkCMSSelect');
-        $this->objChkFavorite->setOnchange("setDirtyRecord()");
+        // $this->objChkFavorite->setOnchange("setDirtyRecord()");
         $this->getFormGenerator()->add($this->objChkFavorite, '', transm(CMS_CURRENTMODULE, 'languages_form_field_isfavorite', 'is favorite (only favorites are shown in User Interface elements where not all languages are shown, prevents having 400 languages to scroll through)'));         
 
             //is shown in selectboxes
         $this->objChkDefaultSystem = new InputCheckbox();
         $this->objChkDefaultSystem->setNameAndID('chkDefaultSystem');
-        $this->objChkDefaultSystem->setOnchange("setDirtyRecord()");
+        // $this->objChkDefaultSystem->setOnchange("setDirtyRecord()");
         $this->getFormGenerator()->add($this->objChkDefaultSystem, '', transm(CMS_CURRENTMODULE, 'languages_form_field_isdefaultsystem', 'Is system default (system assumes this language by default, only 1 language can be default)'));         
 
 //            //active languages per site

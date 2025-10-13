@@ -111,8 +111,8 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->setClass('fullwidthtag');   
         // $this->objEdtName->setValue('testvalue1');   
         // $this->objEdtName->setPlaceholder('full product name');   
-        $this->objEdtName->setOnchange("validateField(this, true)");
-        $this->objEdtName->setOnkeyup("setDirtyRecord()");
+        // $this->objEdtName->setOnchange("validateField(this, true)");
+        // $this->objEdtName->setOnkeyup("setDirtyRecord()");
         $this->objEdtName->setShowCharCounter(false);        
         $this->objEdtName->setRequired(true);  
         $this->objEdtName->setMinLength(5);         
@@ -138,8 +138,8 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $this->objEdtURLSlug->setRequired(true); 
         // $this->objEdtURLSlug->setValue('testvalue2');   
         // $this->objEdtURLSlug->setPlaceholder('URL slug');   
-        $this->objEdtURLSlug->setOnchange("validateField(this, true)");
-        $this->objEdtURLSlug->setOnkeyup("setDirtyRecord()");
+        // $this->objEdtURLSlug->setOnchange("validateField(this, true)");
+        // $this->objEdtURLSlug->setOnkeyup("setDirtyRecord()");
         // $this->objEdtURLSlug->setShowCharCounter(true);
         $this->objEdtURLSlug->setMinLength(5);
         $this->objEdtURLSlug->setMaxLength(50);
@@ -196,16 +196,16 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
             //default
         $this->objChkDefault = new DRInputCheckbox();
         $this->objChkDefault->setNameAndID('chkDefault');
-        $this->objChkDefault->setOnchange("setDirtyRecord()");
-        $this->objChkDefault->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkDefault->setOnchange("setDirtyRecord()");
+        // $this->objChkDefault->setOnkeyup("setDirtyRecord()");        
         $this->objChkDefault->setLabel(transm(CMS_CURRENTMODULE, 'form_productcategories_field_default', 'Is selected by default'));
         $this->getFormGenerator()->add($this->objChkDefault);  
 
             //favorite
         $this->objChkFavorite = new DRInputCheckbox();
         $this->objChkFavorite->setNameAndID('chkFavorite');
-        $this->objChkFavorite->setOnchange("setDirtyRecord()");
-        $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkFavorite->setOnchange("setDirtyRecord()");
+        // $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
         $this->objChkFavorite->setLabel(transm(CMS_CURRENTMODULE, 'form_productcategories_field_favorite', 'Is favorite'));
         $this->getFormGenerator()->add($this->objChkFavorite);  
     

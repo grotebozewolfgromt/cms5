@@ -70,5 +70,5 @@
         ?><input type="button" class="button_normal" onclick="openInNewTab('<?php echo APP_URL_CMS_INSTALLERSCRIPT; ?>')" value="<?php echo transcms('settings_execute_installer', 'Start installer'); ?>" style="width: 200px;"><?php
     }
 
-    echo transm(CMS_CURRENTMODULE, 'settings_installer_message_disablwhennotuse', 'Disable the installer for security reasons when you are not actively using it.').'<br>';
+    echo transm(CMS_CURRENTMODULE, 'settings_installer_message_disablwhennotuse', 'Disable the installer for security reasons when you are not actively using it.<br>You can always enable it when you actually need it.').'<br>';
 ?>

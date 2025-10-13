@@ -623,12 +623,12 @@ function exitAfterSave()
  * 
  * @param {HTMLElement} objHTMLElement the current element you want to check
  * @param {bool} bReplaceByFilteredValue replaces value in edit box by calling '.value' on the HTML object
- * @param {string} sNameOtherHTMLElement the name attribute of other field to validate current field with (<input name="country">)
- * @param {string} sValueOtherHTMLElement the value of the other field 
+ * @param {string} sOtherHTMLElementID the id attribute of other field to validate current field with (<input id="country">)
  */
-function validateField(objHTMLElement, bReplaceByFilteredValue = true, sNameOtherHTMLElement = "", sValueOtherHTMLElement = "")
+function validateField(objHTMLElement, bReplaceByFilteredValue = true, sOtherHTMLElementID = "")
 {
     const sValidateURL = addVariableToURL("<?php echo $sValidateFieldURL; ?>", "<?php echo $sValidateFieldURLVariable; ?>", objHTMLElement.id);
+    let objOtherElement = null;
 
     //just an extra precaution when programmer forgets to add dirty on onkeyup-event
     setDirtyRecord();
@@ -636,10 +636,16 @@ function validateField(objHTMLElement, bReplaceByFilteredValue = true, sNameOthe
 
     // Construct a FormData instance
     const objFormData = new FormData();
-    objFormData.append(objHTMLElement.id, objHTMLElement.value);        
-    objFormData.append('otherfieldname', sNameOtherHTMLElement);        
-    objFormData.append('otherfieldvalue', sValueOtherHTMLElement);        
-
+    objFormData.append(objHTMLElement.id, objHTMLElement.value); 
+    if (sOtherHTMLElementID != "")//attach other fiels
+    {
+        objFormData.append('otherfieldid', sOtherHTMLElementID);        
+        objOtherElement = document.getElementById(sOtherHTMLElementID);
+        if (objOtherElement !== null)
+            objFormData.append('otherfieldvalue', objOtherElement.value);        
+        else
+            console.error("validateField(): there is no field with id: ", sOtherHTMLElementID);
+    }
 
     const objRequest = new Request(sValidateURL,
     {
@@ -650,7 +656,7 @@ function validateField(objHTMLElement, bReplaceByFilteredValue = true, sNameOthe
 
 
 
-    //===temp
+    //===temp for debugging
     // fetch(objRequest)
     // .then((response) => response.text())
     // .then((objHTMLRes) => {

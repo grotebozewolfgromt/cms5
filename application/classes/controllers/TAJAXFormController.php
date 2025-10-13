@@ -72,7 +72,8 @@ abstract class TAJAXFormController
     const JSON_VALIDATERESPONSE_ERRORS                      = 'errors'; //array of specific errors encounted (generally per field basis)
     //0-N per response, included in JSON_VALIDATERESPONSE_ERRORS array:
     const JSON_VALIDATERESPONSE_FIELD_MESSAGE               = 'message'; //exact error message on field-level
-    
+    const JSON_VALIDATEREQUEST_FIELD_OTHERFIELDID           = 'otherfieldid';
+    const JSON_VALIDATEREQUEST_FIELD_OTHERFIELDVALUE        = 'otherfieldvalue';
 
     //JSON error codes
     // const JSONAK_RESPONSE_OK = 0;
@@ -94,6 +95,8 @@ abstract class TAJAXFormController
     const JSONAK_RESPONSE_ERRORCODE_UNKNOWN = 999;
 
     const ACTION_VARIABLE_VALIDATEFIELD = 'validatefield';
+
+
 
     /**
      * 

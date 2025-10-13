@@ -1829,6 +1829,7 @@ function formatPhoneNumberDutch($sDirtyPhoneNumber, $bIgnoreEmpty = true)
     $iLenReplaceArray = 0;
     $iLenDirtyPart = 0;
     $iLenPhoneNumber = 0;
+    $sRest = '';
 
     //can be empty --> cancel further execution
     if ($bIgnoreEmpty)
@@ -1838,7 +1839,7 @@ function formatPhoneNumberDutch($sDirtyPhoneNumber, $bIgnoreEmpty = true)
     }
 
     //basic cleanup
-    $sPhoneNumber = filterBadCharsWhiteList($sDirtyPhoneNumber, WHITELIST_ALPHANUMERIC.' -');
+    $sPhoneNumber = filterBadCharsWhiteList($sDirtyPhoneNumber, WHITELIST_NUMERIC.' -');
 
     //define start string and replacement
     $arrReplaceStartString = array(
@@ -1852,7 +1853,7 @@ function formatPhoneNumberDutch($sDirtyPhoneNumber, $bIgnoreEmpty = true)
     $iLenPhoneNumber = strlen($sPhoneNumber);
     $arrKeys = array_keys($arrReplaceStartString);
     $iLenReplaceArray  = count($arrReplaceStartString);
-    for ($iIndex = 0; $iIndex < $iLenReplaceArray; ++$iIndex)
+    for ($iIndex = 0; $iIndex < $iLenReplaceArray; ++$iIndex) //loop through replacement array
     {
         $sDirtyPart = $arrKeys[$iIndex];
         $sCleanPart = $arrReplaceStartString[$arrKeys[$iIndex]];
@@ -1860,13 +1861,15 @@ function formatPhoneNumberDutch($sDirtyPhoneNumber, $bIgnoreEmpty = true)
 
         if (str_starts_with($sDirtyPhoneNumber, $sDirtyPart))
         {
-            if (!str_starts_with($sDirtyPhoneNumber, $sCleanPart)) //exclude string that are already sanitized
-            {
-                $sPhoneNumber = $sCleanPart.ltrim(substr($sPhoneNumber, $iLenDirtyPart, $iLenPhoneNumber-$iLenDirtyPart));
-                return $sPhoneNumber; //exit
-            }
+            $sRest = substr($sPhoneNumber, $iLenDirtyPart, $iLenPhoneNumber-$iLenDirtyPart);
+            $sRest = filterStringBlacklist($sRest, '-');//filter dashes
+            $sPhoneNumber = $sCleanPart.ltrim(rtrim($sRest));
+            $sPhoneNumber = str_replace('  ', ' ', $sPhoneNumber); //filter 2 spaces
+            $sPhoneNumber = str_replace('   ', ' ', $sPhoneNumber); //filter 3 spaces
+            return $sPhoneNumber; //exit
         }
     }
+
 
     return $sPhoneNumber;
 }

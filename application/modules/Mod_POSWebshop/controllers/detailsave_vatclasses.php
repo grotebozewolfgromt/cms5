@@ -81,8 +81,8 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
             //custom identifier
         $this->objEdtName = new InputText();
         $this->objEdtName->setNameAndID('edtName');
-        $this->objEdtName->setOnchange("validateField(this, true)");
-        $this->objEdtName->setOnkeyup("setDirtyRecord()");        
+        // $this->objEdtName->setOnchange("validateField(this, true)");
+        // $this->objEdtName->setOnkeyup("setDirtyRecord()");        
         $this->objEdtName->setClass('fullwidthtag');   
         $this->objEdtName->setRequired(true);   
         $this->objEdtName->setMaxLength(50);
@@ -95,8 +95,8 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
             //description
         $this->objEdtDescription = new InputText();
         $this->objEdtDescription->setNameAndID('edtDescription');        
-        $this->objEdtDescription->setOnchange("validateField(this, true)");
-        $this->objEdtDescription->setOnkeyup("setDirtyRecord()");        
+        // $this->objEdtDescription->setOnchange("validateField(this, true)");
+        // $this->objEdtDescription->setOnkeyup("setDirtyRecord()");        
         $this->objEdtDescription->setClass('fullwidthtag');           
         $this->objEdtDescription->setRequired(false);   
         $this->objEdtDescription->setMaxLength(255);
@@ -109,8 +109,8 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
             //default
         $this->objChkDefault = new DRInputCheckbox();
         $this->objChkDefault->setNameAndID('chkDefault');
-        $this->objChkDefault->setOnchange("validateField(this, true)");
-        $this->objChkDefault->setOnkeyup("setDirtyRecord()");        
+        // $this->objChkDefault->setOnchange("validateField(this, true)");
+        // $this->objChkDefault->setOnkeyup("setDirtyRecord()");        
         $this->objChkDefault->setLabel(transm(CMS_CURRENTMODULE, 'form_field_default', 'Is default'));
         $this->getFormGenerator()->add($this->objChkDefault);  
     

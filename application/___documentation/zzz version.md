@@ -52,12 +52,11 @@
 * ajaxform.js: validateField() supports validation via extern form field
 * ajaxform.js: onPageLoad() als al 'onchange' of 'onkeyup' of 'readonly' attribute, dan eventlistener niet toevoegen
 * ajaxform.js: validate field automatisch ge-attached
+* contactdetail: checkboxen naar beneden verplaatst
+* detailsave_* schermen: setOnkeyup("setDirtyRecord()") en setOnchange("validateField()") uit gecomment. Het is niet meer nodig.
+* extra veld bij validateField() kunnen toevoegen bij detailsave: functionaliteit in detailsave_contacts toegevoegd
 
-* todo: setOnkeyup("setDirtyRecord()"); verwijderen in alle detailsave_ schermen
-
-extra veld bij validate field kunnen toevoegen bij detailsave
-contactdetail: checkboxen naar beneden verplaatsen
-veld: mag op rekening kopen
+veld: mag op rekening kopen + note phone1 + note phone 2
 
 
 ## 10 okt 2025:
