@@ -87,19 +87,31 @@ function onPageLoad(objEvent)
             switch(objElement.type)
             {
                 case "text":
+                case "dr-input-text":
+
+                    //dirty
                     if ((objElement.getAttribute("onkeyup") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                     {
-                        console.log("attach keyup", objElement, objElement.getAttribute("onkeyup"));
-
                         objElement.addEventListener("keyup", ()=> 
                         {
                             console.log("Auto keyup-event was triggered");
                             setDirtyRecord(); //mark record as dirty
                         }, { signal: this.objAbortControllerForm.signal });          
-                        break;
                     }
-                    else
-                        console.log("keyup not attached", objElement, objElement.getAttribute("onkeyup"));
+
+                    //validate field
+                    console.log("attach onchange:"+ objElement.name, objElement, objElement.getAttribute("onchange"), objElement.getAttribute("readonly"));
+                    if ((objElement.getAttribute("onchange") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
+                    {
+                        objElement.addEventListener("change", (objEvent)=> 
+                        {
+                            console.log("auto validate field triggered", objEvent.target);
+                            validateField(objEvent.target, true);//validate
+                            setDirtyRecord(); //mark record as dirty again (just to be sure)
+                        }, { signal: this.objAbortControllerForm.signal });          
+                    }
+
+                    break;
                 case "checkbox":
                     //do nothing: we deal with them later
                     //it prevents us from going to default
@@ -107,7 +119,7 @@ function onPageLoad(objEvent)
                 default: //all OTHER elements
                     if (objElement.tagName.toLocaleLowerCase() == "textarea") //textarea has no type
                     {
-                        // console.log("attach keyup", objElement);                        
+                        //set dirty
                         if ((objElement.getAttribute("onkeyup") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                         {
                             objElement.addEventListener("keyup", ()=> 
@@ -116,6 +128,18 @@ function onPageLoad(objEvent)
                                 setDirtyRecord(); //mark record as dirty
                             }, { signal: this.objAbortControllerForm.signal });   
                         }
+
+                        //validate field
+                        console.log("attach onchange:"+ objElement.name, objElement, objElement.getAttribute("onchange"), objElement.getAttribute("readonly"));
+                        if ((objElement.getAttribute("onchange") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
+                        {
+                            objElement.addEventListener("change", (objEvent)=> 
+                            {
+                                console.log("auto validate field triggered", objEvent.target);
+                                validateField(objEvent.target, true);//validate
+                                setDirtyRecord(); //mark record as dirty again (just to be sure)
+                            }, { signal: this.objAbortControllerForm.signal });          
+                        }                        
                     }
                     else //all other elements
                     {

@@ -189,8 +189,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCustomIdentifier->setMaxLength(50);                
         $objValidator = new TMaximumLength(50);
         $this->objEdtCustomIdentifier->addValidator($objValidator);    
-        $this->objEdtCustomIdentifier->setOnchange("validateField(this, true)");
-        $this->objEdtCustomIdentifier->setOnkeyup("setDirtyRecord()");          
         // $this->getFormGenerator()->add($this->objEdtCustomIdentifier, '', transm(CMS_CURRENTMODULE, 'form_field_customid', 'Custom Id (to identify this contact just to you, so you can search for it)'));
         $this->getFormGenerator()->addQuick($this->objEdtCustomIdentifier, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_customid', 'Custom Id'),  transm(CMS_CURRENTMODULE, 'form_field_customid_iconinfo', 'To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.<br><br>This information is not encrypted, thus searchable.'));
 
@@ -202,8 +200,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objTagKeywords->setMaxLength(255);                
         $objValidator = new TMaximumLength(255);
         $this->objTagKeywords->addValidator($objValidator);    
-        $this->objTagKeywords->setOnchange("validateField(this, true)");
-        $this->objTagKeywords->setOnkeyup("setDirtyRecord()");          
         // $this->getFormGenerator()->add($this->objTagKeywords, '', transm(CMS_CURRENTMODULE, 'form_field_searchkeywords', 'Search keywords'));
         $this->getFormGenerator()->addQuick($this->objTagKeywords, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_searchkeywords', 'Search keywords'),  transm(CMS_CURRENTMODULE, 'form_field_searchkeywords_iconinfo', 'Enter search keywords to find this contact.<br>This information is not encrypted, thus searchable.<br><br>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn\'t allow you to search for this data.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.'));
 
@@ -217,8 +213,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCompanyName->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtCompanyName->addValidator($objValidator);     
-        $this->objEdtCompanyName->setOnchange("validateField(this, true)");
-        // $this->objEdtCompanyName->setOnkeyup("setDirtyRecord()");               
         $this->getFormGenerator()->add($this->objEdtCompanyName, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_companyname', 'Company name')); 
 
             //chamber of commerce number
@@ -230,8 +224,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtChamberCommerce->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtChamberCommerce->addValidator($objValidator);     
-        $this->objEdtChamberCommerce->setOnchange("validateField(this, true)");
-        $this->objEdtChamberCommerce->setOnkeyup("setDirtyRecord()");               
         // $this->getFormGenerator()->add($this->objEdtChamberCommerce, '', transm(CMS_CURRENTMODULE, 'form_field_chamberofcommerceno', 'Chamber of commerce registration number (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtChamberCommerce, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_chamberofcommerceno', 'Chamber of commerce # (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_chamberofcommerceno_iconinfo', 'Chamber of commerce registration number.<br>This data encrypted, thus not searchable.'));
                 
@@ -240,7 +232,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objCbxSalutations = new DRInputCombobox();
         $this->objCbxSalutations->setNameAndID('cbxSalutations');
         $this->objCbxSalutations->setClass('quarterwidthtag'); 
-        $this->objCbxSalutations->setOnchange("setDirtyRecord()");               
         $this->getFormGenerator()->addQuick($this->objCbxSalutations, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_salutations', 'Salutation'),  transm(CMS_CURRENTMODULE, 'form_field_salutation_iconinfo', 'How do you whish to address this contact? Mr. Mrs. Ms.'));
 
 
@@ -255,8 +246,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtFirstNameInitials->addValidator($objValidator);    
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtFirstNameInitials->addValidator($objValidator);     
-        $this->objEdtFirstNameInitials->setOnchange("validateField(this, true)");
-        $this->objEdtFirstNameInitials->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials')); 
 
             //last name prefix
@@ -274,7 +263,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objCbxLastNamePrefix = new DRInputCombobox();
         $this->objCbxLastNamePrefix->setNameAndID('cbxLastNamePrefix');
         $this->objCbxLastNamePrefix->setClass('quarterwidthtag'); 
-        $this->objCbxLastNamePrefix->setOnchange("setDirtyRecord()");               
         $this->getFormGenerator()->addQuick($this->objCbxLastNamePrefix, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix'),  transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix_iconinfo', 'Like: van de, van, von der etc, von'));
     
 
@@ -289,8 +277,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtLastName->addValidator($objValidator);           
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtLastName->addValidator($objValidator);     
-        $this->objEdtLastName->setOnchange("validateField(this, true)");
-        $this->objEdtLastName->setOnkeyup("setDirtyRecord()");                            
         // $this->getFormGenerator()->add($this->objEdtLastName, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastname', 'Last name (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtLastName, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastname', 'Last name (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_lastname_iconinfo', 'Last name.<br>This data encrypted, thus not searchable.'));
 
@@ -306,15 +292,12 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtEmailAddress->addValidator($objValidator); 
         $objValidator = new TLowercase();
         $this->objEdtEmailAddress->addValidator($objValidator);         
-        $this->objEdtEmailAddress->setOnchange("validateField(this, true)");
-        $this->objEdtEmailAddress->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->addQuick($this->objEdtEmailAddress, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_emailaddress', 'Email address (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_emailaddress_iconinfo', 'Email address is encrypted, thus not searchable.'));
 
             //country code phone1
         $this->objSelCountryCodePhone1 = new DRInputCombobox();
         // $this->objSelCountryCodePhone1->setClass('quarterwidthtag');
         $this->objSelCountryCodePhone1->setNameAndID('selCountryCodePhone1');
-        $this->objSelCountryCodePhone1->setOnchange("setDirtyRecord()");                            
         // $this->getFormGenerator()->add($this->objSelCountryCodePhone1, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone1', 'Country code'));
 
             //phone1
@@ -326,8 +309,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone1->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_NUMERIC.' -');
         $this->objEdtPhone1->addValidator($objValidator);                 
-        $this->objEdtPhone1->setOnchange("validateField(this, true)");
-        $this->objEdtPhone1->setOnkeyup("setDirtyRecord()");                            
+        // $this->objEdtPhone1->setOnchange("validateField(this, true)");
         $this->getFormGenerator()->addArray(array($this->objSelCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
 
             //country code phone2
@@ -346,8 +328,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone2->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_NUMERIC.' -');
         $this->objEdtPhone2->addValidator($objValidator);         
-        $this->objEdtPhone2->setOnchange("validateField(this, true)");
-        $this->objEdtPhone2->setOnkeyup("setDirtyRecord()");                            
+        // $this->objEdtPhone2->setOnchange("validateField(this, true)");
         // $this->getFormGenerator()->add($this->objEdtPhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (encrypted, not searchable)')); 
         $this->getFormGenerator()->addArray(array($this->objSelCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
     
@@ -362,8 +343,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingAddressStreet->addValidator($objValidator);      
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingAddressStreet->addValidator($objValidator);     
-        $this->objEdtBillingAddressStreet->setOnchange("validateField(this, true)");
-        $this->objEdtBillingAddressStreet->setOnkeyup("setDirtyRecord()");                            
         // $this->getFormGenerator()->add($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet', 'Street + house number (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet_iconinfo', 'Street and house number is encrypted, thus not searchable.'));
 
@@ -379,8 +358,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingAddressMisc->addValidator($objValidator);                     
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingAddressMisc->addValidator($objValidator);     
-        $this->objEdtBillingAddressMisc->setOnchange("validateField(this, true)");
-        $this->objEdtBillingAddressMisc->setOnkeyup("setDirtyRecord()");                            
         // $this->getFormGenerator()->add($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc', 'Extra address info (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.'));
 
@@ -396,9 +373,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingPostalCode->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
         $this->objEdtBillingPostalCode->addValidator($objValidator); 
-
-        $this->objEdtBillingPostalCode->setOnchange("validateField(this, true)");
-        $this->objEdtBillingPostalCode->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //billing: city
@@ -412,8 +386,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtBillingCity->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingCity->addValidator($objValidator);     
-        $this->objEdtBillingCity->setOnchange("validateField(this, true)");
-        $this->objEdtBillingCity->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtBillingCity, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcity', 'City')); 
 
             //billing: state/region
@@ -427,15 +399,12 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingStateRegion->addValidator($objValidator);           
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingStateRegion->addValidator($objValidator);     
-        $this->objEdtBillingStateRegion->setOnchange("validateField(this, true)");
-        $this->objEdtBillingStateRegion->setOnkeyup("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingstateregion', 'State/region')); 
             
 
             //billing: country
         $this->objSelBillingCountryID = new DRInputCombobox();
         $this->objSelBillingCountryID->setNameAndID('optBillingCountryID');
-        $this->objSelBillingCountryID->setOnchange("setDirtyRecord()");                            
         $this->getFormGenerator()->add($this->objSelBillingCountryID, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcountry', 'Country'));
 
             //billing: vat no
@@ -447,8 +416,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingVatNumber->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingVatNumber->addValidator($objValidator);     
-        $this->objEdtBillingVatNumber->setOnchange("validateField(this, true)");
-        $this->objEdtBillingVatNumber->setOnkeyup("setDirtyRecord()");             
         // $this->getFormGenerator()->add($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingvatno', 'VAT number (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingvatno', 'VAT number / Tax id (encrypted'),  transm(CMS_CURRENTMODULE, 'form_field_billingvatno_iconinfo', 'VAT number or (sales) tax id.<br>Data is encrypted, thus not searchable.'));
 
@@ -460,9 +427,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TMaximumLength(20);
         $this->objEdtBillingBankAccountNo->addValidator($objValidator);    
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
-        $this->objEdtBillingBankAccountNo->addValidator($objValidator);     
-        $this->objEdtBillingBankAccountNo->setOnchange("validateField(this, true)");
-        $this->objEdtBillingBankAccountNo->setOnkeyup("setDirtyRecord()");             
+        $this->objEdtBillingBankAccountNo->addValidator($objValidator);                
         // $this->getFormGenerator()->add($this->objEdtBillingBankAccountNo, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbankaccoutno', 'Bank account number (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingBankAccountNo, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbankaccountno', 'IBAN Bank account (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingbankaccountno_iconinfo', 'IBAN or Bank account number / id.<br>Data is encrypted, thus not searchable.'));
             
@@ -472,9 +437,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingEmailAddress->setClass('fullwidthtag');                         
         $this->objEdtBillingEmailAddress->setMaxLength(100);    
         $objValidator = new TMaximumLength(100);
-        $this->objEdtBillingEmailAddress->addValidator($objValidator);          
-        $this->objEdtBillingEmailAddress->setOnchange("validateField(this, true)");
-        $this->objEdtBillingEmailAddress->setOnkeyup("setDirtyRecord()");             
+        $this->objEdtBillingEmailAddress->addValidator($objValidator);                      
         // $this->getFormGenerator()->add($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress_iconinfo', 'Email address is encrypted, thus not searchable.'));
                             
@@ -489,9 +452,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryAddressStreet->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
-        $this->objEdtDeliveryAddressStreet->addValidator($objValidator);             
-        $this->objEdtDeliveryAddressStreet->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryAddressStreet->setOnkeyup("setDirtyRecord()");          
+        $this->objEdtDeliveryAddressStreet->addValidator($objValidator);                 
         // $this->getFormGenerator()->add($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET_iconinfo', 'Address is encrypted, thus not searchable.'));
 
@@ -506,9 +467,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryAddressMisc->addValidator($objValidator);
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
-        $this->objEdtDeliveryAddressStreet->addValidator($objValidator);             
-        $this->objEdtDeliveryAddressMisc->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryAddressMisc->setOnkeyup("setDirtyRecord()");          
+        $this->objEdtDeliveryAddressStreet->addValidator($objValidator);                      
         // $this->getFormGenerator()->add($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Extra address info (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.'));
 
@@ -523,9 +482,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TUppercase();
         $this->objEdtDeliveryPostalCode->addValidator($objValidator);                   
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
-        $this->objEdtDeliveryPostalCode->addValidator($objValidator); 
-        $this->objEdtDeliveryPostalCode->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryPostalCode->setOnkeyup("setDirtyRecord()");         
+        $this->objEdtDeliveryPostalCode->addValidator($objValidator);         
         $this->getFormGenerator()->add($this->objEdtDeliveryPostalCode, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //delivery: city
@@ -538,9 +495,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TUppercaseFirstChar();
         $this->objEdtDeliveryCity->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
-        $this->objEdtDeliveryCity->addValidator($objValidator);             
-        $this->objEdtDeliveryCity->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryCity->setOnkeyup("setDirtyRecord()");                     
+        $this->objEdtDeliveryCity->addValidator($objValidator);                                
         $this->getFormGenerator()->add($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycity', 'City')); 
 
             //delivery: state/region
@@ -554,8 +509,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryStateRegion->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtDeliveryStateRegion->addValidator($objValidator);         
-        $this->objEdtDeliveryStateRegion->setOnchange("validateField(this, true)");
-        $this->objEdtDeliveryStateRegion->setOnkeyup("setDirtyRecord()");                     
         $this->getFormGenerator()->add($this->objEdtDeliveryStateRegion, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverystateregion', 'State/region')); 
             
 
@@ -563,7 +516,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->objSelDeliveryCountryID = new Select();
         $this->objSelDeliveryCountryID = new DRInputCombobox();
         $this->objSelDeliveryCountryID->setNameAndID('optDeliveryCountryID');
-        $this->objSelDeliveryCountryID->setOnchange("setDirtyRecord()");                     
         $this->getFormGenerator()->add($this->objSelDeliveryCountryID, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycountry', 'Country'));
                
 
@@ -573,8 +525,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objDTFirstContact->setAllowEmptyDateTime(true);
         $this->objDTFirstContact->setPHPDateFormat($objAuthenticationSystem->getUsers()->getDateFormatLong());
         $this->objDTFirstContact->setPHPTimeFormat($objAuthenticationSystem->getUsers()->getTimeFormatLong());
-        $this->objDTFirstContact->setFirstDayOfWeek($objAuthenticationSystem->getUsers()->getWeekStartsOn()); //reads user preferences first day
-        $this->objDTFirstContact->setOnchange("setDirtyRecord()");          
+        $this->objDTFirstContact->setFirstDayOfWeek($objAuthenticationSystem->getUsers()->getWeekStartsOn()); //reads user preferences first day      
         $this->getFormGenerator()->add($this->objDTFirstContact, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_first_contact', 'First contact')); 
 
             //last contact
@@ -584,7 +535,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objDTLastContact->setPHPDateFormat($objAuthenticationSystem->getUsers()->getDateFormatLong());
         $this->objDTLastContact->setPHPTimeFormat($objAuthenticationSystem->getUsers()->getTimeFormatLong());
         $this->objDTLastContact->setFirstDayOfWeek($objAuthenticationSystem->getUsers()->getWeekStartsOn()); //reads user preferences first day
-        $this->objDTLastContact->setOnchange("setDirtyRecord()");                  
         $this->getFormGenerator()->add($this->objDTLastContact, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_last_contact', 'Last contact')); 
 
            //notes
@@ -593,8 +543,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objTxtArNotes->setClass('fullwidthtag');     
         $objValidator = new TCharacterWhitelist(WHITELIST_SAFE);
         $this->objTxtArNotes->addValidator($objValidator);         
-        $this->objTxtArNotes->setOnchange("validateField(this, true)");
-        $this->objTxtArNotes->setOnkeyup("setDirtyRecord()");               
         $this->getFormGenerator()->add($this->objTxtArNotes, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_notes', 'Notes (only seen by you)')); 
     }
 
