@@ -39,8 +39,6 @@
     - na <enter> in quicksearch field gefocussed blijven op quicksearch field
 * corrigeren contacten invoer
     * bic toevoegen
-    * aanhef toevoegen
-    * onchange en onkey automatisch aan ieder veld toevoegen
 * labels component maken
 
 
@@ -56,7 +54,8 @@
 * detailsave_* schermen: setOnkeyup("setDirtyRecord()") en setOnchange("validateField()") uit gecomment. Het is niet meer nodig.
 * extra veld bij validateField() kunnen toevoegen bij detailsave: functionaliteit in detailsave_contacts toegevoegd
 
-veld: mag op rekening kopen + note phone1 + note phone 2
+velden toevoegen: mag op rekening kopen + note phone1 + note phone 2
+velden toevoegen scherm: bic
 
 
 ## 10 okt 2025:
