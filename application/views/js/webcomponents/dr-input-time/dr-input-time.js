@@ -13,7 +13,7 @@
  * 
  * 
  * FIRES EVENT: 
- * - "update" when anything changes in editbox (on each keypress for example)
+ * - "update" when anything changes in editbox. You can see it as the equivalent of 'keyup' event for edit boxes
  * - "change" when user leaves editbox and is changed
  * 
  * @author Dennis Renirie
@@ -25,7 +25,7 @@
  * 5 apr 2025: dr-input-time.js: aparte eventlisteners voor editbox en clock
  * 5 apr 2025: dr-input-time.js: mousewheel update nu uren, minuten en seconden
  * 26 sept 2025: dr-input-time.js: BUGFIX: formvalue not set on creation. dus een record openen, dan save, werden de values van de box niet gesaved
- * 
+ * 13 okt 2025 dr-input-time.js: ADD: focusout triggert een 'change'-event wanneer waarde gewijzigd
  * */
 ?>
 
@@ -221,6 +221,7 @@ class DRInputTime extends HTMLElement
     #bAllowEmptyTime = false;
     #bDisabled = false;
     #bConnectedCallbackHappened = false;
+    #bDispatchChange = false; //keeps track if value is updated (with dispatchUpdate()), so we can fire a 'changed' event when focus is lost. THIS IS NOT A 'DIRTY'-FLAG!!!
 
     sTransAM = "am"; //translation of ante meridian 
     sTransPM = "pm"; //translation of post meridian
@@ -731,7 +732,15 @@ class DRInputTime extends HTMLElement
                 //prevent scrolling
                 objEvent.preventDefault();
             }
-        }, { signal: this.#objAbortController.signal });        
+        }, { signal: this.#objAbortController.signal });    
+        
+        //FOCUSOUT: this component
+        this.addEventListener("focusout", (objEvent)=>
+        {
+            if (this.#bDispatchChange === true)
+                this.#dispatchEventChange(this, "focusout this");
+        }, { signal: this.#objAbortController.signal });     
+                
     }
 
     /**
@@ -909,14 +918,7 @@ class DRInputTime extends HTMLElement
         //CHANGE event: editbox
         this.#objEditBox.addEventListener("change", (objEvent)=>
         {  
-            this.dispatchEvent(new CustomEvent("change",
-            {
-                bubbles: true,
-                detail:
-                {
-                    source: this
-                }
-            }));
+            this.#dispatchEventChange(this.#objEditBox, "editbox changed");
         }, { signal: this.#objAbortController.signal });  
 
     }
@@ -1464,6 +1466,7 @@ class DRInputTime extends HTMLElement
  
 
     /**
+     * dispatch when something has changed (but still in focus)
      * 
      * @param {*} objSource 
      * @param {*} sDescription 
@@ -1472,9 +1475,31 @@ class DRInputTime extends HTMLElement
 {
         //probably something changed, thus update the form value
         this.#objFormInternals.setFormValue(this.internalTimeAsISO8601);
+        this.#bDispatchChange = true;
 
         // console.log("dispatch event new methode ====================================")
         this.dispatchEvent(new CustomEvent("update",
+        {
+            bubbles: true,
+            detail:
+            {
+                source: objSource,
+                description: sDescription
+            }
+        }));
+    }
+
+    /**
+     * dispatch when something has changed (out of focus)
+     * 
+     * @param {*} objSource 
+     * @param {*} sDescription 
+     */
+    #dispatchEventChange(objSource, sDescription)
+    {
+        this.#bDispatchChange = false;
+        // console.log("time: dispatch change");
+        this.dispatchEvent(new CustomEvent("change",
         {
             bubbles: true,
             detail:

@@ -41,6 +41,7 @@
  * 15 mrt 2025 dr-input-date.js created
  * 15 mrt 2025 dr-input-date.js scrollwheel scrollt maanden in kalender
  * 26 sept 2025 dr-input-date.js: BUGFIX: formvalue not set on creation. dus een record openen, dan save, werden de values van de box niet gesaved
+ * 13 okt 2025 dr-input-date.js: ADD: focusout triggert een 'change'-event wanneer waarde gewijzigd
  */
 ?>
 
@@ -241,6 +242,7 @@ class DRInputDate extends HTMLElement
     #objAbortControllerCalendarDays = null;
     #bDisabled = false;
     #bConnectedCallbackHappened = false;    
+    #bDispatchChange = false;
 
     sTransDay = "dd";
     sTransMonth = "mm";
@@ -943,7 +945,7 @@ class DRInputDate extends HTMLElement
         //FOCUSOUT: correct input so user knows what time is recognized
         this.#objEditBox.addEventListener("focusout", (objEvent)=>
         {
-            console.log("focusoutieeeeeee", this.#bAllowEmptyDate, this.#objEditBox.value);
+            // console.log("focusoutieeeeeee", this.#bAllowEmptyDate, this.#objEditBox.value);
 
             //correct always, except when it's an empty date
             if (!((this.#bAllowEmptyDate) && (this.#objEditBox.value == "")))
@@ -970,6 +972,13 @@ class DRInputDate extends HTMLElement
             }
         }, { signal: this.#objAbortController.signal });    
 
+
+        //FOCUSOUT: this component
+        this.addEventListener("focusout", (objEvent)=>
+        {
+            if (this.#bDispatchChange === true)
+                this.#dispatchEventChange(this, "focusout this");
+        }, { signal: this.#objAbortController.signal });             
     }
 
      /**
@@ -1070,14 +1079,7 @@ class DRInputDate extends HTMLElement
         //CHANGE event: editbox
         this.#objEditBox.addEventListener("change", (objEvent)=>
         {  
-            this.dispatchEvent(new CustomEvent("change",
-            {
-                bubbles: true,
-                detail:
-                {
-                    source: this
-                }
-            }));
+            this.#dispatchEventChange(this.#objEditBox, "editbox changed");
         }, { signal: this.#objAbortController.signal });          
     }
 
@@ -1105,6 +1107,7 @@ class DRInputDate extends HTMLElement
     }
 
     /**
+     * dispatch when something has changed (but still in focus)
      * 
      * @param {*} objSource 
      * @param {*} sDescription 
@@ -1113,6 +1116,7 @@ class DRInputDate extends HTMLElement
     {
         //probably something changed, thus update the form value
         this.#objFormInternals.setFormValue(this.internalTimeAsISO8601);
+        this.#bDispatchChange = true;
             
         // console.log("dispatch event new methode ====================================")
         this.dispatchEvent(new CustomEvent("update",
@@ -1126,6 +1130,28 @@ class DRInputDate extends HTMLElement
         }));
     }
 
+
+    /**
+     * dispatch when something has changed (out of focus)
+     * 
+     * @param {*} objSource 
+     * @param {*} sDescription 
+     */
+    #dispatchEventChange(objSource, sDescription)
+    {
+        this.#bDispatchChange = false;        
+        // console.log("date: dispatch change");
+        this.dispatchEvent(new CustomEvent("change",
+        {
+            bubbles: true,
+            detail:
+            {
+                source: objSource,
+                description: sDescription
+            }
+        }));
+    }
+    
     /**
      * validate key presses for each input box on onKeyDown-event
      * 

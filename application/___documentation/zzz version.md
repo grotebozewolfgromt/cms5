@@ -44,6 +44,18 @@
 * labels component maken
 
 
+## 13 okt 2025:
+* ajaxform.js: automatisch attachen event listeners verbetert
+* dr-input-date + dr-input-time: ADD: focusout triggert een 'change'-event wanneer waarde gewijzigd
+
+
+* gestopt: midden in overschakeling naar auto attachen event listeners die het document dirty maken.
+* todo: afmaken onPageLoad() in ajaxform.js waarin 
+    1. checkbox events attachen
+    2. DRInputX events attachen
+* todo: setOnkeyup("setDirtyRecord()"); verwijderen in alle detailsave_ schermen
+
+
 ## 10 okt 2025:
 * generateNiceid() geeft nu nummers ipv characters en nummers
 * contacts: eerste letter hoofdletter converteren
@@ -60,11 +72,7 @@
 * TSysContacts: nederlandse telefoonnummers worden gecorrigeerd bij het saven
 * detailsave_contacts: velden worden nu allemaal gefilterd of verkeerde karakters
 
-* gestopt: midden in overschakeling naar auto attachen event listeners die het document dirty maken.
-* todo: afmaken onPageLoad() in ajaxform.js waarin 
-    1. checkbox events attachen
-    2. DRInputX events attachen
-* todo: setOnkeyup("setDirtyRecord()"); verwijderen in alle detailsave_ schermen
+
 
 ## 9 okt 2025:
 * skip maintenance mode check is now a constant instead of variable

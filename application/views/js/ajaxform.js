@@ -72,22 +72,15 @@ function onPageLoad(objEvent)
     const objFormElement = document.getElementsByName("<?php echo $sFormName; ?>")[0];
     const objFormData = new FormData(objFormElement);
 
-    // Display the key/value pairs
-    for (const arrPair of objFormData.entries()) 
+    //form elements: loop the key/value pairs
+    for (const arrFormEntries of objFormData.entries()) 
     {
-        objElement = document.getElementsByName(arrPair[0])[0];
-        sElementValue = arrPair[1];
+        objElement = document.getElementsByName(arrFormEntries[0])[0];
+        sElementValue = arrFormEntries[1];
 
-        console.log(objElement, sElementValue, arrPair);
+        // console.log(objElement, sElementValue, arrFormEntries);
         if (objElement != null)
         {
-            //CHANGE: for every element
-            objElement.addEventListener("change", ()=> 
-            {
-                console.log("Auto change-event was triggered");
-                setDirtyRecord(); //mark record as dirty
-            }, { signal: this.objAbortControllerForm.signal });         
-
             //KEYUP: special treatment text input elements
             switch(objElement.type)
             {
@@ -99,29 +92,54 @@ function onPageLoad(objEvent)
                         setDirtyRecord(); //mark record as dirty
                     }, { signal: this.objAbortControllerForm.signal });          
                     break;
-            }
-
-            //KEYUP: special treatment for other text input elements
-            switch(objElement.tagName.toLocaleLowerCase())
-            {
-                case "textarea":
-                    console.log("attach keyup", objElement);
-                    objElement.addEventListener("keyup", ()=> 
-                    {
-                        console.log("Auto keyup-event was triggered");
-                        setDirtyRecord(); //mark record as dirty
-                    }, { signal: this.objAbortControllerForm.signal });   
+                case "checkbox":
+                    //do nothing: we deal with them later
+                    //it prevents us from going to default
                     break;
-            }     
-
+                default:
+                    if (objElement.tagName.toLocaleLowerCase() == "textarea") //textarea has no type
+                    {
+                        console.log("attach keyup", objElement);
+                        objElement.addEventListener("keyup", ()=> 
+                        {
+                            console.log("Auto keyup-event was triggered");
+                            setDirtyRecord(); //mark record as dirty
+                        }, { signal: this.objAbortControllerForm.signal });   
+                    }
+                    else //all other elements
+                    {
+                        objElement.addEventListener("change", ()=> 
+                        {
+                            console.log("Auto change-event was triggered");
+                            setDirtyRecord(); //mark record as dirty
+                        }, { signal: this.objAbortControllerForm.signal });
+                    }
+            }   
         }
         else
-            console.warn("onPageLoad(): objElement is null", arrPair[0], arrPair[1], arrPair);
+            console.warn("onPageLoad(): objElement is null", arrFormEntries[0], arrFormEntries[1], arrFormEntries);
  
     }
 
-    //@todo: request checkboxes and see if they have parent form
-    //checkboxes only exist when they are checked, hence event listeners are not attached
+    //checkboxes
+    //checkboxes only 'exist' in form when they are checked, hence event listeners are not attached when requesting form elements, so we have to add them explicitly
+    const arrCheckboxes = [...document.querySelectorAll("input[type='checkbox']")];
+    const iLenCheck = arrCheckboxes.length;
+    let objClosest = null;
+    for (let iIndex = 0; iIndex < iLenCheck; iIndex++)
+    {
+        objClosest = arrCheckboxes[iIndex].closest("form[name='<?php echo $sFormName; ?>']");
+        if (objClosest !== null)
+        {
+            //CHANGE: checkbox
+            arrCheckboxes[iIndex].addEventListener("change", ()=> 
+            {
+                console.log("checkbox change-event was triggered");
+                setDirtyRecord(); //mark record as dirty
+            }, { signal: this.objAbortControllerForm.signal });    
+        }
+    }
+
     
 };
 

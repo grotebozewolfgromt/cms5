@@ -725,7 +725,7 @@ class DRPopover extends HTMLElement
                         )
                         {
                             // console.log("mousedown outside rects", this,  this.getBoundingClientRect());
-                            console.log("mousedown outside rects anchor or bubble", this);
+                            // console.log("mousedown outside rects anchor or bubble", this);
 
 
                             this.hide();
