@@ -158,10 +158,10 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         //upload image
         $this->objImage = new DRInputUpload();
         $this->objImage->setNameAndID('uplImage'); //NOTICE: when you have a multiple uploads <dr-input-upload> that the id will be automatically changed
-        $this->objImage->setMultiple(true);//upload multiple files at once. NOTICE: the name will be automatically changed to the name with brackets for an array
+        $this->objImage->setMultiple(false);//upload multiple files at once. NOTICE: the name will be automatically changed to the name with brackets for an array
         $this->objImage->setOnchange("setDirtyRecord()");        
-        $this->objImage->setUploadDirPath(APP_PATH_UPLOADS.DIRECTORY_SEPARATOR.$objCurrentModule->getUploadDir().DIRECTORY_SEPARATOR.$this->getUploadDir());
-        $this->objImage->setUploadDirURL(APP_URL_UPLOADS.'/'.$objCurrentModule->getUploadDir().'/'.$this->getUploadDir());
+        $this->objImage->setUploadDirPath(APP_PATH_UPLOADS_PUBLIC.DIRECTORY_SEPARATOR.$objCurrentModule->getUploadDir().DIRECTORY_SEPARATOR.$this->getUploadDir());
+        $this->objImage->setUploadDirURL(APP_URL_UPLOADS_PUBLIC.'/'.$objCurrentModule->getUploadDir().'/'.$this->getUploadDir());
         $this->objImage->setAcceptArray(MIME_TYPES_IMAGES_GD);
         // $this->objImage->setAcceptArray(array(MIME_TYPE_CSV, MIME_TYPE_TEXT));
         $this->objImage->setStrictMimeTypeChecking(true);

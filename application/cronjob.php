@@ -132,7 +132,7 @@ use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
         );
 
         $arrIndexDirs = array(
-                APP_PATH_UPLOADS,
+                APP_PATH_UPLOADS_PUBLIC,
         );
         
         //place htaccess files that restict everything

@@ -153,8 +153,8 @@ class step3 extends TInstallerScreen
 			$objConfig->set('APP_INSTALLER_PASSWORD', $sInstallPassword);			
 			$objConfig->set('APP_PATH_DOMAIN_CMS', getDomain(getURLThisScript(), false));        
 			$objConfig->set('APP_URL_CMS', dirname(dirname(getURLThisScript())));        
-			$objConfig->set('APP_PATH_UPLOADS', dirname($sCMSRootPath).DIRECTORY_SEPARATOR.'uploads');        
-			$objConfig->set('APP_URL_UPLOADS', dirname(dirname(dirname(getURLThisScript()))).'/uploads');        
+			$objConfig->set('APP_PATH_UPLOADS_PUBLIC', dirname($sCMSRootPath).DIRECTORY_SEPARATOR.'uploads');        
+			$objConfig->set('APP_URL_UPLOADS_PUBLIC', dirname(dirname(dirname(getURLThisScript()))).'/uploads');        
 			if ($_SERVER['REQUEST_SCHEME'] === 'http')
 				$objConfig->set('APP_ISHTTPS', false);        
 			if ($_SERVER['REQUEST_SCHEME'] === 'https')

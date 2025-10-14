@@ -61,8 +61,8 @@ use GdImage;
         $this->objImage->setNameAndID('uplImage'); //NOTICE: when you have a multiple uploads <dr-input-upload> that the id will be automatically changed
         $this->objImage->setMultiple(true);//upload multiple files at once. NOTICE: the name will be automatically changed to the name with brackets for an array
         $this->objImage->setOnchange("setDirtyRecord()");        
-        $this->objImage->setUploadDirPath(APP_PATH_UPLOADS.DIRECTORY_SEPARATOR.$objCurrentModule->getUploadDir().DIRECTORY_SEPARATOR.$this->getUploadDir());
-        $this->objImage->setUploadDirURL(APP_URL_UPLOADS.'/'.$objCurrentModule->getUploadDir().'/'.$this->getUploadDir());
+        $this->objImage->setUploadDirPath(APP_PATH_UPLOADS_PUBLIC.DIRECTORY_SEPARATOR.$objCurrentModule->getUploadDir().DIRECTORY_SEPARATOR.$this->getUploadDir());
+        $this->objImage->setUploadDirURL(APP_URL_UPLOADS_PUBLIC.'/'.$objCurrentModule->getUploadDir().'/'.$this->getUploadDir());
         $this->objImage->setAcceptArray(MIME_TYPES_IMAGES_GD);
         $this->objImage->setResizeImages(true);
         // $this->objImage->setMaxUploadSize(50000);
@@ -165,7 +165,7 @@ class DRInputUpload extends FormInputAbstract
 	const SESSIONAK_DRINPUTUPLOAD = 'DRInputUpload'; //==> $_SESSION[SESSIONAK_DRINPUTUPLOAD]
 	const SESSIONAK_DRINPUTUPLOAD_FILEHISTORY = 'filehistory';//==> $_SESSION[SESSIONAK_DRINPUTUPLOAD][SESSIONAK_DRINPUTUPLOAD_FILEHISTORY]: 1d ARRAY with file paths: a user can't just delete/rename any file on the server, it needs to be in the history array. This to prevents things like directory traversals
 
-	private $sUploadDirPath = APP_PATH_UPLOADS;//the local path where the file should be uploaded
+	private $sUploadDirPath = APP_PATH_UPLOADS_PUBLIC;//the local path where the file should be uploaded
 	private $sUploadDirURL = APP_URLTHISSCRIPT;//the url directory where uploaded files can be found
 	private $sUploadNewURL = APP_URLTHISSCRIPT; //which url should be called to upload the file?
 	private $sDeleteURL = APP_URLTHISSCRIPT; //which url should be called to delete the file?
@@ -437,7 +437,7 @@ class DRInputUpload extends FormInputAbstract
 	 * this is the local path on the server, this is not exposed in the webcomponent for security reasons.
 	 * When not specified, the default upload directory is assumed
 	 */
-	public function setUploadDirPath($sDirectoryPath = APP_PATH_UPLOADS)
+	public function setUploadDirPath($sDirectoryPath = APP_PATH_UPLOADS_PUBLIC)
 	{
 		$this->sUploadDirPath = $sDirectoryPath;
 	}
@@ -445,7 +445,7 @@ class DRInputUpload extends FormInputAbstract
 	/**
 	 * get the upload directory
 	 * local path on server, this is not exposed in the webcomponent for security reasons.
-	 * When not specified, the default upload directory APP_PATH_UPLOADS is returned
+	 * When not specified, the default upload directory APP_PATH_UPLOADS_PUBLIC is returned
 	 * 	 
 	 * @return string
 	 */
@@ -457,9 +457,9 @@ class DRInputUpload extends FormInputAbstract
 	/**
 	 * set the upload directory
 	 * URL on server
-	 * When not specified, the default upload directory APP_URL_UPLOADS is assumed
+	 * When not specified, the default upload directory APP_URL_UPLOADS_PUBLIC is assumed
 	 */
-	public function setUploadDirURL($sDirectoryURL = APP_URL_UPLOADS)
+	public function setUploadDirURL($sDirectoryURL = APP_URL_UPLOADS_PUBLIC)
 	{
 		$this->sUploadDirURL = $sDirectoryURL;
 		$this->setAttribute('uploaddirurl', $this->sUploadDirURL);		
@@ -468,7 +468,7 @@ class DRInputUpload extends FormInputAbstract
 	/**
 	 * get the upload directory
 	 * URL on server
-	 * When not specified, the default upload directory APP_URL_UPLOADS is returned
+	 * When not specified, the default upload directory APP_URL_UPLOADS_PUBLIC is returned
 	 * 	 
 	 * @return string
 	 */

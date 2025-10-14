@@ -71,7 +71,7 @@ includeJSDOMEnd( APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DI
 <?php
 // $objTemp = new DRInputUpload();
 // $objTemp->setAttribute('name', 'snotgorgel');
-// $objTemp->setUploadDir(APP_PATH_UPLOADS.DIRECTORY_SEPARATOR.'subbie');
+// $objTemp->setUploadDir(APP_PATH_UPLOADS_PUBLIC.DIRECTORY_SEPARATOR.'subbie');
 // $objTemp->setAccept(array(MIME_TYPE_PNG, MIME_TYPE_JPEG, MIME_TYPE_WEBP));
 // $sTest = $objTemp->renderHTMLNode();
 // echo $sTest;
@@ -127,7 +127,7 @@ include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_misc.php');
 include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_security.php');
 include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_testcases.php');
 
-vardump(generateUniqueFileName(APP_PATH_UPLOADS.'\poswebshop\productcategories', 'image(1).jpg'));
+vardump(generateUniqueFileName(APP_PATH_UPLOADS_PUBLIC.'\poswebshop\productcategories', 'image(1).jpg'));
 
 // include_once(APP_PATH_VENDOR.DIRECTORY_SEPARATOR.'Mike42'.DIRECTORY_SEPARATOR.'autoload.php');
 

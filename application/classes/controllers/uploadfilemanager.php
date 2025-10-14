@@ -112,7 +112,7 @@ class uploadfilemanager
          $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_SUBDIRECTORY] = '';
          $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_FILES] = array();
 
-         $sSafeFileDir = APP_PATH_UPLOADS;
+         $sSafeFileDir = APP_PATH_UPLOADS_PUBLIC;
 
       //==== authorize user
          if (!$this->getAuthUseUploadFileManager())
@@ -183,7 +183,7 @@ class uploadfilemanager
       $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_TOTALFILECOUNT] = $iTotalFileCount;
       $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_TOTALFILESIZEBYTES] = $iTotalFileSize;
       $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_SUBDIRECTORY] = ''; //default: root
-      // if ($sSafeModuleSubSubDir !== APP_PATH_UPLOADS)
+      // if ($sSafeModuleSubSubDir !== APP_PATH_UPLOADS_PUBLIC)
       //    $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_SUBDIRECTORY] = $sDirtySubDir; //by now it is considered "safe" instead "dirty", because the isDirectoryTraversal() would have error-returned already
 
 
@@ -198,7 +198,7 @@ class uploadfilemanager
     */
    private function checkUploadDirExists(&$arrJSONResponse)
    {
-      if (!is_dir(APP_PATH_UPLOADS))
+      if (!is_dir(APP_PATH_UPLOADS_PUBLIC))
       {
          $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_MESSAGE] = transcms('tfileuploadmanagercontroller_error_uploaddirdoesnotexist', 'The upload directory does not exist. Is it set correctly in the configuration file?');
          $arrJSONResponse[uploadfilemanager::JSON_FILELISTRESPONSE_ERRORCODE] = uploadfilemanager::JSON_ERRORCODE_UPLOADDIRNOTEXIST;
@@ -240,7 +240,7 @@ class uploadfilemanager
 
                $sClassMod = getModuleFullNamespaceClass($arrModuleFolders[$iModIndex]);
                $objCurrMod = new $sClassMod;
-               $sReturnSafeModuleDir = APP_PATH_UPLOADS.DIRECTORY_SEPARATOR.$objCurrMod->getUploadFileManagerDir();
+               $sReturnSafeModuleDir = APP_PATH_UPLOADS_PUBLIC.DIRECTORY_SEPARATOR.$objCurrMod->getUploadFileManagerDir();
 
                $iModIndex = $iCountMods; //exit loop
             }            

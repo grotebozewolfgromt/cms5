@@ -108,3 +108,4 @@ pagetitle_detailsave_contact_edit;Edit contact: [contact]<dr-icon-info>To comply
 detailsave_button_exit;Exit;Exit
 detailsavetemplate_button_save;Save;Save
 detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
+menuitem_modulename;Contacts;Contacts

@@ -44,3 +44,25 @@ form_label_sessions_dontrecognisethendelete;If you don't recognize any of these 
 form_label_sessions_checktodelete;(to delete session: click checkbox and click save);(to delete session: click checkbox and click save)
 message_sessions_iscurrentsession;(CURRENT SESSION);(CURRENT SESSION)
 pagetitle_settingsuser_edit;Settings user: [username];Settings user: [username]
+sectiontitle_cms;System;System
+sectiontitle_cms_security;System: security;System: security
+sectiontitle_cms_layout;System: layout;System: layout
+sectiontitle_cms_images;System: images;System: images
+form_field_emailsysadmin;Email address system administrator (whole system, all sites, all login controllers etc;Email address system administrator (whole system, all sites, all login controllers etc
+form_field_paginatormaxresultsperpage;# Records shown per page;# Records shown per page
+form_field_mailbot_from_emailaddress;FROM Email address mailbot (i.e. used for password recovery);FROM Email address mailbot (i.e. used for password recovery)
+form_field_mailbot_from_name;FROM name mailbot (i.e. used for password recovery);FROM name mailbot (i.e. used for password recovery)
+form_field_anyonecanregister;Anyone can create account;Anyone can create account
+form_field_loginonlyallowedwhitelistedips;Login only allowed from whitelisted IP addresses;Login only allowed from whitelisted IP addresses
+form_field_stealthmodewhitelistedips;Enable stealth mode for unfamiliar IP addresses (system will produce 404-errors pretending it doesn't exist ==> only works when login-only-whitelisted-ip is enabled);Enable stealth mode for unfamiliar IP addresses (system will produce 404-errors pretending it doesn't exist ==> only works when login-only-whitelisted-ip is enabled)
+form_field_usergroup;Default role new users;Default role new users
+form_field_userpasswordexpiresdays;Users need to change password after X days (0 = never, 1 = 1 day, 2 = 2 days etc.);Users need to change password after X days (0 = never, 1 = 1 day, 2 = 2 days etc.)
+form_field_websitesinnavigation;Show websites in navigation;Show websites in navigation
+form_field_savesuccessnotification;Show notification when save is successful;Show notification when save is successful
+form_field_theme;Theme;Theme
+form_label_resizeimages;Images are automatically resized when uploading. Here you can set the resolutions for the resized images:;Images are automatically resized when uploading. Here you can set the resolutions for the resized images:
+form_field_image_size_max;Maximum size (width px, height px);Maximum size (width px, height px)
+form_field_image_size_large;Large size (width px, height px);Large size (width px, height px)
+form_field_image_size_medium;Medium size (width px, height px);Medium size (width px, height px)
+form_field_image_size_thumbnail;Small/thumbnail size (width px, height px);Small/thumbnail size (width px, height px)
+pagetitle_settingsglobal_edit;Settings global;Settings global

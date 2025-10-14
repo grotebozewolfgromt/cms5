@@ -105,3 +105,5 @@ tcruddetailsavecontrollerajax_message_save_nosuccess_inputerror;Input error enco
 validator_colorhox_error_nothexcolor;This is not a valid hexadecimal color value;This is not a valid hexadecimal color value
 loginform_field_emailaddress;email address;email address
 passwordrecoverform_button_sendemail;send email;send email
+drinputupload_message_upload_ok;Upload succesful;Upload succesful
+drinputupload_message_delete_ok;Delete succesful;Delete succesful
