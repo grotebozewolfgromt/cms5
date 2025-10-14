@@ -51,8 +51,8 @@
 * installer step 5 -> step 6
 * installer step 7 -> step 5
 * installer asks which fields to encrypt
+* detailsave_contacts: info icons bijgewerkt en vertellen precies of een veld ge-encrypt is
 
-encrypted fields specificeren
 config: _CMS -> _ADMIN
 bootstrap: _CMS -> _ADMIN
 upload dir private and public

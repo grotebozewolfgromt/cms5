@@ -789,6 +789,7 @@ class DRInputText extends HTMLElement
     setValue(sValue)
     {
         this.#sValue = sValue;
+        this.#objFormInternals.setFormValue(sValue); 
         this.updateUI();
     }
 
@@ -920,7 +921,6 @@ class DRInputText extends HTMLElement
     set value(sValue)
     {
         this.setValue(sValue);
-        this.updateUI();
     }
 
 

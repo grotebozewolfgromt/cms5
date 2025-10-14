@@ -182,12 +182,12 @@ class TSysContacts extends TSysModel
 
 	public function getLastName()
 	{
-		return $this->get(TSysContacts::FIELD_LASTNAME, '', true);
+		return $this->get(TSysContacts::FIELD_LASTNAME, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME);
 	}
 
 	public function setLastName($sLastName)
 	{
-		$this->set(TSysContacts::FIELD_LASTNAME, $sLastName, '', true);
+		$this->set(TSysContacts::FIELD_LASTNAME, $sLastName, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME);
 	}
 
 	public function getLastNamePrefixID()
@@ -208,7 +208,7 @@ class TSysContacts extends TSysModel
      */
     public function getEmailAddressDecrypted()
     {
-        return $this->get(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, '', true);
+        return $this->get(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS);
     }
 
     /**
@@ -218,7 +218,7 @@ class TSysContacts extends TSysModel
      */
     public function setEmailAddressDecrypted($sUncryptedEmail)
     {
-        $this->set(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, $sUncryptedEmail, '', true);
+        $this->set(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, $sUncryptedEmail, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS);
         $this->set(TSysContacts::FIELD_EMAILADDRESSFINGERPRINT, getFingerprintEmail($sUncryptedEmail, TSysContacts::SEED_EMAILADDRESSFINGERPRINT, TSysContacts::DIGEST_EMAILADDRESSFINGERPRINT));
     }
 
@@ -255,12 +255,12 @@ class TSysContacts extends TSysModel
 
 	public function getPhoneNumber1()
 	{
-		return $this->get(TSysContacts::FIELD_PHONENUMBER1);
+		return $this->get(TSysContacts::FIELD_PHONENUMBER1, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER);
 	}
 
 	public function setPhoneNumber1($sPhone)
 	{
-		$this->set(TSysContacts::FIELD_PHONENUMBER1, $sPhone);
+		$this->set(TSysContacts::FIELD_PHONENUMBER1, $sPhone, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER);
 	}	
 
 	public function getPhoneNumber1Note()
@@ -285,12 +285,12 @@ class TSysContacts extends TSysModel
 
 	public function getPhoneNumber2()
 	{
-		return $this->get(TSysContacts::FIELD_PHONENUMBER2);
+		return $this->get(TSysContacts::FIELD_PHONENUMBER2, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER);
 	}
 
 	public function setPhoneNumber2($sPhone)
 	{
-		$this->set(TSysContacts::FIELD_PHONENUMBER2, $sPhone);
+		$this->set(TSysContacts::FIELD_PHONENUMBER2, $sPhone, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER);
 	}	
 
 	public function getPhoneNumber2Note()
@@ -347,33 +347,33 @@ class TSysContacts extends TSysModel
 
 	public function getBillingAddressMisc()
 	{
-		return $this->get(TSysContacts::FIELD_BILLINGADDRESSMISC, '', true);
+		return $this->get(TSysContacts::FIELD_BILLINGADDRESSMISC, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	public function setBillingAddressMisc($sLine1)
 	{
-		$this->set(TSysContacts::FIELD_BILLINGADDRESSMISC, $sLine1, '', true);
+		$this->set(TSysContacts::FIELD_BILLINGADDRESSMISC, $sLine1, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	
 	public function getBillingAddressStreet()
 	{
-		return $this->get(TSysContacts::FIELD_BILLINGADDRESSSTREET, '', true);
+		return $this->get(TSysContacts::FIELD_BILLINGADDRESSSTREET, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	public function setBillingAddressStreet($sLine2)
 	{
-		$this->set(TSysContacts::FIELD_BILLINGADDRESSSTREET, $sLine2, '', true);
+		$this->set(TSysContacts::FIELD_BILLINGADDRESSSTREET, $sLine2, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	public function getBillingPostalCodeZip()
 	{
-		return $this->get(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, '', true);
+		return $this->get(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP);
 	}
 
 	public function setBillingPostalCodeZip($sZip)
 	{
-		$this->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, $sZip, '', true);
+		$this->set(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, $sZip, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP);
 	}
 
 	public function getBillingCity()
@@ -423,7 +423,7 @@ class TSysContacts extends TSysModel
      */
     public function getBillingEmailAddressDecrypted()
     {
-        return $this->get(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, '', true);
+        return $this->get(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
     }
 
     /**
@@ -433,7 +433,7 @@ class TSysContacts extends TSysModel
      */
     public function setBillingEmailAddressDecrypted($sUncryptedEmail)
     {
-        $this->set(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, $sUncryptedEmail, '', true);
+        $this->set(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, $sUncryptedEmail, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
         $this->set(TSysContacts::FIELD_BILLINGEMAILADDRESSFINGERPRINT, getFingerprintEmail($sUncryptedEmail, TSysContacts::SEED_BILLINGEMAILADDRESSFINGERPRINT, TSysContacts::DIGEST_BILLINGEMAILADDRESSFINGERPRINT));
     }
 
@@ -469,33 +469,33 @@ class TSysContacts extends TSysModel
 
 	public function getDeliveryAddressMisc()
 	{
-		return $this->get(TSysContacts::FIELD_DELIVERYADDRESSMISC, '', true);
+		return $this->get(TSysContacts::FIELD_DELIVERYADDRESSMISC, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	public function setDeliveryAddressMisc($sLine1)
 	{
-		$this->set(TSysContacts::FIELD_DELIVERYADDRESSMISC, $sLine1, '', true);
+		$this->set(TSysContacts::FIELD_DELIVERYADDRESSMISC, $sLine1, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	
 	public function getDeliveryAddressStreet()
 	{
-		return $this->get(TSysContacts::FIELD_DELIVERYADDRESSSTREET, '', true);
+		return $this->get(TSysContacts::FIELD_DELIVERYADDRESSSTREET, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	public function setDeliveryAddressStreet($sLine2)
 	{
-		$this->set(TSysContacts::FIELD_DELIVERYADDRESSSTREET, $sLine2, '', true);
+		$this->set(TSysContacts::FIELD_DELIVERYADDRESSSTREET, $sLine2, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS);
 	}
 
 	public function getDeliveryPostalCodeZip()
 	{
-		return $this->get(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, '', true);
+		return $this->get(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP);
 	}
 
 	public function setDeliveryPostalCodeZip($sZip)
 	{
-		$this->set(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, $sZip, '', true);
+		$this->set(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, $sZip, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP);
 	}
 
 	public function getDeliveryCity()
@@ -696,9 +696,14 @@ class TSysContacts extends TSysModel
 		$this->setFieldForeignKeyActionOnDelete(TSysContacts::FIELD_LASTNAME, null);
 		$this->setFieldAutoIncrement(TSysContacts::FIELD_LASTNAME, false);
 		$this->setFieldUnsigned(TSysContacts::FIELD_LASTNAME, false);
-		$this->setFieldEncryptionCypher(TSysContacts::FIELD_LASTNAME, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
-		$this->setFieldEncryptionDigest(TSysContacts::FIELD_LASTNAME, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_LASTNAME, TSysContacts::ENCRYPTION_LASTNAME_PASSPHRASE);			                          
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME)
+		{
+			$this->setFieldEncryptionCypher(TSysContacts::FIELD_LASTNAME, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
+			$this->setFieldEncryptionDigest(TSysContacts::FIELD_LASTNAME, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_LASTNAME, TSysContacts::ENCRYPTION_LASTNAME_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_LASTNAME);
 		
 		//last name prefix
 		$this->setFieldDefaultsIntegerForeignKey(TSysContacts::FIELD_LASTNAMEPREFIXID, TSysContactsLastNamePrefixes::class, TSysContactsLastNamePrefixes::getTable(), TSysContactsLastNamePrefixes::FIELD_ID);
@@ -725,10 +730,15 @@ class TSysContacts extends TSysModel
         $this->setFieldForeignKeyActionOnDelete(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, null);
         $this->setFieldAutoIncrement(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, false);
         $this->setFieldUnsigned(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, false);
-		$this->setFieldEncryptionCypher(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
-		$this->setFieldEncryptionDigest(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, TSysContacts::ENCRYPTION_EMAIL_PASSPHRASE);			                          
-
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)
+		{
+			$this->setFieldEncryptionCypher(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
+			$this->setFieldEncryptionDigest(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_EMAILADDRESSENCRYPTED, TSysContacts::ENCRYPTION_EMAIL_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_EMAILADDRESSENCRYPTED);		
+		
         //email fingerprint, so we can lookup the record based on email address
         $this->setFieldDefaultValue(TSysContacts::FIELD_EMAILADDRESSFINGERPRINT, '');
         $this->setFieldType(TSysContacts::FIELD_EMAILADDRESSFINGERPRINT, CT_VARCHAR);
@@ -798,9 +808,15 @@ class TSysContacts extends TSysModel
         $this->setFieldForeignKeyActionOnDelete(TSysContacts::FIELD_PHONENUMBER1, null);
         $this->setFieldAutoIncrement(TSysContacts::FIELD_PHONENUMBER1, false);
         $this->setFieldUnsigned(TSysContacts::FIELD_PHONENUMBER1, false);
-		$this->setFieldEncryptionCypher(TSysContacts::FIELD_PHONENUMBER1, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
-		$this->setFieldEncryptionDigest(TSysContacts::FIELD_PHONENUMBER1, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_PHONENUMBER1, TSysContacts::ENCRYPTION_PHONE1_PASSPHRASE);	
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)
+		{
+			$this->setFieldEncryptionCypher(TSysContacts::FIELD_PHONENUMBER1, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
+			$this->setFieldEncryptionDigest(TSysContacts::FIELD_PHONENUMBER1, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_PHONENUMBER1, TSysContacts::ENCRYPTION_PHONE1_PASSPHRASE);	
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_PHONENUMBER1);		
+
 
 		//phone 1 note
 		$this->setFieldDefaultsVarChar(TSysContacts::FIELD_PHONENUMBER1NOTE, 50);
@@ -812,7 +828,13 @@ class TSysContacts extends TSysModel
 
 		//phone2
 		$this->setFieldCopyProps(TSysContacts::FIELD_PHONENUMBER2, TSysContacts::FIELD_PHONENUMBER1);
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_PHONENUMBER2, TSysContacts::ENCRYPTION_PHONE2_PASSPHRASE);	
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)
+		{
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_PHONENUMBER2, TSysContacts::ENCRYPTION_PHONE2_PASSPHRASE);	
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_PHONENUMBER2);		
+
 
 		//phone 2 note
 		$this->setFieldDefaultsVarChar(TSysContacts::FIELD_PHONENUMBER2NOTE, 50);
@@ -820,8 +842,9 @@ class TSysContacts extends TSysModel
 
        	//2-way encrypted chamber of commerce number
 	   	$this->setFieldCopyProps(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, TSysContacts::FIELD_PHONENUMBER1);
-	   	$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, TSysContacts::ENCRYPTION_CHAMBERCOMMERCE_PASSPHRASE);			                          
-
+		$this->setFieldEncryptionCypher(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
+		$this->setFieldEncryptionDigest(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
+		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, TSysContacts::ENCRYPTION_CHAMBERCOMMERCE_PASSPHRASE);	
 
 		//notes
 		$this->setFieldCopyProps(TSysContacts::FIELD_NOTES, TSysContacts::FIELD_COMPANYNAME);
@@ -858,12 +881,24 @@ class TSysContacts extends TSysModel
 
 		//Billing: addressline1
 		$this->setFieldCopyProps(TSysContacts::FIELD_BILLINGADDRESSMISC, TSysContacts::FIELD_LASTNAME);
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGADDRESSMISC, TSysContacts::ENCRYPTION_BILL_ADDR1_PASSPHRASE);			                          
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)
+		{
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGADDRESSMISC, TSysContacts::ENCRYPTION_BILL_ADDR1_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_BILLINGADDRESSMISC);		
+
 
 		//Billing: addressline2
 		$this->setFieldCopyProps(TSysContacts::FIELD_BILLINGADDRESSSTREET, TSysContacts::FIELD_LASTNAME);
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGADDRESSSTREET, TSysContacts::ENCRYPTION_BILL_ADDR2_PASSPHRASE);			                          
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)
+		{
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGADDRESSSTREET, TSysContacts::ENCRYPTION_BILL_ADDR1_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_BILLINGADDRESSSTREET);		
 
+		
 		//Billing: postal code / zip code
 		// $this->setFieldCopyProps(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, TSysContacts::FIELD_LASTNAME);
         $this->setFieldDefaultValue(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, '');
@@ -884,10 +919,14 @@ class TSysContacts extends TSysModel
         $this->setFieldForeignKeyActionOnDelete(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, null);
         $this->setFieldAutoIncrement(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, false);
         $this->setFieldUnsigned(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, false);
-		$this->setFieldEncryptionCypher(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
-		$this->setFieldEncryptionDigest(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, TSysContacts::ENCRYPTION_BILL_POSTAL_PASSPHRASE);			                          
-
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)
+		{
+			$this->setFieldEncryptionCypher(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
+			$this->setFieldEncryptionDigest(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGPOSTALCODEZIP, TSysContacts::ENCRYPTION_BILL_POSTAL_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_BILLINGPOSTALCODEZIP);	
 
 		//Billing: city
 		$this->setFieldCopyProps(TSysContacts::FIELD_BILLINGCITY, TSysContacts::FIELD_COMPANYNAME);
@@ -941,17 +980,33 @@ class TSysContacts extends TSysModel
 
 		//Delivery: addressline1
 		$this->setFieldCopyProps(TSysContacts::FIELD_DELIVERYADDRESSMISC, TSysContacts::FIELD_BILLINGADDRESSMISC);
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_DELIVERYADDRESSMISC, TSysContacts::ENCRYPTION_DELI_ADDR1_PASSPHRASE);			                          
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)
+		{
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_DELIVERYADDRESSMISC, TSysContacts::ENCRYPTION_DELI_ADDR1_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_DELIVERYADDRESSMISC);			
 
 		//Delivery: addressline2
 		$this->setFieldCopyProps(TSysContacts::FIELD_DELIVERYADDRESSSTREET, TSysContacts::FIELD_BILLINGADDRESSSTREET);
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_DELIVERYADDRESSSTREET, TSysContacts::ENCRYPTION_DELI_ADDR2_PASSPHRASE);			                          
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)
+		{
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_DELIVERYADDRESSSTREET, TSysContacts::ENCRYPTION_DELI_ADDR2_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_DELIVERYADDRESSSTREET);			
+
 
 		//Delivery: postal code / zip code
 		$this->setFieldCopyProps(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
-		$this->setFieldEncryptionCypher(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
-		$this->setFieldEncryptionDigest(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, TSysContacts::ENCRYPTION_DELI_POSTAL_PASSPHRASE);			                          
+		if (APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)
+		{
+			$this->setFieldEncryptionCypher(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, ENCRYPTION_CYPHERMETHOD_AES256CBC);			                          
+			$this->setFieldEncryptionDigest(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
+			$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, TSysContacts::ENCRYPTION_DELI_POSTAL_PASSPHRASE);			                          
+		}
+		else
+			$this->setFieldEncryptionDisabled(TSysContacts::FIELD_DELIVERYPOSTALCODEZIP);			
 	
 		//Delivery: city
 		$this->setFieldCopyProps(TSysContacts::FIELD_DELIVERYCITY, TSysContacts::FIELD_BILLINGCITY);

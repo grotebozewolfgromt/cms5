@@ -19,7 +19,8 @@ class step5 extends TInstallerScreen
 {
 
 	const SESSIONAK_INSTALLER_RETAINDAYS = 'contact-retaindatadays';
-	const SESSIONAK_INSTALLER_ENCRYPTFIELDS = 'contact-searchfields';
+	const SESSIONAK_INSTALLER_ENCRYPTFIELDS = 'contact-encryptfields';
+	const SESSIONAK_INSTALLER_SEARCHFIELDS = 'contact-searchfields';
 
 	private $iRetainData = 3650;
 	private $arrFields = array();
@@ -92,11 +93,11 @@ class step5 extends TInstallerScreen
 			Encryption prevents data leaks in data breaches, but encryption makes fields <b>unsearchable</b> and <b>unsortable</b>.<br>
 			<br>
 			<label>Which fields would you like to encrypt and make unsearchable?</label><br>
-			<input type="checkbox" name="chkFields[]" value="name" checked> Last name<br>
-			<input type="checkbox" name="chkFields[]" value="address" checked> Address<br>
-			<input type="checkbox" name="chkFields[]" value="postalcode" checked> Postal Code / Zip code<br>
-			<input type="checkbox" name="chkFields[]" value="phone" checked> Phone number<br>
-			<input type="checkbox" name="chkFields[]" value="email" checked> Email address<br>
+			<input type="checkbox" name="chkFieldsEncrypt[]" value="name" checked> Last name<br>
+			<input type="checkbox" name="chkFieldsEncrypt[]" value="address" checked> Address<br>
+			<input type="checkbox" name="chkFieldsEncrypt[]" value="postalcode" checked> Postal Code / Zip code<br>
+			<input type="checkbox" name="chkFieldsEncrypt[]" value="phone" checked> Phone number<br>
+			<input type="checkbox" name="chkFieldsEncrypt[]" value="email" checked> Email address<br>
 			<br>
 			<i>Notes</i><br>
 			<ul>
@@ -104,6 +105,22 @@ class step5 extends TInstallerScreen
 				<li>For high risk environments, like a website on the internet: <b>select all fields</b></li>
 				<li>For low risk environments, like a local hosted web application: you could decide to select less fields</li>
 			</ul>
+			<br>
+			<h2>Add values to search field</h2>
+			To make searching contacts easier, you can let us automatically store values in the search field.<br>
+			<label>Which values would you like to store in the search field?</label><br>
+			<input type="checkbox" name="chkFieldsSearch[]" value="name"> Last name<br>
+			<input type="checkbox" name="chkFieldsSearch[]" value="address"> Address<br>
+			<input type="checkbox" name="chkFieldsSearch[]" value="postalcode"> Postal Code / Zip code<br>
+			<input type="checkbox" name="chkFieldsSearch[]" value="phone"> Phone number<br>
+			<input type="checkbox" name="chkFieldsSearch[]" value="email"> Email address<br>
+			<br>
+			<i>Notes</i><br>
+			<ul>
+				<li>The search field is NOT encrypted, and will leak data when a data breach occurs</li>
+				<li>For high risk environments, like a website on the internet: <b>select no fields</b></li>
+				<li>For low risk environments, like a local hosted web application: you could decide to select more fields</li>
+			</ul>			
 		<?php
 		$sBody = ob_get_contents();
 		ob_end_clean();  
@@ -160,10 +177,15 @@ class step5 extends TInstallerScreen
 		else
 			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_RETAINDAYS]			= 0;
 
-		if (isset($_POST['chkFields']))		
-			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] 		= $_POST['chkFields'];
+		if (isset($_POST['chkFieldsEncrypt']))		
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] 		= $_POST['chkFieldsEncrypt'];
 		else
 			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] 		= array();
+
+		if (isset($_POST['chkFieldsSearch']))		
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_SEARCHFIELDS] 		= $_POST['chkFieldsSearch'];
+		else
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_SEARCHFIELDS] 		= array();
 	}
 
 	
@@ -193,11 +215,10 @@ class step5 extends TInstallerScreen
 			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ANONYMIZEDATAAFTERDAYS', $_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_RETAINDAYS]);        
 
 			//config: searchable fields: create array with proper fields
-			/*
 			$arrDBFields = array();
-			if ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS])
+			if ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_SEARCHFIELDS])
 			{
-				foreach ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] as $sFormField)
+				foreach ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_SEARCHFIELDS] as $sFormField)
 				{
 					switch($sFormField)
 					{
@@ -229,8 +250,7 @@ class step5 extends TInstallerScreen
 			if (count($arrDBFields) > 0)
 				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', implode(',',$arrDBFields));        
 			else
-				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', '');        
-			*/
+				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', '');
 
 
 			//store fields to encrypt

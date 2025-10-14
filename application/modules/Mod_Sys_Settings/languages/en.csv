@@ -19,3 +19,28 @@ tabsheets_module_explanation_Execute a cron job;Execute a cron job;Execute a cro
 tabsheets_module_name_CMS Menu + toolbar;CMS Menu + toolbar;CMS Menu + toolbar
 tabsheets_module_explanation_Edit menu and toolbar items of CMS;Edit menu and toolbar items of CMS;Edit menu and toolbar items of CMS
 settings_installer_enabled_false;disabled;disabled
+form_field_username;username;username
+form_field_usernamepublic;public username (published on websites etc);public username (published on websites etc)
+form_field_passwordold_hint_existingrecord_leaveempty;(only if you want to change password, otherwise leave empty);(only if you want to change password, otherwise leave empty)
+form_field_passwordold;current password;current password
+form_field_passwordnew_hint_existingrecord_leaveempty;(if you want to change password, otherwise leave empty);(if you want to change password, otherwise leave empty)
+form_field_passwordnew;new password;new password
+form_field_passwordrepeat_hint_existingrecord_leaveempty;(only if you want to change password);(only if you want to change password)
+form_field_passwordnewrepeat;repeat new password;repeat new password
+form_field_emailaddress;email address;email address
+section_localization_title;Localization;Localization
+form_field_language;language;language
+form_field_timezone;time zone;time zone
+form_field_dateformatshort;date format short (Europe: "d-m-Y", USA: "m/d/Y");date format short (Europe: "d-m-Y", USA: "m/d/Y")
+form_field_dateformatlong;date format long (Europe: "d-m-Y", USA: "m/d/Y");date format long (Europe: "d-m-Y", USA: "m/d/Y")
+form_field_timeformatshort;time format short (Europe: "H:i", USA: "g:i a");time format short (Europe: "H:i", USA: "g:i a")
+form_field_timeformatlong;time format long (Europe: "H:i:s", USA: "g:i:s a");time format long (Europe: "H:i:s", USA: "g:i:s a")
+form_field_weekstartsone;week starts on;week starts on
+form_field_thousandseparator;thousand separator (. or ,);thousand separator (. or ,)
+form_field_decimalseparator;decimal separator (. or ,);decimal separator (. or ,)
+section_sessions_title;Open login sessions;Open login sessions
+form_label_sessions_userloggedinhere;You are logged in [times] times on these devices:;You are logged in [times] times on these devices:
+form_label_sessions_dontrecognisethendelete;If you don't recognize any of these sessions, delete it and change your password NOW!;If you don't recognize any of these sessions, delete it and change your password NOW!
+form_label_sessions_checktodelete;(to delete session: click checkbox and click save);(to delete session: click checkbox and click save)
+message_sessions_iscurrentsession;(CURRENT SESSION);(CURRENT SESSION)
+pagetitle_settingsuser_edit;Settings user: [username];Settings user: [username]

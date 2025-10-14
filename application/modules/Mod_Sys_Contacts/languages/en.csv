@@ -5,52 +5,66 @@ form_section_personal;Personal;Personal
 form_section_billing;Address;Address
 form_section_delivery;Delivery;Delivery
 form_section_misc;Miscellaneous;Miscellaneous
+form_iconinfo_encrypted_no;<br><br>Encrypted: no<br>Searchable: yes<br>Exposes data in data breach: yes;<br><br>Encrypted: no<br>Searchable: yes<br>Exposes data in data breach: yes
+form_iconinfo_encrypted_yes;<br><br>Encrypted: yes<br>Searchable: no<br>Exposes data in data breach: no;<br><br>Encrypted: yes<br>Searchable: no<br>Exposes data in data breach: no
 form_field_recordid;Contact id;Contact id
-form_field_recordid_iconinfo;This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.<br><br>This identifyer is NOT encrypted, thus searchable.;This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.<br><br>This identifyer is NOT encrypted, thus searchable.
+form_field_recordid_iconinfo;This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.[encrypt];This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.[encrypt]
 form_field_niceid;Nice Id;Nice Id
-form_field_niceid_iconinfo;This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.<br><br>This identifyer is NOT encrypted, thus searchable.;This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.<br><br>This identifyer is NOT encrypted, thus searchable.
+form_field_niceid_iconinfo;This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.[encrypt];This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.[encrypt]
 form_field_customid;Custom Id;Custom Id
-form_field_customid_iconinfo;To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.<br><br>This information is not encrypted, thus searchable.;To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.<br><br>This information is not encrypted, thus searchable.
+form_field_customid_iconinfo;To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.[encrypt];To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.[encrypt]
 form_field_searchkeywords;Search keywords;Search keywords
-form_field_searchkeywords_iconinfo;Enter search keywords to find this contact.<br>This information is not encrypted, thus searchable.<br><br>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn't allow you to search for this data.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.;Enter search keywords to find this contact.<br>This information is not encrypted, thus searchable.<br><br>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn't allow you to search for this data.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.
+form_field_searchkeywords_iconinfo;Enter search keywords to find this contact.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.[encrypt];Enter search keywords to find this contact.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.[encrypt]
 form_field_companyname;Company name;Company name
-form_field_chamberofcommerceno;Chamber of commerce # (encrypted);Chamber of commerce # (encrypted)
-form_field_chamberofcommerceno_iconinfo;Chamber of commerce registration number.<br>This data encrypted, thus not searchable.;Chamber of commerce registration number.<br>This data encrypted, thus not searchable.
+form_field_companyname_iconinfo;Name of the company.[encrypt];Name of the company.[encrypt]
+form_field_chamberofcommerceno;Chamber of commerce #;Chamber of commerce #
+form_field_chamberofcommerceno_iconinfo;Chamber of commerce registration number.[encrypt];Chamber of commerce registration number.[encrypt]
 form_field_salutations;Salutation;Salutation
-form_field_salutation_iconinfo;How do you whish to address this contact? Mr. Mrs. Ms.;How do you whish to address this contact? Mr. Mrs. Ms.
+form_field_salutation_iconinfo;How do you whish to address this contact? Mr. Mrs. Ms.[encrypt];How do you whish to address this contact? Mr. Mrs. Ms.[encrypt]
 form_field_firstnameinitials;Initials;Initials
+form_field_firstnameinitials_iconinfo;First name or initials.[encrypt];First name or initials.[encrypt]
 form_field_lastnameprefix;Last name prefix;Last name prefix
-form_field_lastnameprefix_iconinfo;Like: van de, van, von der etc, von;Like: van de, van, von der etc, von
-form_field_lastname;Last name (encrypted);Last name (encrypted)
-form_field_lastname_iconinfo;Last name.<br>This data encrypted, thus not searchable.;Last name.<br>This data encrypted, thus not searchable.
-form_field_emailaddress;Email address (encrypted);Email address (encrypted)
-form_field_emailaddress_iconinfo;Email address is encrypted, thus not searchable.;Email address is encrypted, thus not searchable.
-form_field_phonenumber1;Phone number 1 (including area code, starting with 0);Phone number 1 (including area code, starting with 0)
-form_field_phonenumber1_infoicon;Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>;Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>
-form_field_phonenumber2;Phone number 2 (including area code, starting with 0);Phone number 2 (including area code, starting with 0)
-form_field_phonenumber2_infoicon;Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>;Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>
+form_field_lastnameprefix_iconinfo;Like: van de, van, von der etc, von.[encrypt];Like: van de, van, von der etc, von.[encrypt]
+form_field_lastname;Last name;Last name
+form_field_lastname_iconinfo;Last name or surname.[encrypt];Last name or surname.[encrypt]
+form_field_emailaddress;Email address;Email address
+form_field_emailaddress_iconinfo;Personal email address.[encrypt];Personal email address.[encrypt]
+form_field_phonenumber1;Phone 1: Country code, phone number and notes;Phone 1: Country code, phone number and notes
+form_field_phonenumber1_infoicon;Country code, phone number and notes.<br>Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted];Country code, phone number and notes.<br>Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted]
+form_field_phonenumber2;Phone 2: Country code, phone number and notes;Phone 2: Country code, phone number and notes
+form_field_phonenumber2_infoicon;Country code, phone number and notes.<br>Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted];Country code, phone number and notes.<br>Rules:<ul><li>Don't include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted]
 form_field_billingcountry;Country;Country
-form_field_billingaddressstreet;Street + house number (encrypted);Street + house number (encrypted)
-form_field_billingaddressstreet_iconinfo;Street and house number is encrypted, thus not searchable.;Street and house number is encrypted, thus not searchable.
-form_field_billingaddressmisc;Extra address info (encrypted);Extra address info (encrypted)
-form_field_billingaddressmisc_iconinfo;Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.;Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.
-form_field_billingpostalcodezip;Postal code/zip (encrypted);Postal code/zip (encrypted)
+form_field_billingcountry_iconinfo;Country or residence.[encrypt];Country or residence.[encrypt]
+form_field_billingaddressstreet;Street + house number;Street + house number
+form_field_billingaddressstreet_iconinfo;Street and house number.[encrypt];Street and house number.[encrypt]
+form_field_billingaddressmisc;Extra address info;Extra address info
+form_field_billingaddressmisc_iconinfo;Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt];Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt]
+form_field_billingpostalcodezip;Postal code/zip;Postal code/zip
+form_field_billingpostalcodezip_iconinfo;Postal code or zip code.[encrypt];Postal code or zip code.[encrypt]
 form_field_billingcity;City;City
-form_field_billingstateregion;State/region;State/region
-form_field_billingvatno;VAT number / Tax id (encrypted;VAT number / Tax id (encrypted
-form_field_billingvatno_iconinfo;VAT number or (sales) tax id.<br>Data is encrypted, thus not searchable.;VAT number or (sales) tax id.<br>Data is encrypted, thus not searchable.
-form_field_billingbankaccountno;IBAN Bank account (encrypted);IBAN Bank account (encrypted)
-form_field_billingbankaccountno_iconinfo;IBAN or Bank account number / id.<br>Data is encrypted, thus not searchable.;IBAN or Bank account number / id.<br>Data is encrypted, thus not searchable.
-form_field_billingemailaddress;Email address (encrypted);Email address (encrypted)
-form_field_billingemailaddress_iconinfo;Email address is encrypted, thus not searchable.;Email address is encrypted, thus not searchable.
+form_field_billingcity_iconinfo;City.[encrypt];City.[encrypt]
+form_field_billingstateregion;State/region/provice;State/region/provice
+form_field_billingstateregion_iconinfo;State, region or province.[encrypt];State, region or province.[encrypt]
+form_field_billingvatno;VAT number;VAT number
+form_field_billingvatno_iconinfo;VAT number or (sales) tax id.[encrypt];VAT number or (sales) tax id.[encrypt]
+form_field_billingbankaccountno;IBAN;IBAN
+form_field_billingbankaccountno_iconinfo;International Bank Account Number (IBAN) or account id.[encrypt];International Bank Account Number (IBAN) or account id.[encrypt]
+form_field_billingbic;BIC/SWIFT;BIC/SWIFT
+form_field_billingbic_iconinfo;BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt];BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt]
+form_field_billingemailaddress;Email address;Email address
+form_field_billingemailaddress_iconinfo;Email address.[encrypt];Email address.[encrypt]
 form_field_deliverycountry;Country;Country
-form_FIELD_DELIVERYADDRESSSTREET;Street + house number (encrypted);Street + house number (encrypted)
-form_FIELD_DELIVERYADDRESSSTREET_iconinfo;Address is encrypted, thus not searchable.;Address is encrypted, thus not searchable.
-form_FIELD_DELIVERYADDRESSMISC;Extra address info (encrypted);Extra address info (encrypted)
-form_FIELD_DELIVERYADDRESSMISC_iconinfo;Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.;Apartment building, company dept, floor, 2nd red door on the left etc.<br>Data is encrypted, thus not searchable.
-form_field_deliverypostalcodezip;Postal code/zip (encrypted);Postal code/zip (encrypted)
+form_field_deliverycountry_iconinfo;Country or residence.[encrypt];Country or residence.[encrypt]
+form_FIELD_DELIVERYADDRESSSTREET;Street + house number;Street + house number
+form_FIELD_DELIVERYADDRESSSTREET_iconinfo;Street name and house number if it deviates from the billing address.[encrypt];Street name and house number if it deviates from the billing address.[encrypt]
+form_FIELD_DELIVERYADDRESSMISC;Extra address info;Extra address info
+form_FIELD_DELIVERYADDRESSMISC_iconinfo;Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt];Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt]
+form_field_deliverypostalcodezip;Postal code/zip;Postal code/zip
+form_field_deliverypostalcodezip_iconinfo;Postal code or Zip code.[encrypt];Postal code or Zip code.[encrypt]
 form_field_deliverycity;City;City
-form_field_deliverystateregion;State/region;State/region
+form_field_deliverycity_iconinfo;City of residence.[encrypt];City of residence.[encrypt]
+form_field_deliverystateregion;State/region/province;State/region/province
+form_field_deliverystateregion_iconinfo;State, region or province.[encrypt];State, region or province.[encrypt]
 form_field_isclient;is client;is client
 form_field_issupplier;is supplier;is supplier
 form_field_onmailinglist;on mailing list;on mailing list
@@ -59,6 +73,7 @@ form_field_allowedpurchaseoncredit;allowed purchase on credit;allowed purchase o
 form_field_first_contact;First contact;First contact
 form_field_last_contact;Last contact;Last contact
 form_field_notes;Notes (only seen by you);Notes (only seen by you)
+form_field_notes_iconinfo;Extra notes regarding contact.[encrypt];Extra notes regarding contact.[encrypt]
 overview_column_iID;Id;Id
 overview_column_sNiceID;Nice Id;Nice Id
 overview_column_sCustomID;Custom id;Custom id
@@ -66,13 +81,22 @@ overview_column_sCompanyName;Company;Company
 overview_column_sFirstNameInitials;Initials;Initials
 overview_column_sLastName;Last name;Last name
 overview_column_sBillingAddressStreet;Address;Address
-overview_column_sBillingZipPostalCode;Postal/zip;Postal/zip
+overview_column_sBillingZipPostalCode;Postal;Postal
 overview_column_sBillingCity;City;City
 dbfilter_column_sCompanyName;Company name;Company name
 dbfilter_column_sCustomID;Custom Id;Custom Id
 dbfilter_column_iID;Record Id;Record Id
 dbfilter_column_sUniqueID;Unique Id;Unique Id
 dbfilter_column_sNiceID;Nice Id;Nice Id
+dbfilter_column_sLastName;Last name;Last name
+dbfilter_column_sBillingAddressStreet;Street (billing);Street (billing)
+dbfilter_column_sDeliveryAddressStreet;Street (delivery);Street (delivery)
+dbfilter_column_sBillingZipPostalCode;Postal code (billing);Postal code (billing)
+dbfilter_column_sDeliveryZipPostalCode;Postal code (delivery);Postal code (delivery)
+dbfilter_column_sEAE;Email address (personal);Email address (personal)
+dbfilter_column_sBEAE;Email address (billing);Email address (billing)
+dbfilter_column_sPhoneNumber1;Phone number 1;Phone number 1
+dbfilter_column_sPhoneNumber2;Phone number 2;Phone number 2
 dbfilter_column_sNotes;Notes;Notes
 dbfilter_column_dtFirstContact;First contact;First contact
 dbfilter_column_dtLastContact;Last contact;Last contact
@@ -84,6 +108,3 @@ pagetitle_detailsave_contact_edit;Edit contact: [contact]<dr-icon-info>To comply
 detailsave_button_exit;Exit;Exit
 detailsavetemplate_button_save;Save;Save
 detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
-menuitem_modulename;Contacts;Contacts
-form_field_billingbic;BIC/SWIFT;BIC/SWIFT
-form_field_billingbic_iconinfo;BIC or SWIFT are bank identification codes for routing and identifying financial transactions;BIC or SWIFT are bank identification codes for routing and identifying financial transactions

@@ -159,7 +159,105 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_NICEID);
         $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NICEID, 'Nice Id'));
-        $objFilters->addFilter($objFilter);     
+        $objFilters->addFilter($objFilter);  
+        
+        //last name
+        if (!APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME)
+        {
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_LASTNAME);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_LASTNAME, 'Last name'));
+            $objFilters->addFilter($objFilter);  
+        }
+
+        
+        if (!APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)
+        {
+            //address: billing
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGADDRESSSTREET);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Street (billing)'));
+            $objFilters->addFilter($objFilter);  
+
+            //address: delivery
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_DELIVERYADDRESSSTREET);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYADDRESSSTREET, 'Street (delivery)'));
+            $objFilters->addFilter($objFilter);  
+        }     
+
+
+        if (!APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)
+        {
+            //postal code: billing
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal code (billing)'));
+            $objFilters->addFilter($objFilter);  
+            
+            //postal code: delivery
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, 'Postal code (delivery)'));
+            $objFilters->addFilter($objFilter);  
+        }     
+
+        if (!APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)
+        {
+            //personal email
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_EMAILADDRESSENCRYPTED);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_EMAILADDRESSENCRYPTED, 'Email address (personal)'));
+            $objFilters->addFilter($objFilter);  
+            
+            //billing email
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, 'Email address (billing)'));
+            $objFilters->addFilter($objFilter);  
+        }     
+
+        if (!APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)
+        {
+            //phone 1
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER1);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER1, 'Phone number 1'));
+            $objFilters->addFilter($objFilter);  
+            
+            //phone 2
+            $objFilter = new DRDBFilter();
+            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setDisabled(true);//disabled by default when adding filter chip
+            $objFilter->setType(DRDBFilter::TYPE_STRING);
+            $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER2);
+            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER2, 'Phone number 2'));
+            $objFilters->addFilter($objFilter);  
+        }           
 
         //notes
         $objFilter = new DRDBFilter();
