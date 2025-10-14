@@ -2,6 +2,7 @@
 namespace dr\classes\dom\tag\webcomponents;
 
 use dr\classes\dom\tag\HTMLTag;
+use dr\classes\types\TDateTime;
 use dr\classes\types\TDecimal;
 use dr\classes\types\TFloat;
 
@@ -265,13 +266,28 @@ class DRDBFilters extends HTMLTag
 						$objModel->find($objFilter->getDBField(), $objFilter->getValue(), $objFilter->getComparisonOperator(true), $objFilter->getDBTable(), TP_BOOL);
 						break;
 					case DRDBFilter::TYPE_DATE:
-						if ($objFilter->getComparisonOperator() == DRDBFilter::COMPARISONOPERATOR_BETWEEN) 
-							$objModel->findBetween($objFilter->getDBField(), $objFilter->getValue(), $objFilter->getValueEnd(), $objFilter->getDBTable(), TP_DATETIME);
+						$objDateStart = new TDateTime();
+						$objDateStart->setISOString($objFilter->getValue());
+						$objDateStart->setHour(0);
+						$objDateStart->setMinute(0);
+						$objDateStart->setSecond(0);
+						$objDateEnd = new TDateTime();
+						if ($objFilter->getComparisonOperator() === DRDBFilter::COMPARISONOPERATOR_BETWEEN)							
+							$objDateEnd->setISOString($objFilter->getValueEnd()); //take end-value
 						else
-							$objModel->find($objFilter->getDBField(), $objFilter->getValue(), $objFilter->getComparisonOperator(true), $objFilter->getDBTable(), TP_DATETIME);						
+							$objDateEnd->setISOString($objFilter->getValue());	//take the begin-value and make it the end of the day of the begin date
+						$objDateEnd->setHour(23);
+						$objDateEnd->setMinute(59);											
+						$objDateEnd->setSecond(59);
+						if (($objFilter->getComparisonOperator() === DRDBFilter::COMPARISONOPERATOR_BETWEEN) || ($objFilter->getComparisonOperator() === DRDBFilter::COMPARISONOPERATOR_EQUALTO))	// also do a between for equal-to to represent the entire day from 0:00 to 23:59
+							$objModel->findBetween($objFilter->getDBField(), $objDateStart, $objDateEnd, $objFilter->getDBTable(), TP_DATETIME); 
+						elseif ($objFilter->getComparisonOperator() === DRDBFilter::COMPARISONOPERATOR_LESSEQUAL) //includes day its, so I use the end date
+							$objModel->find($objFilter->getDBField(), $objDateEnd, $objFilter->getComparisonOperator(true), $objFilter->getDBTable(), TP_DATETIME);						
+						elseif ($objFilter->getComparisonOperator() === DRDBFilter::COMPARISONOPERATOR_GREATEREQUAL) //includes day its, so I use the begin date
+							$objModel->find($objFilter->getDBField(), $objDateStart, $objFilter->getComparisonOperator(true), $objFilter->getDBTable(), TP_DATETIME);						
 						break;
 					case DRDBFilter::TYPE_NUMBER:
-						if ($objFilter->getComparisonOperator() == DRDBFilter::COMPARISONOPERATOR_BETWEEN) 
+						if ($objFilter->getComparisonOperator() === DRDBFilter::COMPARISONOPERATOR_BETWEEN) 
 							$objModel->findBetween($objFilter->getDBField(), $objFilter->getValue(), $objFilter->getValueEnd(), $objFilter->getDBTable(), TP_DECIMAL);
 						else
 							$objModel->find($objFilter->getDBField(), $objFilter->getValue(), $objFilter->getComparisonOperator(true), $objFilter->getDBTable(), TP_DECIMAL);						

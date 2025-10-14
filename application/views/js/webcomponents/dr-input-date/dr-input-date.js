@@ -945,9 +945,9 @@ class DRInputDate extends HTMLElement
         //FOCUSOUT: correct input so user knows what time is recognized
         this.#objEditBox.addEventListener("focusout", (objEvent)=>
         {
-            // console.log("focusoutieeeeeee", this.#bAllowEmptyDate, this.#objEditBox.value);
+            console.log("focusoutieeeeeee", this.#bAllowEmptyDate, this.#objEditBox.value);
 
-            //correct always, except when it's an empty date
+            //always correct input, except when it's an empty date
             if (!((this.#bAllowEmptyDate) && (this.#objEditBox.value == "")))
             {
                 this.#objEditBox.value = this.internalDateAsPHPDate;
@@ -1328,6 +1328,9 @@ class DRInputDate extends HTMLElement
     {
         let sResult = this.#sPHPFormat;
         
+        if (this.#objDate === null)
+            return "";
+
         sResult = sResult.replaceAll("d", (this.#objDate.getDate()).toString().padStart(2, "0"));
         sResult = sResult.replaceAll("j", (this.#objDate.getDate()).toString());
         sResult = sResult.replaceAll("m", (this.#objDate.getMonth() + 1).toString().padStart(2, "0"));

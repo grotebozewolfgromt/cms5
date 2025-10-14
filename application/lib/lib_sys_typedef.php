@@ -151,7 +151,7 @@ define('COMPARISON_OPERATOR_NOT_IN', 			        'compare_not_in'); 	//SELECT fir
 define('COMPARISON_OPERATOR_LESS_THAN', 		        'compare_less_than');	// <
 define('COMPARISON_OPERATOR_LESS_THAN_OR_EQUAL_TO',     'compare_less_than_or_equal_to');// <=
 define('COMPARISON_OPERATOR_GREATER_THAN', 		        'compare_greater_than');	// >
-define('COMPARISON_OPERATOR_GREATER_THAN_OR_EQUAL_TO',  'compare_less_than');// >=;
+define('COMPARISON_OPERATOR_GREATER_THAN_OR_EQUAL_TO',  'compare_greater_than_or_equal_to');// >=;
 define('COMPARISON_OPERATOR_LIKE', 			            'compare_contains');// LIKE -- less picky than equal to (useful for searching in databases)
 define('COMPARISON_OPERATOR_NOT_LIKE', 			        'compare_not_contains');// denial of LIKE
 define('COMPARISON_OPERATOR_BETWEEN',                   'compare_between');// BETWEEN (2 values)

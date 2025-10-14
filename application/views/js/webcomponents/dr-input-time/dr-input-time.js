@@ -1546,6 +1546,9 @@ class DRInputTime extends HTMLElement
     {
         let sResult = this.#sPHPFormat;
         
+        if (this.#objTime === null)
+            return "";
+
         if (this.#objTime.getHours() > 12) //PM
         {
             sResult = sResult.replaceAll("a", this.sTransPM.toLowerCase());

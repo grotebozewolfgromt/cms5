@@ -240,7 +240,7 @@ class DRInputCheckbox extends HTMLElement
         } //RADIO BOX
         else if (this.#sType == this.arrTypes.radio)
         {
-            // console.log("log value peoppppe", this, this.#bCheckedValue);
+            // console.log("log value radiooooooo", this, this.#bCheckedValue);
             if (this.#bCheckedValue)
                 this.#objCheckbox.innerHTML = this.sSVGRadioChecked;
             else
@@ -296,7 +296,7 @@ class DRInputCheckbox extends HTMLElement
             this.#objFormInternals.setFormValue(this.#sValueWhenUnChecked);
         }
 
-        // this.updateUI();
+        this.updateUI();
         // console.log("changed checked to:" + this.#bCheckedValue);
 
         if (bDispatchEvent)

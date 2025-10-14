@@ -50,6 +50,7 @@ class DRDBFilter
 	const STATUS_AVAILABLE			= 'available'; //available is displayed in new-filter-menu (but not visible as chip). Corresponds with value in <dr-db-filter>: arrFilterStatus = {available: "available", applied: "applied"}; 
 	const STATUS_APPLIED    		= 'applied'; //applied is visible as chip in the user interface. Corresponds with value in <dr-db-filter>: arrFilterStatus = {available: "available", applied: "applied"}; 
 	
+
 	const COMPARISONOPERATOR_EQUALTO 		= 'equalto'; //corresponds with value in <dr-db-filter>: arrComparisonOperators = {equalto: "equalto", notequalto: "notequalto", like: "like", notlike: "notlike", lessequal: "lessequal", greaterequal: "greaterequal", between: "between"}
 	const COMPARISONOPERATOR_NOTEQUALTO 	= 'notequalto'; //corresponds with value in <dr-db-filter>: arrComparisonOperators = {equalto: "equalto", notequalto: "notequalto", like: "like", notlike: "notlike", lessequal: "lessequal", greaterequal: "greaterequal", between: "between"}
 	const COMPARISONOPERATOR_LIKE 			= 'like'; //corresponds with value in <dr-db-filter>: arrComparisonOperators = {equalto: "equalto", notequalto: "notequalto", like: "like", notlike: "notlike", lessequal: "lessequal", greaterequal: "greaterequal", between: "between"}
@@ -58,13 +59,16 @@ class DRDBFilter
 	const COMPARISONOPERATOR_GREATEREQUAL 	= 'greaterequal'; //corresponds with value in <dr-db-filter>: arrComparisonOperators = {equalto: "equalto", notequalto: "notequalto", like: "like", notlike: "notlike", lessequal: "lessequal", greaterequal: "greaterequal", between: "between"}
 	const COMPARISONOPERATOR_BETWEEN 		= 'between'; //corresponds with value in <dr-db-filter>: arrComparisonOperators = {equalto: "equalto", notequalto: "notequalto", like: "like", notlike: "notlike", lessequal: "lessequal", greaterequal: "greaterequal", between: "between"}
 
+	//the reason that I work with a different comparison operator in JS versus lib_sys_typedef(COMPARISON_OPERATOR_EQUAL_TO etc) is,
+	//because JS vars are shown client side and are thus hackable.
+	//also JS code has to be synchronized with php code, which can lead to bugs.
 	const COMP_OP_TRANSLATION = array(
 			DRDBFilter::COMPARISONOPERATOR_EQUALTO => COMPARISON_OPERATOR_EQUAL_TO,
 			DRDBFilter::COMPARISONOPERATOR_NOTEQUALTO => COMPARISON_OPERATOR_NOT_EQUAL_TO,
 			DRDBFilter::COMPARISONOPERATOR_LIKE => COMPARISON_OPERATOR_LIKE,
 			DRDBFilter::COMPARISONOPERATOR_NOTLIKE => COMPARISON_OPERATOR_NOT_LIKE,
 			DRDBFilter::COMPARISONOPERATOR_LESSEQUAL => COMPARISON_OPERATOR_LESS_THAN_OR_EQUAL_TO,
-			DRDBFilter::COMPARISONOPERATOR_GREATEREQUAL => COMPARISON_OPERATOR_LESS_THAN_OR_EQUAL_TO,
+			DRDBFilter::COMPARISONOPERATOR_GREATEREQUAL => COMPARISON_OPERATOR_GREATER_THAN_OR_EQUAL_TO,
 			DRDBFilter::COMPARISONOPERATOR_BETWEEN => COMPARISON_OPERATOR_BETWEEN,
 	); //lib_sys_typedef to webcomponent translation (not language translation)
 

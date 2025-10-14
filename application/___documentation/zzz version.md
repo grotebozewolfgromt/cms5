@@ -29,14 +29,10 @@
 
 ## TODO searching + gdpr
 * bugfixes: dbfilters
-    - selecteren checkboxes "contains" verdwijnt oude waarde niet
-    - status_applied moet ook in menu verschijnen
-    - bij toevoegen opent scherm filter. 
     - checkbox 'enable' vervangt knop 'set filter'
-    - bug: status_applied geeft php error
+    - bug: status_applied chips werken niet ==> veld-index probleem
     - minimaal 3 characters zoeken beperking verwijderen
     - number filter geeft met integer ook .0000 terug'
-    - na <enter> in quicksearch field gefocussed blijven op quicksearch field
 * labels component maken
 
 
@@ -57,6 +53,13 @@
 * constants for public and private uploads
 * constant rename CMS_CURRENTMODULE => APP_ADMIN_CURRENTMODULE
 * constant renames APP_CMS* => APP_ADMIN*
+* bugfixes: dbfilters
+    - automatisch openen filterbubble moet nu expliciet gebeuren via parameter
+    - na <enter> in quicksearch field gefocussed blijven op quicksearch field
+    - radio boxen unchecked werd niet weergegeven in UI
+    - status_applied verschijnt ook in menu
+    - titel bubble werd niet bijgewerkt
+    - datum vergelijkingen werkten niet
 
 
 ## 13 okt 2025:

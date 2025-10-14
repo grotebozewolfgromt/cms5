@@ -454,9 +454,10 @@ class DRDBFilters extends HTMLElement
             sFilterIndex = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.filterindex);
             sNameNice = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.namenice);
 
-            if (sChipStatus == this.arrFilterStatus.available)
-                this.arrAvailableFilters.push(this.children[iIndex]);
-            else
+            // if (sChipStatus == this.arrFilterStatus.available)
+            this.arrAvailableFilters.push(this.children[iIndex]);//always add to menu
+
+            if (sChipStatus == this.arrFilterStatus.applied)
                 this.addFilterUI(this.sSVGIconFilter, sNameNice, sFilterIndex, sChipFilterType);
         }
 
@@ -521,7 +522,8 @@ class DRDBFilters extends HTMLElement
                     DRComponentsLib.attributeToString(this.arrAvailableFilters[iIndex], this.arrChipAttributes.filterindex, ""), 
                     DRComponentsLib.attributeToString(this.arrAvailableFilters[iIndex], this.arrChipAttributes.filtertype, this.arrFilterTypes.string),
                     !DRComponentsLib.attributeToBoolean(this.arrAvailableFilters[iIndex], this.arrChipAttributes.disabled, false),
-                    this.arrAvailableFilters[iIndex]
+                    this.arrAvailableFilters[iIndex],
+                    true
                 );
                 this.#objNewFilterMenu.hide();
 
@@ -766,8 +768,11 @@ class DRDBFilters extends HTMLElement
     #renderFilterBubbleString(objDivChip)
     {
         this.#objChipBubble = this.shadowRoot.querySelector(".stringfilter");
-        const objChipText = objDivChip.querySelector(".chipinnertext");        
-  
+        const objChipText = objDivChip.querySelector(".chipinnertext");     
+        
+        //update title
+        this.#objChipBubble.setAttribute("title", DRComponentsLib.attributeToString(objDivChip, this.arrChipAttributes.namenice, ""));    
+
         //values
         const objChkEnabled = this.#objChipBubble.querySelector(".filterenabled");
         objChkEnabled.checked = !DRComponentsLib.attributeToBoolean(objDivChip, this.arrChipAttributes.disabled, false);
@@ -865,6 +870,9 @@ class DRDBFilters extends HTMLElement
         //select proper filter
         this.#objChipBubble = this.shadowRoot.querySelector(".booleanfilter");
 
+        //update title
+        this.#objChipBubble.setAttribute("title", DRComponentsLib.attributeToString(objDivChip, this.arrChipAttributes.namenice, ""));    
+
         //values
         const objChkEnabled = this.#objChipBubble.querySelector(".filterenabled");
         objChkEnabled.checked = !DRComponentsLib.attributeToBoolean(objDivChip, this.arrChipAttributes.disabled, false);
@@ -927,6 +935,9 @@ class DRDBFilters extends HTMLElement
     {
         this.#objChipBubble = this.shadowRoot.querySelector(".numberfilter");
   
+        //update title
+        this.#objChipBubble.setAttribute("title", DRComponentsLib.attributeToString(objDivChip, this.arrChipAttributes.namenice, ""));    
+
         //values
         const objChkEnabled = this.#objChipBubble.querySelector(".filterenabled");
         objChkEnabled.checked = !DRComponentsLib.attributeToBoolean(objDivChip, this.arrChipAttributes.disabled, false);
@@ -1061,6 +1072,9 @@ class DRDBFilters extends HTMLElement
     {
         this.#objChipBubble = this.shadowRoot.querySelector(".datefilter");
   
+        //update title
+        this.#objChipBubble.setAttribute("title", DRComponentsLib.attributeToString(objDivChip, this.arrChipAttributes.namenice, ""));    
+
         //values
         const objChkEnabled = this.#objChipBubble.querySelector(".filterenabled");
         objChkEnabled.checked = !DRComponentsLib.attributeToBoolean(objDivChip, this.arrChipAttributes.disabled, false);
@@ -1232,6 +1246,7 @@ class DRDBFilters extends HTMLElement
                     objDivChip.setAttribute(this.arrChipAttributes.comparisonoperator, this.arrComparisonOperators.between);
 
                 //values
+                console.log(objEdtValue.value, objEdtEndValue.value,"hoinkietoink");
                 objDivChip.setAttribute(this.arrChipAttributes.value, objEdtValue.value);
                 objDivChip.setAttribute(this.arrChipAttributes.valueend, objEdtEndValue.value);
                 
@@ -1324,6 +1339,9 @@ class DRDBFilters extends HTMLElement
         const objBtnApply = this.#objChipBubble.querySelector(".apply");
         const objDivHTMLElements = this.#objChipBubble.querySelector(".htmlelementsbody");//look for the div with class "htmlelements"
 
+        //update title
+        this.#objChipBubble.setAttribute("title", DRComponentsLib.attributeToString(objDivChip, this.arrChipAttributes.namenice, ""));    
+
         //values
         const objChkEnabled = this.#objChipBubble.querySelector(".filterenabled");
         objChkEnabled.checked = !DRComponentsLib.attributeToBoolean(objDivChip, this.arrChipAttributes.disabled, false);
@@ -1397,7 +1415,7 @@ class DRDBFilters extends HTMLElement
      * @param {HTMLElement} objOriginalChip the original chip in the DOM
      * @return HTMLElement created <div> element representing the chip
      */
-    addFilterUI(sSVGPre, sText, iFilterIndex, sFilterType = this.arrFilterTypes.string, bEnabled = false, objOriginalChip = null)
+    addFilterUI(sSVGPre, sText, iFilterIndex, sFilterType = this.arrFilterTypes.string, bEnabled = false, objOriginalChip = null, bOpenImmediately = false)
     {
         const objParentChip = document.createElement("div"); //create new revamped chip
         
@@ -1443,7 +1461,8 @@ class DRDBFilters extends HTMLElement
             this.shadowRoot.appendChild(objParentChip); 
 
         //immediately open bubble
-        this.#renderFilterBubble(objParentChip);
+        if (bOpenImmediately)
+            this.#renderFilterBubble(objParentChip);
         
         //respond to user
         this.#addEventListenersFilter(objParentChip, objOriginalChip);

@@ -29,8 +29,10 @@ window.addEventListener("load", (objEvent)=>
 
     //listen to filters changing
     objDRDBFilters = document.querySelector("dr-db-filters");
-    objDRDBFilters.addEventListener('change', (objEvent) => 
+    objDRDBFilters.addEventListener("change", (objEvent) => 
     { 
+
+        console.log("catchieeeeeeeeeeeeeee");
         let sURL = "<?php echo APP_URLTHISSCRIPT; ?>";
         if (objJSONTable)    
             sURL = objJSONTable.newrequesturl;    
