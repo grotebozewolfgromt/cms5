@@ -41,6 +41,7 @@ class TSysContacts extends TSysModel
 {
 	const FIELD_ISCLIENT 						= 'bIsClient';
 	const FIELD_ISSUPPLIER 						= 'bIsSupplier';
+	const FIELD_ALLOWEDPURCHASEONCREDIT			= 'bAllowedPurchaseOnCredit';
 	const FIELD_CUSTOMID 						= 'sCustomID'; //Custom identifier, anything that refers to a contact in a reasonably unique way: a postal code, the first 6 letters of the last name. This will be stored in plain text in database for searching purposes. Make sure it is not identifyable enough when the database gets breached
 	const FIELD_COMPANYNAME 					= 'sCompanyName';
 	const FIELD_SALUTATIONID 					= 'iSalutationID'; //how to address someone? sir, madam
@@ -53,8 +54,10 @@ class TSysContacts extends TSysModel
 	const FIELD_ONBLACKLIST						= 'bOnBlackList';
 	const FIELD_COUNTRYIDCODEPHONE1				= 'iCountryIDCodePhone1'; //country code of phone 1
 	const FIELD_PHONENUMBER1					= 'sPhoneNumber1';
+	const FIELD_PHONENUMBER1NOTE				= 'sPhoneNumber1Note';
 	const FIELD_COUNTRYIDCODEPHONE2				= 'iCountryIDCodePhone2'; //country code of phone 2
 	const FIELD_PHONENUMBER2					= 'sPhoneNumber2';
+	const FIELD_PHONENUMBER2NOTE				= 'sPhoneNumber2Note';
 	const FIELD_CHAMBEROFCOMMERCENO				= 'sChamberOfCommerceNO'; //chamber of commerce number encrypted
 	const FIELD_NOTES 							= 'sNotes'; //internal notes about the client only seen by the user (not client)
 	const FIELD_FIRSTCONTACT 					= 'dtFirstContact'; //data entry occurred contact
@@ -123,6 +126,17 @@ class TSysContacts extends TSysModel
 	public function setIsSupplier($bIsSupplier)
 	{
 		$this->set(TSysContacts::FIELD_ISSUPPLIER, $bIsSupplier);
+	}
+		
+
+	public function getAllowedPurchaseOnCredit()
+	{
+		return $this->get(TSysContacts::FIELD_ALLOWEDPURCHASEONCREDIT);
+	}
+
+	public function setAllowedPurchaseOnCredit($bAllowed)
+	{
+		$this->set(TSysContacts::FIELD_ALLOWEDPURCHASEONCREDIT, $bAllowed);
 	}
 		
 	public function getCustomIdentifier()
@@ -247,6 +261,16 @@ class TSysContacts extends TSysModel
 	public function setPhoneNumber1($sPhone)
 	{
 		$this->set(TSysContacts::FIELD_PHONENUMBER1, $sPhone);
+	}	
+
+	public function getPhoneNumber1Note()
+	{
+		return $this->get(TSysContacts::FIELD_PHONENUMBER1NOTE);
+	}
+
+	public function setPhoneNumber1Note($sNote)
+	{
+		$this->set(TSysContacts::FIELD_PHONENUMBER1NOTE, $sNote);
 	}		
 
 	public function getCountryIDCodePhoneNumber2()
@@ -269,6 +293,15 @@ class TSysContacts extends TSysModel
 		$this->set(TSysContacts::FIELD_PHONENUMBER2, $sPhone);
 	}	
 
+	public function getPhoneNumber2Note()
+	{
+		return $this->get(TSysContacts::FIELD_PHONENUMBER2NOTE);
+	}
+
+	public function setPhoneNumber2Note($sNote)
+	{
+		$this->set(TSysContacts::FIELD_PHONENUMBER2NOTE, $sNote);
+	}		
 
 	public function getChamberOfCommerceNoDecrypted()
 	{
@@ -584,6 +617,8 @@ class TSysContacts extends TSysModel
 		//is supplier
 		$this->setFieldCopyProps(TSysContacts::FIELD_ISSUPPLIER, TSysContacts::FIELD_ISCLIENT);
 
+		//allowed purchase on credit
+		$this->setFieldDefaultsBoolean(TSysContacts::FIELD_ALLOWEDPURCHASEONCREDIT);
 
 
 		//custom identifier
@@ -767,7 +802,10 @@ class TSysContacts extends TSysModel
 		$this->setFieldEncryptionDigest(TSysContacts::FIELD_PHONENUMBER1, ENCRYPTION_DIGESTALGORITHM_SHA512);			                          
 		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_PHONENUMBER1, TSysContacts::ENCRYPTION_PHONE1_PASSPHRASE);	
 
-		//countryid countrycode phone 1
+		//phone 1 note
+		$this->setFieldDefaultsVarChar(TSysContacts::FIELD_PHONENUMBER1NOTE, 50);
+
+		//countryid countrycode phone 2
 		$this->setFieldDefaultsIntegerForeignKey(TSysContacts::FIELD_COUNTRYIDCODEPHONE2, TSysCountries::class, TSysCountries::getTable(), TSysCountries::FIELD_ID);
 		$this->setFieldForeignKeyActionOnUpdate(TSysContacts::FIELD_COUNTRYIDCODEPHONE2, TSysModel::FOREIGNKEY_REFERENCE_CASCADE);
 		$this->setFieldForeignKeyActionOnDelete(TSysContacts::FIELD_COUNTRYIDCODEPHONE2, TSysModel::FOREIGNKEY_REFERENCE_RESTRICT);
@@ -775,6 +813,10 @@ class TSysContacts extends TSysModel
 		//phone2
 		$this->setFieldCopyProps(TSysContacts::FIELD_PHONENUMBER2, TSysContacts::FIELD_PHONENUMBER1);
 		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_PHONENUMBER2, TSysContacts::ENCRYPTION_PHONE2_PASSPHRASE);	
+
+		//phone 2 note
+		$this->setFieldDefaultsVarChar(TSysContacts::FIELD_PHONENUMBER2NOTE, 50);
+
 
        	//2-way encrypted chamber of commerce number
 	   	$this->setFieldCopyProps(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, TSysContacts::FIELD_PHONENUMBER1);

@@ -14,12 +14,12 @@ use dr\classes\controllers\TCRUDDetailSaveController;
 use dr\classes\controllers\TCRUDDetailSaveControllerAJAX;
 use dr\classes\dom\tag\form\Form;
 use dr\classes\dom\tag\form\Select;
-use dr\classes\dom\tag\form\InputText;
 use dr\classes\dom\tag\form\InputCheckbox;
 use dr\classes\dom\tag\Li;
 use dr\classes\dom\tag\Text;
 use dr\classes\dom\tag\form\Option;
 use dr\classes\dom\tag\form\Textarea;
+use dr\classes\dom\tag\webcomponents\DRInputText;
 use dr\classes\dom\tag\webcomponents\DRInputCombobox;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
 use dr\classes\dom\validator\TCharacterWhitelist;
@@ -49,46 +49,50 @@ include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
  */
 class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 {
-    private $objEdtRecordId = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtNiceId = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtCustomIdentifier = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtRecordId = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtNiceId = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtCustomIdentifier = null;//dr\classes\dom\tag\form\DRInputText
     private $objTagKeywords = null;
-    private $objEdtCompanyName = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtCompanyName = null;//dr\classes\dom\tag\form\DRInputText
     private $objCbxSalutations = null; //DRCombobox
-    private $objEdtFirstNameInitials = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtLastName = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtFirstNameInitials = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtLastName = null;//dr\classes\dom\tag\form\DRInputText
     private $objCbxLastNamePrefix = null; //DRCombobox
-    private $objEdtEmailAddress = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtEmailAddress = null;//dr\classes\dom\tag\form\DRInputText
     private $objChkOnMailingList = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objChkOnBlackList = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objCbxCountryCodePhone1 = null;//dr\classes\dom\tag\form\DRCombobox
-    private $objEdtPhone1 = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtPhone1 = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtPhone1Note = null;//dr\classes\dom\tag\form\DRInputText
     private $objCbxCountryCodePhone2 = null;//dr\classes\dom\tag\form\DRCombobox    
-    private $objEdtPhone2 = null;//dr\classes\dom\tag\form\InputText        
-    private $objEdtChamberCommerce = null;//dr\classes\dom\tag\form\InputText        
+    private $objEdtPhone2 = null;//dr\classes\dom\tag\form\DRInputText    
+    private $objEdtPhone2Note = null;
+    private $objEdtChamberCommerce = null;//dr\classes\dom\tag\form\DRInputText        
     private $objTxtArNotes = null;//dr\classes\dom\tag\form\Textarea
     private $objDTFirstContact = null;  //dr\classes\dom\tag\webcomponents\DRInputDateTime
     private $objDTLastContact = null;  //dr\classes\dom\tag\webcomponents\DRInputDateTime
     
-    private $objEdtBillingAddressMisc = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingAddressStreet = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingPostalCode = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingCity = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingStateRegion = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtBillingAddressMisc = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtBillingAddressStreet = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtBillingPostalCode = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtBillingCity = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtBillingStateRegion = null;//dr\classes\dom\tag\form\DRInputText
     private $objCbxBillingCountryID = null;//dr\classes\dom\tag\form\Select
-    private $objEdtBillingVatNumber = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingEmailAddress = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtBillingBankAccountNo = null;//dr\classes\dom\tag\form\InputText    
+    private $objEdtBillingVatNumber = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtBillingEmailAddress = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtBillingBankAccountNo = null;//dr\classes\dom\tag\form\DRInputText    
+    private $objEdtBillingBIC = null;//dr\classes\dom\tag\form\DRInputText    
 
-    private $objEdtDeliveryAddressMisc = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtDeliveryAddressStreet = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtDeliveryPostalCode = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtDeliveryCity = null;//dr\classes\dom\tag\form\InputText
-    private $objEdtDeliveryStateRegion = null;//dr\classes\dom\tag\form\InputText
+    private $objEdtDeliveryAddressMisc = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtDeliveryAddressStreet = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtDeliveryPostalCode = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtDeliveryCity = null;//dr\classes\dom\tag\form\DRInputText
+    private $objEdtDeliveryStateRegion = null;//dr\classes\dom\tag\form\DRInputText
     private $objCbxDeliveryCountryID = null;//dr\classes\dom\tag\form\Select
 
     private $objChkIsClient = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objChkIsSupplier = null;//dr\classes\dom\tag\form\InputCheckbox
+    private $objChkAllowedPurchaseCredit = null;//dr\classes\dom\tag\form\InputCheckbox
 
     private $objCountries = null;
     private $objSalutations = null;
@@ -142,14 +146,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //record id
-        $this->objEdtRecordId = new InputText();
+        $this->objEdtRecordId = new DRInputText();
         $this->objEdtRecordId->setNameAndID('edtRecordId');
         $this->objEdtRecordId->setClass('quarterwidthtag');    
         $this->objEdtRecordId->setReadOnly(true);             
         $this->getFormGenerator()->addQuick($this->objEdtRecordId, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_recordid', 'Contact id'),  transm(CMS_CURRENTMODULE, 'form_field_recordid_iconinfo', 'This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.<br><br>This identifyer is NOT encrypted, thus searchable.','application', APP_CMS_APPLICATIONNAME));
 
             //Nice id
-        $this->objEdtNiceId = new InputText();
+        $this->objEdtNiceId = new DRInputText();
         $this->objEdtNiceId->setNameAndID('edtNiceId');
         $this->objEdtNiceId->setClass('quarterwidthtag');    
         $this->objEdtNiceId->setReadOnly(true);               
@@ -157,7 +161,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //custom identifier
-        $this->objEdtCustomIdentifier = new InputText();
+        $this->objEdtCustomIdentifier = new DRInputText();
         $this->objEdtCustomIdentifier->setNameAndID('edtCustomIdentifier');
         $this->objEdtCustomIdentifier->setClass('quarterwidthtag');         
         $this->objEdtCustomIdentifier->setMaxLength(50);                
@@ -168,7 +172,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //search keywords
-        $this->objTagKeywords = new InputText();
+        $this->objTagKeywords = new DRInputText();
         $this->objTagKeywords->setNameAndID('edtTagSearchKeywords');
         $this->objTagKeywords->setClass('fullwidthtag');         
         $this->objTagKeywords->setMaxLength(255);                
@@ -179,7 +183,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //company name
-        $this->objEdtCompanyName = new InputText();
+        $this->objEdtCompanyName = new DRInputText();
         $this->objEdtCompanyName->setNameAndID('edtCompanyName');
         $this->objEdtCompanyName->setClass('fullwidthtag');                         
         $this->objEdtCompanyName->setMaxLength(100);    
@@ -190,9 +194,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEdtCompanyName, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_companyname', 'Company name')); 
 
             //chamber of commerce number
-        $this->objEdtChamberCommerce = new InputText();
+        $this->objEdtChamberCommerce = new DRInputText();
         $this->objEdtChamberCommerce->setNameAndID('edtChamberOfCommerceNumber');
-        $this->objEdtChamberCommerce->setClass('fullwidthtag');                         
+        $this->objEdtChamberCommerce->setClass('halfwidthtag');                         
         $this->objEdtChamberCommerce->setMaxLength(25);    
         $objValidator = new TMaximumLength(25);
         $this->objEdtChamberCommerce->addValidator($objValidator);       
@@ -210,7 +214,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //first name
-        $this->objEdtFirstNameInitials = new InputText();
+        $this->objEdtFirstNameInitials = new DRInputText();
         $this->objEdtFirstNameInitials->setNameAndID('edtFirstName');
         $this->objEdtFirstNameInitials->setClass('fullwidthtag');                         
         $this->objEdtFirstNameInitials->setMaxLength(50);    
@@ -223,7 +227,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials')); 
 
             //last name prefix
-        // $this->objEdtLastNamePrefix = new InputText();
+        // $this->objEdtLastNamePrefix = new DRInputText();
         // $this->objEdtLastNamePrefix->setNameAndID('edtLastNamePrefix');
         // // $this->objEdtLastName->setClass('fullwidthtag');                         
         // $this->objEdtLastNamePrefix->setMaxLength(20);    
@@ -241,7 +245,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     
 
             //last name
-        $this->objEdtLastName = new InputText();
+        $this->objEdtLastName = new DRInputText();
         $this->objEdtLastName->setNameAndID('edtLastName');
         $this->objEdtLastName->setClass('fullwidthtag');                         
         $this->objEdtLastName->setMaxLength(100);    
@@ -256,7 +260,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //email
-        $this->objEdtEmailAddress = new InputText();
+        $this->objEdtEmailAddress = new DRInputText();
         $this->objEdtEmailAddress->setNameAndID('edtEmailAddress');
         $this->objEdtEmailAddress->setClass('fullwidthtag');                         
         $this->objEdtEmailAddress->setMaxLength(100);    
@@ -275,7 +279,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->getFormGenerator()->add($this->objCbxCountryCodePhone1, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone1', 'Country code'));
 
             //phone1
-        $this->objEdtPhone1 = new InputText();
+        $this->objEdtPhone1 = new DRInputText();
         $this->objEdtPhone1->setNameAndID('edtPhone1');
         $this->objEdtPhone1->setClass('halfwidthtag');                         
         $this->objEdtPhone1->setMaxLength(50);    
@@ -284,7 +288,20 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TCharacterWhitelist(WHITELIST_NUMERIC.' -');
         $this->objEdtPhone1->addValidator($objValidator);                 
         $this->objEdtPhone1->setOnchange("validateField(this, true, '".$this->objCbxCountryCodePhone1->getId()."')");
-        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+
+
+            //phone 1 note
+        $this->objEdtPhone1Note = new DRInputText();
+        $this->objEdtPhone1Note->setNameAndID('edtPhone1Note');
+        $this->objEdtPhone1Note->setClass('halfwidthtag');                         
+        $this->objEdtPhone1Note->setMaxLength(50);    
+        $objValidator = new TMaximumLength(50);
+        $this->objEdtPhone1Note->addValidator($objValidator);  
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHABETICAL_ACCENTS.WHITELIST_NUMERIC.' -');
+        $this->objEdtPhone1Note->addValidator($objValidator);                 
+        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1, $this->objEdtPhone1Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', 'Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>'));
+
 
             //country code phone2
         $this->objCbxCountryCodePhone2 = new DRInputCombobox();
@@ -293,7 +310,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->getFormGenerator()->add($this->objCbxCountryCodePhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone2', 'Country code'));
 
             //phone2
-        $this->objEdtPhone2 = new InputText();
+        $this->objEdtPhone2 = new DRInputText();
         $this->objEdtPhone2->setNameAndID('edtPhone2');
         $this->objEdtPhone2->setClass('halfwidthtag');                         
         $this->objEdtPhone2->setMaxLength(50);    
@@ -304,15 +321,26 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtPhone2->setOnchange("validateField(this, true)");
         // $this->getFormGenerator()->add($this->objEdtPhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (encrypted, not searchable)')); 
         $this->objEdtPhone2->setOnchange("validateField(this, true, '".$this->objCbxCountryCodePhone2->getId()."')");
-        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
     
+            //phone 2 note
+        $this->objEdtPhone2Note = new DRInputText();
+        $this->objEdtPhone2Note->setNameAndID('edtPhone2Note');
+        $this->objEdtPhone2Note->setClass('halfwidthtag');                         
+        $this->objEdtPhone2Note->setMaxLength(50);    
+        $objValidator = new TMaximumLength(50);
+        $this->objEdtPhone2Note->addValidator($objValidator);  
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHABETICAL_ACCENTS.WHITELIST_NUMERIC.' -');
+        $this->objEdtPhone2Note->addValidator($objValidator);                 
+        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2, $this->objEdtPhone2Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', 'Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>'));
+
             //billing: country
         $this->objCbxBillingCountryID = new DRInputCombobox();
         $this->objCbxBillingCountryID->setNameAndID('optBillingCountryID');
         $this->getFormGenerator()->add($this->objCbxBillingCountryID, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcountry', 'Country'));
 
             //billing: address line 2: street
-        $this->objEdtBillingAddressStreet = new InputText();
+        $this->objEdtBillingAddressStreet = new DRInputText();
         $this->objEdtBillingAddressStreet->setNameAndID('edtBillingAddressLineStreet');
         $this->objEdtBillingAddressStreet->setClass('fullwidthtag');                         
         $this->objEdtBillingAddressStreet->setMaxLength(100);    
@@ -327,7 +355,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //billing: address line 1: misc
-        $this->objEdtBillingAddressMisc = new InputText();
+        $this->objEdtBillingAddressMisc = new DRInputText();
         $this->objEdtBillingAddressMisc->setNameAndID('edtBillingAddressLineMisc');
         $this->objEdtBillingAddressMisc->setClass('fullwidthtag');                         
         $this->objEdtBillingAddressMisc->setMaxLength(100);    
@@ -342,7 +370,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
             
             //billing: postal code or zip
-        $this->objEdtBillingPostalCode = new InputText();
+        $this->objEdtBillingPostalCode = new DRInputText();
         $this->objEdtBillingPostalCode->setNameAndID('edtBillingPostalCode');
         // $this->objEdtBillingPostalCode->setClass('fullwidthtag');                         
         $this->objEdtBillingPostalCode->setMaxLength(10);    
@@ -356,7 +384,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //billing: city
-        $this->objEdtBillingCity = new InputText();
+        $this->objEdtBillingCity = new DRInputText();
         $this->objEdtBillingCity->setNameAndID('edtBillingCity');
         $this->objEdtBillingCity->setClass('fullwidthtag');                         
         $this->objEdtBillingCity->setMaxLength(50);    
@@ -369,7 +397,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEdtBillingCity, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcity', 'City')); 
 
             //billing: state/region
-        $this->objEdtBillingStateRegion = new InputText();
+        $this->objEdtBillingStateRegion = new DRInputText();
         $this->objEdtBillingStateRegion->setNameAndID('edtBillingState');
         $this->objEdtBillingStateRegion->setClass('fullwidthtag');                         
         $this->objEdtBillingStateRegion->setMaxLength(50);    
@@ -383,7 +411,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
             
 
             //billing: vat no
-        $this->objEdtBillingVatNumber = new InputText();
+        $this->objEdtBillingVatNumber = new DRInputText();
         $this->objEdtBillingVatNumber->setNameAndID('edtBillingVATNumber');
         $this->objEdtBillingVatNumber->setClass('fullwidthtag');                         
         $this->objEdtBillingVatNumber->setMaxLength(20);    
@@ -395,9 +423,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->addQuick($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingvatno', 'VAT number / Tax id (encrypted'),  transm(CMS_CURRENTMODULE, 'form_field_billingvatno_iconinfo', 'VAT number or (sales) tax id.<br>Data is encrypted, thus not searchable.'));
 
             //billing: bank account no
-        $this->objEdtBillingBankAccountNo = new InputText();
+        $this->objEdtBillingBankAccountNo = new DRInputText();
         $this->objEdtBillingBankAccountNo->setNameAndID('edtBillingBankAccountNumber');
-        $this->objEdtBillingBankAccountNo->setClass('fullwidthtag');                         
+        $this->objEdtBillingBankAccountNo->setClass('halfwidthtag');                         
         $this->objEdtBillingBankAccountNo->setMaxLength(20);    
         $objValidator = new TMaximumLength(20);
         $this->objEdtBillingBankAccountNo->addValidator($objValidator);    
@@ -406,8 +434,19 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->getFormGenerator()->add($this->objEdtBillingBankAccountNo, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbankaccoutno', 'Bank account number (encrypted, not searchable)')); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingBankAccountNo, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbankaccountno', 'IBAN Bank account (encrypted)'),  transm(CMS_CURRENTMODULE, 'form_field_billingbankaccountno_iconinfo', 'IBAN or Bank account number / id.<br>Data is encrypted, thus not searchable.'));
             
+            //billing: BIC/SWIFT
+        $this->objEdtBillingBIC = new DRInputText();
+        $this->objEdtBillingBIC->setNameAndID('edtBIC');
+        $this->objEdtBillingBIC->setClass('halfwidthtag');                         
+        $this->objEdtBillingBIC->setMaxLength(20);    
+        $objValidator = new TMaximumLength(20);
+        $this->objEdtBillingBIC->addValidator($objValidator);    
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' -().');
+        $this->objEdtBillingBIC->addValidator($objValidator);                
+        $this->getFormGenerator()->addQuick($this->objEdtBillingBIC, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbic', 'BIC/SWIFT'),  transm(CMS_CURRENTMODULE, 'form_field_billingbic_iconinfo', 'BIC or SWIFT are bank identification codes for routing and identifying financial transactions'));
+            
             //billing: email
-        $this->objEdtBillingEmailAddress = new InputText();
+        $this->objEdtBillingEmailAddress = new DRInputText();
         $this->objEdtBillingEmailAddress->setNameAndID('edtBillingEmailAddress');
         $this->objEdtBillingEmailAddress->setClass('fullwidthtag');                         
         $this->objEdtBillingEmailAddress->setMaxLength(100);    
@@ -425,7 +464,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
            
 
             //delivery: address line 2
-        $this->objEdtDeliveryAddressStreet = new InputText();
+        $this->objEdtDeliveryAddressStreet = new DRInputText();
         $this->objEdtDeliveryAddressStreet->setNameAndID('edtDeliveryAddressLineStreet');
         $this->objEdtDeliveryAddressStreet->setClass('fullwidthtag');                         
         $this->objEdtDeliveryAddressStreet->setMaxLength(100);    
@@ -440,7 +479,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //delivery: address line 1
-        $this->objEdtDeliveryAddressMisc = new InputText();
+        $this->objEdtDeliveryAddressMisc = new DRInputText();
         $this->objEdtDeliveryAddressMisc->setNameAndID('edtDeliveryAddressLineMisc');
         $this->objEdtDeliveryAddressMisc->setClass('fullwidthtag');                         
         $this->objEdtDeliveryAddressMisc->setMaxLength(100);    
@@ -455,7 +494,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
             
             //delivery: postal code or zip
-        $this->objEdtDeliveryPostalCode = new InputText();
+        $this->objEdtDeliveryPostalCode = new DRInputText();
         $this->objEdtDeliveryPostalCode->setNameAndID('edtDeliveryPostalCode');
         // $this->objEdtDeliveryPostalCode->setClass('fullwidthtag');                         
         $this->objEdtDeliveryPostalCode->setMaxLength(10);    
@@ -469,7 +508,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEdtDeliveryPostalCode, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip (encrypted)')); 
     
             //delivery: city
-        $this->objEdtDeliveryCity = new InputText();
+        $this->objEdtDeliveryCity = new DRInputText();
         $this->objEdtDeliveryCity->setNameAndID('edtDeliveryCity');
         $this->objEdtDeliveryCity->setClass('fullwidthtag');                         
         $this->objEdtDeliveryCity->setMaxLength(50);    
@@ -482,7 +521,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycity', 'City')); 
 
             //delivery: state/region
-        $this->objEdtDeliveryStateRegion = new InputText();
+        $this->objEdtDeliveryStateRegion = new DRInputText();
         $this->objEdtDeliveryStateRegion->setNameAndID('edtDeliveryState');
         $this->objEdtDeliveryStateRegion->setClass('fullwidthtag');                         
         $this->objEdtDeliveryStateRegion->setMaxLength(50);    
@@ -518,6 +557,12 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objChkOnBlackList->setNameAndID('chkOnBlackList');
         // $this->objChkOnBlackList->setOnkeyup("setDirtyRecord()");                                  
         $this->getFormGenerator()->add($this->objChkOnBlackList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onblacklist', 'on blacklist'));   
+    
+                //allowed purchase on credit
+        $this->objChkAllowedPurchaseCredit = new InputCheckbox();
+        $this->objChkAllowedPurchaseCredit->setNameAndID('chkAllowedPurchaseOnCredit');
+        // $this->objChkAllowedPurchaseCredit->setOnkeyup("setDirtyRecord()");                                  
+        $this->getFormGenerator()->add($this->objChkAllowedPurchaseCredit, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_allowedpurchaseoncredit', 'allowed purchase on credit'));   
     
 
 
@@ -563,6 +608,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     {
         $this->getModel()->set(TSysContacts::FIELD_ISCLIENT, $this->objChkIsClient->getValueSubmittedAsBool());                
         $this->getModel()->set(TSysContacts::FIELD_ISSUPPLIER, $this->objChkIsSupplier->getValueSubmittedAsBool());                
+        $this->getModel()->set(TSysContacts::FIELD_ALLOWEDPURCHASEONCREDIT, $this->objChkAllowedPurchaseCredit->getValueSubmittedAsBool());                
         $this->getModel()->set(TSysContacts::FIELD_CUSTOMID, $this->objEdtCustomIdentifier->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_COMPANYNAME, $this->objEdtCompanyName->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_CHAMBEROFCOMMERCENO, $this->objEdtChamberCommerce->getValueSubmitted(), '', true);
@@ -576,8 +622,10 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->set(TSysContacts::FIELD_ONBLACKLIST, $this->objChkOnBlackList->getValueSubmittedAsBool());                
         $this->getModel()->set(TSysContacts::FIELD_COUNTRYIDCODEPHONE1, $this->objCbxCountryCodePhone1->getValueSubmittedAsInt());
         $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER1, $this->objEdtPhone1->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER1NOTE, $this->objEdtPhone1Note->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_COUNTRYIDCODEPHONE2, $this->objCbxCountryCodePhone2->getValueSubmittedAsInt());        
         $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER2, $this->objEdtPhone2->getValueSubmitted(), '', true);        
+        $this->getModel()->set(TSysContacts::FIELD_PHONENUMBER2NOTE, $this->objEdtPhone2Note->getValueSubmitted());        
         $this->getModel()->set(TSysContacts::FIELD_NOTES, $this->objTxtArNotes->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_FIRSTCONTACT, $this->objDTFirstContact->getValueSubmittedAsTDateTimeISO());
         $this->getModel()->set(TSysContacts::FIELD_LASTCONTACT, $this->objDTLastContact->getValueSubmittedAsTDateTimeISO());
@@ -591,6 +639,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->set(TSysContacts::FIELD_BILLINGVATNUMBER, $this->objEdtBillingVatNumber->getValueSubmitted(), '', true);
         $this->getModel()->setBillingEmailAddressDecrypted($this->objEdtBillingEmailAddress->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, $this->objEdtBillingBankAccountNo->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_BILLINGBICSWIFT, $this->objEdtBillingBIC->getValueSubmitted());
 
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYADDRESSMISC, $this->objEdtDeliveryAddressMisc->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_DELIVERYADDRESSSTREET, $this->objEdtDeliveryAddressStreet->getValueSubmitted(), '', true);
@@ -638,6 +687,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objChkOnBlackList->setChecked($this->getModel()->get(TSysContacts::FIELD_ONBLACKLIST));
         $this->objChkIsClient->setChecked($this->getModel()->get(TSysContacts::FIELD_ISCLIENT));
         $this->objChkIsSupplier->setChecked($this->getModel()->get(TSysContacts::FIELD_ISSUPPLIER));
+        $this->objChkAllowedPurchaseCredit->setChecked($this->getModel()->get(TSysContacts::FIELD_ALLOWEDPURCHASEONCREDIT));
         
         $this->objEdtRecordId->setValue($this->getModel()->get(TSysContacts::FIELD_ID));
         $this->objEdtNiceId->setValue($this->getModel()->get(TSysContacts::FIELD_NICEID));
@@ -664,10 +714,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         else
             $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE1), $this->objCbxCountryCodePhone1);    
         $this->objEdtPhone1->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER1, '', true));   
+        $this->objEdtPhone1Note->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER1NOTE));   
         if ($this->getModel()->getNew())//country default or existing id
             $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objCbxCountryCodePhone2);    
         else
-            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE2), $this->objCbxCountryCodePhone2);            $this->objEdtPhone2->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER2, '', true));        
+            $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_COUNTRYIDCODEPHONE2), $this->objCbxCountryCodePhone2);            
+        $this->objEdtPhone2->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER2, '', true));        
+        $this->objEdtPhone2Note->setValue($this->getModel()->get(TSysContacts::FIELD_PHONENUMBER2NOTE));        
+
         $this->objTxtArNotes->setValue($this->getModel()->get(TSysContacts::FIELD_NOTES));
         $this->objDTFirstContact->setValueAsTDateTime($this->getModel()->get(TSysContacts::FIELD_FIRSTCONTACT));
         $this->objDTLastContact->setValueAsTDateTime($this->getModel()->get(TSysContacts::FIELD_LASTCONTACT));
@@ -685,6 +739,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingVatNumber->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGVATNUMBER, '', true));
         $this->objEdtBillingEmailAddress->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, '', true));
         $this->objEdtBillingBankAccountNo->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, '', true));
+        $this->objEdtBillingBIC->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGBICSWIFT));
 
         //delivery address
         $this->objEdtDeliveryAddressMisc->setValue($this->getModel()->get(TSysContacts::FIELD_DELIVERYADDRESSMISC, '', true));

@@ -8,6 +8,13 @@ This stylesheet contains everything for the web components that applies to: all 
     /* ==== DRInputUpload ==== */
     --height-drinputupload: 200px;
     --width-drinputupload: 200px;
+
+
+    --lightmode-color-dr-input-border:  rgba(181, 181, 181, 0.737);
+    --lightmode-color-dr-input-background:  rgba(182, 182, 182, 0.057);
+
+    --darkmode-color-dr-input-border:  rgba(234, 234, 234, 0.507);
+    --darkmode-color-dr-input-background:  rgba(228, 228, 228, 0.059);
 }
 
 
@@ -149,3 +156,12 @@ dr-tabsheets .tabcontent div.active
 {
     display: block;
 }       
+
+/* ===== dr-input-text + dr-input-combobox ==== */
+dr-input-text,
+dr-input-combobox
+{
+    border-style: solid;
+    border-color: light-dark( var(--lightmode-color-dr-input-border),  var(--darkmode-color-dr-input-border));
+    background-color: light-dark( var(--lightmode-color-dr-input-background),  var(--darkmode-color-dr-input-background));
+}

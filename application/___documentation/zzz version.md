@@ -42,6 +42,15 @@
 * labels component maken
 
 
+## 14 okt 2025:
+* dr-input-text vervangt <input type="text"> in detailsave_contacts
+* velden toegevoegd: mag op rekening kopen + note phone1 + note phone 2
+* velden toevoegen aan detailsave_contacts: bic
+
+keyup ondervangen dr-input-text
+encrypted fields specificeren
+
+
 ## 13 okt 2025:
 * ajaxform.js: automatisch attachen event listeners verbetert
 * ajaxform.js: checkboxes worden waardes toegevoegd
@@ -54,8 +63,7 @@
 * detailsave_* schermen: setOnkeyup("setDirtyRecord()") en setOnchange("validateField()") uit gecomment. Het is niet meer nodig.
 * extra veld bij validateField() kunnen toevoegen bij detailsave: functionaliteit in detailsave_contacts toegevoegd
 
-velden toevoegen: mag op rekening kopen + note phone1 + note phone 2
-velden toevoegen scherm: bic
+
 
 
 ## 10 okt 2025:

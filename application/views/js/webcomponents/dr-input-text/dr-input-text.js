@@ -82,6 +82,7 @@ class DRInputText extends HTMLElement
                 width: 100%;
                 flex-grow: 1;
                 border-radius: 5px; /* needs to have border radius, otherwise cuts off parent in corner */
+                background-color: inherit;
             }
 
             #charcounter
