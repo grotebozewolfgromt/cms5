@@ -87,8 +87,6 @@ function onPageLoad(objEvent)
             switch(objElement.type)
             {
                 case "text":
-                case "dr-input-text":
-
                     //dirty
                     if ((objElement.getAttribute("onkeyup") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                     {
@@ -117,7 +115,7 @@ function onPageLoad(objEvent)
                     //it prevents us from going to default
                     break;
                 default: //all OTHER elements
-                    if (objElement.tagName.toLocaleLowerCase() == "textarea") //textarea has no type
+                    if ((objElement.tagName.toLocaleUpperCase() == "TEXTAREA") || (objElement.tagName.toLocaleUpperCase() == "DR-INPUT-TEXT")) //textarea or dr-input-* has no type
                     {
                         //set dirty
                         if ((objElement.getAttribute("onkeyup") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly

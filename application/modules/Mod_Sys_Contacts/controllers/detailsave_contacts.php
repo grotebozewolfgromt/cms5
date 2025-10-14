@@ -298,7 +298,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone1Note->setMaxLength(50);    
         $objValidator = new TMaximumLength(50);
         $this->objEdtPhone1Note->addValidator($objValidator);  
-        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHABETICAL_ACCENTS.WHITELIST_NUMERIC.' -');
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -');
         $this->objEdtPhone1Note->addValidator($objValidator);                 
         $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1, $this->objEdtPhone1Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', 'Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>'));
 
@@ -330,7 +330,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone2Note->setMaxLength(50);    
         $objValidator = new TMaximumLength(50);
         $this->objEdtPhone2Note->addValidator($objValidator);  
-        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHABETICAL_ACCENTS.WHITELIST_NUMERIC.' -');
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -');
         $this->objEdtPhone2Note->addValidator($objValidator);                 
         $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2, $this->objEdtPhone2Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', 'Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>'));
 

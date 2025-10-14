@@ -37,8 +37,6 @@
     - minimaal 3 characters zoeken beperking verwijderen
     - number filter geeft met integer ook .0000 terug'
     - na <enter> in quicksearch field gefocussed blijven op quicksearch field
-* corrigeren contacten invoer
-    * bic toevoegen
 * labels component maken
 
 
@@ -46,8 +44,10 @@
 * dr-input-text vervangt <input type="text"> in detailsave_contacts
 * velden toegevoegd: mag op rekening kopen + note phone1 + note phone 2
 * velden toevoegen aan detailsave_contacts: bic
+* bugfix: validators phone note 1+2
+* keyup ondervangen dr-input-text
+* ajaxform.js: dr-input-text werd niet meegenomen
 
-keyup ondervangen dr-input-text
 encrypted fields specificeren
 
 

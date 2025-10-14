@@ -307,6 +307,8 @@ class DRInputText extends HTMLElement
 
             this.updateUICharCounter();
             this.#populateItems();
+
+            this.#dispatchEventKeyUp(this.#objEditBox, 'keyup in editbox');
         }, { signal: this.#objAbortController.signal });     
               
 
@@ -578,6 +580,30 @@ class DRInputText extends HTMLElement
         // console.log("setformvalue dispatchEventInputUpdated",this.getValue());
             
         this.dispatchEvent(new CustomEvent("update",
+        {
+            bubbles: true,
+            detail:
+            {
+                source: objSource,
+                description: sDescription
+            }
+        }));
+    }    
+
+    /**
+     * dispatch keyup event 
+     * 
+     * @param {*} objSource 
+     * @param {*} sDescription 
+     */
+    #dispatchEventKeyUp(objSource, sDescription)
+    {
+        //probably something changed, thus update the form value
+        this.#objFormInternals.setFormValue(this.getValue());
+            
+        // console.log("dispatchEventKeyUp(): dispatch keyup");
+
+        this.dispatchEvent(new CustomEvent("keyup",
         {
             bubbles: true,
             detail:
@@ -894,6 +920,7 @@ class DRInputText extends HTMLElement
     set value(sValue)
     {
         this.setValue(sValue);
+        this.updateUI();
     }
 
 
