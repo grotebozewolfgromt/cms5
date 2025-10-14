@@ -9,7 +9,7 @@ use dr\modules\Mod_POSWebshop\Mod_POSWebshop;
 use dr\modules\Mod_POSWebshop\models\TVATClasses;
 
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_vatclasses extends TCRUDListControllerAJAX

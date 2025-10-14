@@ -23,7 +23,7 @@
     use dr\classes\controllers\TCRUDListController;    
       
     //session started in bootstrap
-    include_once '../../bootstrap_cms_auth.php';
+    include_once '../../bootstrap_admin_auth.php';
  
     
     $objForm = new FormGenerator('htmlmarkupcleaner', getURLThisScript());

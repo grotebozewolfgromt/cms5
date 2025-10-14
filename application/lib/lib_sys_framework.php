@@ -1673,8 +1673,8 @@ function setSetting($sModule, $sSettingName, $sValue, $bReloadAllSettings = fals
     *       );   
  * 
  * technically speaking, this function would belong in lib_cms, but on installation
- * we only include bootstrap.php not bootstrap_cms.php.
- * We can't include bootstrap_cms.php due to instantiation of classes in that file
+ * we only include bootstrap.php not bootstrap_admin.php.
+ * We can't include bootstrap_admin.php due to instantiation of classes in that file
  * of wich the database tables don't exist yet, because they are not installed
  * 
  * @return array

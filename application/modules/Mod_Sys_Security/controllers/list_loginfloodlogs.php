@@ -5,7 +5,7 @@ use dr\classes\controllers\TCRUDListController;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsersFloodDetect;
 use dr\modules\Mod_Sys_Security\Mod_Sys_Security;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_loginfloodlogs extends TCRUDListController

@@ -13,7 +13,7 @@ use dr\modules\Mod_POSWebshop\models\TProductsLanguages;
 use dr\modules\Mod_POSWebshop\models\TVATClasses;
 use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_products extends TCRUDListControllerAJAX

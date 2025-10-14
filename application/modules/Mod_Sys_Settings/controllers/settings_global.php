@@ -36,7 +36,7 @@ use dr\classes\TConfigFileApplication;
 use dr\modules\Mod_Sys_Settings\Mod_Sys_Settings;
 
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 /**

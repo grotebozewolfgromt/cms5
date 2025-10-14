@@ -10,7 +10,7 @@ use dr\classes\types\TDateTime;
 use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
 
     //session started in bootstrap
-    include_once 'bootstrap_cms.php';
+    include_once 'bootstrap_admin.php';
 
 
 

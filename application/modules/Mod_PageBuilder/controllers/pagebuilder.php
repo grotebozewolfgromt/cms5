@@ -6,7 +6,7 @@ use dr\classes\controllers\TPageBuilderControllerAbstract;
 use dr\modules\Mod_PageBuilder\models\TPageBuilderWebpages;
 use dr\modules\Mod_PageBuilder\Mod_PageBuilder;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class pagebuilder extends TPageBuilderControllerAbstract

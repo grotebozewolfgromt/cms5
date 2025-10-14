@@ -215,7 +215,7 @@ use dr\classes\patterns\TConfigFile;
         include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_sys_file.php'); //-->we need this later in this bootstrap file
         include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_sys_inet.php'); //-->we need this later in this bootstrap file
         
-        //libraries below are included in bootstrap_cms.php:
+        //libraries below are included in bootstrap_admin.php:
         //include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms.php');          
         //include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms_url.php');     
         
@@ -286,7 +286,7 @@ use dr\classes\patterns\TConfigFile;
         
         //================== DEFINE LANGUAGE FILES =================== 
         //@TODO cache Locale, countrysettings and language files (speed improvement)
-        //we ONLY define default file names here, they may be overwritten, like in bootstrap_cms_auth.php with settings of the user
+        //we ONLY define default file names here, they may be overwritten, like in bootstrap_admin_auth.php with settings of the user
         //files are automatically loaded upon usage (information requests) of the classes
         //this way we don't have performance overhead (loading default language files and later loading the preferred language files of the user)
             

@@ -7,7 +7,7 @@ use dr\modules\Mod_Sys_Modules\models\TSysModulesCategories;
 use dr\modules\Mod_Sys_Modules\Mod_Sys_Modules;
 use dr\classes\dom\tag\form\Option;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_installedmodules extends TCRUDListController

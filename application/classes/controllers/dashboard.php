@@ -3,7 +3,7 @@ namespace dr\classes\controllers;
 
 // use dr\modules\modules\TControllerAbstract;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 /**
  * Description of dashboard

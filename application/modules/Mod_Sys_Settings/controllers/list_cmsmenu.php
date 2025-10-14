@@ -10,7 +10,7 @@ use dr\classes\models\TSysModel;
 use dr\modules\Mod_Sys_Settings\Mod_Sys_Settings;
 use dr\modules\Mod_Sys_Settings\models\TSysCMSMenu;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_cmsmenu extends TCRUDListControllerAJAX

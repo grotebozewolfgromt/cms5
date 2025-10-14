@@ -6,7 +6,7 @@ use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsers;
 define('APP_MAINTENANCEMODE_SKIPCHECK', true); //skip maintenance-mode check in bootstrap
 
 $sCMSRootPath = dirname( dirname(__FILE__) );
-include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
+include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'bootstrap_admin.php');
 
 /**
  * Create a new user in the CMS

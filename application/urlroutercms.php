@@ -100,7 +100,7 @@ if (($sController == 'install') && ($sModule == ''))
 }
 else
 {
-    include_once 'bootstrap_cms.php';
+    include_once 'bootstrap_admin.php';
 }
 
 //=========================== WEBCOMPONENT?

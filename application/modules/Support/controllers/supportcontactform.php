@@ -8,7 +8,7 @@ use dr\modules\Mod_ContactForm\controllers\TContactFormController;
 // use dr\classes\controllers\TControllerAbstract;
 // use dr\classes\patterns\TContactForm;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class supportcontactform extends TContactFormController

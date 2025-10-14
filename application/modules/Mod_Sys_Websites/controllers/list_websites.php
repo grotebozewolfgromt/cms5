@@ -6,7 +6,7 @@ use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
 use dr\modules\Mod_Sys_Websites\models\TSysWebsites;
 use dr\modules\Mod_Sys_Websites\Mod_Sys_Websites;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_websites extends TCRUDListController

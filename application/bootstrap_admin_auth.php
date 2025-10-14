@@ -15,7 +15,7 @@
  * created: 9 april 2019 Dennis Renirie
  */
 	
-    include_once(__DIR__.DIRECTORY_SEPARATOR.'bootstrap_cms.php');          
+    include_once(__DIR__.DIRECTORY_SEPARATOR.'bootstrap_admin.php');          
    
     //======================= MAKING VARIABLES GLOBAL ==============
     //when you use a class via the autoloader which needs bootstrap_cms_auth,

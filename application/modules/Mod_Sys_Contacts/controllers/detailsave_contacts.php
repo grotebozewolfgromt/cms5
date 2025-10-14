@@ -40,7 +40,7 @@ use dr\modules\Mod_Sys_Contacts\Mod_Sys_Contacts;
 use dr\modules\Mod_Sys_Contacts\models\TSysContactsLastNamePrefixes;
 use dr\modules\Mod_Sys_Contacts\models\TSysContactsSalutations;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 /**
  * Description of TCRUDDetailSaveLanguages

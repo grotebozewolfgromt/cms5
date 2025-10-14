@@ -52,7 +52,7 @@ use dr\modules\Mod_POSWebshop\Mod_POSWebshop;
 use dr\modules\Mod_Sys_CMSUsers\Mod_Sys_CMSUsers;
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 includeJSWebcomponent(); //dependency of <dr-tabsheets>
 includeJSWebcomponent('dr-popover'); //dependency of <dr-tabsheets>

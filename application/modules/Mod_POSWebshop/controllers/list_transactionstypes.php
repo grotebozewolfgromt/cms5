@@ -13,7 +13,7 @@ use dr\modules\Mod_POSWebshop\models\TTransactionsTypes;
 
 // use dr\modules\Mod_Sys_Contacts\Mod_Sys_Contacts;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_transactionstypes extends TCRUDListControllerAJAX

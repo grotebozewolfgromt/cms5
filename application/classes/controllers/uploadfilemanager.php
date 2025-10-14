@@ -5,7 +5,7 @@ use dr\classes\types\TDateTime;
 use dr\classes\locale\TLocalisation;
 use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsersFloodDetect;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 /**
  * WARNING

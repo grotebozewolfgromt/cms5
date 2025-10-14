@@ -54,7 +54,7 @@ use dr\modules\Mod_Sys_Settings\Mod_Sys_Settings;
 use dr\modules\Mod_Sys_Settings\models\TSysCMSMenu;
 use dr\modules\Mod_Sys_Settings\models\TSysSettings;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 /**
  * Description of detailsave_cmsmenu

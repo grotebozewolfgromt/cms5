@@ -74,7 +74,7 @@ use dr\modules\Mod_Sys_Websites\models\TSysWebsites;
  * 08 apr 2024: TPageBuilderControllerAbstract created
  */
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerAJAX

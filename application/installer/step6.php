@@ -5,7 +5,7 @@ use dr\classes\TInstallerScreen;
 define('APP_MAINTENANCEMODE_SKIPCHECK', true); //skip maintenance-mode check in bootstrap
 
 $sCMSRootPath = dirname( dirname(__FILE__) );
-include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
+include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'bootstrap_admin.php');
 
 /**
  * STEP 6: create schema + inserting data into database

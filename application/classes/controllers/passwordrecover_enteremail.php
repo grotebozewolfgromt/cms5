@@ -5,7 +5,7 @@ namespace dr\classes\controllers;
 use dr\classes\controllers\TCMSAuthenticationSystem;
 
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin.php');
 include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms.php');
 include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms_url.php');
 

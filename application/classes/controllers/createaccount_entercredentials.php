@@ -10,7 +10,7 @@ use dr\modules\Mod_Sys_Contacts\models\TSysContactsLastNamePrefixes;
 use dr\modules\Mod_Sys_Contacts\models\TSysContactsSalutations;
 use dr\modules\Mod_Sys_Localisation\models\TSysCountries;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin.php');
 include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms.php');
 include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms_url.php');
 

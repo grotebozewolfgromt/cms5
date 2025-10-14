@@ -4,7 +4,7 @@ namespace dr\modules\Mod_Dev\controllers;
 use dr\classes\controllers\TControllerAbstract;
 
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 // include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_cms.php');
 

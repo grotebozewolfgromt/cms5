@@ -21,7 +21,7 @@
     use dr\classes\controllers\TCRUDListController;    
       
     //session started in bootstrap
-    include_once '../../bootstrap_cms_auth.php';
+    include_once '../../bootstrap_admin_auth.php';
  
     // includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-tabsheets'.DIRECTORY_SEPARATOR.'style.css');
 

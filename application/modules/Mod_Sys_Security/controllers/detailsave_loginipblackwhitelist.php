@@ -31,7 +31,7 @@ use dr\modules\Mod_Sys_Websites\models\TSysWebsites;
 use dr\modules\Mod_Sys_Security\Mod_Sys_Security;
 use dr\modules\Mod_Sys_Websites\Mod_Sys_Websites;
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 /**
  * Description of TCRUDDetailSaveLanguages

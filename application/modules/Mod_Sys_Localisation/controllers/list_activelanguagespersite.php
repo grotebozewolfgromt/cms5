@@ -10,7 +10,7 @@ use dr\modules\Mod_Sys_Localisation\Mod_Sys_Localisation;
 
 
 
-include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_cms_auth.php');
+include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
 class list_activelanguagespersite extends TCRUDListController

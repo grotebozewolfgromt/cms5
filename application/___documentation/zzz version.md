@@ -52,9 +52,10 @@
 * installer step 7 -> step 5
 * installer asks which fields to encrypt
 * detailsave_contacts: info icons bijgewerkt en vertellen precies of een veld ge-encrypt is
+* bootstrap rename: bootstrap_cms.php => bootstrap_admin.php en 
+* bootstrap rename: bootstrap_cms_auth.php => bootstrap_admin_auth.php 
 
 config: _CMS -> _ADMIN
-bootstrap: _CMS -> _ADMIN
 upload dir private and public
 
 
