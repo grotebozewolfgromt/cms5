@@ -73,7 +73,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         $this->objEditLocale->addValidator($objValidator);    
         $objValidator = new TRequired();
         $this->objEditLocale->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEditLocale, '', transm(CMS_CURRENTMODULE, 'languages_form_field_locale', 'Locale code (format: AA-AA)'));
+        $this->getFormGenerator()->add($this->objEditLocale, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_locale', 'Locale code (format: AA-AA)'));
 
             //language
         $this->objEditLanguage = new InputText();
@@ -89,25 +89,25 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         $this->objEditLanguage->addValidator($objValidator);  
         $objValidator = new TRequired();
         $this->objEditLanguage->addValidator($objValidator);       
-        $this->getFormGenerator()->add($this->objEditLanguage, '', transm(CMS_CURRENTMODULE, 'languages_form_field_language', 'Language name (in English)')); 
+        $this->getFormGenerator()->add($this->objEditLanguage, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_language', 'Language name (in English)')); 
 
             //is cms language
         $this->objChkCMSLanguage = new InputCheckbox();
         $this->objChkCMSLanguage->setNameAndID('chkCMSLanguage');
         // $this->objChkCMSLanguage->setOnchange("setDirtyRecord()");
-        $this->getFormGenerator()->add($this->objChkCMSLanguage, '', transm(CMS_CURRENTMODULE, 'languages_form_field_iscmslanguage', 'is CMS language (makes CMS available in this language, creates language files)'));   
+        $this->getFormGenerator()->add($this->objChkCMSLanguage, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_iscmslanguage', 'is CMS language (makes CMS available in this language, creates language files)'));   
         
             //is shown in selectboxes
         $this->objChkFavorite = new InputCheckbox();
         $this->objChkFavorite->setNameAndID('chkCMSSelect');
         // $this->objChkFavorite->setOnchange("setDirtyRecord()");
-        $this->getFormGenerator()->add($this->objChkFavorite, '', transm(CMS_CURRENTMODULE, 'languages_form_field_isfavorite', 'is favorite (only favorites are shown in User Interface elements where not all languages are shown, prevents having 400 languages to scroll through)'));         
+        $this->getFormGenerator()->add($this->objChkFavorite, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_isfavorite', 'is favorite (only favorites are shown in User Interface elements where not all languages are shown, prevents having 400 languages to scroll through)'));         
 
             //is shown in selectboxes
         $this->objChkDefaultSystem = new InputCheckbox();
         $this->objChkDefaultSystem->setNameAndID('chkDefaultSystem');
         // $this->objChkDefaultSystem->setOnchange("setDirtyRecord()");
-        $this->getFormGenerator()->add($this->objChkDefaultSystem, '', transm(CMS_CURRENTMODULE, 'languages_form_field_isdefaultsystem', 'Is system default (system assumes this language by default, only 1 language can be default)'));         
+        $this->getFormGenerator()->add($this->objChkDefaultSystem, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_isdefaultsystem', 'Is system default (system assumes this language by default, only 1 language can be default)'));         
 
 //            //active languages per site
 //        $objChkActLangSite = null;
@@ -154,7 +154,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         if ($this->getModel()->getLocale() == APP_LOCALE_DEFAULT)
         {
             $this->objEditLocale->setReadOnly(true); 
-            sendMessageNotification(transm(CMS_CURRENTMODULE, 'form_notification_defaultlocale_cantchangelocale', 'This is the default locale of the system, you cant change the locale itself'));
+            sendMessageNotification(transm(APP_ADMIN_CURRENTMODULE, 'form_notification_defaultlocale_cantchangelocale', 'This is the default locale of the system, you cant change the locale itself'));
         }
         
         $this->objEditLocale->setValue($this->getModel()->get(TSysLanguages::FIELD_LOCALE));
@@ -292,12 +292,12 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_languages_new', 'Create new language');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_languages_new', 'Create new language');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_languages_edit', 'Edit language: [language]', 'language', $this->getModel()->getLanguage());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_languages_edit', 'Edit language: [language]', 'language', $this->getModel()->getLanguage());           
     }
 
     /**
@@ -318,7 +318,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -328,7 +328,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -339,7 +339,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -350,7 +350,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Localisation::PERM_CAT_LANGUAGES, TModuleAbstract::PERM_OP_DELETE);
     }
 
 

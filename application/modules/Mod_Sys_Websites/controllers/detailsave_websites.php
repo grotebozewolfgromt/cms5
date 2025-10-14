@@ -338,12 +338,12 @@ class detailsave_websites extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_websites_new', 'Create new website');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_websites_new', 'Create new website');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_websites_edit', 'Edit website: [website]', 'website', $this->getModel()->getWebsiteName());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_websites_edit', 'Edit website: [website]', 'website', $this->getModel()->getWebsiteName());           
     }
 
     /**

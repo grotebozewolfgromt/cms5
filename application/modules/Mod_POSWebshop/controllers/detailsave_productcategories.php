@@ -122,12 +122,12 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);   
         $this->objEdtName->setWhitelist(WHITELIST_SAFE);                 
-        // $this->getFormGenerator()->add($this->objEdtName, '', transm(CMS_CURRENTMODULE, 'form_productcategories_field_name', 'Name'));
+        // $this->getFormGenerator()->add($this->objEdtName, '', transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_name', 'Name'));
         $this->getFormGenerator()->addQuick(
             $this->objEdtName, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_name_description', 'Name'),
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_name_infoicon', 'Name of the product category, for example: "car radios" or "vacuum cleaners"'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_name_description', 'Name'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_name_infoicon', 'Name of the product category, for example: "car radios" or "vacuum cleaners"'),
         );
         
 
@@ -151,8 +151,8 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->addQuick(
             $this->objEdtURLSlug, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_urlslug_description', 'URL slug'),
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_urlslug_infoicon', 'A URL slug is the last part of a URL.<br>The URL slug identifies this category, so it must be unique.<br>The URL slug is only used for websites.<br>We aware that URL can not contain certain characters, like a space.'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_urlslug_description', 'URL slug'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_urlslug_infoicon', 'A URL slug is the last part of a URL.<br>The URL slug identifies this category, so it must be unique.<br>The URL slug is only used for websites.<br>We aware that URL can not contain certain characters, like a space.'),
         );
 
         //upload image
@@ -173,8 +173,8 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->addQuick(
             $this->objImage, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_image_description', 'Image'),
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_image_infoicon', 'Add an image representing the products in the product category'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_image_description', 'Image'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_image_infoicon', 'Add an image representing the products in the product category'),
         ); 
         // $this->getFormGenerator()->addArray(array($this->objImage, $this->objImage), '', 'omschrijving');        
 
@@ -184,21 +184,21 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         // $this->objCbxParent->setNameAndID('cbxParent');
         // $this->objCbxParent->setClass('fullwidthtag');  
         // $this->objCbxParent->setOnchange("setDirtyRecord()"); 
-        // $this->getFormGenerator()->add($this->objCbxParent, '', transm(CMS_CURRENTMODULE, 'form_productcategories_field_parentnode', 'Parent node'));  
+        // $this->getFormGenerator()->add($this->objCbxParent, '', transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_parentnode', 'Parent node'));  
 
         // //insert after node
         // $this->objCbxInsertAfter = new DRInputCombobox();
         // $this->objCbxInsertAfter->setNameAndID('cbxParent');
         // $this->objCbxInsertAfter->setClass('fullwidthtag');  
         // $this->objCbxInsertAfter->setOnchange("setDirtyRecord()"); 
-        // $this->getFormGenerator()->add($this->objCbxInsertAfter, '', transm(CMS_CURRENTMODULE, 'form_productcategories_field_insertafter', 'Insert after node'));  
+        // $this->getFormGenerator()->add($this->objCbxInsertAfter, '', transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_insertafter', 'Insert after node'));  
 
             //default
         $this->objChkDefault = new DRInputCheckbox();
         $this->objChkDefault->setNameAndID('chkDefault');
         // $this->objChkDefault->setOnchange("setDirtyRecord()");
         // $this->objChkDefault->setOnkeyup("setDirtyRecord()");        
-        $this->objChkDefault->setLabel(transm(CMS_CURRENTMODULE, 'form_productcategories_field_default', 'Is selected by default'));
+        $this->objChkDefault->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_default', 'Is selected by default'));
         $this->getFormGenerator()->add($this->objChkDefault);  
 
             //favorite
@@ -206,7 +206,7 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         $this->objChkFavorite->setNameAndID('chkFavorite');
         // $this->objChkFavorite->setOnchange("setDirtyRecord()");
         // $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
-        $this->objChkFavorite->setLabel(transm(CMS_CURRENTMODULE, 'form_productcategories_field_favorite', 'Is favorite'));
+        $this->objChkFavorite->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_favorite', 'Is favorite'));
         $this->getFormGenerator()->add($this->objChkFavorite);  
     
     }
@@ -369,7 +369,7 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
     public function getTemplatePath()
     {
         return APP_PATH_CMS_TEMPLATES.DIRECTORY_SEPARATOR.'tpl_modeldetailsaveajax.php';
-        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_detailsave_products.php';
+        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_detailsave_products.php';
     }
 
     /**
@@ -405,12 +405,12 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_productcategoriess_new_title', 'Create new product category');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_productcategoriess_new_title', 'Create new product category');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_productcategoriess_edit_title', 'Edit product category');   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_productcategoriess_edit_title', 'Edit product category');   
     }
 
 
@@ -432,7 +432,7 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -442,7 +442,7 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -453,7 +453,7 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -464,7 +464,7 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_DELETE);
     }
 
 

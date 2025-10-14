@@ -23,7 +23,7 @@ class list_loginfloodlogs extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -48,16 +48,16 @@ class list_loginfloodlogs extends TCRUDListController
             
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCMSUsersFloodDetect::FIELD_DATEATTEMPT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_DATEATTEMPT, 'Date')),
-            array('', TSysCMSUsersFloodDetect::FIELD_IPADDRESS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_IPADDRESS, 'IP addr')),
-            array('', TSysCMSUsersFloodDetect::FIELD_USERNAMEENCRYPTED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_USERNAMEENCRYPTED, 'User')),
-            array('', TSysCMSUsersFloodDetect::FIELD_ISFAILEDLOGINATTEMPT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISFAILEDLOGINATTEMPT, 'Login fail')),
-            array('', TSysCMSUsersFloodDetect::FIELD_ISSUCCEEDEDLOGINATTEMPT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISSUCCEEDEDLOGINATTEMPT, 'Login succ')),
-            array('', TSysCMSUsersFloodDetect::FIELD_ISPASSWORDRESET, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISPASSWORDRESET, 'Pwd rst')),
-            array('', TSysCMSUsersFloodDetect::FIELD_ISCREATEACCOUNTATTEMPT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISCREATEACCOUNTATTEMPT, 'Cr acnt')),
-            array('', TSysCMSUsersFloodDetect::FIELD_ISCREATEDUPLICATEUSERNAMEATTEMPT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISCREATEDUPLICATEUSERNAMEATTEMPT, 'dpl acnt')),
-            array('', TSysCMSUsersFloodDetect::FIELD_ISDIRECTORYTRAVERSALATTEMPT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISDIRECTORYTRAVERSALATTEMPT, 'dir trav')),
-            array('', TSysCMSUsersFloodDetect::FIELD_USERAGENT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_USERAGENT, 'User Agent')),
+            array('', TSysCMSUsersFloodDetect::FIELD_DATEATTEMPT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_DATEATTEMPT, 'Date')),
+            array('', TSysCMSUsersFloodDetect::FIELD_IPADDRESS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_IPADDRESS, 'IP addr')),
+            array('', TSysCMSUsersFloodDetect::FIELD_USERNAMEENCRYPTED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_USERNAMEENCRYPTED, 'User')),
+            array('', TSysCMSUsersFloodDetect::FIELD_ISFAILEDLOGINATTEMPT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISFAILEDLOGINATTEMPT, 'Login fail')),
+            array('', TSysCMSUsersFloodDetect::FIELD_ISSUCCEEDEDLOGINATTEMPT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISSUCCEEDEDLOGINATTEMPT, 'Login succ')),
+            array('', TSysCMSUsersFloodDetect::FIELD_ISPASSWORDRESET, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISPASSWORDRESET, 'Pwd rst')),
+            array('', TSysCMSUsersFloodDetect::FIELD_ISCREATEACCOUNTATTEMPT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISCREATEACCOUNTATTEMPT, 'Cr acnt')),
+            array('', TSysCMSUsersFloodDetect::FIELD_ISCREATEDUPLICATEUSERNAMEATTEMPT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISCREATEDUPLICATEUSERNAMEATTEMPT, 'dpl acnt')),
+            array('', TSysCMSUsersFloodDetect::FIELD_ISDIRECTORYTRAVERSALATTEMPT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_ISDIRECTORYTRAVERSALATTEMPT, 'dir trav')),
+            array('', TSysCMSUsersFloodDetect::FIELD_USERAGENT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersFloodDetect::FIELD_USERAGENT, 'User Agent')),
                 );
         
     
@@ -138,8 +138,8 @@ class list_loginfloodlogs extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'floodlogs_list_title', 'Flood detection logs');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'floodlogs_list_title', 'Flood detection logs');
     }
 
     /**

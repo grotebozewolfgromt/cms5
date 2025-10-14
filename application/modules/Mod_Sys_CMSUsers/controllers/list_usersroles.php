@@ -26,7 +26,7 @@ class list_usersroles extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
         // global $arrTabsheets;        
 
         $objModel = $this->objModel;
@@ -37,11 +37,11 @@ class list_usersroles extends TCRUDListController
         
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCMSUsersRoles::FIELD_ROLENAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_ROLENAME, 'Role')),      
-            array('', TSysCMSUsersRoles::FIELD_DESCRIPTION, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_DESCRIPTION, 'Description')),      
-            array('', TSysCMSUsersRoles::FIELD_MAXUSERSINACCOUNT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_MAXUSERSINACCOUNT, 'Max users')),      
-            array('', TSysCMSUsersRoles::FIELD_ISANONYMOUS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_ISANONYMOUS, 'Anonymous')),      
-            array('', TSysCMSUsersRoles::FIELD_ISSYSTEMROLE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_ISSYSTEMROLE, 'System'))      
+            array('', TSysCMSUsersRoles::FIELD_ROLENAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_ROLENAME, 'Role')),      
+            array('', TSysCMSUsersRoles::FIELD_DESCRIPTION, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_DESCRIPTION, 'Description')),      
+            array('', TSysCMSUsersRoles::FIELD_MAXUSERSINACCOUNT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_MAXUSERSINACCOUNT, 'Max users')),      
+            array('', TSysCMSUsersRoles::FIELD_ISANONYMOUS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_ISANONYMOUS, 'Anonymous')),      
+            array('', TSysCMSUsersRoles::FIELD_ISSYSTEMROLE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSUsersRoles::FIELD_ISSYSTEMROLE, 'System'))      
                                     );
     
     
@@ -174,8 +174,8 @@ class list_usersroles extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_userroles', 'User roles and permissions');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_userroles', 'User roles and permissions');
     }
 
     /**

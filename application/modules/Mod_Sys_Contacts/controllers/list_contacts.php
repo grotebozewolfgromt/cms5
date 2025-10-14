@@ -26,7 +26,7 @@ class list_contacts extends TCRUDListControllerAJAX
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -50,13 +50,13 @@ class list_contacts extends TCRUDListControllerAJAX
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysContacts::FIELD_CUSTOMID, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_CUSTOMID, 'Identifier label')),
-            array('', TSysContacts::FIELD_COMPANYNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company')),
-            array('', TSysContacts::FIELD_FIRSTNAMEINITALS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Initials')),
-            array('', TSysContacts::FIELD_LASTNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Last name')),
-            array('', TSysContacts::FIELD_BILLINGADDRESSSTREET, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Address')),
-            array('', TSysContacts::FIELD_BILLINGPOSTALCODEZIP, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal/zip')),
-            array('', TSysContacts::FIELD_BILLINGCITY, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGCITY, 'City'))        
+            array('', TSysContacts::FIELD_CUSTOMID, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_CUSTOMID, 'Identifier label')),
+            array('', TSysContacts::FIELD_COMPANYNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company')),
+            array('', TSysContacts::FIELD_FIRSTNAMEINITALS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Initials')),
+            array('', TSysContacts::FIELD_LASTNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Last name')),
+            array('', TSysContacts::FIELD_BILLINGADDRESSSTREET, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Address')),
+            array('', TSysContacts::FIELD_BILLINGPOSTALCODEZIP, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal/zip')),
+            array('', TSysContacts::FIELD_BILLINGCITY, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGCITY, 'City'))        
                 );
         
     
@@ -99,15 +99,15 @@ class list_contacts extends TCRUDListControllerAJAX
         //===show what?
 
         $this->arrTableColumnsShow = array(
-            array('', TSysContacts::FIELD_ID, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_ID, 'Id')),
-            array('', TSysContacts::FIELD_NICEID, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_NICEID, 'Nice Id')),
-            array('', TSysContacts::FIELD_CUSTOMID, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_CUSTOMID, 'Custom id')),
-            array('', TSysContacts::FIELD_COMPANYNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company')),
-            array('', TSysContacts::FIELD_FIRSTNAMEINITALS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Initials')),
-            array('', TSysContacts::FIELD_LASTNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Last name')),
-            array('', TSysContacts::FIELD_BILLINGADDRESSSTREET, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Address')),
-            array('', TSysContacts::FIELD_BILLINGPOSTALCODEZIP, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal')),
-            array('', TSysContacts::FIELD_BILLINGCITY, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGCITY, 'City'))        
+            array('', TSysContacts::FIELD_ID, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_ID, 'Id')),
+            array('', TSysContacts::FIELD_NICEID, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_NICEID, 'Nice Id')),
+            array('', TSysContacts::FIELD_CUSTOMID, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_CUSTOMID, 'Custom id')),
+            array('', TSysContacts::FIELD_COMPANYNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company')),
+            array('', TSysContacts::FIELD_FIRSTNAMEINITALS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Initials')),
+            array('', TSysContacts::FIELD_LASTNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Last name')),
+            array('', TSysContacts::FIELD_BILLINGADDRESSSTREET, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Address')),
+            array('', TSysContacts::FIELD_BILLINGPOSTALCODEZIP, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal')),
+            array('', TSysContacts::FIELD_BILLINGCITY, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGCITY, 'City'))        
                 );
                 
         
@@ -121,7 +121,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_COMPANYNAME);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company name'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company name'));
         $objFilters->addFilter($objFilter);
 
         //custom identifier
@@ -130,7 +130,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_CUSTOMID);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_CUSTOMID, 'Custom Id'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_CUSTOMID, 'Custom Id'));
         $objFilters->addFilter($objFilter);
 
         //id
@@ -139,7 +139,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_ID);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_ID, 'Record Id'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_ID, 'Record Id'));
         $objFilters->addFilter($objFilter);        
 
 
@@ -149,7 +149,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_UNIQUEID);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_UNIQUEID, 'Unique Id'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_UNIQUEID, 'Unique Id'));
         $objFilters->addFilter($objFilter);     
 
         //nice id
@@ -158,7 +158,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_NICEID);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NICEID, 'Nice Id'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NICEID, 'Nice Id'));
         $objFilters->addFilter($objFilter);  
         
         //last name
@@ -169,7 +169,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_LASTNAME);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_LASTNAME, 'Last name'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_LASTNAME, 'Last name'));
             $objFilters->addFilter($objFilter);  
         }
 
@@ -182,7 +182,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGADDRESSSTREET);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Street (billing)'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Street (billing)'));
             $objFilters->addFilter($objFilter);  
 
             //address: delivery
@@ -191,7 +191,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_DELIVERYADDRESSSTREET);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYADDRESSSTREET, 'Street (delivery)'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYADDRESSSTREET, 'Street (delivery)'));
             $objFilters->addFilter($objFilter);  
         }     
 
@@ -204,7 +204,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal code (billing)'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal code (billing)'));
             $objFilters->addFilter($objFilter);  
             
             //postal code: delivery
@@ -213,7 +213,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, 'Postal code (delivery)'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, 'Postal code (delivery)'));
             $objFilters->addFilter($objFilter);  
         }     
 
@@ -225,7 +225,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_EMAILADDRESSENCRYPTED);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_EMAILADDRESSENCRYPTED, 'Email address (personal)'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_EMAILADDRESSENCRYPTED, 'Email address (personal)'));
             $objFilters->addFilter($objFilter);  
             
             //billing email
@@ -234,7 +234,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, 'Email address (billing)'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, 'Email address (billing)'));
             $objFilters->addFilter($objFilter);  
         }     
 
@@ -246,7 +246,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER1);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER1, 'Phone number 1'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER1, 'Phone number 1'));
             $objFilters->addFilter($objFilter);  
             
             //phone 2
@@ -255,7 +255,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER2);
-            $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER2, 'Phone number 2'));
+            $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER2, 'Phone number 2'));
             $objFilters->addFilter($objFilter);  
         }           
 
@@ -265,7 +265,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_NOTES);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NOTES, 'Notes'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NOTES, 'Notes'));
         $objFilters->addFilter($objFilter);     
 
         //first contact
@@ -274,7 +274,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_DATE);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_FIRSTCONTACT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_FIRSTCONTACT, 'First contact'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_FIRSTCONTACT, 'First contact'));
         $objFilters->addFilter($objFilter);      
 
         //last contact
@@ -283,7 +283,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_DATE);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_LASTCONTACT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_LASTCONTACT, 'Last contact'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_LASTCONTACT, 'Last contact'));
         $objFilters->addFilter($objFilter);   
 
         //billing city
@@ -292,7 +292,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGCITY);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGCITY, 'City (billing)'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGCITY, 'City (billing)'));
         $objFilters->addFilter($objFilter);          
         
         //delivery city
@@ -301,7 +301,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_DELIVERYCITY);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYCITY, 'City (delivery)'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYCITY, 'City (delivery)'));
         $objFilters->addFilter($objFilter);   
         
         //search keywords
@@ -310,7 +310,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_SEARCHKEYWORDS);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_SEARCHKEYWORDS, 'Search keywords'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_SEARCHKEYWORDS, 'Search keywords'));
         $objFilters->addFilter($objFilter);   
         
         
@@ -383,8 +383,8 @@ class list_contacts extends TCRUDListControllerAJAX
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'Contacts');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'Contacts');
     }
 
     /**

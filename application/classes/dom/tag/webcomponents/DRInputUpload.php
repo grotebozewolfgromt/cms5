@@ -71,8 +71,8 @@ use GdImage;
         $this->getFormGenerator()->addQuick(
             $this->objImage, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_image_description', 'Image'),
-            transm(CMS_CURRENTMODULE, 'form_productcategories_field_image_infoicon', 'Attach an image representing the products in the product category'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_image_description', 'Image'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_productcategories_field_image_infoicon', 'Attach an image representing the products in the product category'),
         ); 
  * RETRIEVING ALL FIELDS AT ONCE AND SET IN MODEL:
  *      $this->objImage->viewToModelImage($this->getModel());

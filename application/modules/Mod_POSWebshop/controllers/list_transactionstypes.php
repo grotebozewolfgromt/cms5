@@ -51,22 +51,22 @@ class list_transactionstypes extends TCRUDListControllerAJAX
 
         // $arrTableColumnsShow = array(
         $this->arrTableColumnsShow = array(
-            array('', TTransactionsTypes::FIELD_NAME, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_NAME, 'Type name')),
-            array('', TTransactionsTypes::FIELD_DESCRIPTION, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_DESCRIPTION, 'Description')),
-            array('', TTransactionsTypes::FIELD_AVAILABLESTOCKADD, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKADD, 'Avail +')),
-            array('', TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT, 'Avail -')),
-            array('', TTransactionsTypes::FIELD_RESERVEDSTOCKADD, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKADD, 'Res +')),
-            array('', TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT, 'Res -')),
-            array('', TTransactionsTypes::FIELD_FINANCIALADD, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_FINANCIALADD, '$ +')),
-            array('', TTransactionsTypes::FIELD_FINANCIALSUBTRACT, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_FINANCIALSUBTRACT, '$ -')),
-            array('', TTransactionsTypes::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISDEFAULT, 'Default')),
-            array('', TTransactionsTypes::FIELD_ISFAVORITE, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISFAVORITE, 'Fav')),
-            array('', TTransactionsTypes::FIELD_ISDEFAULTINVOICE, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISDEFAULTINVOICE, 'Invoice')),
-            array('', TTransactionsTypes::FIELD_ISDEFAULTORDER, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISDEFAULTORDER, '0rder')),
-            array('', TTransactionsTypes::FIELD_COLORBACKGROUND, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_COLORBACKGROUND, 'Color')),
-            array('', TTransactionsTypes::FIELD_NEWNUMBERINCREMENT, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_NEWNUMBERINCREMENT, 'Start')),
-            array('', TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS, transm(CMS_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS, 'Pay')),
-            array('', TSysModel::FIELD_POSITION, transm(CMS_CURRENTMODULE, 'list_column_'.TSysModel::FIELD_POSITION, 'Order'))
+            array('', TTransactionsTypes::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_NAME, 'Type name')),
+            array('', TTransactionsTypes::FIELD_DESCRIPTION, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_DESCRIPTION, 'Description')),
+            array('', TTransactionsTypes::FIELD_AVAILABLESTOCKADD, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKADD, 'Avail +')),
+            array('', TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT, 'Avail -')),
+            array('', TTransactionsTypes::FIELD_RESERVEDSTOCKADD, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKADD, 'Res +')),
+            array('', TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT, 'Res -')),
+            array('', TTransactionsTypes::FIELD_FINANCIALADD, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_FINANCIALADD, '$ +')),
+            array('', TTransactionsTypes::FIELD_FINANCIALSUBTRACT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_FINANCIALSUBTRACT, '$ -')),
+            array('', TTransactionsTypes::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISDEFAULT, 'Default')),
+            array('', TTransactionsTypes::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISFAVORITE, 'Fav')),
+            array('', TTransactionsTypes::FIELD_ISDEFAULTINVOICE, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISDEFAULTINVOICE, 'Invoice')),
+            array('', TTransactionsTypes::FIELD_ISDEFAULTORDER, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_ISDEFAULTORDER, '0rder')),
+            array('', TTransactionsTypes::FIELD_COLORBACKGROUND, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_COLORBACKGROUND, 'Color')),
+            array('', TTransactionsTypes::FIELD_NEWNUMBERINCREMENT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_NEWNUMBERINCREMENT, 'Start')),
+            array('', TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS, 'Pay')),
+            array('', TSysModel::FIELD_POSITION, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TSysModel::FIELD_POSITION, 'Order'))
                 );
         
         //defining database filters
@@ -78,7 +78,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_NAME);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_NAME, 'Name'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_NAME, 'Name'));
         $objFilters->addFilter($objFilter);
 
         //description
@@ -87,7 +87,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_DESCRIPTION);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_DESCRIPTION, 'Description'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_DESCRIPTION, 'Description'));
         $objFilters->addFilter($objFilter);
 
         //start number
@@ -96,7 +96,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_NEWNUMBERINCREMENT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_NEWNUMBERINCREMENT, 'Start increment number'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_NEWNUMBERINCREMENT, 'Start increment number'));
         $objFilters->addFilter($objFilter);
 
         //payment within # days
@@ -105,7 +105,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS, 'Payment within # days'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_PAYMENTMADEWITHINDAYS, 'Payment within # days'));
         $objFilters->addFilter($objFilter);
 
         //available stock +
@@ -114,7 +114,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_AVAILABLESTOCKADD);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKADD, 'Available Stock +'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKADD, 'Available Stock +'));
         $objFilters->addFilter($objFilter);
 
         //available stock -
@@ -123,7 +123,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT, 'Available Stock -'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_AVAILABLESTOCKSUBSTRACT, 'Available Stock -'));
         $objFilters->addFilter($objFilter);
 
         //reserved stock +
@@ -132,7 +132,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_RESERVEDSTOCKADD);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKADD, 'Reserved Stock +'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKADD, 'Reserved Stock +'));
         $objFilters->addFilter($objFilter);
 
         //reserved stock -
@@ -141,7 +141,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT, 'Reserved Stock -'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_RESERVEDSTOCKSUBTRACT, 'Reserved Stock -'));
         $objFilters->addFilter($objFilter);
 
         //financial +
@@ -150,7 +150,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_FINANCIALADD);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_FINANCIALADD, 'Financial Transaction +'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_FINANCIALADD, 'Financial Transaction +'));
         $objFilters->addFilter($objFilter);        
 
         //financial -
@@ -159,7 +159,7 @@ class list_transactionstypes extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField('', TTransactionsTypes::FIELD_FINANCIALSUBTRACT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_FINANCIALSUBTRACT, 'Financial Transaction -'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TTransactionsTypes::FIELD_FINANCIALSUBTRACT, 'Financial Transaction -'));
         $objFilters->addFilter($objFilter);        
              
         return 0;   
@@ -232,8 +232,8 @@ class list_transactionstypes extends TCRUDListControllerAJAX
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_transactiontypes', 'Transaction types');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_transactiontypes', 'Transaction types');
     }
 
     /**

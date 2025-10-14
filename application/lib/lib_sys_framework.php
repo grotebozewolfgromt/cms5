@@ -1442,7 +1442,7 @@ function getSystemModelsInstantiated()
  * you forget to return a permission in TModuleAbstract-child->getPermissions()
  * 
  * a typical auth() call would look like this:
- * auth(CMS_CURRENTMODULE, TCDCollection::PERM_CAT_ARTISTS, TCDCollection::PERM_OP_VIEW)
+ * auth(APP_ADMIN_CURRENTMODULE, TCDCollection::PERM_CAT_ARTISTS, TCDCollection::PERM_OP_VIEW)
  * 
  * the same method is used as getAuthResource() to compile a resource string
  * 

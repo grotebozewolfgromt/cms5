@@ -247,12 +247,12 @@ class detailsave_countries extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_countries_new', 'Create new country');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_countries_new', 'Create new country');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_countries_edit', 'Edit country: [country]', 'country', $this->getModel()->getCountryName());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_countries_edit', 'Edit country: [country]', 'country', $this->getModel()->getCountryName());           
     }
 
     /**

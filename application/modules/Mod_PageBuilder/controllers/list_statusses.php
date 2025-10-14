@@ -29,7 +29,7 @@ class list_statusses extends TCRUDListController
      */
     public function execute()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
         // global $arrTabsheets;        
 
 
@@ -42,8 +42,8 @@ class list_statusses extends TCRUDListController
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TPageBuilderDocumentsStatusses::FIELD_NAME, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderDocumentsStatusses::FIELD_NAME, 'Name')),
-            array('', TPageBuilderDocumentsStatusses::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderDocumentsStatusses::FIELD_ISDEFAULT, 'Default')),
+            array('', TPageBuilderDocumentsStatusses::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderDocumentsStatusses::FIELD_NAME, 'Name')),
+            array('', TPageBuilderDocumentsStatusses::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderDocumentsStatusses::FIELD_ISDEFAULT, 'Default')),
                 );
         
              
@@ -116,8 +116,8 @@ class list_statusses extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_statusses', 'Web page statusses');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_statusses', 'Web page statusses');
     }
 
     /**

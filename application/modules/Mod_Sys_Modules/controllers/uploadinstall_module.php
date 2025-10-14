@@ -38,12 +38,12 @@ class uploadinstall_module extends TControllerAbstract
 
     public function __construct()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         //handle authentication    
-        if (!auth(CMS_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_INSTALL))
+        if (!auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_INSTALL))
         {
-            showAccessDenied(transm(CMS_CURRENTMODULE, 'message_moduleuninstall_notallowed', 'You are not allowed to uninstall modules'));
+            showAccessDenied(transm(APP_ADMIN_CURRENTMODULE, 'message_moduleuninstall_notallowed', 'You are not allowed to uninstall modules'));
             die();
         }
 
@@ -80,7 +80,7 @@ class uploadinstall_module extends TControllerAbstract
     public function bindVarsEarly()
     {
         global $objCurrentModule;
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
         global $objAuthenticationSystem;
         
 
@@ -98,10 +98,10 @@ class uploadinstall_module extends TControllerAbstract
             //commandpanel first (later again)            
                     //submit
                 $objSubmit = new InputSubmit();    
-                $objSubmit->setValue(transm(CMS_CURRENTMODULE, 'form_button_upload', 'upload'));
+                $objSubmit->setValue(transm(APP_ADMIN_CURRENTMODULE, 'form_button_upload', 'upload'));
                 $objSubmit->setName('btnSubmit');
                 if ((!$this->sModuleToInstall) && (!$objForm->isFormSubmitted())) //only add on first load
-                    if (auth(CMS_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_UPLOAD))    
+                    if (auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_UPLOAD))    
                         $arrCommandPanel[] = $objSubmit;        
         
                     //close
@@ -127,7 +127,7 @@ class uploadinstall_module extends TControllerAbstract
                 $objInstallAfterUpload->setName('chkInstallAfterUpload');
                 $objInstallAfterUpload->setChecked(true);
                 if ((!$this->sModuleToInstall) && (!$objForm->isFormSubmitted())) //only add on first load
-                    $objForm->add($objInstallAfterUpload, '', transm(CMS_CURRENTMODULE, 'checkbox_installafterupload', 'install module after upload'));            
+                    $objForm->add($objInstallAfterUpload, '', transm(APP_ADMIN_CURRENTMODULE, 'checkbox_installafterupload', 'install module after upload'));            
                 
                     //messages
                 $objMessages = new Textarea();
@@ -135,7 +135,7 @@ class uploadinstall_module extends TControllerAbstract
                 $objMessages->setContentEditable(false);
                 $objMessages->setClass('fullwidthtag');
                 if (($this->sModuleToInstall) || ($objForm->isFormSubmitted())) //only add after uploading or when a module is supplied with url
-                    $objForm->add($objMessages, '', transm(CMS_CURRENTMODULE, 'label_progressmessages', 'Progress messages'));            
+                    $objForm->add($objMessages, '', transm(APP_ADMIN_CURRENTMODULE, 'label_progressmessages', 'Progress messages'));            
 
 
                 //add another command panel on the bottom
@@ -155,13 +155,13 @@ class uploadinstall_module extends TControllerAbstract
             $arrUploadFiles = array();
 
         //security: if not allowed, prevent from being extracted (and thus installed)
-        if (!auth(CMS_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_UPLOAD))    
+        if (!auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_UPLOAD))    
             $arrUploadFiles = array();
 
 
         foreach($arrUploadFiles as $sUploadFile)
         {        
-            $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_uploaded','file uploaded: [file]', 'file', $sUploadFile['name']);
+            $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_uploaded','file uploaded: [file]', 'file', $sUploadFile['name']);
 
             if (stristr($sUploadFile['type'], 'zip') !== false)
             {
@@ -176,7 +176,7 @@ class uploadinstall_module extends TControllerAbstract
                 $objZip = new ZipArchive;
                 if ($objZip->open($sUploadFile['tmp_name']) === TRUE) 
                 {
-                    $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_extractingzipfile','extracting [file]', 'file', $sUploadFile['name']);
+                    $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_extractingzipfile','extracting [file]', 'file', $sUploadFile['name']);
                     $objZip->extractTo($sTempDir);
                     $objZip->close();
                     $bZipOK = true;
@@ -184,7 +184,7 @@ class uploadinstall_module extends TControllerAbstract
                 else 
                 {
                     logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'installupload module: '.$sUploadFile['name'].': zip extraction failed');
-                    $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_extractingzipfile_failed','file [file] extraction failed', 'file', $sUploadFile['name']);
+                    $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_extractingzipfile_failed','file [file] extraction failed', 'file', $sUploadFile['name']);
                     $bZipOK = false;
                 }
                 
@@ -195,7 +195,7 @@ class uploadinstall_module extends TControllerAbstract
                     foreach ($arrZipArchiveFiles as $arrZipArchiveFile)//if multiple directories are in the zip file
                     {
                         $bInstallOK = true;
-                        $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_movingfilesfromtemp','copying files to module directory');
+                        $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_movingfilesfromtemp','copying files to module directory');
 
                         //store all the directories (=modules) that were extracted in the temp directory (we have to install only the new modules)
                         $arrModsInTempDir = getFileFolderArray($sTempDir, true, false);
@@ -206,11 +206,11 @@ class uploadinstall_module extends TControllerAbstract
                             if (renameRecursive($sTempDir, APP_PATH_MODULES) === false)
                             {
                                 logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'installupload module: moving files from temp to module dir failed: '.$sUploadFile['name'].'');
-                                $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_movingfilesfromtemp_failed','FAILED!!! moving files to module directory');
+                                $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_movingfilesfromtemp_failed','FAILED!!! moving files to module directory');
                             }
                             else
                             {
-                                $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_movingfilesfromtemp_success','moving files completed');                        
+                                $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_movingfilesfromtemp_success','moving files completed');                        
 
                                 //only install if checkbox checked
                                 if ($objInstallAfterUpload->getValueSubmittedAsBool())
@@ -225,7 +225,7 @@ class uploadinstall_module extends TControllerAbstract
                                     }
                                 }
                                 else
-                                    $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'filesuploadedbutnotinstalled','files moved to module directory (but module not installed)');                        
+                                    $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'filesuploadedbutnotinstalled','files moved to module directory (but module not installed)');                        
                             }
                         }
 
@@ -239,7 +239,7 @@ class uploadinstall_module extends TControllerAbstract
                 if (file_exists($sUploadFile['tmp_name']))          
                     unlink($sUploadFile['tmp_name']);
                 logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'FAIL: upload file: '.$sUploadFile['tmp_name'].' is not a *.zip file. File removed from temporary directory');
-                $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'file_notazipfile','file [file] is not a zip file', 'file', $sUploadFile['name']);
+                $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'file_notazipfile','file [file] is not a zip file', 'file', $sUploadFile['name']);
             }
                 
         }
@@ -259,7 +259,7 @@ class uploadinstall_module extends TControllerAbstract
 
         //====== page defaults
         
-        $sTitle = transm(CMS_CURRENTMODULE, 'pagetitle_uploadmodule', CMS_CURRENTMODULE.': upload module');
+        $sTitle = transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_uploadmodule', APP_ADMIN_CURRENTMODULE.': upload module');
         $sHTMLTitle = $sTitle;
         $sHTMLMetaDescription = $sTitle;
         $arrTabsheets = $objCurrentModule->getTabsheets(); 
@@ -300,31 +300,31 @@ class uploadinstall_module extends TControllerAbstract
      */
     private function installModuleLocal($sModule) //it's a function so we can call it later in a loop when uploading multiple modules in one zip file
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
-        if (auth(CMS_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_INSTALL))
+        if (auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_INSTALL))
         {
             $sTempModClass = '';
             $sTempModClass = getModuleFullNamespaceClass($sModule);
             $objCurrentModule = new $sTempModClass;    
             
-            $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'installmodule_install', 'installing module [module]', 'module', $sModule);
+            $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'installmodule_install', 'installing module [module]', 'module', $sModule);
             if (!$objCurrentModule->installModule())
             {
                 error_log('installing module failed for module '.$sModule);
-                $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'installmodule_install_failed', 'installing module [module] FAILED!', 'module', $sModule);
+                $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'installmodule_install_failed', 'installing module [module] FAILED!', 'module', $sModule);
                 return false;
             }          
             unset($sTempModClass);
             unset($objCurrentModule);
             
-            $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'installmodule_install_success', 'installing module [module] successful!', 'module', $sModule);
-            $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'installmodule_install_success_clickclose', 'after clicking "close" [module] will be available', 'module', $sModule);
+            $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'installmodule_install_success', 'installing module [module] successful!', 'module', $sModule);
+            $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'installmodule_install_success_clickclose', 'after clicking "close" [module] will be available', 'module', $sModule);
 
         }
         else
         {
-            $this->arrUploadInstallMessages[] = transm(CMS_CURRENTMODULE, 'installmodule_install_notallowed', 'installing module [module] NOT allowed!', 'module', $sModule);            
+            $this->arrUploadInstallMessages[] = transm(APP_ADMIN_CURRENTMODULE, 'installmodule_install_notallowed', 'installing module [module] NOT allowed!', 'module', $sModule);            
             return false;
         }
 
@@ -338,9 +338,9 @@ class uploadinstall_module extends TControllerAbstract
      */
     public function getTemplatePath()
     {
-        //global CMS_CURRENTMODULE;
-        return getPathModuleTemplates(CMS_CURRENTMODULE, true).'tpl_uploadinstall_module.php';
-        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_uploadinstall_module.php';
+        //global APP_ADMIN_CURRENTMODULE;
+        return getPathModuleTemplates(APP_ADMIN_CURRENTMODULE, true).'tpl_uploadinstall_module.php';
+        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_uploadinstall_module.php';
     }
 
     /**

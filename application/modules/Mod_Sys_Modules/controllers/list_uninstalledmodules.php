@@ -24,7 +24,7 @@ class list_uninstalledmodules extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
     
         //deleting modules from disk
@@ -38,12 +38,12 @@ class list_uninstalledmodules extends TCRUDListController
                 {
                     if (rmdirrecursive(APP_PATH_MODULES.DIRECTORY_SEPARATOR.$_GET[ACTION_VARIABLE_ID]))
                     {
-                        sendMessageSuccess(transm(CMS_CURRENTMODULE, 'uninstalledmodules-delete-success', 'module deleted successfully'));
+                        sendMessageSuccess(transm(APP_ADMIN_CURRENTMODULE, 'uninstalledmodules-delete-success', 'module deleted successfully'));
                         error_log('delete module '.$_GET[ACTION_VARIABLE_ID].' from disk FAILED');
                     }
                     else
                     {
-                        sendMessageError(transm(CMS_CURRENTMODULE, 'uninstalledmodules-delete-error', 'module not deleted'));
+                        sendMessageError(transm(APP_ADMIN_CURRENTMODULE, 'uninstalledmodules-delete-error', 'module not deleted'));
                     }
                     
                 }
@@ -102,9 +102,9 @@ class list_uninstalledmodules extends TCRUDListController
      */
     public function getTemplatePath()
     {
-        //global CMS_CURRENTMODULE;
-        return getPathModuleTemplates(CMS_CURRENTMODULE, true).'tpl_list_uninstalledmodules.php';
-        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_list_uninstalledmodules.php';
+        //global APP_ADMIN_CURRENTMODULE;
+        return getPathModuleTemplates(APP_ADMIN_CURRENTMODULE, true).'tpl_list_uninstalledmodules.php';
+        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_list_uninstalledmodules.php';
     }
 
     /**
@@ -162,8 +162,8 @@ class list_uninstalledmodules extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'modules');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'modules');
     }
 
     /**

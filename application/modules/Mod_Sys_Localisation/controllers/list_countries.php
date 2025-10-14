@@ -25,7 +25,7 @@ class list_countries extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -46,14 +46,14 @@ class list_countries extends TCRUDListController
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCountries::FIELD_COUNTRYNAME, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_COUNTRYNAME, 'Country')),
-            array('', TSysCountries::FIELD_COUNTRYCODEPHONE, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_COUNTRYCODEPHONE, 'Phone')),
-            array('', TSysCountries::FIELD_ISO2, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISO2, 'ISO 2')),
-            array('', TSysCountries::FIELD_ISO3, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISO3, 'ISO 3')),
-            array('', TSysCountries::FIELD_ISEEA, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISEEA, 'In EU')),
-            array('', TSysCountries::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISDEFAULT, 'Default')),
-            array('', TSysCountries::FIELD_ISFAVORITE, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISFAVORITE, 'Favorite')),
-            array('', TSysCountries::FIELD_ISUNKNOWN, transm(CMS_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISUNKNOWN, 'Unknown'))
+            array('', TSysCountries::FIELD_COUNTRYNAME, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_COUNTRYNAME, 'Country')),
+            array('', TSysCountries::FIELD_COUNTRYCODEPHONE, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_COUNTRYCODEPHONE, 'Phone')),
+            array('', TSysCountries::FIELD_ISO2, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISO2, 'ISO 2')),
+            array('', TSysCountries::FIELD_ISO3, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISO3, 'ISO 3')),
+            array('', TSysCountries::FIELD_ISEEA, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISEEA, 'In EU')),
+            array('', TSysCountries::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISDEFAULT, 'Default')),
+            array('', TSysCountries::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISFAVORITE, 'Favorite')),
+            array('', TSysCountries::FIELD_ISUNKNOWN, transm(APP_ADMIN_CURRENTMODULE, 'countries_overview_column_'.TSysCountries::FIELD_ISUNKNOWN, 'Unknown'))
                 );
         
     
@@ -133,8 +133,8 @@ class list_countries extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_countries', 'All system Countries');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_countries', 'All system Countries');
     }
 
     /**

@@ -24,7 +24,7 @@ class list_websites extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -47,9 +47,9 @@ class list_websites extends TCRUDListController
             
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysWebsites::FIELD_WEBSITENAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysWebsites::FIELD_WEBSITENAME, 'website name')),
-            array('', TSysWebsites::FIELD_URL, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysWebsites::FIELD_URL, 'url')),
-            array($objTempLang::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'default')),
+            array('', TSysWebsites::FIELD_WEBSITENAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysWebsites::FIELD_WEBSITENAME, 'website name')),
+            array('', TSysWebsites::FIELD_URL, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysWebsites::FIELD_URL, 'url')),
+            array($objTempLang::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'default')),
                 );
         
     
@@ -130,8 +130,8 @@ class list_websites extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'Websites');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'Websites');
     }
 
     /**

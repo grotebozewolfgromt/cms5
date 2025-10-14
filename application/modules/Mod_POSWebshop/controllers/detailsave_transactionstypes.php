@@ -105,7 +105,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->addValidator($objValidator);    
         $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         $this->objEdtName->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtName, '', transm(CMS_CURRENTMODULE, 'form_field_name', 'Name'));
+        $this->getFormGenerator()->add($this->objEdtName, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_name', 'Name'));
 
         //description
         $this->objEdtDescription = new InputText();
@@ -119,7 +119,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDescription->addValidator($objValidator);    
         $objValidator = new TRequired(transcms('form_error_requiredfield', 'This is a required field'));
         $this->objEdtDescription->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtDescription, '', transm(CMS_CURRENTMODULE, 'form_field_description', 'Description'));
+        $this->getFormGenerator()->add($this->objEdtDescription, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_description', 'Description'));
 
  
         //CURRENT stock +
@@ -127,42 +127,42 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objChkAvailStockAdd->setNameAndID('chkAvailStockAdd');
         // $this->objChkAvailStockAdd->setOnchange("setDirtyRecord()");
         // $this->objChkAvailStockAdd->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkAvailStockAdd, '', transm(CMS_CURRENTMODULE, 'form_field_availablestockadd', 'Add AVAILABLE stock (available stock reduced or increased when transaction completed)'));        
+        $this->getFormGenerator()->add($this->objChkAvailStockAdd, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_availablestockadd', 'Add AVAILABLE stock (available stock reduced or increased when transaction completed)'));        
 
         //CURRENT stock -
         $this->objChkAvailStockSubtract = new InputCheckbox();
         $this->objChkAvailStockSubtract->setNameAndID('chkAvailStockSubtract');
         // $this->objChkAvailStockSubtract->setOnchange("setDirtyRecord()");
         // $this->objChkAvailStockSubtract->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkAvailStockSubtract, '', transm(CMS_CURRENTMODULE, 'form_field_availablestocksubtract', 'Subtract AVAILABLE stock (available stock reduced or increased when transaction completed)'));        
+        $this->getFormGenerator()->add($this->objChkAvailStockSubtract, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_availablestocksubtract', 'Subtract AVAILABLE stock (available stock reduced or increased when transaction completed)'));        
 
         //RESERVED stock +
         $this->objChkReservedStockAdd = new InputCheckbox();
         $this->objChkReservedStockAdd->setNameAndID('chkReservedStockAdd');
         // $this->objChkReservedStockAdd->setOnchange("setDirtyRecord()");
         // $this->objChkReservedStockAdd->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkReservedStockAdd, '', transm(CMS_CURRENTMODULE, 'form_field_reservedstockadd', 'Add RESERVED stock (reserved stock reduced or increased when transaction completed)'));         
+        $this->getFormGenerator()->add($this->objChkReservedStockAdd, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_reservedstockadd', 'Add RESERVED stock (reserved stock reduced or increased when transaction completed)'));         
         
         //RESERVED stock -
         $this->objChkReservedStockSubtract = new InputCheckbox();
         $this->objChkReservedStockSubtract->setNameAndID('chkReservedStockSubtract');
         // $this->objChkReservedStockSubtract->setOnchange("setDirtyRecord()");
         // $this->objChkReservedStockSubtract->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkReservedStockSubtract, '', transm(CMS_CURRENTMODULE, 'form_field_reservedstocksubtract', 'Subtract RESERVED stock (reserved stock reduced or increased when transaction completed)'));         
+        $this->getFormGenerator()->add($this->objChkReservedStockSubtract, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_reservedstocksubtract', 'Subtract RESERVED stock (reserved stock reduced or increased when transaction completed)'));         
 
         //FINANCIAL transaction +
         $this->objChkFinancialAdd = new InputCheckbox();
         $this->objChkFinancialAdd->setNameAndID('chkFinancialAdd');
         // $this->objChkFinancialAdd->setOnchange("setDirtyRecord()");
         // $this->objChkFinancialAdd->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkFinancialAdd, '', transm(CMS_CURRENTMODULE, 'form_field_financialadd', 'Add money'));         
+        $this->getFormGenerator()->add($this->objChkFinancialAdd, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_financialadd', 'Add money'));         
 
         //FINANCIAL transaction -
         $this->objChkFinancialSubtract = new InputCheckbox();
         $this->objChkFinancialSubtract->setNameAndID('chkFinancialSubtract');
         // $this->objChkFinancialSubtract->setOnchange("setDirtyRecord()");
         // $this->objChkFinancialSubtract->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkFinancialSubtract, '', transm(CMS_CURRENTMODULE, 'form_field_financialsubtract', 'Subtracts money'));         
+        $this->getFormGenerator()->add($this->objChkFinancialSubtract, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_financialsubtract', 'Subtracts money'));         
 
 
         //default selected
@@ -170,14 +170,14 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objChkDefaultSelected->setNameAndID('chkIsDefaultSelected');
         // $this->objChkDefaultSelected->setOnchange("setDirtyRecord()");
         // $this->objChkDefaultSelected->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkDefaultSelected, '', transm(CMS_CURRENTMODULE, 'form_field_isdefaultselected', 'Is selected by default (in user interface elements)'));
+        $this->getFormGenerator()->add($this->objChkDefaultSelected, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_isdefaultselected', 'Is selected by default (in user interface elements)'));
 
         //is favorite
         $this->objChkFavorite = new InputCheckbox();
         $this->objChkFavorite->setNameAndID('chkIsFavorite');
         // $this->objChkFavorite->setOnchange("setDirtyRecord()");
         // $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkFavorite, '', transm(CMS_CURRENTMODULE, 'form_field_isfavorite', 'Is favorite (in some GUI elements only favorites are shown)'));         
+        $this->getFormGenerator()->add($this->objChkFavorite, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_isfavorite', 'Is favorite (in some GUI elements only favorites are shown)'));         
 
 
         //default invoice
@@ -185,7 +185,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objChkDefaultInvoice->setNameAndID('chkIsDefaultInvoice');
         // $this->objChkDefaultInvoice->setOnchange("setDirtyRecord()");
         // $this->objChkDefaultInvoice->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkDefaultInvoice, '', transm(CMS_CURRENTMODULE, 'form_field_isdefaultinvoice', 'Is default invoice (i.e. when an invoice in webshop is needed, this type is used)'));         
+        $this->getFormGenerator()->add($this->objChkDefaultInvoice, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_isdefaultinvoice', 'Is default invoice (i.e. when an invoice in webshop is needed, this type is used)'));         
 
 
         //default order
@@ -193,7 +193,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objChkDefaultOrder->setNameAndID('chkIsDefaultOrder');
         // $this->objChkDefaultOrder->setOnchange("setDirtyRecord()");
         // $this->objChkDefaultOrder->setOnkeyup("setDirtyRecord()");        
-        $this->getFormGenerator()->add($this->objChkDefaultOrder, '', transm(CMS_CURRENTMODULE, 'form_field_isdefaultorder', 'Is default order (i.e. when an order in webshop is needed, this type is used)'));         
+        $this->getFormGenerator()->add($this->objChkDefaultOrder, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_isdefaultorder', 'Is default order (i.e. when an order in webshop is needed, this type is used)'));         
         
         
             //foreground color
@@ -208,7 +208,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtColorForeground->addValidator($objValidator);    
         $objValidator = new TColorHex(true, true);
         $this->objEdtColorForeground->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtColorForeground, '', transm(CMS_CURRENTMODULE, 'form_field_colorforeground', 'Foreground color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)'));
+        $this->getFormGenerator()->add($this->objEdtColorForeground, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_colorforeground', 'Foreground color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)'));
     
             //background color
         $this->objEdtColorBackground = new InputColor();
@@ -222,7 +222,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtColorBackground->addValidator($objValidator);    
         $objValidator = new TColorHex(true, true);
         $this->objEdtColorBackground->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtColorBackground, '', transm(CMS_CURRENTMODULE, 'form_field_colorbackground', 'Background color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)'));
+        $this->getFormGenerator()->add($this->objEdtColorBackground, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_colorbackground', 'Background color (hexadecimal value from #00000 to #FFFFFF) (without #-sign)'));
             
 
             //new incremented number
@@ -237,7 +237,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtNewNumber->addValidator($objValidator);    
         $objValidator = new TRequired();
         $this->objEdtNewNumber->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtNewNumber, '', transm(CMS_CURRENTMODULE, 'form_field_newincrementednumber', 'New transaction starts at number'));
+        $this->getFormGenerator()->add($this->objEdtNewNumber, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_newincrementednumber', 'New transaction starts at number'));
 
             //payment within days
         $this->objEdtPaymentDays = new InputNumber();
@@ -251,7 +251,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPaymentDays->addValidator($objValidator);    
         $objValidator = new TRequired();
         $this->objEdtPaymentDays->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtPaymentDays, '', transm(CMS_CURRENTMODULE, 'form_field_paymentwithindays', 'Must be payed within (amount of days)'));
+        $this->getFormGenerator()->add($this->objEdtPaymentDays, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_paymentwithindays', 'Must be payed within (amount of days)'));
 
     }
 
@@ -490,12 +490,12 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_transactionstypes_new', 'Create transaction type');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_transactionstypes_new', 'Create transaction type');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_transactionstypes_edit', 'Edit transaction type: [name]', 'name', $this->getModel()->getName());   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_transactionstypes_edit', 'Edit transaction type: [name]', 'name', $this->getModel()->getName());   
     }
 
     /**
@@ -527,7 +527,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -537,7 +537,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -548,7 +548,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -559,7 +559,7 @@ class detailsave_transactionstypes extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_TRANSACTIONSTYPES, TModuleAbstract::PERM_OP_DELETE);
     }
 
 

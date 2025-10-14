@@ -51,7 +51,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objEdtCSV->setText($objEdtCSV->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objEdtCSV->setText($sFileContents);
-    $objForm->add($objEdtCSV, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_plaintext', 'Input: CSV'));
+    $objForm->add($objEdtCSV, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_plaintext', 'Input: CSV'));
     
     //use custom value separator
     $objUseCustomSeparator = new InputRadio();
@@ -62,7 +62,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objUseCustomSeparator->setChecked($objUseCustomSeparator->getValueSubmitted() == 'customvalue');
     else
         $objUseCustomSeparator->setChecked(false);    
-    $objForm->add($objUseCustomSeparator, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_usecustomseparator', 'Use custom separator'));
+    $objForm->add($objUseCustomSeparator, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_usecustomseparator', 'Use custom separator'));
     
     
     //the content of the value separator
@@ -72,7 +72,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objCustomValueSeparator->setValue($objCustomValueSeparator->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objCustomValueSeparator->setValue(',');
-    $objForm->add($objCustomValueSeparator, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_valueseparator', 'Value separator'));
+    $objForm->add($objCustomValueSeparator, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_valueseparator', 'Value separator'));
        
     //use enter-sepator
     $objUseNewlineSeparator = new InputRadio();
@@ -83,7 +83,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objUseNewlineSeparator->setChecked($objUseNewlineSeparator->getValueSubmitted() == 'newlinevalue');
     else
         $objUseNewlineSeparator->setChecked(false);    
-    $objForm->add($objUseNewlineSeparator, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_useenterseparator', 'Use NewLine-character separator (\\n)'));    
+    $objForm->add($objUseNewlineSeparator, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_useenterseparator', 'Use NewLine-character separator (\\n)'));    
     
         //how many colums in table (the enter character separates not only rows, but also columns
     $objNoCols = new InputText();
@@ -92,7 +92,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objNoCols->setValue($objNoCols->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objNoCols->setValue('2');
-    $objForm->add($objNoCols, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_numberorfolumns', 'Number of columns in table (when enter character is also used as column separator)'));
+    $objForm->add($objNoCols, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_numberorfolumns', 'Number of columns in table (when enter character is also used as column separator)'));
     
     
     //use tab-sepator
@@ -104,7 +104,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objUseTabSeparator->setChecked($objUseTabSeparator->getValueSubmitted() == 'tabvalue');
     else
         $objUseTabSeparator->setChecked(true);    
-    $objForm->add($objUseTabSeparator, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_usetabseparator', 'Use tab-character separator (\\t)'));       
+    $objForm->add($objUseTabSeparator, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_usetabseparator', 'Use tab-character separator (\\t)'));       
     
     
     //first line is header
@@ -114,7 +114,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objChkFirstLineHeader->setChecked($objChkFirstLineHeader->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objChkFirstLineHeader->setChecked(false);
-    $objForm->add($objChkFirstLineHeader, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_firstlineistableheader', 'First line is table header (horizontal)'));
+    $objForm->add($objChkFirstLineHeader, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_firstlineistableheader', 'First line is table header (horizontal)'));
 
     //first value is header
     $objChkFirstValueHeader = new InputCheckbox();
@@ -123,7 +123,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objChkFirstValueHeader->setChecked($objChkFirstValueHeader->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objChkFirstValueHeader->setChecked(false);
-    $objForm->add($objChkFirstValueHeader, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_firstvalueistableheader', 'First value is table header (vertical)'));
+    $objForm->add($objChkFirstValueHeader, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_firstvalueistableheader', 'First value is table header (vertical)'));
     
         
     
@@ -140,7 +140,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
     
     //submit
     $objSubmit = new InputSubmit();    
-    $objSubmit->setValue(transm(CMS_CURRENTMODULE, 'csv2table_form_button_convert', 'convert'));
+    $objSubmit->setValue(transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_button_convert', 'convert'));
     $objSubmit->setName('btnSubmit');
     $objForm->add($objSubmit, '');    
 
@@ -235,11 +235,11 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objHTML->setReadOnly(true); 
         $objEdtCSV->setRows(10);   
         $objHTML->setText($sResult);
-        $objForm->add($objHTML, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_html', 'Output: html'));  
+        $objForm->add($objHTML, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_html', 'Output: html'));  
         
         
         $objBtnCopyClipboard = new InputButton();
-        $objBtnCopyClipboard->setValue(transm(CMS_CURRENTMODULE, 'csv2table_form_button_copytoclipboard', 'Copy HTML to clipboard'));
+        $objBtnCopyClipboard->setValue(transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_button_copytoclipboard', 'Copy HTML to clipboard'));
         $objBtnCopyClipboard->setName('btnCopyToClipboard');
         $objBtnCopyClipboard->setOnclick("copyToClipboardEditBox('edtHTML')");
         $objForm->add($objBtnCopyClipboard, '');   
@@ -269,7 +269,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
  
     
     
-    $sTitle = transm(CMS_CURRENTMODULE, CMS_CURRENTMODULE);
+    $sTitle = transm(APP_ADMIN_CURRENTMODULE, APP_ADMIN_CURRENTMODULE);
     $sHTMLTitle = $sTitle;
     $sHTMLMetaDescription = $sTitle;
     

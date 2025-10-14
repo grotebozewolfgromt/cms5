@@ -54,7 +54,7 @@
         $objUseRawHtml->setChecked($objUseRawHtml->getValueSubmitted() == 'rawhtml');
     else
         $objUseRawHtml->setChecked(true);    
-    $objForm->add($objUseRawHtml, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_userawhtml', 'Use raw html'));
+    $objForm->add($objUseRawHtml, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_userawhtml', 'Use raw html'));
     
     
     //input raw HTML
@@ -80,7 +80,7 @@
         $objUseRichtextHtml->setChecked($objUseRichtextHtml->getValueSubmitted() == 'richtexthtml');
     else
         $objUseRichtextHtml->setChecked(false);    
-    $objForm->add($objUseRichtextHtml, '', transm(CMS_CURRENTMODULE, 'csv2table_form_field_userichtexthtml', 'Use rich text html (copy paste from Word, LibreOffice etc)'));    
+    $objForm->add($objUseRichtextHtml, '', transm(APP_ADMIN_CURRENTMODULE, 'csv2table_form_field_userichtexthtml', 'Use rich text html (copy paste from Word, LibreOffice etc)'));    
     
     //input rich text (1 div + 1 hidden)
     $objHTMLRichTextHidden = new InputHidden();//hidden to store html value of the richtexthtml for submission
@@ -106,7 +106,7 @@
         $objFormatHTML->setChecked($objFormatHTML->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objFormatHTML->setChecked(true);    
-    $objForm->add($objFormatHTML, '', transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_field_formathtml', 'Format HTML code (human readable)'));    
+    $objForm->add($objFormatHTML, '', transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_field_formathtml', 'Format HTML code (human readable)'));    
        
     
     //filter unwanted tags and attributes
@@ -116,7 +116,7 @@
         $objFilterUnwantedTagsAttributes->setChecked($objFilterUnwantedTagsAttributes->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objFilterUnwantedTagsAttributes->setChecked(true);    
-    $objForm->add($objFilterUnwantedTagsAttributes, '', transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_field_filterunwantedtagsattributes', 'Filter bad HTML markup tags and attributes'));        
+    $objForm->add($objFilterUnwantedTagsAttributes, '', transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_field_filterunwantedtagsattributes', 'Filter bad HTML markup tags and attributes'));        
     
     
     //links target="_blank"
@@ -126,7 +126,7 @@
         $objLinksTargetBlank->setChecked($objLinksTargetBlank->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objLinksTargetBlank->setChecked(true);    
-    $objForm->add($objLinksTargetBlank, '', transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_field_linkstargetblank', 'Links: target="_blank"'));        
+    $objForm->add($objLinksTargetBlank, '', transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_field_linkstargetblank', 'Links: target="_blank"'));        
     
     
     //links rel=nofollow
@@ -136,7 +136,7 @@
         $objLinksRelNofollow->setChecked($objLinksRelNofollow->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objLinksRelNofollow->setChecked(false);    
-    $objForm->add($objLinksRelNofollow, '', transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_field_relnofollow', 'Links: rel="nofollow"'));        
+    $objForm->add($objLinksRelNofollow, '', transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_field_relnofollow', 'Links: rel="nofollow"'));        
     
     
     //replace </p> by <br>
@@ -146,12 +146,12 @@
         $objReplacePByBR->setChecked($objReplacePByBR->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
     else
         $objReplacePByBR->setChecked(true);    
-    $objForm->add($objReplacePByBR, '', transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_field_replacepbybr', 'Replace <p> by <br> tag'));        
+    $objForm->add($objReplacePByBR, '', transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_field_replacepbybr', 'Replace <p> by <br> tag'));        
     
     
     //submit
     $objSubmit = new InputSubmit();    
-    $objSubmit->setValue(transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_button_count', 'Clean my dirty HTML'));
+    $objSubmit->setValue(transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_button_count', 'Clean my dirty HTML'));
     $objSubmit->setName('btnSubmit');
     $objForm->add($objSubmit, '');    
     
@@ -187,11 +187,11 @@
         $objHTMLClean->setReadOnly(true); 
         $objHTMLRawDirty->setRows(10);   
         $objHTMLClean->setText($sResult);
-        $objForm->add($objHTMLClean, '', transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_field_html', 'Output: html'));  
+        $objForm->add($objHTMLClean, '', transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_field_html', 'Output: html'));  
         
         
         $objBtnCopyClipboard = new InputButton();
-        $objBtnCopyClipboard->setValue(transm(CMS_CURRENTMODULE, 'htmlmarkupcleaner_form_button_copytoclipboard', 'Copy clean HTML to clipboard'));
+        $objBtnCopyClipboard->setValue(transm(APP_ADMIN_CURRENTMODULE, 'htmlmarkupcleaner_form_button_copytoclipboard', 'Copy clean HTML to clipboard'));
         $objBtnCopyClipboard->setName('btnCopyToClipboard');
         $objBtnCopyClipboard->setOnclick("copyToClipboardEditBox('edtHTMLClean')");
         $objForm->add($objBtnCopyClipboard, '');   
@@ -221,7 +221,7 @@
  
     
     
-    $sTitle = transm(CMS_CURRENTMODULE, CMS_CURRENTMODULE);
+    $sTitle = transm(APP_ADMIN_CURRENTMODULE, APP_ADMIN_CURRENTMODULE);
     $sHTMLTitle = $sTitle;
     $sHTMLMetaDescription = $sTitle;
     

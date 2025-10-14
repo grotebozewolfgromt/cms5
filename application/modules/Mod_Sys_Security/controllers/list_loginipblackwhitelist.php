@@ -23,7 +23,7 @@ class list_loginipblackwhitelist extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -46,18 +46,18 @@ class list_loginipblackwhitelist extends TCRUDListController
             
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_RECORDCHANGED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_RECORDCHANGED, 'Changed')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_STARTDATE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_STARTDATE, 'Starts')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_ENDDATE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_ENDDATE, 'Ends')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_IPADDRESS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_IPADDRESS, 'IP')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_NOTES, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_NOTES, 'Notes')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_ENABLED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_ENABLED, 'Enable')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_BLACKLISTED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_BLACKLISTED, 'Black')),
-            array('', TSysCMSLoginIPBlackWhitelist::FIELD_WHITELISTED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_WHITELISTED, 'White')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_RECORDCHANGED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_RECORDCHANGED, 'Changed')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_STARTDATE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_STARTDATE, 'Starts')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_ENDDATE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_ENDDATE, 'Ends')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_IPADDRESS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_IPADDRESS, 'IP')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_NOTES, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_NOTES, 'Notes')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_ENABLED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_ENABLED, 'Enable')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_BLACKLISTED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_BLACKLISTED, 'Black')),
+            array('', TSysCMSLoginIPBlackWhitelist::FIELD_WHITELISTED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_WHITELISTED, 'White')),
                 );
         
         if (!APP_CMS_LOGINONLYWHITELISTEDIPS)
-            sendMessageNotification(transm(CMS_CURRENTMODULE, 'blackwhitelist_notification_whitelist_disabled', 'Whitelist is DISABLED in config file.<br>So, whitelist items are ignored'));
+            sendMessageNotification(transm(APP_ADMIN_CURRENTMODULE, 'blackwhitelist_notification_whitelist_disabled', 'Whitelist is DISABLED in config file.<br>So, whitelist items are ignored'));
      
         
         return get_defined_vars();    
@@ -129,8 +129,8 @@ class list_loginipblackwhitelist extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'ipblackwhitelist_list_title', 'IP address login blacklist &amp whitelist');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'ipblackwhitelist_list_title', 'IP address login blacklist &amp whitelist');
     }
 
     /**

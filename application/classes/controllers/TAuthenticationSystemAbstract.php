@@ -404,7 +404,7 @@ abstract class TAuthenticationSystemAbstract
      */
     public function handleAuthentication()
     {
-        ////global CMS_CURRENTMODULE;
+        ////global APP_ADMIN_CURRENTMODULE;
         $bResult = false;
         // logDebug(__CLASS__.': '.__FUNCTION__.': '.__LINE__,'start'); 
         

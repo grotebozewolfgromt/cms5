@@ -71,7 +71,7 @@
 
 <?php
 //=========== FILTERS ========
-//if (auth(CMS_CURRENTMODULE, 'filters', 'show'))
+//if (auth(APP_ADMIN_CURRENTMODULE, 'filters', 'show'))
 //{
 //    if (isset($objFormFilters))
 //    {
@@ -194,13 +194,13 @@
                                     $sColumnHead = ''; 
                                     break;
                                 case $iColumnIndexDirExists: //directory exists
-                                    $sColumnHead = transm(CMS_CURRENTMODULE, 'overview_column_checks', 'checks'); //translate the column name
+                                    $sColumnHead = transm(APP_ADMIN_CURRENTMODULE, 'overview_column_checks', 'checks'); //translate the column name
                                     break;
                                 case $iColumnIndexSettings: //settings
-                                    $sColumnHead = transm(CMS_CURRENTMODULE, 'overview_column_settings', 'settings'); //translate the column name
+                                    $sColumnHead = transm(APP_ADMIN_CURRENTMODULE, 'overview_column_settings', 'settings'); //translate the column name
                                     break;
                                 default:
-                                    $sColumnHead = transm(CMS_CURRENTMODULE, 'overview_column_unknown', '[unknown]'); //translate the column name                               
+                                    $sColumnHead = transm(APP_ADMIN_CURRENTMODULE, 'overview_column_unknown', '[unknown]'); //translate the column name                               
                             }                                
                         }                        
 
@@ -210,14 +210,14 @@
                     }
                 ?>
                 <th>
-                    <input type="button" onclick="window.location.href = '<?php echo $sURLUploadModule; ?>';" value="<?php echo transm(CMS_CURRENTMODULE, 'item_uploadmodule', 'upload'); ?>" class="button_normal">
+                    <input type="button" onclick="window.location.href = '<?php echo $sURLUploadModule; ?>';" value="<?php echo transm(APP_ADMIN_CURRENTMODULE, 'item_uploadmodule', 'upload'); ?>" class="button_normal">
                 </th>                              
             </tr>
         </thead>
         <tbody>
             <?php
                 $bEditAllowed = false;
-                $bEditAllowed = auth(CMS_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGE);
+                $bEditAllowed = auth(APP_ADMIN_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGE);
                 
                 //ONLY allow up and down if sorted on iOrder
                 $bOrderOneUpDownAllowed = false;
@@ -227,7 +227,7 @@
                     $arrQBSortItem = $arrQBSort[0]; ///we only have to know if the first column in QBSort is iOrder (more columns doesn't matter, because if it isn't the first sort column, you don't see anything of moving up or down )
                     if ($arrQBSortItem[TSysModel::QB_SORTINDEX_FIELD] == TSysModel::FIELD_POSITION) //is actually sorted on iOrder?
                     {
-                        if (auth(CMS_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGEPOSITION)) //if also allowed by authentication, then it is allowed to show
+                        if (auth(APP_ADMIN_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGEPOSITION)) //if also allowed by authentication, then it is allowed to show
                         {
                             $bOrderOneUpDownAllowed = true;
                         }
@@ -399,23 +399,23 @@
                                             if (file_exists(APP_PATH_MODULES.DIRECTORY_SEPARATOR.$sInternalModuleName))
                                             {
                                                 $sColumnValue = '<img alt="'.transcms('boolean_yes', 'yes').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-true32x32.png">&nbsp;';
-                                                $sColumnValue.= transm(CMS_CURRENTMODULE, 'cmsmodulelist_moduleexists_folder_yes', 'folder exists');
+                                                $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_folder_yes', 'folder exists');
                                             }
                                             else
                                             {
                                                 $sColumnValue = '<img alt="'.transcms('boolean_no', 'no').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-false32x32.png">&nbsp;';
-                                                $sColumnValue.= transm(CMS_CURRENTMODULE, 'cmsmodulelist_moduleexists_folder_no', 'folder missing');
+                                                $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_folder_no', 'folder missing');
                                             }
                                             $sColumnValue.= '<br>';
                                             if (file_exists(APP_PATH_MODULES.DIRECTORY_SEPARATOR.$sInternalModuleName.DIRECTORY_SEPARATOR.'index.php'))
                                             {
                                                 $sColumnValue.= '<img alt="'.transcms('boolean_yes', 'yes').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-true32x32.png">&nbsp;';
-                                                $sColumnValue.= transm(CMS_CURRENTMODULE, 'cmsmodulelist_moduleexists_index_yes', 'index file exists');                                                
+                                                $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_index_yes', 'index file exists');                                                
                                             }
                                             else
                                             {
                                                 $sColumnValue.= '<img alt="'.transcms('boolean_no', 'no').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-false32x32.png">&nbsp;';
-                                                $sColumnValue.= transm(CMS_CURRENTMODULE, 'cmsmodulelist_moduleexists_index_no', 'index file missing');                                                
+                                                $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_index_no', 'index file missing');                                                
                                             }
                                             break; 
                                         case $iColumnIndexSettings: //settings

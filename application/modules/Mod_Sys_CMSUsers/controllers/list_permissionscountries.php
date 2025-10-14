@@ -29,7 +29,7 @@ class list_permissionscountries extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;            
+        //global APP_ADMIN_CURRENTMODULE;            
 
         $objModel = $this->objModel;
         $objTempCountries = new TSysCountries();  
@@ -44,7 +44,7 @@ class list_permissionscountries extends TCRUDListController
         
         //===show what?
         $arrTableColumnsShow = array(
-            array($objTempCountries::getTable(), TSysCountries::FIELD_COUNTRYNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCountries::FIELD_COUNTRYNAME, 'country')),
+            array($objTempCountries::getTable(), TSysCountries::FIELD_COUNTRYNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCountries::FIELD_COUNTRYNAME, 'country')),
                                     );
     
     
@@ -125,8 +125,8 @@ class list_permissionscountries extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_permissionscountries', 'Which countries are permitted to use the system?');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_permissionscountries', 'Which countries are permitted to use the system?');
     }
 
     /**

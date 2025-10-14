@@ -171,7 +171,7 @@
 
 
                     $sHTMLSelectedMod = '';                                    
-                    if ($objSysModulesDB->getNameInternal() == CMS_CURRENTMODULE)
+                    if ($objSysModulesDB->getNameInternal() == APP_ADMIN_CURRENTMODULE)
                         $sHTMLSelectedMod = ' class="selected"';
                     
                     //only display if module folder exists
@@ -188,7 +188,7 @@
                             echo '</a>';              
 
                             //tabsheets of current module
-                            // if ($sMod == CMS_CURRENTMODULE)
+                            // if ($sMod == APP_ADMIN_CURRENTMODULE)
                             // {
                             //     $arrTempTabs = $objCurrentModule->getTabsheets();
                             //     $arrTabKeys = array();

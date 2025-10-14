@@ -48,13 +48,13 @@ use dr\classes\dom\tag\form\FormInputAbstract;
         $objPlainText->setText($objPlainText->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objPlainText->setText($sFileContents);
-    $objForm->add($objPlainText, '', transm(CMS_CURRENTMODULE, 'wordlettercounter_form_field_plaintext', 'Input: text (html is allowed but filtered for count)'));
+    $objForm->add($objPlainText, '', transm(APP_ADMIN_CURRENTMODULE, 'wordlettercounter_form_field_plaintext', 'Input: text (html is allowed but filtered for count)'));
 
         
     
     //submit
     $objSubmit = new InputSubmit();    
-    $objSubmit->setValue(transm(CMS_CURRENTMODULE, 'wordlettercounter_form_button_count', 'count'));
+    $objSubmit->setValue(transm(APP_ADMIN_CURRENTMODULE, 'wordlettercounter_form_button_count', 'count'));
     $objSubmit->setName('btnSubmit');
     $objForm->add($objSubmit, '');    
     
@@ -134,7 +134,7 @@ use dr\classes\dom\tag\form\FormInputAbstract;
  
     
     
-    $sTitle = transm(CMS_CURRENTMODULE, CMS_CURRENTMODULE);
+    $sTitle = transm(APP_ADMIN_CURRENTMODULE, APP_ADMIN_CURRENTMODULE);
     $sHTMLTitle = $sTitle;
     $sHTMLMetaDescription = $sTitle;
     

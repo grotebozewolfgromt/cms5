@@ -202,9 +202,9 @@ class settings extends TCRUDConfigFileController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
-        return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_settings', 'Settings page builder');   
+        return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_settings', 'Settings page builder');   
     }
 
     /**

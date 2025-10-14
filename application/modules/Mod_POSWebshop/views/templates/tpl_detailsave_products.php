@@ -31,7 +31,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
                 </svg>              
             </dr-icon-spinner>
-            <div class="buttontext"><?php echo transm(CMS_CURRENTMODULE, 'detailsave_button_exit', 'Exit'); ?></div>        
+            <div class="buttontext"><?php echo transm(APP_ADMIN_CURRENTMODULE, 'detailsave_button_exit', 'Exit'); ?></div>        
         </button>
     </div>        
     <div class="headercolumn-title">
@@ -46,7 +46,7 @@
                     <polyline points="7 3 7 8 15 8"/>
                 </svg>           
             </dr-icon-spinner>
-            <div class="buttontext"><?php echo transm(CMS_CURRENTMODULE, 'detailsavetemplate_button_save', 'Save'); ?></div>        
+            <div class="buttontext"><?php echo transm(APP_ADMIN_CURRENTMODULE, 'detailsavetemplate_button_save', 'Save'); ?></div>        
         </button>                       
     </div>
 </div>
@@ -61,8 +61,8 @@
             <!-- full product name -->
                 <div class="formsection-line">
                     <label for="<?php echo $objEdtName->getId(); ?>">
-                        <?php echo transm(CMS_CURRENTMODULE, 'productdetail_label_productnamefull', 'Name');?>
-                        <dr-icon-info><?php echo transm(CMS_CURRENTMODULE, 'productdetail_label_productnamefull_info', 'Full name of the product');?></dr-icon-info>
+                        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_label_productnamefull', 'Name');?>
+                        <dr-icon-info><?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_label_productnamefull_info', 'Full name of the product');?></dr-icon-info>
                     </label>
                 
                     <div class="formsection-line-errorlist"></div>
@@ -72,8 +72,8 @@
             <!-- short name -->
                 <div class="formsection-line">
                     <label for="<?php echo $objEdtNameShort->getId(); ?>">
-                        <?php echo transm(CMS_CURRENTMODULE, 'productdetail_label_productnameshort', 'Short name (max 20 characters)');?>
-                        <dr-icon-info><?php echo transm(CMS_CURRENTMODULE, 'productdetail_label_productnameshort_info', 'Shortened name is shown in places where there is little space,<br>like the small paper of a ticket printer');?></dr-icon-info>
+                        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_label_productnameshort', 'Short name (max 20 characters)');?>
+                        <dr-icon-info><?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_label_productnameshort_info', 'Shortened name is shown in places where there is little space,<br>like the small paper of a ticket printer');?></dr-icon-info>
                     </label>
                     <div class="formsection-line-errorlist"></div>
                     <?php echo $objEdtNameShort->render(); ?>
@@ -92,8 +92,8 @@
         </div>
         <div id="product-grid-bottom-tabsheets">
             <dr-tabsheets>
-                <div label="<?php echo transm(CMS_CURRENTMODULE, 'productdetail_tab_details_label', 'Details');?>" description="<?php echo transm(CMS_CURRENTMODULE, 'productdetail_tab_details_description', 'Edit more details of the product');?>"> </div>
-                <div label="<?php echo transm(CMS_CURRENTMODULE, 'productdetail_tab_sku_label', 'SKUs');?>" description="<?php echo transm(CMS_CURRENTMODULE, 'productdetail_tab_sku_description', 'Stock Keeping Units are variations of a product which you want to track stock of');?>"> </div>
+                <div label="<?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_tab_details_label', 'Details');?>" description="<?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_tab_details_description', 'Edit more details of the product');?>"> </div>
+                <div label="<?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_tab_sku_label', 'SKUs');?>" description="<?php echo transm(APP_ADMIN_CURRENTMODULE, 'productdetail_tab_sku_description', 'Stock Keeping Units are variations of a product which you want to track stock of');?>"> </div>
             </dr-tabsheets>
         </div>
     </div>

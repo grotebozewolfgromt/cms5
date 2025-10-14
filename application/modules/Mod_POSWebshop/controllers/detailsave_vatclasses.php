@@ -90,7 +90,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
         $this->objEdtName->addValidator($objValidator);    
         $objValidator = new TRequired();
         $this->objEdtName->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtName, '', transm(CMS_CURRENTMODULE, 'form_field_name', 'Name'));
+        $this->getFormGenerator()->add($this->objEdtName, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_name', 'Name'));
 
             //description
         $this->objEdtDescription = new InputText();
@@ -104,14 +104,14 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDescription->addValidator($objValidator);    
         $objValidator = new TRequired();
         $this->objEdtDescription->addValidator($objValidator);    
-        $this->getFormGenerator()->add($this->objEdtDescription, '', transm(CMS_CURRENTMODULE, 'form_field_description', 'Description'));  
+        $this->getFormGenerator()->add($this->objEdtDescription, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_description', 'Description'));  
 
             //default
         $this->objChkDefault = new DRInputCheckbox();
         $this->objChkDefault->setNameAndID('chkDefault');
         // $this->objChkDefault->setOnchange("validateField(this, true)");
         // $this->objChkDefault->setOnkeyup("setDirtyRecord()");        
-        $this->objChkDefault->setLabel(transm(CMS_CURRENTMODULE, 'form_field_default', 'Is default'));
+        $this->objChkDefault->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_field_default', 'Is default'));
         $this->getFormGenerator()->add($this->objChkDefault);  
     
     }
@@ -171,7 +171,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
             $objInput->setPrecision(4);
             $objInput->setPadZero(2);
             $objInput->setValueAsTDecimal($objVATCtr->getVATPercent());
-            $this->getFormGenerator()->add($objInput, $objVATCtr->get(TSysCountries::FIELD_COUNTRYNAME, TSysCountries::getTable()), transm(CMS_CURRENTMODULE, 'form_field_vatpercent', 'VAT percentage'));
+            $this->getFormGenerator()->add($objInput, $objVATCtr->get(TSysCountries::FIELD_COUNTRYNAME, TSysCountries::getTable()), transm(APP_ADMIN_CURRENTMODULE, 'form_field_vatpercent', 'VAT percentage'));
 
             if ($objVATCtr->get(TSysCountries::FIELD_ISEEA, TSysCountries::getTable()))
             {
@@ -180,7 +180,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
                 $objInput->setPrecision(4);
                 $objInput->setPadZero(2);
                 $objInput->setValueAsTDecimal($objVATCtr->getVATPercentIntraEEA());
-                $this->getFormGenerator()->add($objInput, $objVATCtr->get(TSysCountries::FIELD_COUNTRYNAME, TSysCountries::getTable()), transm(CMS_CURRENTMODULE, 'form_field_vatpercentintraeea', 'VAT percentage inside European Economic Area (EEA)'));
+                $this->getFormGenerator()->add($objInput, $objVATCtr->get(TSysCountries::FIELD_COUNTRYNAME, TSysCountries::getTable()), transm(APP_ADMIN_CURRENTMODULE, 'form_field_vatpercentintraeea', 'VAT percentage inside European Economic Area (EEA)'));
             }
         }              
                  
@@ -350,12 +350,12 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_vatclasses_new', 'Create new VAT type class');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_vatclasses_new', 'Create new VAT type class');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_vatclasses_edit', 'Edit VAT class: [name]', 'name', $this->getModel()->getName());   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_vatclasses_edit', 'Edit VAT class: [name]', 'name', $this->getModel()->getName());   
     }
 
     /**
@@ -389,7 +389,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -399,7 +399,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -410,7 +410,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -421,7 +421,7 @@ class detailsave_vatclasses extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_VATCLASSES, TModuleAbstract::PERM_OP_DELETE);
     }
 
 

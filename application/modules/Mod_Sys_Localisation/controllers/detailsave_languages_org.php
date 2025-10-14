@@ -261,12 +261,12 @@ class detailsave_languages extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_languages_new', 'Create new language');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_languages_new', 'Create new language');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_languages_edit', 'Edit language: [language]', 'language', $this->getModel()->getLanguage());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_languages_edit', 'Edit language: [language]', 'language', $this->getModel()->getLanguage());           
     }
 
     /**

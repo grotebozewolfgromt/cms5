@@ -171,7 +171,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                     <th>
                         <?php 
                             //=========== CREATE NEW ========
-                            if (auth(CMS_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CREATE))
+                            if (auth(APP_ADMIN_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CREATE))
                             {
                                 ?>                            
                                     <input type="button" onclick="window.location.href = '<?php echo $sURLDetailPage; ?>';" value="<?php echo transcms('item_create', 'New'); ?>" class="button_normal">
@@ -190,7 +190,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                     $iIDValue = 0; //default
 
                     $bEditAllowed = false;
-                    $bEditAllowed = auth(CMS_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGE);
+                    $bEditAllowed = auth(APP_ADMIN_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGE);
                                                                 
                     
                     //ONLY allow up and down if sorted on iOrder
@@ -201,7 +201,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                         $arrQBSortItem = $arrQBSort[0]; ///we only have to know if the first column in QBSort is iOrder (more columns doesn't matter, because if it isn't the first sort column, you don't see anything of moving up or down )
                         if ($arrQBSortItem[TSysModel::QB_SORTINDEX_FIELD] == TSysModel::FIELD_POSITION) //is actually sorted on iOrder?
                         {
-                            if (auth(CMS_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGEPOSITION)) //if also allowed by authentication, then it is allowed to show
+                            if (auth(APP_ADMIN_CURRENTMODULE, $objCRUD->getAuthorisationCategory(), AUTH_OPERATION_CHANGEPOSITION)) //if also allowed by authentication, then it is allowed to show
                             {
                                 $bOrderOneUpDownAllowed = true;
                             }

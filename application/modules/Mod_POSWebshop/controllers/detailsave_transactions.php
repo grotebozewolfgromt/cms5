@@ -497,13 +497,13 @@ class detailsave_transactions extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_transactions_new', 'Create new transaction');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_transactions_new', 'Create new transaction');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_transactions_edit', 'Edit transaction');
-            // return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_transactions_edit', 'Edit transaction: [name]', 'name', $this->getModel()->getName());
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_transactions_edit', 'Edit transaction');
+            // return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_transactions_edit', 'Edit transaction: [name]', 'name', $this->getModel()->getName());
     }
 
     /**

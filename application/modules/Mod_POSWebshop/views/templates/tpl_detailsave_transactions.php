@@ -87,7 +87,7 @@
         else
         {      
             // alert('ouch!');
-            alert("<?php echo transm(CMS_CURRENTMODULE, 'button_removeline_error_cantremovelastline', 'Ouch! You need to have at least 1 line!'); ?>");
+            alert("<?php echo transm(APP_ADMIN_CURRENTMODULE, 'button_removeline_error_cantremovelastline', 'Ouch! You need to have at least 1 line!'); ?>");
         }
 
     }    

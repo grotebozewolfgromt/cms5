@@ -35,7 +35,7 @@
  
     
     
-    $sTitle = transm(CMS_CURRENTMODULE, CMS_CURRENTMODULE);
+    $sTitle = transm(APP_ADMIN_CURRENTMODULE, APP_ADMIN_CURRENTMODULE);
     $sHTMLTitle = $sTitle;
     $sHTMLMetaDescription = $sTitle;
     

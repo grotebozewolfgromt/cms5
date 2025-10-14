@@ -8,12 +8,12 @@
     
     
     
-    echo '<h2>'.transm(CMS_CURRENTMODULE, 'plaintext2html_title', 'plain text to html').'</h2>';
-    echo transm(CMS_CURRENTMODULE, 'plaintext2html_explanation', 'With this tool you can convert plain text to html layout');
+    echo '<h2>'.transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_title', 'plain text to html').'</h2>';
+    echo transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_explanation', 'With this tool you can convert plain text to html layout');
     echo $objForm->generate()->renderHTMLNode();
     if ($objForm->isFormSubmitted())
     {
-        echo '<h2>'.transm(CMS_CURRENTMODULE, 'list2ul_result', 'result in HTML:').'</h2>';
+        echo '<h2>'.transm(APP_ADMIN_CURRENTMODULE, 'list2ul_result', 'result in HTML:').'</h2>';
         echo $sResult;
         
         echo '<h2>html markup clan</h2>';

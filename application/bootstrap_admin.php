@@ -77,14 +77,14 @@
             // $arrSysModules = array(); //loaded from database (installed modules are inserted in db), if loaded from file system: getModuleFolders(); --> removed 13-11-2020 it wasn't used anywhere
             
             //DEFINE MODULE NAME
-            define('CMS_CURRENTMODULE', getModuleFromURL());
+            define('APP_ADMIN_CURRENTMODULE', getModuleFromURL());
 
             //DEFINE MODULE OBJECT
             $objCurrentModule = null;
-            if (CMS_CURRENTMODULE != '')
+            if (APP_ADMIN_CURRENTMODULE != '')
             {   
                 $sTempModClass = '';
-                $sTempModClass = getModuleFullNamespaceClass(CMS_CURRENTMODULE);
+                $sTempModClass = getModuleFullNamespaceClass(APP_ADMIN_CURRENTMODULE);
                 $objCurrentModule = new $sTempModClass;                
                 unset($sTempModClass);
             }

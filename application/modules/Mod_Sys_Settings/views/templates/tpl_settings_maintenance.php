@@ -8,7 +8,7 @@
 
 <h2><?php echo transcms('settings_cronjob_h2', 'Cron job'); ?>
     <dr-icon-info>
-        <?php echo transm(CMS_CURRENTMODULE, 'settings_cronjob_iconinfo_text', 'A cronjob performs maintenance on regular basis (once a day is preferred) to keep this system running fast and smooth.<br>Things that happen are for example: emptying caches, deleting old users.<br>It also performs necessary actions that need to happen without user input.<br>For example: checking for intrusion, sending notification emails, sending invoices to clients etc.<br><br>Examples:<br>', 'url', getURLCMSCronjob());?>
+        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_cronjob_iconinfo_text', 'A cronjob performs maintenance on regular basis (once a day is preferred) to keep this system running fast and smooth.<br>Things that happen are for example: emptying caches, deleting old users.<br>It also performs necessary actions that need to happen without user input.<br>For example: checking for intrusion, sending notification emails, sending invoices to clients etc.<br><br>Examples:<br>', 'url', getURLCMSCronjob());?>
         <div style="border:1px; border-style:solid; border-color: #1ea9ffff; background-color: #059fff23; padding: 5px;">
             <b>Linux (execute 5am every day):</b><br>
             crontab -e<br>
@@ -21,10 +21,10 @@
     </dr-icon-info>
 </h2>
 
-<?php echo transm(CMS_CURRENTMODULE, 'settings_cronjob_explanation', 'Point the Linux cronjob manager or Windows task scheduler to url:<br><br><b>[url]</b><br>', 'url', getURLCMSCronjob()); ?>
-<?php echo transm(CMS_CURRENTMODULE, 'settings_cronjob_executemanuallyexplanation', 'You can trigger the Cronjob also manually with the button below:');?><br>
+<?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_cronjob_explanation', 'Point the Linux cronjob manager or Windows task scheduler to url:<br><br><b>[url]</b><br>', 'url', getURLCMSCronjob()); ?>
+<?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_cronjob_executemanuallyexplanation', 'You can trigger the Cronjob also manually with the button below:');?><br>
 <?php
-    if (auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE))    
+    if (auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE))    
     {
         ?>
             <input type="button" class="button_normal" onclick="openInNewTab('<?php echo getURLCMSCronjob(); ?>')" value="<?php echo transcms('settings_execute_cronjobnow', 'Execute cron job'); ?>" style="width: 200px;">
@@ -32,27 +32,27 @@
     }
 ?>
 <?php     
-    echo transm(CMS_CURRENTMODULE, 'settings_cronjob_lastexecution', 'Last execution:').' '.date($objAuthenticationSystem->getUsers()->getDateFormatLong().' '.$objAuthenticationSystem->getUsers()->getTimeFormatLong(), APP_CRONJOB_LASTEXECUTED);
+    echo transm(APP_ADMIN_CURRENTMODULE, 'settings_cronjob_lastexecution', 'Last execution:').' '.date($objAuthenticationSystem->getUsers()->getDateFormatLong().' '.$objAuthenticationSystem->getUsers()->getTimeFormatLong(), APP_CRONJOB_LASTEXECUTED);
     if (APP_CRONJOB_LASTEXECUTED + DAY_IN_SECS < time())
-        echo transm(CMS_CURRENTMODULE, 'settings_cronjob_pleaseexecute', '<br>Recommendation: Run CronJob ASAP! The last one ran more than 24 hours ago.');
+        echo transm(APP_ADMIN_CURRENTMODULE, 'settings_cronjob_pleaseexecute', '<br>Recommendation: Run CronJob ASAP! The last one ran more than 24 hours ago.');
 ?>
 
 <h2>
     <?php echo transcms('settings_installer_h2', 'Installer'); ?>
     <dr-icon-info>
-        <?php echo transm(CMS_CURRENTMODULE, 'settings_installer_explanation', 'The installer installs, updates and removes the installation of [applicationname].<br>To use the installer, it needs to be enabled and you need a password to prevent others from using it.<br><br><b>Disable the installer when you don\'t use it to prevent malicious actors manipulating and removing data from the system.</b>', 'applicationname', APP_CMS_APPLICATIONNAME);?>
+        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_explanation', 'The installer installs, updates and removes the installation of [applicationname].<br>To use the installer, it needs to be enabled and you need a password to prevent others from using it.<br><br><b>Disable the installer when you don\'t use it to prevent malicious actors manipulating and removing data from the system.</b>', 'applicationname', APP_CMS_APPLICATIONNAME);?>
     </dr-icon-info>
 </h2>
 <?php 
     if ($bInstallerEnabled)
-        $sTransEnabled = transm(CMS_CURRENTMODULE, 'settings_installer_enabled_true', 'enabled');
+        $sTransEnabled = transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_enabled_true', 'enabled');
     else
-        $sTransEnabled = transm(CMS_CURRENTMODULE, 'settings_installer_enabled_false', 'disabled');
-    echo transm(CMS_CURRENTMODULE, 'settings_installer_enabled', 'Status: [value]', 'value', $sTransEnabled);?><br>
-<?php echo transm(CMS_CURRENTMODULE, 'settings_installer_password', 'Password: [value]', 'value', APP_INSTALLER_PASSWORD);?><br>
+        $sTransEnabled = transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_enabled_false', 'disabled');
+    echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_enabled', 'Status: [value]', 'value', $sTransEnabled);?><br>
+<?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_password', 'Password: [value]', 'value', APP_INSTALLER_PASSWORD);?><br>
 <?php
     //enable/disable
-    if (auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE))    
+    if (auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE))    
     {
         if ($bInstallerEnabled)
         {
@@ -65,10 +65,10 @@
     }
 
     //run installer
-    if (auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE) && $bInstallerEnabled)    
+    if (auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE) && $bInstallerEnabled)    
     {
         ?><input type="button" class="button_normal" onclick="openInNewTab('<?php echo APP_URL_CMS_INSTALLERSCRIPT; ?>')" value="<?php echo transcms('settings_execute_installer', 'Start installer'); ?>" style="width: 200px;"><?php
     }
 
-    echo transm(CMS_CURRENTMODULE, 'settings_installer_message_disablwhennotuse', 'Disable the installer for security reasons when you are not actively using it.<br>You can always enable it when you actually need it.').'<br>';
+    echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_message_disablwhennotuse', 'Disable the installer for security reasons when you are not actively using it.<br>You can always enable it when you actually need it.').'<br>';
 ?>

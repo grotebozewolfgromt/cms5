@@ -29,7 +29,7 @@ class list_organizations extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;            
+        //global APP_ADMIN_CURRENTMODULE;            
 
         $objModel = $this->objModel;
         $objTempContacts = new TSysContacts();  
@@ -47,9 +47,9 @@ class list_organizations extends TCRUDListController
         
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCMSOrganizations::FIELD_CUSTOMID, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSOrganizations::FIELD_CUSTOMID, 'Label identifier')),
-            array('', TSysCMSOrganizations::FIELD_LOGINENABLED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSOrganizations::FIELD_LOGINENABLED, 'Enabled')),
-            array($objTempContacts::getTable(), TSysContacts::FIELD_COMPANYNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company')),
+            array('', TSysCMSOrganizations::FIELD_CUSTOMID, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSOrganizations::FIELD_CUSTOMID, 'Label identifier')),
+            array('', TSysCMSOrganizations::FIELD_LOGINENABLED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSOrganizations::FIELD_LOGINENABLED, 'Enabled')),
+            array($objTempContacts::getTable(), TSysContacts::FIELD_COMPANYNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_COMPANYNAME, 'Company')),
                                     );
     
     
@@ -123,8 +123,8 @@ class list_organizations extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_cmsuseraccounts', 'User accounts');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_cmsuseraccounts', 'User accounts');
     }
 
     /**

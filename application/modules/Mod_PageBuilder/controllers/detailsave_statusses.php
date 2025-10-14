@@ -217,12 +217,12 @@ class detailsave_statusses extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_statusses_new', 'Create new status');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_statusses_new', 'Create new status');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_statusses_edit', 'Edit status: [name]', 'name', $this->getModel()->getName());   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_statusses_edit', 'Edit status: [name]', 'name', $this->getModel()->getName());   
     }
 
     /**

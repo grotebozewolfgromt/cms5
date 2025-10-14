@@ -179,68 +179,68 @@ class pagebuilder extends TPageBuilderControllerAbstract
 
     public function getAuthCreate()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CREATE);
     }    
 
     public function getAuthView()    
     {
-        return (auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_VIEW) || auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_VIEW_OWN));
+        return (auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_VIEW) || auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_VIEW_OWN));
     }    
 
     public function getAuthChange()    
     {
-        return (auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE) || auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_OWN));
+        return (auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE) || auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_OWN));
     }    
     
     
     public function getAuthDelete()    
     {
-        return (auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_DELETE) || auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_DELETE_OWN));
+        return (auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_DELETE) || auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_DELETE_OWN));
     }    
     
     public function getAuthChangeAuthor()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_AUTHOR);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_AUTHOR);
     }    
     
     public function getAuthChangeWebsite()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_WEBSITE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_WEBSITE);
     }    
     
     public function getAuthChangeVisibility()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_VISIBILITY);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_VISIBILITY);
     }    
     
     public function getAuthChangePublishDate()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_PUBLISHDATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_PUBLISHDATE);
     }    
     
     public function getAuthChangePassword()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_PAGEPASSWORD);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_PAGEPASSWORD);
     }    
     
     public function getAuthChangeStatus()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_STATUS);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_STATUS);
     }    
 
     public function getAuthChangeURLSlug()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_URLSLUG);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_URLSLUG);
     }    
 
     public function getAuthChangeCanonical()    
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_CANONICAL);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_CANONICAL);
     }    
 
     public function getAuthChange301Redirect()        
     {
-        return auth(CMS_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_301REDIRECT);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_301REDIRECT);
     }    
 
 }

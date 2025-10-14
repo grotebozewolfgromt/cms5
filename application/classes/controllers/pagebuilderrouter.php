@@ -280,7 +280,7 @@ class pagebuilderrouter extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        ////global CMS_CURRENTMODULE;
+        ////global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
             return transcms('pagetitle_detailsave_transactionstypes_new', 'Create new document');

@@ -343,12 +343,12 @@ class detailsave_organizations extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_useraccount_new', 'Create new user account');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_useraccount_new', 'Create new user account');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_useraccount_edit', 'Edit user account: [identifier]', 'identifier', $this->getModel()->getCustomIdentifier());   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_useraccount_edit', 'Edit user account: [identifier]', 'identifier', $this->getModel()->getCustomIdentifier());   
     }
 
     /**

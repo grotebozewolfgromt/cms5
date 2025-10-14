@@ -28,7 +28,7 @@ class list_users extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;            
+        //global APP_ADMIN_CURRENTMODULE;            
 
         $objModel = $this->objModel;
         $objTempLang = new TSysLanguages();  
@@ -58,15 +58,15 @@ class list_users extends TCRUDListController
         
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCMSUsers::FIELD_USERNAME, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_USERNAME, 'username')),
-            array('', TSysCMSUsers::FIELD_USERNAMEPUBLIC, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_USERNAMEPUBLIC, 'public')),
-            array('', TSysCMSUsers::FIELD_EMAILADDRESSENCRYPTED, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_EMAILADDRESSENCRYPTED, 'email')),
-            array('', TSysCMSUsers::FIELD_LOGINENABLED, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_LOGINENABLED, 'enabled')),
-            array('', TSysCMSUsers::FIELD_LOGINEXPIRES, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_LOGINEXPIRES, 'expires')),
-            array('', TSysCMSUsers::FIELD_LASTLOGIN, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_LASTLOGIN, 'last login')),
-            array(TSysLanguages::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'language')),
-            array(TSysCMSUsersRoles::getTable(), TSysCMSUsersRoles::FIELD_ROLENAME, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsersRoles::FIELD_ROLENAME, 'role')),
-            array(TSysCMSOrganizations::getTable(), TSysCMSOrganizations::FIELD_CUSTOMID, transm(CMS_CURRENTMODULE, 'users_overview_column_'.TSysCMSOrganizations::FIELD_CUSTOMID, 'account'))
+            array('', TSysCMSUsers::FIELD_USERNAME, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_USERNAME, 'username')),
+            array('', TSysCMSUsers::FIELD_USERNAMEPUBLIC, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_USERNAMEPUBLIC, 'public')),
+            array('', TSysCMSUsers::FIELD_EMAILADDRESSENCRYPTED, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_EMAILADDRESSENCRYPTED, 'email')),
+            array('', TSysCMSUsers::FIELD_LOGINENABLED, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_LOGINENABLED, 'enabled')),
+            array('', TSysCMSUsers::FIELD_LOGINEXPIRES, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_LOGINEXPIRES, 'expires')),
+            array('', TSysCMSUsers::FIELD_LASTLOGIN, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsers::FIELD_LASTLOGIN, 'last login')),
+            array(TSysLanguages::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'language')),
+            array(TSysCMSUsersRoles::getTable(), TSysCMSUsersRoles::FIELD_ROLENAME, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSUsersRoles::FIELD_ROLENAME, 'role')),
+            array(TSysCMSOrganizations::getTable(), TSysCMSOrganizations::FIELD_CUSTOMID, transm(APP_ADMIN_CURRENTMODULE, 'users_overview_column_'.TSysCMSOrganizations::FIELD_CUSTOMID, 'account'))
                                     );
     
     
@@ -147,8 +147,8 @@ class list_users extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_usercms', 'Users');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_usercms', 'Users');
     }
 
     /**

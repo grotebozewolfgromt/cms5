@@ -26,7 +26,7 @@ class list_invitationcodes extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -45,12 +45,12 @@ class list_invitationcodes extends TCRUDListController
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCMSInvitationCodes::FIELD_CODENAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_CODENAME, 'Name')),
-            array('', TSysCMSInvitationCodes::FIELD_REDEMPTIONCODE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_REDEMPTIONCODE, 'Code')),
-            array('', TSysCMSInvitationCodes::FIELD_CURRENTREDEEMS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_CURRENTREDEEMS, 'Redeemed')),
-            // array('', TSysCMSInvitationCodes::FIELD_DATESTART, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_DATESTART, 'Starts on')),
-            array('', TSysCMSInvitationCodes::FIELD_DATEEND, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_DATEEND, 'Expires on')),
-            array('', TSysCMSInvitationCodes::FIELD_ISENABLED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_ISENABLED, 'Enabled'))
+            array('', TSysCMSInvitationCodes::FIELD_CODENAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_CODENAME, 'Name')),
+            array('', TSysCMSInvitationCodes::FIELD_REDEMPTIONCODE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_REDEMPTIONCODE, 'Code')),
+            array('', TSysCMSInvitationCodes::FIELD_CURRENTREDEEMS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_CURRENTREDEEMS, 'Redeemed')),
+            // array('', TSysCMSInvitationCodes::FIELD_DATESTART, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_DATESTART, 'Starts on')),
+            array('', TSysCMSInvitationCodes::FIELD_DATEEND, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_DATEEND, 'Expires on')),
+            array('', TSysCMSInvitationCodes::FIELD_ISENABLED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSInvitationCodes::FIELD_ISENABLED, 'Enabled'))
                 );
         
     
@@ -130,8 +130,8 @@ class list_invitationcodes extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'Invitation codes');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'Invitation codes');
     }
 
     /**

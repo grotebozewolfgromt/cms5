@@ -268,7 +268,7 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
      */
     public function getTemplatePath()
     {
-        return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_detailsave_products.php';
+        return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_detailsave_products.php';
     }
 
     /**
@@ -304,13 +304,13 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_products_new_title', 'Create new product');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_products_new_title', 'Create new product');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_products_edit_title', 'Edit product');   
-            // return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_products_edit_title', 'Edit VAT class: [name]', 'name', $this->getModel()->getName());   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_products_edit_title', 'Edit product');   
+            // return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_products_edit_title', 'Edit VAT class: [name]', 'name', $this->getModel()->getName());   
     }
 
 
@@ -332,7 +332,7 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -342,7 +342,7 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -353,7 +353,7 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -364,7 +364,7 @@ class detailsave_products extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTS, TModuleAbstract::PERM_OP_DELETE);
     }
 
 

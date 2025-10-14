@@ -49,14 +49,14 @@ class settings_maintenance extends TControllerAbstract
 
     public function __construct()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
         $this->objConfigFile = new TConfigFileApplication();      
         $this->objConfigFile->loadFile(APP_PATH_CMS_CONFIGFILE_APPLICATION);          
 
         //handle authentication    
-        if (!auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_VIEW))
+        if (!auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_VIEW))
         {
-            showAccessDenied(transm(CMS_CURRENTMODULE, 'message_cronjob_notallowed', 'you are not allowed to view the cronjob tab'));
+            showAccessDenied(transm(APP_ADMIN_CURRENTMODULE, 'message_cronjob_notallowed', 'you are not allowed to view the cronjob tab'));
             die();
         }
 
@@ -82,9 +82,9 @@ class settings_maintenance extends TControllerAbstract
     public function bindVarsEarly()
     {
         global $objCurrentModule;
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
-        $sTitle = transm(CMS_CURRENTMODULE, 'pagetitle_settings_maintenance', 'System maintenance');   
+        $sTitle = transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_settings_maintenance', 'System maintenance');   
         $sHTMLTitle = $sTitle;
         $sHTMLMetaDescription = $sTitle;    
         $arrTabsheets = $objCurrentModule->getTabsheets(); 
@@ -123,9 +123,9 @@ class settings_maintenance extends TControllerAbstract
      */
     public function getTemplatePath()
     {
-        //global CMS_CURRENTMODULE;
-        return getPathModuleTemplates(CMS_CURRENTMODULE, true).'tpl_settings_maintenance.php';
-        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_settings_cronjob.php';
+        //global APP_ADMIN_CURRENTMODULE;
+        return getPathModuleTemplates(APP_ADMIN_CURRENTMODULE, true).'tpl_settings_maintenance.php';
+        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_settings_cronjob.php';
     }
 
     /**

@@ -55,11 +55,11 @@ class list_products extends TCRUDListControllerAJAX
 
         // $arrTableColumnsShow = array(
         $this->arrTableColumnsShow = array(
-            array('', TProducts::FIELD_ID, transm(CMS_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_ID, 'ID')),
-            array(TProductsLanguages::getTable(), TProductsLanguages::FIELD_NAME, transm(CMS_CURRENTMODULE, 'list_products_column_'.TProductsLanguages::FIELD_NAME, 'Name')),
-            array(TSysLanguages::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(CMS_CURRENTMODULE, 'list_products_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
-            array('', TSysModel::FIELD_RECORDCREATED, transm(CMS_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCREATED, 'Created')),
-            array('', TSysModel::FIELD_RECORDCHANGED, transm(CMS_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCHANGED, 'Changed')),
+            array('', TProducts::FIELD_ID, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_ID, 'ID')),
+            array(TProductsLanguages::getTable(), TProductsLanguages::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProductsLanguages::FIELD_NAME, 'Name')),
+            array(TSysLanguages::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
+            array('', TSysModel::FIELD_RECORDCREATED, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCREATED, 'Created')),
+            array('', TSysModel::FIELD_RECORDCHANGED, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCHANGED, 'Changed')),
                 );
         
         //defining database filters
@@ -71,7 +71,7 @@ class list_products extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TProductsLanguages::getTable(), TProductsLanguages::FIELD_NAME);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TProductsLanguages::FIELD_NAME, 'Name'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TProductsLanguages::FIELD_NAME, 'Name'));
         $objFilters->addFilter($objFilter);
 
         //description
@@ -80,7 +80,7 @@ class list_products extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TProductsLanguages::getTable(), TProductsLanguages::FIELD_DESCRIPTION);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TProductsLanguages::FIELD_DESCRIPTION, 'Description'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TProductsLanguages::FIELD_DESCRIPTION, 'Description'));
         $objFilters->addFilter($objFilter);
 
         //language
@@ -89,7 +89,7 @@ class list_products extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_HTMLELEMENT);
         $objFilter->setDBTableField(TSysLanguages::getTable(), TSysLanguages::FIELD_ID);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_language', 'Language'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_language', 'Language'));
         $objSysLang->loadFromDBByCMSLanguage(); //load languages from database
         $objCombobox = new DRInputCombobox();
         while ($objSysLang->next())
@@ -172,8 +172,8 @@ class list_products extends TCRUDListControllerAJAX
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_products', 'Products');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_products', 'Products');
     }
 
     /**

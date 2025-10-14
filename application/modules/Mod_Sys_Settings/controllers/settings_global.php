@@ -591,9 +591,9 @@ class settings_global extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
-        return transm(CMS_CURRENTMODULE, 'pagetitle_settingsglobal_edit', 'Settings global');           
+        return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_settingsglobal_edit', 'Settings global');           
     }
 
     /**

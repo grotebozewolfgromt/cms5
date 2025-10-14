@@ -158,7 +158,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         $objModules->limitOne()->loadFromDB();
         $this->objModel->setModuleID($objModules->getID());
         $this->objModel->setModuleVersionNumber($objCurrentModule->getVersion());
-        $this->objModel->setMetaModuleNameInternal(CMS_CURRENTMODULE);
+        $this->objModel->setMetaModuleNameInternal(APP_ADMIN_CURRENTMODULE);
         $this->objModel->setMetaModuleNameNice($objCurrentModule->getNameDefault());
         $this->objModel->setTranslationLanguageID($objAuthenticationSystem->getUsers()->getLanguageID()); 
         $this->objModel->setAuthorUserID($objAuthenticationSystem->getUsers()->getID()); 
@@ -263,7 +263,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         }
         else
         {
-            echo transm(CMS_CURRENTMODULE, 'pagebuilder_error_preview_norecordid', 'Error: Can\'t render preview without having a record id.<br>NOTE: Document needs to be saved first before being able to display a preview');
+            echo transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_error_preview_norecordid', 'Error: Can\'t render preview without having a record id.<br>NOTE: Document needs to be saved first before being able to display a preview');
             logError(__FILE__.__LINE__, 'url parameter variable "'.ACTION_VARIABLE_ID.'" does not exist. So no value can be read');
         }
         
@@ -309,7 +309,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         //internal name
         $sReturn .= '<!-- internal name -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtNameInternal->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_nameinternal', 'Name (internal reference)').'</label>
+                        <label for="'.$this->objEdtNameInternal->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_nameinternal', 'Name (internal reference)').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtNameInternal->render().'
                     </div>';
@@ -319,7 +319,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- html title -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtHTMLTitle->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_htmltitle', 'HTML Title').'</label>
+                        <label for="'.$this->objEdtHTMLTitle->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_htmltitle', 'HTML Title').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtHTMLTitle->render().'
                     </div>';
@@ -328,7 +328,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         //language
         $sReturn .= '<!-- language -->
                     <div class="formsection-line">
-                        <label for="'.$this->objSelLanguage->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_language', 'Language').'</label>
+                        <label for="'.$this->objSelLanguage->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_language', 'Language').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objSelLanguage->render().'
                     </div>';
@@ -338,7 +338,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- slug -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtURLSlug->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_urlslug', 'URL slug').'</label>
+                        <label for="'.$this->objEdtURLSlug->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_urlslug', 'URL slug').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtURLSlug->render().'                   
                     </div>';
@@ -349,7 +349,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- website -->
                     <div class="formsection-line">
-                        <label for="'.$this->objSelWebsite->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_website', 'Website').'</label>
+                        <label for="'.$this->objSelWebsite->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_website', 'Website').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objSelWebsite->render().'
                     </div>';
@@ -358,7 +358,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         //author
         $sReturn .= '<!-- author -->
                     <div class="formsection-line">
-                        <label for="'.$this->objSelAuthor->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_author', 'Author').'</label>
+                        <label for="'.$this->objSelAuthor->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_author', 'Author').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objSelAuthor->render().'
                     </div>';
@@ -368,13 +368,13 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
                     <div class="formsection-line">
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objChkNeedsWork->render().'
-                        <label for="'.$this->objChkNeedsWork->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_needswork', 'Needs work').'</label>
+                        <label for="'.$this->objChkNeedsWork->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_needswork', 'Needs work').'</label>
                     </div>';
 
         //status
         $sReturn .= '<!-- status -->
                     <div class="formsection-line">
-                        <label for="'.$this->objSelStatus->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_status', 'Status').'</label>
+                        <label for="'.$this->objSelStatus->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_status', 'Status').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objSelStatus->render().'           
                     </div>';
@@ -384,7 +384,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {        
             $sReturn .= '<!-- meta description -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtHTMLMetaDescription->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_metadescription', 'Short excerpt').'</label>
+                        <label for="'.$this->objEdtHTMLMetaDescription->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_metadescription', 'Short excerpt').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtHTMLMetaDescription->render().'
                     </div>';
@@ -397,7 +397,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
             // $this->objEdtPublishTime->setStyle("background:blue");
             // $sReturn .= '<!-- publish date -->
             //         <div class="formsection-line">
-            //             <label for="'.$this->objEdtPublishDate->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_publishdate', 'Publish date').'</label>
+            //             <label for="'.$this->objEdtPublishDate->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_publishdate', 'Publish date').'</label>
             //             <div class="formsection-line-errorlist"></div>
             //             <div style="display:grid; grid-template-columns: 1fr 1fr;">                        
             //                 <div>'.$this->objEdtPublishDate->render().'</div>
@@ -406,7 +406,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
             //         </div>';
             $sReturn .= '<!-- publish date -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtPublishDate->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_publishdate', 'Publish date').'</label>
+                        <label for="'.$this->objEdtPublishDate->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_publishdate', 'Publish date').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtPublishDate->render().'
                     </div>';
@@ -417,7 +417,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- visibility -->
                     <div class="formsection-line">
-                        <label for="'.$this->objSelVisibility->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_visibility', 'Visibility (after pub.dat.)').'</label>
+                        <label for="'.$this->objSelVisibility->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_visibility', 'Visibility (after pub.dat.)').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objSelVisibility->render().'           
                     </div>';
@@ -428,7 +428,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- password -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtPassword->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_password', 'Password (empty = none)').'</label>
+                        <label for="'.$this->objEdtPassword->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_password', 'Password (empty = none)').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtPassword->render().'
                     </div>';
@@ -439,7 +439,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- canonical url -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtCanonicalURL->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_canonicalurl', 'Canonical (start w https://)').'</label>
+                        <label for="'.$this->objEdtCanonicalURL->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_canonicalurl', 'Canonical (start w https://)').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtCanonicalURL->render().'           
                     </div>';
@@ -450,7 +450,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         {
             $sReturn .= '<!-- 301 redirect url -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdt301RedirectURL->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_301redirecturl', '301 redirect (start w https://)').'</label>
+                        <label for="'.$this->objEdt301RedirectURL->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_301redirecturl', '301 redirect (start w https://)').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdt301RedirectURL->render().'               
                     </div>';
@@ -459,7 +459,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         //internal notes
         $sReturn .= '<!-- internal notes -->
                     <div class="formsection-line">
-                        <label for="'.$this->objEdtNotesInternal->getId().'">'.transm(CMS_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_notesinternal', 'Notes (internal)').'</label>
+                        <label for="'.$this->objEdtNotesInternal->getId().'">'.transm(APP_ADMIN_CURRENTMODULE, 'pagebuilder_detailpanel_tabdocument_description_notesinternal', 'Notes (internal)').'</label>
                         <div class="formsection-line-errorlist"></div>
                         '.$this->objEdtNotesInternal->render().'
                     </div>';
@@ -801,7 +801,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
      */
     public function getSkinPath()
     {
-        return getPathModuleTemplates(CMS_CURRENTMODULE, true).'skin_pagebuilder.php';        
+        return getPathModuleTemplates(APP_ADMIN_CURRENTMODULE, true).'skin_pagebuilder.php';        
     }
 
     /**
@@ -840,12 +840,12 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_languages_new', 'Create new document');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_languages_new', 'Create new document');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_languages_edit', 'Edit document: [doc]', 'doc', $this->objModel->getHTMLTitle());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_languages_edit', 'Edit document: [doc]', 'doc', $this->objModel->getHTMLTitle());           
     }    
 
     /*****************************************

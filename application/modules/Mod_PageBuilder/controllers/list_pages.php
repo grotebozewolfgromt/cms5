@@ -41,7 +41,7 @@ class list_pages extends TCRUDListController
      */
     public function execute()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
         // global $arrTabsheets;        
 
 
@@ -84,17 +84,17 @@ class list_pages extends TCRUDListController
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TPageBuilderWebpages::FIELD_URLSLUG, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_URLSLUG, 'URL slug')),
-            array('', TPageBuilderWebpages::FIELD_NAMEINTERNAL, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_NAMEINTERNAL, 'Name')),
-            // array(TSysModules::getTable(), TSysModules::FIELD_NAMENICETRANSDEFAULT, transm(CMS_CURRENTMODULE, 'list_column_module'.TSysModules::FIELD_NAMENICETRANSDEFAULT, 'PageBuilder')),  --> we explicitly don't join modules. 
-            array('', TPageBuilderWebpages::FIELD_META_MODULENAMENICE, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_META_MODULENAMENICE, 'Pagebuilder')),
-            array('', TPageBuilderWebpages::FIELD_MODULEVERSIONNUMBER, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_MODULEVERSIONNUMBER, 'Ver')),
-            array(TSysLanguages::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(CMS_CURRENTMODULE, 'list_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
-            array(TSysWebsites::getTable(), TSysWebsites::FIELD_WEBSITENAME, transm(CMS_CURRENTMODULE, 'list_column_'.TSysWebsites::FIELD_WEBSITENAME, 'Website')),
-            array('', TPageBuilderWebpages::FIELD_VISIBILITY, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_VISIBILITY, 'Visible')),
-            array('', TPageBuilderWebpages::FIELD_PUBLISHDATE, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_PUBLISHDATE, 'Published')),
-            array(TPageBuilderDocumentsStatusses::getTable(), TPageBuilderDocumentsStatusses::FIELD_NAME, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderDocumentsStatusses::FIELD_NAME, 'Status')),
-            array('', TPageBuilderWebpages::FIELD_RECORDCHANGED, transm(CMS_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_RECORDCHANGED, 'Changed')),
+            array('', TPageBuilderWebpages::FIELD_URLSLUG, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_URLSLUG, 'URL slug')),
+            array('', TPageBuilderWebpages::FIELD_NAMEINTERNAL, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_NAMEINTERNAL, 'Name')),
+            // array(TSysModules::getTable(), TSysModules::FIELD_NAMENICETRANSDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_column_module'.TSysModules::FIELD_NAMENICETRANSDEFAULT, 'PageBuilder')),  --> we explicitly don't join modules. 
+            array('', TPageBuilderWebpages::FIELD_META_MODULENAMENICE, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_META_MODULENAMENICE, 'Pagebuilder')),
+            array('', TPageBuilderWebpages::FIELD_MODULEVERSIONNUMBER, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_MODULEVERSIONNUMBER, 'Ver')),
+            array(TSysLanguages::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
+            array(TSysWebsites::getTable(), TSysWebsites::FIELD_WEBSITENAME, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TSysWebsites::FIELD_WEBSITENAME, 'Website')),
+            array('', TPageBuilderWebpages::FIELD_VISIBILITY, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_VISIBILITY, 'Visible')),
+            array('', TPageBuilderWebpages::FIELD_PUBLISHDATE, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_PUBLISHDATE, 'Published')),
+            array(TPageBuilderDocumentsStatusses::getTable(), TPageBuilderDocumentsStatusses::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderDocumentsStatusses::FIELD_NAME, 'Status')),
+            array('', TPageBuilderWebpages::FIELD_RECORDCHANGED, transm(APP_ADMIN_CURRENTMODULE, 'list_column_'.TPageBuilderWebpages::FIELD_RECORDCHANGED, 'Changed')),
                 );
         
              
@@ -116,7 +116,7 @@ class list_pages extends TCRUDListController
         $objDelete->setValue(BULKACTION_VALUE_DELETE);
         $objDelete->setText(transcms('overview_bulkactions_delete', 'delete'));
        
-        if (auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE) || auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE_OWN))
+        if (auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE) || auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE_OWN))
             $objSelectBulkActions->appendChild($objDelete);          
         
         return $objSelectBulkActions;        
@@ -158,12 +158,12 @@ class list_pages extends TCRUDListController
                         //check authorization
                         $this->objModel->loadFromDB(); //we need to load record from database to check authorid
                         $bAuth = false;
-                        if (auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE))
+                        if (auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE))
                             $bAuth = true;
-                        $bTemp1 = auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE_OWN);
+                        $bTemp1 = auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE_OWN);
                         $bTemp2 = $this->objModel->getAuthorUserID();
                         $bTemp3 =  $objAuthenticationSystem->getUsers()->getID();
-                        if (auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE_OWN) && ($this->objModel->getAuthorUserID() == $objAuthenticationSystem->getUsers()->getID()))
+                        if (auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), Mod_PageBuilder::PERM_OP_DELETE_OWN) && ($this->objModel->getAuthorUserID() == $objAuthenticationSystem->getUsers()->getID()))
                             $bAuth = true;
                         
                         if($bAuth)
@@ -271,8 +271,8 @@ class list_pages extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_pages', 'Pages');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_pages', 'Pages');
     }
 
     /**

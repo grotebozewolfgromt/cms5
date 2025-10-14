@@ -47,7 +47,7 @@
         $objPlainText->setText($objPlainText->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objPlainText->setText($sFileContents);
-    $objForm->add($objPlainText, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_plaintext', 'Input: plain text'));
+    $objForm->add($objPlainText, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_plaintext', 'Input: plain text'));
 
     //rel = nofollow
     $objChkNofollow = new InputCheckbox();
@@ -56,7 +56,7 @@
         $objChkNofollow->setChecked($objChkNofollow->getValueSubmittedAsBool());
     else
         $objChkNofollow->setChecked(false);
-    $objForm->add($objChkNofollow, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_relnofollow', 'Links: rel="nofollow"'));
+    $objForm->add($objChkNofollow, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_relnofollow', 'Links: rel="nofollow"'));
 
     
     //target = _blank
@@ -66,7 +66,7 @@
         $objChkTargetBlank->setChecked($objChkTargetBlank->getValueSubmittedAsBool());
     else
         $objChkTargetBlank->setChecked(true);    
-    $objForm->add($objChkTargetBlank, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_targetblank', 'Links: target="_blank"'));    
+    $objForm->add($objChkTargetBlank, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_targetblank', 'Links: target="_blank"'));    
 
     
     //stop (.) is new line
@@ -76,11 +76,11 @@
 //        $objChkStopIsNL->setChecked($objChkStopIsNL->getContentsSubmitted(Form::METHOD_POST)->getValueAsBool());
 //    else
 //        $objChkStopIsNL->setChecked(true);    
-//    $objForm->add($objChkStopIsNL, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_stopisnl', 'stop (.) is new line'));        
+//    $objForm->add($objChkStopIsNL, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_stopisnl', 'stop (.) is new line'));        
     
     //submit
     $objSubmit = new InputSubmit();    
-    $objSubmit->setValue(transm(CMS_CURRENTMODULE, 'plaintext2html_form_button_convert', 'convert'));
+    $objSubmit->setValue(transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_button_convert', 'convert'));
     $objSubmit->setName('btnSubmit');
     $objForm->add($objSubmit, '');    
     
@@ -108,11 +108,11 @@
         $objHTML->setReadOnly(true); 
         $objPlainText->setRows(10);   
         $objHTML->setText($sResult);
-        $objForm->add($objHTML, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_html', 'Output: html'));  
+        $objForm->add($objHTML, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_html', 'Output: html'));  
         
         
         $objBtnCopyClipboard = new InputButton();
-        $objBtnCopyClipboard->setValue(transm(CMS_CURRENTMODULE, 'plaintext2html_form_button_copytoclipboard', 'Copy HTML to clipboard'));
+        $objBtnCopyClipboard->setValue(transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_button_copytoclipboard', 'Copy HTML to clipboard'));
         $objBtnCopyClipboard->setName('btnCopyToClipboard');
         $objBtnCopyClipboard->setOnclick("copyToClipboardEditBox('edtHTML')");
         $objForm->add($objBtnCopyClipboard, '');   
@@ -142,7 +142,7 @@
  
     
     
-    $sTitle = transm(CMS_CURRENTMODULE, CMS_CURRENTMODULE);
+    $sTitle = transm(APP_ADMIN_CURRENTMODULE, APP_ADMIN_CURRENTMODULE);
     $sHTMLTitle = $sTitle;
     $sHTMLMetaDescription = $sTitle;
     

@@ -47,16 +47,16 @@ class list_cmsmenu extends TCRUDListControllerAJAX
 
         // $arrTableColumnsShow = array(
         $this->arrTableColumnsShow = array(
-            array('', TSysCMSMenu::FIELD_ID, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ID, 'ID')),
-            array('', TSysCMSMenu::FIELD_SVGICON, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_SVGICON, 'Icon')),
-            array('', TSysCMSMenu::FIELD_NAMEDEFAULT, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_NAMEDEFAULT, 'Name default')),
-            // array('', TSysCMSMenu::FIELD_MODULECONTROLLER, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_MODULECONTROLLER, 'Module URL')),
-            // array('', TSysCMSMenu::FIELD_URL, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_URL, 'URL')),
-            // array('', TSysCMSMenu::FIELD_PERMISSIONRESOURCE, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_PERMISSIONRESOURCE, 'Permission')),
-            array('', TSysCMSMenu::FIELD_ISFAVORITE, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ISFAVORITE, 'Favorite')),
-            array('', TSysCMSMenu::FIELD_ISVISIBLEMENU, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ISVISIBLEMENU, 'Menu')),
-            array('', TSysCMSMenu::FIELD_ISVISIBLETOOLBAR, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ISVISIBLETOOLBAR, 'Toolbar')),
-            array('', TSysCMSMenu::FIELD_OPENNEWTAB, transm(CMS_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_OPENNEWTAB, 'New tab')),
+            array('', TSysCMSMenu::FIELD_ID, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ID, 'ID')),
+            array('', TSysCMSMenu::FIELD_SVGICON, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_SVGICON, 'Icon')),
+            array('', TSysCMSMenu::FIELD_NAMEDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_NAMEDEFAULT, 'Name default')),
+            // array('', TSysCMSMenu::FIELD_MODULECONTROLLER, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_MODULECONTROLLER, 'Module URL')),
+            // array('', TSysCMSMenu::FIELD_URL, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_URL, 'URL')),
+            // array('', TSysCMSMenu::FIELD_PERMISSIONRESOURCE, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_PERMISSIONRESOURCE, 'Permission')),
+            array('', TSysCMSMenu::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ISFAVORITE, 'Favorite')),
+            array('', TSysCMSMenu::FIELD_ISVISIBLEMENU, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ISVISIBLEMENU, 'Menu')),
+            array('', TSysCMSMenu::FIELD_ISVISIBLETOOLBAR, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_ISVISIBLETOOLBAR, 'Toolbar')),
+            array('', TSysCMSMenu::FIELD_OPENNEWTAB, transm(APP_ADMIN_CURRENTMODULE, 'list_cmsmenu_column_'.TSysCMSMenu::FIELD_OPENNEWTAB, 'New tab')),
             array('', TSysModel::FIELD_POSITION, 'Pos'),
                 );
         
@@ -69,7 +69,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_NAMEDEFAULT);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_NAMEDEFAULT, 'Name default'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_NAMEDEFAULT, 'Name default'));
         $objFilters->addFilter($objFilter);
 
         //module controller
@@ -78,7 +78,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_CONTROLLER);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_CONTROLLER, 'Module URL'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_CONTROLLER, 'Module URL'));
         $objFilters->addFilter($objFilter);
 
         //url
@@ -87,7 +87,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_URL);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_URL, 'URL'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_URL, 'URL'));
         $objFilters->addFilter($objFilter);
 
         //permission resource
@@ -96,7 +96,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_PERMISSIONRESOURCE);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_PERMISSIONRESOURCE, 'Permission resource'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_PERMISSIONRESOURCE, 'Permission resource'));
         $objFilters->addFilter($objFilter);
 
         //visible in menu
@@ -105,7 +105,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_ISVISIBLEMENU);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_PERMISSIONRESOURCE, 'Visible in menu'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_PERMISSIONRESOURCE, 'Visible in menu'));
         $objFilters->addFilter($objFilter);
 
         //visible in toolbar
@@ -114,7 +114,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_ISVISIBLETOOLBAR);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_ISVISIBLETOOLBAR, 'Visible in toolbar'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_ISVISIBLETOOLBAR, 'Visible in toolbar'));
         $objFilters->addFilter($objFilter);
         
         //Open in new tab
@@ -123,7 +123,7 @@ class list_cmsmenu extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_BOOLEAN);
         $objFilter->setDBTableField(TSysCMSMenu::getTable(), TSysCMSMenu::FIELD_OPENNEWTAB);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_OPENNEWTAB, 'Open in new tab'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysCMSMenu::FIELD_OPENNEWTAB, 'Open in new tab'));
         $objFilters->addFilter($objFilter);
         
         return 0;
@@ -196,8 +196,8 @@ class list_cmsmenu extends TCRUDListControllerAJAX
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_cmsmenu', 'CMS menu');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_cmsmenu', 'CMS menu');
     }
 
     /**

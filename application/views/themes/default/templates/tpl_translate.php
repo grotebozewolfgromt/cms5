@@ -64,7 +64,7 @@
                 
             
                 $bEditAllowed = false;
-                $bEditAllowed = auth(CMS_CURRENTMODULE, 'item', 'edit', 'allowed');
+                $bEditAllowed = auth(APP_ADMIN_CURRENTMODULE, 'item', 'edit', 'allowed');
                                                                
                
                

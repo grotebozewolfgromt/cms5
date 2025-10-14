@@ -37,7 +37,7 @@ class list_installedmodules extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
     
     
@@ -63,12 +63,12 @@ class list_installedmodules extends TCRUDListController
         
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysModules::FIELD_NAMENICETRANSDEFAULT, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_NAMENICETRANSDEFAULT, 'Default name')),
-            array('', TSysModules::FIELD_NAMEINTERNAL, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_NAMEINTERNAL, 'internal name')),
-            array('', TSysModules::FIELD_MODULETYPE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_MODULETYPE, 'type')),
-            array('', TSysModules::FIELD_VISIBLECMS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_VISIBLECMS, 'cms')),
-            array('', TSysModules::FIELD_VISIBLEFRONTEND, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_VISIBLEFRONTEND, 'front')),
-            // array($objTempModCat::getTable(), TSysModulesCategories::FIELD_NAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysModulesCategories::FIELD_NAME, 'category'))
+            array('', TSysModules::FIELD_NAMENICETRANSDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_NAMENICETRANSDEFAULT, 'Default name')),
+            array('', TSysModules::FIELD_NAMEINTERNAL, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_NAMEINTERNAL, 'internal name')),
+            array('', TSysModules::FIELD_MODULETYPE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_MODULETYPE, 'type')),
+            array('', TSysModules::FIELD_VISIBLECMS, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_VISIBLECMS, 'cms')),
+            array('', TSysModules::FIELD_VISIBLEFRONTEND, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysModules::FIELD_VISIBLEFRONTEND, 'front')),
+            // array($objTempModCat::getTable(), TSysModulesCategories::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysModulesCategories::FIELD_NAME, 'category'))
                                     );    
         
         
@@ -181,9 +181,9 @@ class list_installedmodules extends TCRUDListController
      */
     public function getTemplatePath()
     {
-        //global CMS_CURRENTMODULE;
-        return getPathModuleTemplates(CMS_CURRENTMODULE, true).'tpl_list_installedmodules.php';
-        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_list_installedmodules.php';
+        //global APP_ADMIN_CURRENTMODULE;
+        return getPathModuleTemplates(APP_ADMIN_CURRENTMODULE, true).'tpl_list_installedmodules.php';
+        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_list_installedmodules.php';
     }
 
     /**
@@ -242,8 +242,8 @@ class list_installedmodules extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'modules');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE, 'modules');
     }
 
     /**

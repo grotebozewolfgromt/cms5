@@ -40,10 +40,10 @@ class list_vatclasses extends TCRUDListControllerAJAX
 
         // $arrTableColumnsShow = array(
         $this->arrTableColumnsShow = array(
-            array('', TVATClasses::FIELD_NAME, transm(CMS_CURRENTMODULE, 'list_vatclasses_column_'.TVATClasses::FIELD_NAME, 'Name')),
-            array('', TVATClasses::FIELD_DESCRIPTION, transm(CMS_CURRENTMODULE, 'list_vatclasses_column_'.TVATClasses::FIELD_DESCRIPTION, 'Description')),
-            array('', TVATClasses::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'list_vatclasses_column_'.TVATClasses::FIELD_ISDEFAULT, 'Default')),
-            array('', TSysModel::FIELD_POSITION, transm(CMS_CURRENTMODULE, 'list_vatclasses_column_'.TSysModel::FIELD_POSITION, 'Order'))
+            array('', TVATClasses::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_vatclasses_column_'.TVATClasses::FIELD_NAME, 'Name')),
+            array('', TVATClasses::FIELD_DESCRIPTION, transm(APP_ADMIN_CURRENTMODULE, 'list_vatclasses_column_'.TVATClasses::FIELD_DESCRIPTION, 'Description')),
+            array('', TVATClasses::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_vatclasses_column_'.TVATClasses::FIELD_ISDEFAULT, 'Default')),
+            array('', TSysModel::FIELD_POSITION, transm(APP_ADMIN_CURRENTMODULE, 'list_vatclasses_column_'.TSysModel::FIELD_POSITION, 'Order'))
                 );
         
         //defining database filters
@@ -55,7 +55,7 @@ class list_vatclasses extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField('', TVATClasses::FIELD_NAME);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TVATClasses::FIELD_NAME, 'Name'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TVATClasses::FIELD_NAME, 'Name'));
         $objFilters->addFilter($objFilter);
 
         //description
@@ -64,7 +64,7 @@ class list_vatclasses extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField('', TVATClasses::FIELD_DESCRIPTION);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TVATClasses::FIELD_DESCRIPTION, 'Description'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TVATClasses::FIELD_DESCRIPTION, 'Description'));
         $objFilters->addFilter($objFilter);
     }
 
@@ -135,8 +135,8 @@ class list_vatclasses extends TCRUDListControllerAJAX
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_vatclasses', 'VAT classes');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_vatclasses', 'VAT classes');
     }
 
     /**

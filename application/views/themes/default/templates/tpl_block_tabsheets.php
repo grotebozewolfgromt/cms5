@@ -21,13 +21,13 @@
             $bShowTab = false; //default
 
             //cms tabs or module tabs?
-            if (CMS_CURRENTMODULE) //module
+            if (APP_ADMIN_CURRENTMODULE) //module
             {
                 $sTempTabUrl = $arrTab[0];
                 $sTempTabPermCat = $arrTab[1];
-                $sTempTabNameTrans = transm(CMS_CURRENTMODULE, 'tabsheets_module_name_'.$arrTab[2],$arrTab[2]);
-                $sTempTabDescriptionTrans = transm(CMS_CURRENTMODULE, 'tabsheets_module_explanation_'.$arrTab[3], $arrTab[3]);
-                $bShowTab = auth(CMS_CURRENTMODULE, $sTempTabPermCat, AUTH_OPERATION_VIEW);
+                $sTempTabNameTrans = transm(APP_ADMIN_CURRENTMODULE, 'tabsheets_module_name_'.$arrTab[2],$arrTab[2]);
+                $sTempTabDescriptionTrans = transm(APP_ADMIN_CURRENTMODULE, 'tabsheets_module_explanation_'.$arrTab[3], $arrTab[3]);
+                $bShowTab = auth(APP_ADMIN_CURRENTMODULE, $sTempTabPermCat, AUTH_OPERATION_VIEW);
             }
             else
             {
@@ -161,13 +161,13 @@
                 $bShowTab = false; //default
 
                 //cms tabs or module tabs?
-                if (CMS_CURRENTMODULE) //module
+                if (APP_ADMIN_CURRENTMODULE) //module
                 {
                     $sTempTabUrl = $arrTab[0];
                     $sTempTabPermCat = $arrTab[1];
-                    $sTempTabNameTrans = transm(CMS_CURRENTMODULE, 'tabsheets_module_name_'.$arrTab[2],$arrTab[2]);
-                    $sTempTabDescriptionTrans = transm(CMS_CURRENTMODULE, 'tabsheets_module_explanation_'.$arrTab[3], $arrTab[3]);
-                    $bShowTab = auth(CMS_CURRENTMODULE, $sTempTabPermCat, AUTH_OPERATION_VIEW);
+                    $sTempTabNameTrans = transm(APP_ADMIN_CURRENTMODULE, 'tabsheets_module_name_'.$arrTab[2],$arrTab[2]);
+                    $sTempTabDescriptionTrans = transm(APP_ADMIN_CURRENTMODULE, 'tabsheets_module_explanation_'.$arrTab[3], $arrTab[3]);
+                    $bShowTab = auth(APP_ADMIN_CURRENTMODULE, $sTempTabPermCat, AUTH_OPERATION_VIEW);
                 }
                 else
                 {

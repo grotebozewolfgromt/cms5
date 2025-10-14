@@ -14,10 +14,10 @@ use dr\modules\Mod_Sys_Modules\Mod_Sys_Modules;
 // include_once APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_misc.php'; //getNextSortOrder
     
 
-    $bAllowInstall = auth(CMS_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_INSTALL);
-    $bAllowDelete = auth(CMS_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, TModuleAbstract::PERM_OP_DELETE);
-    $sTransInstall = transm(CMS_CURRENTMODULE, 'button_install', 'install');
-    $sTransDelete = transm(CMS_CURRENTMODULE, 'button_delete', 'delete');  
+    $bAllowInstall = auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, Mod_Sys_Modules::PERM_OP_INSTALL);
+    $bAllowDelete = auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Modules::PERM_CAT_MODULESUNINSTALLED, TModuleAbstract::PERM_OP_DELETE);
+    $sTransInstall = transm(APP_ADMIN_CURRENTMODULE, 'button_install', 'install');
+    $sTransDelete = transm(APP_ADMIN_CURRENTMODULE, 'button_delete', 'delete');  
     // $sURLThisScript = getURLThisScript();
 ?>
 <form action="<?php echo getURLThisScript();?>" method="get" name="frmBulkActions" id="frmBulkActions">
@@ -27,10 +27,10 @@ use dr\modules\Mod_Sys_Modules\Mod_Sys_Modules;
             <thead>
                 <tr> 
                     <th class="column-display-on-mobile">
-                        <?php echo transm(CMS_CURRENTMODULE, 'column-display-on-mobile-header', 'Module') ?>
+                        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'column-display-on-mobile-header', 'Module') ?>
                     </th>        
                     <th class="column-display-on-desktop">
-                        <?php echo transm(CMS_CURRENTMODULE, 'column-display-on-mobile-header', 'Module') ?>
+                        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'column-display-on-mobile-header', 'Module') ?>
                     </th>                          
                     <th>
                         <?php 
@@ -38,7 +38,7 @@ use dr\modules\Mod_Sys_Modules\Mod_Sys_Modules;
                             if ($bAllowInstall)
                             {
                                 ?>                            
-                                    <input type="button" onclick="window.location.href = '<?php echo $sURLDetailPage; ?>';" value="<?php echo transm(CMS_CURRENTMODULE, 'item_uploadmodule', 'upload'); ?>" class="button_normal">
+                                    <input type="button" onclick="window.location.href = '<?php echo $sURLDetailPage; ?>';" value="<?php echo transm(APP_ADMIN_CURRENTMODULE, 'item_uploadmodule', 'upload'); ?>" class="button_normal">
                                 <?php
                             }
                         ?>   
@@ -97,7 +97,7 @@ use dr\modules\Mod_Sys_Modules\Mod_Sys_Modules;
         {
             echo '<center>';
             echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-alert-grey128x128.png"><br>';
-            echo transm(CMS_CURRENTMODULE, 'message_nomodulestodisplay','[ all available modules are installed ]');
+            echo transm(APP_ADMIN_CURRENTMODULE, 'message_nomodulestodisplay','[ all available modules are installed ]');
             echo '<br>';
             echo '</center>';
         }

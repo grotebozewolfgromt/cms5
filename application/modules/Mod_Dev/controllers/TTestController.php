@@ -69,8 +69,8 @@ class TTestController extends TControllerAbstract
      */
     public function getTemplatePath()
     {
-        //global CMS_CURRENTMODULE;
-        return getPathModuleTemplates(CMS_CURRENTMODULE, true).'tpl_test.php';
+        //global APP_ADMIN_CURRENTMODULE;
+        return getPathModuleTemplates(APP_ADMIN_CURRENTMODULE, true).'tpl_test.php';
         // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.'Mod_Dev'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_test.php';
     }
 

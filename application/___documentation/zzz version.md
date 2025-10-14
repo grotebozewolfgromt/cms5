@@ -55,6 +55,7 @@
 * bootstrap rename: bootstrap_cms.php => bootstrap_admin.php en 
 * bootstrap rename: bootstrap_cms_auth.php => bootstrap_admin_auth.php 
 * constants for public and private uploads
+* constant rename CMS_CURRENTMODULE => APP_ADMIN_CURRENTMODULE
 
 config: _CMS -> _ADMIN
 

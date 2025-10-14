@@ -26,7 +26,7 @@ class list_currencies extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -47,14 +47,14 @@ class list_currencies extends TCRUDListController
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysCurrencies::FIELD_CURRENCYNAME, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_CURRENCYNAME, 'Currency')),
-            array('', TSysCurrencies::FIELD_CURRENCYSYMBOL, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_CURRENCYSYMBOL, 'Symbol')),
-            array('', TSysCurrencies::FIELD_ISOALPHABETIC, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISOALPHABETIC, 'ISO A')),
-            array('', TSysCurrencies::FIELD_ISONUMERIC, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISONUMERIC, 'ISO N')),
-            array('', TSysCurrencies::FIELD_DECIMALPRECISION, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_DECIMALPRECISION, 'Dec')),
-            array('', TSysCurrencies::FIELD_ISFAVORITE, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISFAVORITE, 'Favorite')),
-            array('', TSysCurrencies::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISDEFAULT, 'Default')),
-            array('', TSysCurrencies::FIELD_POSITION, transm(CMS_CURRENTMODULE, 'currencies_overview_column_'.TSysModel::FIELD_POSITION, 'Order'))
+            array('', TSysCurrencies::FIELD_CURRENCYNAME, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_CURRENCYNAME, 'Currency')),
+            array('', TSysCurrencies::FIELD_CURRENCYSYMBOL, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_CURRENCYSYMBOL, 'Symbol')),
+            array('', TSysCurrencies::FIELD_ISOALPHABETIC, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISOALPHABETIC, 'ISO A')),
+            array('', TSysCurrencies::FIELD_ISONUMERIC, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISONUMERIC, 'ISO N')),
+            array('', TSysCurrencies::FIELD_DECIMALPRECISION, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_DECIMALPRECISION, 'Dec')),
+            array('', TSysCurrencies::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISFAVORITE, 'Favorite')),
+            array('', TSysCurrencies::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysCurrencies::FIELD_ISDEFAULT, 'Default')),
+            array('', TSysCurrencies::FIELD_POSITION, transm(APP_ADMIN_CURRENTMODULE, 'currencies_overview_column_'.TSysModel::FIELD_POSITION, 'Order'))
                 );
         
     
@@ -134,8 +134,8 @@ class list_currencies extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_currencies', 'All system currencies');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_currencies', 'All system currencies');
     }
 
     /**

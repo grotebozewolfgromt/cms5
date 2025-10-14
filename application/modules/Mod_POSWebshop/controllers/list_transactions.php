@@ -27,7 +27,7 @@ class list_transactions extends TCRUDListController
     {
  
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -53,12 +53,12 @@ class list_transactions extends TCRUDListController
 
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TTransactions::FIELD_DATEFINALIZED, transm(CMS_CURRENTMODULE, 'overview_column_'.TTransactions::FIELD_DATEFINALIZED, 'Date')),
-            array('', TTransactions::FIELD_INCREMENTNUMBER, transm(CMS_CURRENTMODULE, 'overview_column_'.TTransactions::FIELD_INCREMENTNUMBER, 'Inc No')),
-            // array(TSysContacts::getTable(), TSysContacts::FIELD_COMPANYNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Company')),
-            // array(TSysContacts::getTable(), TSysContacts::FIELD_LASTNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Name')),
-            // array(TSysContacts::getTable(), TSysContacts::FIELD_EMAILADDRESSENCRYPTED, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_EMAILADDRESSENCRYPTED, 'Email')),
-            array('', TTransactions::FIELD_META_TOTALPRICEINCLVAT, transm(CMS_CURRENTMODULE, 'overview_column_'.TTransactions::FIELD_META_TOTALPRICEINCLVAT, 'Total'))
+            array('', TTransactions::FIELD_DATEFINALIZED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TTransactions::FIELD_DATEFINALIZED, 'Date')),
+            array('', TTransactions::FIELD_INCREMENTNUMBER, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TTransactions::FIELD_INCREMENTNUMBER, 'Inc No')),
+            // array(TSysContacts::getTable(), TSysContacts::FIELD_COMPANYNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Company')),
+            // array(TSysContacts::getTable(), TSysContacts::FIELD_LASTNAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Name')),
+            // array(TSysContacts::getTable(), TSysContacts::FIELD_EMAILADDRESSENCRYPTED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_EMAILADDRESSENCRYPTED, 'Email')),
+            array('', TTransactions::FIELD_META_TOTALPRICEINCLVAT, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TTransactions::FIELD_META_TOTALPRICEINCLVAT, 'Total'))
                 );
         
 
@@ -132,8 +132,8 @@ class list_transactions extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_transactions', 'Transactions');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_transactions', 'Transactions');
     }
 
     /**

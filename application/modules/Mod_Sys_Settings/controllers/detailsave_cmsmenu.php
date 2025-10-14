@@ -121,12 +121,12 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TRequired();
         $this->objEdtNameDefault->addValidator($objValidator);    
         $this->objEdtNameDefault->setWhitelist(WHITELIST_SAFE);
-        // $this->getFormGenerator()->add($this->objEdtNameDefault, '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_nameinit', 'Default name (will be overwritten by language files of module)'));
+        // $this->getFormGenerator()->add($this->objEdtNameDefault, '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_nameinit', 'Default name (will be overwritten by language files of module)'));
         $this->getFormGenerator()->addQuick(
             $this->objEdtNameDefault, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_nameinit_description', 'Name'),
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_nameinit_iconinfo', 'This is the default text for the menu item.<br>Be aware that this name will be overwritten by contents of a language file of a module when a translation is available'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_nameinit_description', 'Name'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_nameinit_iconinfo', 'This is the default text for the menu item.<br>Be aware that this name will be overwritten by contents of a language file of a module when a translation is available'),
         );
         
         // module
@@ -141,12 +141,12 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $objValidator = new TMaximumLength(100);
         // $this->objEdtModule->addValidator($objValidator);    
         // $this->objEdtModule->setWhitelist(WHITELIST_SAFE);
-        // $this->getFormGenerator()->add($this->objEdtModule, '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_module', 'Module'));
+        // $this->getFormGenerator()->add($this->objEdtModule, '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_module', 'Module'));
         $this->getFormGenerator()->addQuick(
             $this->objEdtModule, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_module_description', 'Module'),
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_module_infoicon', 'The module you want to link to in menu.<br>The module is ignored when specifying a custom URL'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_module_description', 'Module'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_module_infoicon', 'The module you want to link to in menu.<br>The module is ignored when specifying a custom URL'),
         );
 
         
@@ -168,12 +168,12 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $objValidator = new TRequired();
         // $this->objEdtController->addValidator($objValidator);    
         $this->objEdtController->setWhitelist(WHITELIST_URLSLUG);
-        // $this->getFormGenerator()->add($this->objEdtController, '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_modulecontroller', 'URL slug in module'));
+        // $this->getFormGenerator()->add($this->objEdtController, '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_modulecontroller', 'URL slug in module'));
         $this->getFormGenerator()->addQuick(
             $this->objEdtController, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_modulecontroller_description', 'URL slug'),
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_modulecontroller_infoicon', 'This URL slug points to page in the module you set above.<br>A URL slug is the last part of a URL.'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_modulecontroller_description', 'URL slug'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_modulecontroller_infoicon', 'This URL slug points to page in the module you set above.<br>A URL slug is the last part of a URL.'),
         );
 
         //custom url
@@ -193,12 +193,12 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $objValidator = new TRequired();
         // $this->objEdtURLCustom->addValidator($objValidator);    
         $this->objEdtURLCustom->setWhitelist(WHITELIST_URL);        
-        // $this->getFormGenerator()->add($this->objEdtURLCustom, '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_customurl', 'Custom URL (leave empty when using Module and Module-url-slug. Custom URL overwrites Module and Module-url-slug)'));
+        // $this->getFormGenerator()->add($this->objEdtURLCustom, '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_customurl', 'Custom URL (leave empty when using Module and Module-url-slug. Custom URL overwrites Module and Module-url-slug)'));
         $this->getFormGenerator()->addQuick(
             $this->objEdtURLCustom, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_customurl_description', 'Custom URL'),
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_customurl_infoicon', 'Instead of linking to a module, you can link also link to a custom url (starting with http://).<br>When you submit a URL here, the system completely ignores the "module" and the "module-url-slug" you set above.<br>In other words: leave this field empty when you want to link to an internal module'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_customurl_description', 'Custom URL'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_customurl_infoicon', 'Instead of linking to a module, you can link also link to a custom url (starting with http://).<br>When you submit a URL here, the system completely ignores the "module" and the "module-url-slug" you set above.<br>In other words: leave this field empty when you want to link to an internal module'),
         );
 
         //permission resource
@@ -219,12 +219,12 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         // $objValidator = new TRequired();
         // $this->objEdtPermissionResource->addValidator($objValidator);  
         $this->objEdtURLCustom->setWhitelist(WHITELIST_URL);        
-        // $this->getFormGenerator()->add($this->objEdtPermissionResource, '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_permissionresource', 'Use permission resource (you can edit permissions in users module)'));
+        // $this->getFormGenerator()->add($this->objEdtPermissionResource, '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_permissionresource', 'Use permission resource (you can edit permissions in users module)'));
         $this->getFormGenerator()->addQuick(
             $this->objEdtPermissionResource, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_permissionresource_description', 'Permission resource'),
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_permissionresource_infoicon', 'Depending on the permissions of the user, the system shows only certain menu items to users who have the proper permissions.<br>Which permission resource would you like to use to show this menu item?<br>You can assign/retract permissions to users in the user module under "roles and permissions"'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_permissionresource_description', 'Permission resource'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_permissionresource_infoicon', 'Depending on the permissions of the user, the system shows only certain menu items to users who have the proper permissions.<br>Which permission resource would you like to use to show this menu item?<br>You can assign/retract permissions to users in the user module under "roles and permissions"'),
         );
 
         //SVG icon
@@ -248,8 +248,8 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->addQuick(
             $this->objEdtSVGIcon, 
             '', 
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_svgicon_description', 'SVG icon'),
-            transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_svgicon_infoicon', 'Use the full HTML tag, like &lt;SVG&gt;&lt;CIRCLE&gt; etc...'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_svgicon_description', 'SVG icon'),
+            transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_svgicon_infoicon', 'Use the full HTML tag, like &lt;SVG&gt;&lt;CIRCLE&gt; etc...'),
         );
     // public function add(HTMLTag $objDOMElement, $sSection = '', $sDescription = '', $bDescriptionVisible = true, $sPostDescription = '', $bMarkAsRequiredField = false, $sTextInfoIcon = '')
             //favorite
@@ -257,7 +257,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $this->objChkFavorite->setNameAndID('chkFavorite');
         // $this->objChkFavorite->setOnchange("setDirtyRecord()");
         // $this->objChkFavorite->setOnkeyup("setDirtyRecord()");        
-        $this->objChkFavorite->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_favorite', 'Is favorite<dr-icon-info>When an item is favorited, it will show up at the top of the menu so you can quickly find it.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
+        $this->objChkFavorite->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_favorite', 'Is favorite<dr-icon-info>When an item is favorited, it will show up at the top of the menu so you can quickly find it.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
         $this->getFormGenerator()->add($this->objChkFavorite); 
 
             //visible menu
@@ -265,25 +265,25 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $this->objChkVisibleMenu->setNameAndID('chkVisibleMenu');
         // $this->objChkVisibleMenu->setOnchange("setDirtyRecord()");
         // $this->objChkVisibleMenu->setOnkeyup("setDirtyRecord()");        
-        $this->objChkVisibleMenu->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visiblemenu', 'Is visible in menu<dr-icon-info>The menu is on the left side of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
+        $this->objChkVisibleMenu->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_visiblemenu', 'Is visible in menu<dr-icon-info>The menu is on the left side of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
         $this->getFormGenerator()->add($this->objChkVisibleMenu);  
-        // $this->getFormGenerator()->addQuick($this->objChkVisibleMenu, '', '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visiblemenu_iconinfo', 'It might take 1 hour for this change to take effect.<br>The menu is cached to ensure fast page loads.<br>This cached is renewed every hour.'));
+        // $this->getFormGenerator()->addQuick($this->objChkVisibleMenu, '', '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_visiblemenu_iconinfo', 'It might take 1 hour for this change to take effect.<br>The menu is cached to ensure fast page loads.<br>This cached is renewed every hour.'));
 
             //visible toolbar
         $this->objChkVisibleToolbar = new DRInputCheckbox();
         $this->objChkVisibleToolbar->setNameAndID('chkVisibleToolbar');
         // $this->objChkVisibleToolbar->setOnchange("setDirtyRecord()");
         // $this->objChkVisibleToolbar->setOnkeyup("setDirtyRecord()");        
-        $this->objChkVisibleToolbar->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visibletoolbar', 'Is visible in toolbar<dr-icon-info>The toolbar is on top of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
+        $this->objChkVisibleToolbar->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_visibletoolbar', 'Is visible in toolbar<dr-icon-info>The toolbar is on top of the screen.<br><br>It might take 1 hour for this change to take effect.</dr-icon-info>'));
         $this->getFormGenerator()->add($this->objChkVisibleToolbar);          
-        // $this->getFormGenerator()->addQuick($this->objChkVisibleToolbar, '', '', transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_visibletoolbar_iconinfo', ''));
+        // $this->getFormGenerator()->addQuick($this->objChkVisibleToolbar, '', '', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_visibletoolbar_iconinfo', ''));
 
             //open new tab
         $this->objChkNewTab = new DRInputCheckbox();
         $this->objChkNewTab->setNameAndID('chkOpenNewTab');
         // $this->objChkNewTab->setOnchange("setDirtyRecord()");
         // $this->objChkNewTab->setOnkeyup("setDirtyRecord()");        
-        $this->objChkNewTab->setLabel(transm(CMS_CURRENTMODULE, 'form_cmsmenu_field_opennewtab', 'Open link in new browser tab'));
+        $this->objChkNewTab->setLabel(transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_field_opennewtab', 'Open link in new browser tab'));
         $this->getFormGenerator()->add($this->objChkNewTab);  
 
     }
@@ -379,14 +379,14 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
         $this->objPermissions->clear(true);
         $this->objPermissions->distinct(TSysCMSPermissions::FIELD_RESOURCE);
         $this->objPermissions->loadFromDB();
-        $this->objEdtPermissionResource->addItem('', transm(CMS_CURRENTMODULE, 'form_cmsmenu_permissionresource_empty', '[EVERYONE]'));
+        $this->objEdtPermissionResource->addItem('', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_permissionresource_empty', '[EVERYONE]'));
         while($this->objPermissions->next())            
             $this->objEdtPermissionResource->addItem($this->objPermissions->getResource(), $this->objPermissions->getResource());
 
         //load modules
         $this->objModules->clear(true);
         $this->objModules->loadFromDB();
-        // $this->objEdtModule->addItem('', transm(CMS_CURRENTMODULE, 'form_cmsmenu_module_empty', '[NO MODULE]'));
+        // $this->objEdtModule->addItem('', transm(APP_ADMIN_CURRENTMODULE, 'form_cmsmenu_module_empty', '[NO MODULE]'));
         while($this->objModules->next())            
             $this->objEdtModule->addItem($this->objModules->getNameInternal(), $this->objModules->getNameDefault());
 
@@ -472,7 +472,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
     public function getTemplatePath()
     {
         return APP_PATH_CMS_TEMPLATES.DIRECTORY_SEPARATOR.'tpl_modeldetailsaveajax.php';
-        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.CMS_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_detailsave_products.php';
+        // return APP_PATH_MODULES.DIRECTORY_SEPARATOR.APP_ADMIN_CURRENTMODULE.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'tpl_detailsave_products.php';
     }
 
     /**
@@ -508,12 +508,12 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_cmsmenu_new_title', 'Create new menu item');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_cmsmenu_new_title', 'Create new menu item');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_cmsmenu_edit_title', 'Edit menu item');   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_cmsmenu_edit_title', 'Edit menu item');   
     }
 
 
@@ -535,7 +535,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -545,7 +545,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -556,7 +556,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -567,7 +567,7 @@ class detailsave_cmsmenu extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_CMSMENU, TModuleAbstract::PERM_OP_DELETE);
     }
 
 

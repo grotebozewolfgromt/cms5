@@ -25,7 +25,7 @@ class list_languages extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
 
@@ -47,11 +47,11 @@ class list_languages extends TCRUDListController
       
         //===show what?
         $arrTableColumnsShow = array(
-            array('', TSysLanguages::FIELD_LANGUAGE, transm(CMS_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
-            array('', TSysLanguages::FIELD_LOCALE, transm(CMS_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_LOCALE, 'Locale')),
-            array('', TSysLanguages::FIELD_ISCMSLANGUAGE, transm(CMS_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISCMSLANGUAGE, 'CMS lang')),
-            array('', TSysLanguages::FIELD_ISFAVORITE, transm(CMS_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISFAVORITE, 'Favorite')),
-            array('', TSysLanguages::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISDEFAULT, 'Default'))        
+            array('', TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
+            array('', TSysLanguages::FIELD_LOCALE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_LOCALE, 'Locale')),
+            array('', TSysLanguages::FIELD_ISCMSLANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISCMSLANGUAGE, 'CMS lang')),
+            array('', TSysLanguages::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISFAVORITE, 'Favorite')),
+            array('', TSysLanguages::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISDEFAULT, 'Default'))        
                 );
         
     
@@ -131,8 +131,8 @@ class list_languages extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_languages', 'All system languages');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_languages', 'All system languages');
     }
 
     /**

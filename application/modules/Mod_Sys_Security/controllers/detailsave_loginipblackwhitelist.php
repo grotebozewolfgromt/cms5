@@ -270,12 +270,12 @@ class detailsave_loginipblackwhitelist extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'loginipblackwhitelist_pagetitle_detailsave_record_new', 'Create new blacklist/whitelist rule');
+            return transm(APP_ADMIN_CURRENTMODULE, 'loginipblackwhitelist_pagetitle_detailsave_record_new', 'Create new blacklist/whitelist rule');
         else
-            return transm(CMS_CURRENTMODULE, 'loginipblackwhitelist_pagetitle_detailsave_record_edit', 'Edit rule: [ipaddress]', 'ipaddress', $this->getModel()->getIPAddress());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'loginipblackwhitelist_pagetitle_detailsave_record_edit', 'Edit rule: [ipaddress]', 'ipaddress', $this->getModel()->getIPAddress());           
     }
 
     /**

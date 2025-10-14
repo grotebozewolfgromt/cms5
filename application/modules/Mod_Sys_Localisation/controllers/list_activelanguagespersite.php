@@ -28,7 +28,7 @@ class list_activelanguagespersite extends TCRUDListController
     public function execute()
     {
         // global $objCurrentModule;
-        //global CMS_CURRENTMODULE;        
+        //global APP_ADMIN_CURRENTMODULE;        
         // global $arrTabsheets;        
 
  
@@ -54,9 +54,9 @@ class list_activelanguagespersite extends TCRUDListController
                             
         //===show what?
         $arrTableColumnsShow = array(
-            array($objTempSites::getTable(), TSysWebsites::FIELD_WEBSITENAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysWebsites::FIELD_WEBSITENAME, 'website')),
-            array($objTempLang::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'language')),
-            array($objTempLang::getTable(), TSysLanguages::FIELD_LOCALE, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysLanguages::FIELD_LOCALE, 'locale')),
+            array($objTempSites::getTable(), TSysWebsites::FIELD_WEBSITENAME, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysWebsites::FIELD_WEBSITENAME, 'website')),
+            array($objTempLang::getTable(), TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'language')),
+            array($objTempLang::getTable(), TSysLanguages::FIELD_LOCALE, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysLanguages::FIELD_LOCALE, 'locale')),
                 );
         
     
@@ -137,8 +137,8 @@ class list_activelanguagespersite extends TCRUDListController
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_languagespersite', 'Languages on sites');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, TRANS_MODULENAME_TITLE.'_languagespersite', 'Languages on sites');
     }
 
     /**

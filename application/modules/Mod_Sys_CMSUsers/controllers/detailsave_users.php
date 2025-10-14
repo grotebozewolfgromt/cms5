@@ -785,12 +785,12 @@ class detailsave_users extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_user_new', 'Create new user');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_user_new', 'Create new user');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_user_edit', 'Edit user: [username]', 'username', $this->getModel()->getUsername());   
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_user_edit', 'Edit user: [username]', 'username', $this->getModel()->getUsername());   
     }
 
     /**

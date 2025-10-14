@@ -95,7 +95,7 @@ abstract class TCRUDListControllerAJAX
      */
     public function  __construct()
     {               
-        $this->sModule = CMS_CURRENTMODULE;
+        $this->sModule = APP_ADMIN_CURRENTMODULE;
         $this->objModel = $this->getNewModel();
 
         $this->objPaginator = new TPaginator(TPaginator::STYLE_NUMBEREDPAGES);   
@@ -110,7 +110,7 @@ abstract class TCRUDListControllerAJAX
         includeJSDOMEnd(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-drag-drop'.DIRECTORY_SEPARATOR.'dr-drag-drop.js');
 
         //check permissions
-        if (!auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_VIEW))
+        if (!auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_VIEW))
         {
             showAccessDenied(transcms('message_noaccess_viewrecords', 'you don\'t have permission to view these records'));
             die();
@@ -183,7 +183,7 @@ abstract class TCRUDListControllerAJAX
         $arrVars['arrTableColumnsShow'] = $this->arrTableColumnsShow;
         $arrVars['objModel'] = $this->objModel;
         $arrVars['sJSONTable'] = $this->renderJSONTable(false);
-        $arrVars['bAllowedCreateNew'] = auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_CREATE);
+        $arrVars['bAllowedCreateNew'] = auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_CREATE);
 
         
         //json variables template
@@ -422,7 +422,7 @@ abstract class TCRUDListControllerAJAX
         //value of te ID field (because getID() doesn't always exist, it can be getRandomID() or getUniqueID())
         $iIDValue = 0; //default
         $bEditAllowed = false;
-        $bEditAllowed = auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_CHANGE);
+        $bEditAllowed = auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_CHANGE);
         $sURLDetailPage = $this->getDetailPageURL();
         $bIsTreeStructure = $objModel instanceof TTreeModel;
 
@@ -434,7 +434,7 @@ abstract class TCRUDListControllerAJAX
             $arrQBSortItem = $arrQBSort[0]; ///we only have to know if the first column in QBSort is iOrder (more columns doesn't matter, because if it isn't the first sort column, you don't see anything of moving up or down )
             if ($arrQBSortItem[TSysModel::QB_SORTINDEX_FIELD] == TSysModel::FIELD_POSITION) //is actually sorted on iOrder?
             {
-                if (auth(CMS_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_CHANGEPOSITION)) //if also allowed by authentication, then it is allowed to show
+                if (auth(APP_ADMIN_CURRENTMODULE, $this->getAuthorisationCategory(), AUTH_OPERATION_CHANGEPOSITION)) //if also allowed by authentication, then it is allowed to show
                 {
                     $bAllowedChangePosition = true;
                 }

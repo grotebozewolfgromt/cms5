@@ -23,7 +23,7 @@ class DOImage extends DesignObject
 
         this.classList.add("placeholderdoimage");
 
-        const sMod = "<?php echo CMS_CURRENTMODULE; ?>";
+        const sMod = "<?php echo APP_ADMIN_CURRENTMODULE; ?>";
         const sModSubDir = "<?php echo $sUploadSubDirectoryName; ?>";
 
 debugger;

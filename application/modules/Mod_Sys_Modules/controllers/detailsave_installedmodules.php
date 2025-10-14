@@ -210,12 +210,12 @@ class detailsave_installedmodules extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_installedmodules_new', 'Create new module');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_installedmodules_new', 'Create new module');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_installedmodules_edit', 'Edit module: [modulename]', 'modulename', $this->getModel()->getNameInternal());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_installedmodules_edit', 'Edit module: [modulename]', 'modulename', $this->getModel()->getNameInternal());           
     }
 
     /**

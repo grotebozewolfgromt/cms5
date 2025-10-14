@@ -133,36 +133,36 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         global $objAuthenticationSystem;
 
         // $sFormSectionType = '';
-        // $sFormSectionType = transm(CMS_CURRENTMODULE, 'form_section_general', 'General');
+        // $sFormSectionType = transm(APP_ADMIN_CURRENTMODULE, 'form_section_general', 'General');
         $sFormSectionBusiness = '';
-        $sFormSectionBusiness = transm(CMS_CURRENTMODULE, 'form_section_business', 'Business');
+        $sFormSectionBusiness = transm(APP_ADMIN_CURRENTMODULE, 'form_section_business', 'Business');
         $sFormSectionId = '';
-        $sFormSectionId = transm(CMS_CURRENTMODULE, 'form_section_identification', 'Indentification');
+        $sFormSectionId = transm(APP_ADMIN_CURRENTMODULE, 'form_section_identification', 'Indentification');
         $sFormSectionPersonal = '';
-        $sFormSectionPersonal = transm(CMS_CURRENTMODULE, 'form_section_personal', 'Personal');
+        $sFormSectionPersonal = transm(APP_ADMIN_CURRENTMODULE, 'form_section_personal', 'Personal');
         $sFormSectionBilling = '';
-        $sFormSectionBilling = transm(CMS_CURRENTMODULE, 'form_section_billing', 'Address');
+        $sFormSectionBilling = transm(APP_ADMIN_CURRENTMODULE, 'form_section_billing', 'Address');
         $sFormSectionDelivery = '';
-        $sFormSectionDelivery = transm(CMS_CURRENTMODULE, 'form_section_delivery', 'Delivery');
+        $sFormSectionDelivery = transm(APP_ADMIN_CURRENTMODULE, 'form_section_delivery', 'Delivery');
         $sFormSectionMisc = '';
-        $sFormSectionMisc = transm(CMS_CURRENTMODULE, 'form_section_misc', 'Miscellaneous');
+        $sFormSectionMisc = transm(APP_ADMIN_CURRENTMODULE, 'form_section_misc', 'Miscellaneous');
 
-        $this->sTextFieldEncryptedNo = transm(CMS_CURRENTMODULE, 'form_iconinfo_encrypted_no', '<br><br>Encrypted: no<br>Searchable: yes<br>Exposes data in data breach: yes');
-        $this->sTextFieldEncryptedYes =  transm(CMS_CURRENTMODULE,  'form_iconinfo_encrypted_yes', '<br><br>Encrypted: yes<br>Searchable: no<br>Exposes data in data breach: no');
+        $this->sTextFieldEncryptedNo = transm(APP_ADMIN_CURRENTMODULE, 'form_iconinfo_encrypted_no', '<br><br>Encrypted: no<br>Searchable: yes<br>Exposes data in data breach: yes');
+        $this->sTextFieldEncryptedYes =  transm(APP_ADMIN_CURRENTMODULE,  'form_iconinfo_encrypted_yes', '<br><br>Encrypted: yes<br>Searchable: no<br>Exposes data in data breach: no');
 
             //record id
         $this->objEdtRecordId = new DRInputText();
         $this->objEdtRecordId->setNameAndID('edtRecordId');
         $this->objEdtRecordId->setClass('quarterwidthtag');    
         $this->objEdtRecordId->setReadOnly(true);             
-        $this->getFormGenerator()->addQuick($this->objEdtRecordId, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_recordid', 'Contact id'),  transm(CMS_CURRENTMODULE, 'form_field_recordid_iconinfo', 'This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.[encrypt]','application', APP_CMS_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtRecordId, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_recordid', 'Contact id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_recordid_iconinfo', 'This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.[encrypt]','application', APP_CMS_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
             //Nice id
         $this->objEdtNiceId = new DRInputText();
         $this->objEdtNiceId->setNameAndID('edtNiceId');
         $this->objEdtNiceId->setClass('quarterwidthtag');    
         $this->objEdtNiceId->setReadOnly(true);               
-        $this->getFormGenerator()->addQuick($this->objEdtNiceId, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_niceid', 'Nice Id'),  transm(CMS_CURRENTMODULE, 'form_field_niceid_iconinfo', 'This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.[encrypt]','application', APP_CMS_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtNiceId, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_niceid', 'Nice Id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_niceid_iconinfo', 'This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.[encrypt]','application', APP_CMS_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
 
             //custom identifier
@@ -172,8 +172,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCustomIdentifier->setMaxLength(50);                
         $objValidator = new TMaximumLength(50);
         $this->objEdtCustomIdentifier->addValidator($objValidator);    
-        // $this->getFormGenerator()->add($this->objEdtCustomIdentifier, '', transm(CMS_CURRENTMODULE, 'form_field_customid', 'Custom Id (to identify this contact just to you, so you can search for it)'));
-        $this->getFormGenerator()->addQuick($this->objEdtCustomIdentifier, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_customid', 'Custom Id'),  transm(CMS_CURRENTMODULE, 'form_field_customid_iconinfo', 'To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objEdtCustomIdentifier, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_customid', 'Custom Id (to identify this contact just to you, so you can search for it)'));
+        $this->getFormGenerator()->addQuick($this->objEdtCustomIdentifier, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_customid', 'Custom Id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_customid_iconinfo', 'To identify this contact just to you, so you can search for it.<br>This can be your own a in-house customer id, account id, connection id etc.<br>It needs to be something that makes sense to you.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
 
             //search keywords
@@ -183,8 +183,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objTagKeywords->setMaxLength(255);                
         $objValidator = new TMaximumLength(255);
         $this->objTagKeywords->addValidator($objValidator);    
-        // $this->getFormGenerator()->add($this->objTagKeywords, '', transm(CMS_CURRENTMODULE, 'form_field_searchkeywords', 'Search keywords'));
-        $this->getFormGenerator()->addQuick($this->objTagKeywords, $sFormSectionId, transm(CMS_CURRENTMODULE, 'form_field_searchkeywords', 'Search keywords'),  transm(CMS_CURRENTMODULE, 'form_field_searchkeywords_iconinfo', 'Enter search keywords to find this contact.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objTagKeywords, '', transm(APP_ADMIN_CURRENTMODULE, 'form_field_searchkeywords', 'Search keywords'));
+        $this->getFormGenerator()->addQuick($this->objTagKeywords, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_searchkeywords', 'Search keywords'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_searchkeywords_iconinfo', 'Enter search keywords to find this contact.<br>To help you find your contacts, you can use search keywords to identify this contact only to you.<br>Some keywords can be generated automatically when saving.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
 
             //company name
@@ -196,8 +196,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtCompanyName->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtCompanyName->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtCompanyName, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_companyname', 'Company name', transm(CMS_CURRENTMODULE, 'form_field_companyname_iconinfo', '[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)))); 
-        $this->getFormGenerator()->addQuick($this->objEdtCompanyName, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_companyname', 'Company name'),  transm(CMS_CURRENTMODULE, 'form_field_companyname_iconinfo', 'Name of the company.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objEdtCompanyName, $sFormSectionBusiness, transm(APP_ADMIN_CURRENTMODULE, 'form_field_companyname', 'Company name', transm(APP_ADMIN_CURRENTMODULE, 'form_field_companyname_iconinfo', '[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)))); 
+        $this->getFormGenerator()->addQuick($this->objEdtCompanyName, $sFormSectionBusiness, transm(APP_ADMIN_CURRENTMODULE, 'form_field_companyname', 'Company name'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_companyname_iconinfo', 'Name of the company.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
     
             //chamber of commerce number
@@ -209,14 +209,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtChamberCommerce->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtChamberCommerce->addValidator($objValidator);     
-        $this->getFormGenerator()->addQuick($this->objEdtChamberCommerce, $sFormSectionBusiness, transm(CMS_CURRENTMODULE, 'form_field_chamberofcommerceno', 'Chamber of commerce #'),  transm(CMS_CURRENTMODULE, 'form_field_chamberofcommerceno_iconinfo', 'Chamber of commerce registration number.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
+        $this->getFormGenerator()->addQuick($this->objEdtChamberCommerce, $sFormSectionBusiness, transm(APP_ADMIN_CURRENTMODULE, 'form_field_chamberofcommerceno', 'Chamber of commerce #'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_chamberofcommerceno_iconinfo', 'Chamber of commerce registration number.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
                 
 
             //salutations
         $this->objCbxSalutations = new DRInputCombobox();
         $this->objCbxSalutations->setNameAndID('cbxSalutations');
         $this->objCbxSalutations->setClass('quarterwidthtag'); 
-        $this->getFormGenerator()->addQuick($this->objCbxSalutations, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_salutations', 'Salutation'),  transm(CMS_CURRENTMODULE, 'form_field_salutation_iconinfo', 'How do you whish to address this contact? Mr. Mrs. Ms.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objCbxSalutations, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_salutations', 'Salutation'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_salutation_iconinfo', 'How do you whish to address this contact? Mr. Mrs. Ms.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
 
             //first name
@@ -230,8 +230,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtFirstNameInitials->addValidator($objValidator);    
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtFirstNameInitials->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials'),  transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials_iconinfo', 'First name or initials.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false))); 
-        $this->getFormGenerator()->addQuick($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials'),  transm(CMS_CURRENTMODULE, 'form_field_firstnameinitials_iconinfo', 'First name or initials.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
+        // $this->getFormGenerator()->add($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_firstnameinitials_iconinfo', 'First name or initials.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false))); 
+        $this->getFormGenerator()->addQuick($this->objEdtFirstNameInitials, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_firstnameinitials', 'Initials'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_firstnameinitials_iconinfo', 'First name or initials.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
 
             //last name prefix
         // $this->objEdtLastNamePrefix = new DRInputText();
@@ -242,13 +242,13 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtLastNamePrefix->addValidator($objValidator);          
         // $this->objEdtLastNamePrefix->setOnchange("validateField(this, true)");
         // $this->objEdtLastNamePrefix->setOnkeyup("setDirtyRecord()");                            
-        // // $this->getFormGenerator()->add($this->objEdtLastNamePrefix, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix (van de, von der etc)')); 
-        // $this->getFormGenerator()->addQuick($this->objEdtLastNamePrefix, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix'),  transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix_iconinfo', 'Like: van de, von der etc, von.<br>This data not encrypted, thus searchable.'));
+        // // $this->getFormGenerator()->add($this->objEdtLastNamePrefix, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix (van de, von der etc)')); 
+        // $this->getFormGenerator()->addQuick($this->objEdtLastNamePrefix, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastnameprefix_iconinfo', 'Like: van de, von der etc, von.<br>This data not encrypted, thus searchable.'));
             //last name prefix
         $this->objCbxLastNamePrefix = new DRInputCombobox();
         $this->objCbxLastNamePrefix->setNameAndID('cbxLastNamePrefix');
         $this->objCbxLastNamePrefix->setClass('quarterwidthtag'); 
-        $this->getFormGenerator()->addQuick($this->objCbxLastNamePrefix, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix'),  transm(CMS_CURRENTMODULE, 'form_field_lastnameprefix_iconinfo', 'Like: van de, van, von der etc, von.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objCbxLastNamePrefix, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastnameprefix', 'Last name prefix'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastnameprefix_iconinfo', 'Like: van de, van, von der etc, von.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
     
 
             //last name
@@ -262,8 +262,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtLastName->addValidator($objValidator);           
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtLastName->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtLastName, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastname', 'Last name (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtLastName, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_lastname', 'Last name'),  transm(CMS_CURRENTMODULE, 'form_field_lastname_iconinfo', 'Last name or surname.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME)));
+        // $this->getFormGenerator()->add($this->objEdtLastName, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastname', 'Last name (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtLastName, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastname', 'Last name'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_lastname_iconinfo', 'Last name or surname.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME)));
 
 
             //email
@@ -277,13 +277,13 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtEmailAddress->addValidator($objValidator); 
         $objValidator = new TLowercase();
         $this->objEdtEmailAddress->addValidator($objValidator);         
-        $this->getFormGenerator()->addQuick($this->objEdtEmailAddress, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_emailaddress', 'Email address'),  transm(CMS_CURRENTMODULE, 'form_field_emailaddress_iconinfo', 'Personal email address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)));
+        $this->getFormGenerator()->addQuick($this->objEdtEmailAddress, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_emailaddress', 'Email address'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_emailaddress_iconinfo', 'Personal email address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)));
 
             //country code phone1
         $this->objCbxCountryCodePhone1 = new DRInputCombobox();
         // $this->objCbxCountryCodePhone1->setClass('quarterwidthtag');
         $this->objCbxCountryCodePhone1->setNameAndID('selCountryCodePhone1');
-        // $this->getFormGenerator()->add($this->objCbxCountryCodePhone1, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone1', 'Country code'));
+        // $this->getFormGenerator()->add($this->objCbxCountryCodePhone1, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_countrycodephone1', 'Country code'));
 
             //phone1
         $this->objEdtPhone1 = new DRInputText();
@@ -295,7 +295,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TCharacterWhitelist(WHITELIST_NUMERIC.' -');
         $this->objEdtPhone1->addValidator($objValidator);                 
         $this->objEdtPhone1->setOnchange("validateField(this, true, '".$this->objCbxCountryCodePhone1->getId()."')");
-        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1), $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber1', 'Phone number 1 (including area code, starting with 0)'), true, '', false,  transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber1_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
 
 
             //phone 1 note
@@ -307,14 +307,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone1Note->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -');
         $this->objEdtPhone1Note->addValidator($objValidator);                 
-        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1, $this->objEdtPhone1Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber1', 'Phone 1: Country code, phone number and notes'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber1_infoicon', 'Country code, phone number and notes.<br>Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted]', 'encrypted', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)));
+        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone1, $this->objEdtPhone1, $this->objEdtPhone1Note), $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber1', 'Phone 1: Country code, phone number and notes'), true, '', false,  transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber1_infoicon', 'Country code, phone number and notes.<br>Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted]', 'encrypted', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)));
 
 
             //country code phone2
         $this->objCbxCountryCodePhone2 = new DRInputCombobox();
         // $this->objCbxCountryCodePhone2->setClass('quarterwidthtag');
         $this->objCbxCountryCodePhone2->setNameAndID('selCountryCodePhone2');
-        // $this->getFormGenerator()->add($this->objCbxCountryCodePhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_countrycodephone2', 'Country code'));
+        // $this->getFormGenerator()->add($this->objCbxCountryCodePhone2, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_countrycodephone2', 'Country code'));
 
             //phone2
         $this->objEdtPhone2 = new DRInputText();
@@ -326,9 +326,9 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TCharacterWhitelist(WHITELIST_NUMERIC.' -');
         $this->objEdtPhone2->addValidator($objValidator);         
         // $this->objEdtPhone2->setOnchange("validateField(this, true)");
-        // $this->getFormGenerator()->add($this->objEdtPhone2, $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (encrypted, not searchable)')); 
+        // $this->getFormGenerator()->add($this->objEdtPhone2, $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (encrypted, not searchable)')); 
         $this->objEdtPhone2->setOnchange("validateField(this, true, '".$this->objCbxCountryCodePhone2->getId()."')");
-        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
+        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2), $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2_infoicon', '<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Encrypted, not searchable</li></ul>'));
     
             //phone 2 note
         $this->objEdtPhone2Note = new DRInputText();
@@ -339,14 +339,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtPhone2Note->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -');
         $this->objEdtPhone2Note->addValidator($objValidator);                 
-        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2, $this->objEdtPhone2Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', 'Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>'));
-        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2, $this->objEdtPhone2Note), $sFormSectionPersonal, transm(CMS_CURRENTMODULE, 'form_field_phonenumber2', 'Phone 2: Country code, phone number and notes'), true, '', false,  transm(CMS_CURRENTMODULE, 'form_field_phonenumber2_infoicon', 'Country code, phone number and notes.<br>Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted]', 'encrypted', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)));
+        // $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2, $this->objEdtPhone2Note), $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2', 'Phone number 2 (including area code, starting with 0)'), true, '', false,  transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2_infoicon', 'Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Encrypted, not searchable</li><li>3rd field is for notes, like:<ul><li>only after 9pm</li><li>= phonenumber brother</li><li>Only send text messages to this number</li></ul></li></ul>'));
+        $this->getFormGenerator()->addArray(array($this->objCbxCountryCodePhone2, $this->objEdtPhone2, $this->objEdtPhone2Note), $sFormSectionPersonal, transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2', 'Phone 2: Country code, phone number and notes'), true, '', false,  transm(APP_ADMIN_CURRENTMODULE, 'form_field_phonenumber2_infoicon', 'Country code, phone number and notes.<br>Rules:<ul><li>Don\'t include country code in phone number, select country instead</li><li>Include area code, starting with 0</li><li>Separate area code and subscriber number with a dash (-)</li><li>Notes could be:<ul><li>only after 9pm</li><li>phone number brother</li><li>Only send text messages to this number</li></ul></li></ul>[encrypted]', 'encrypted', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER)));
 
             //billing: country
         $this->objCbxBillingCountryID = new DRInputCombobox();
         $this->objCbxBillingCountryID->setNameAndID('optBillingCountryID');
-        // $this->getFormGenerator()->add($this->objCbxBillingCountryID, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcountry', 'Country'));
-        $this->getFormGenerator()->addQuick($this->objCbxBillingCountryID, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcountry', 'Country'),  transm(CMS_CURRENTMODULE, 'form_field_billingcountry_iconinfo', 'Country or residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objCbxBillingCountryID, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingcountry', 'Country'));
+        $this->getFormGenerator()->addQuick($this->objCbxBillingCountryID, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingcountry', 'Country'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingcountry_iconinfo', 'Country or residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
             //billing: address line 2: street
         $this->objEdtBillingAddressStreet = new DRInputText();
@@ -359,8 +359,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingAddressStreet->addValidator($objValidator);      
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingAddressStreet->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet', 'Street + house number'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressstreet_iconinfo', 'Street and house number.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
+        // $this->getFormGenerator()->add($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressStreet, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingaddressstreet', 'Street + house number'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingaddressstreet_iconinfo', 'Street and house number.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
 
 
             //billing: address line 1: misc
@@ -374,8 +374,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingAddressMisc->addValidator($objValidator);                     
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingAddressMisc->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc', 'Extra address info'),  transm(CMS_CURRENTMODULE, 'form_field_billingaddressmisc_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
+        // $this->getFormGenerator()->add($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_BILLINGADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingAddressMisc, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingaddressmisc', 'Extra address info'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingaddressmisc_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
 
             
             //billing: postal code or zip
@@ -390,7 +390,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
         $this->objEdtBillingPostalCode->addValidator($objValidator); 
         $this->objEdtBillingPostalCode->setOnchange("validateField(this, true, '".$this->objCbxBillingCountryID->getId()."')");
-        $this->getFormGenerator()->addQuick($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip'),  transm(CMS_CURRENTMODULE, 'form_field_billingpostalcodezip_iconinfo', 'Postal code or zip code.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)));
+        $this->getFormGenerator()->addQuick($this->objEdtBillingPostalCode, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingpostalcodezip', 'Postal code/zip'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingpostalcodezip_iconinfo', 'Postal code or zip code.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)));
 
     
             //billing: city
@@ -404,7 +404,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->objEdtBillingCity->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingCity->addValidator($objValidator);     
-        $this->getFormGenerator()->addQuick($this->objEdtBillingCity, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingcity', 'City'),  transm(CMS_CURRENTMODULE, 'form_field_billingcity_iconinfo', 'City.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));        
+        $this->getFormGenerator()->addQuick($this->objEdtBillingCity, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingcity', 'City'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingcity_iconinfo', 'City.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));        
 
             //billing: state/region
         $this->objEdtBillingStateRegion = new DRInputText();
@@ -417,8 +417,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingStateRegion->addValidator($objValidator);           
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingStateRegion->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingstateregion', 'State/region/provice'),  transm(CMS_CURRENTMODULE, 'form_field_billingstateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false))); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingstateregion', 'State/region/provice'),  transm(CMS_CURRENTMODULE, 'form_field_billingstateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));        
+        // $this->getFormGenerator()->add($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion', 'State/region/provice'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false))); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion', 'State/region/provice'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));        
     
 
             //billing: vat no
@@ -430,8 +430,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingVatNumber->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingVatNumber->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingvatno', 'VAT number (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingvatno', 'VAT number'),  transm(CMS_CURRENTMODULE, 'form_field_billingvatno_iconinfo', 'VAT number or (sales) tax id.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
+        // $this->getFormGenerator()->add($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno', 'VAT number (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno', 'VAT number'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno_iconinfo', 'VAT number or (sales) tax id.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
 
             //billing: bank account no
         $this->objEdtBillingBankAccountNo = new DRInputText();
@@ -442,7 +442,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingBankAccountNo->addValidator($objValidator);    
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtBillingBankAccountNo->addValidator($objValidator);                
-        $this->getFormGenerator()->addQuick($this->objEdtBillingBankAccountNo, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbankaccountno', 'IBAN'),  transm(CMS_CURRENTMODULE, 'form_field_billingbankaccountno_iconinfo', 'International Bank Account Number (IBAN) or account id.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
+        $this->getFormGenerator()->addQuick($this->objEdtBillingBankAccountNo, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingbankaccountno', 'IBAN'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingbankaccountno_iconinfo', 'International Bank Account Number (IBAN) or account id.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
             
             //billing: BIC/SWIFT
         $this->objEdtBillingBIC = new DRInputText();
@@ -453,8 +453,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingBIC->addValidator($objValidator);    
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' -().');
         $this->objEdtBillingBIC->addValidator($objValidator);                
-        // $this->getFormGenerator()->addQuick($this->objEdtBillingBIC, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbic', 'BIC/SWIFT'),  transm(CMS_CURRENTMODULE, 'form_field_billingbic_iconinfo', 'BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt]', $this->getTextEncryptedIconInfo(false)));
-        $this->getFormGenerator()->addQuick($this->objEdtBillingBIC, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingbic', 'BIC/SWIFT'),  transm(CMS_CURRENTMODULE, 'form_field_billingbic_iconinfo', 'BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->addQuick($this->objEdtBillingBIC, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingbic', 'BIC/SWIFT'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingbic_iconinfo', 'BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt]', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtBillingBIC, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingbic', 'BIC/SWIFT'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingbic_iconinfo', 'BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
             
             //billing: email
         $this->objEdtBillingEmailAddress = new DRInputText();
@@ -463,16 +463,16 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingEmailAddress->setMaxLength(100);    
         $objValidator = new TMaximumLength(100);
         $this->objEdtBillingEmailAddress->addValidator($objValidator);                      
-        // $this->getFormGenerator()->add($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address'),  transm(CMS_CURRENTMODULE, 'form_field_billingemailaddress_iconinfo', 'Email address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)));
+        // $this->getFormGenerator()->add($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress_iconinfo', 'Email address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)));
                         
 
             //delivery: country
         // $this->objCbxDeliveryCountryID = new Select();
         $this->objCbxDeliveryCountryID = new DRInputCombobox();
         $this->objCbxDeliveryCountryID->setNameAndID('optDeliveryCountryID');
-        // $this->getFormGenerator()->add($this->objCbxDeliveryCountryID, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycountry', 'Country'),  transm(CMS_CURRENTMODULE, 'form_field_deliverycountry_iconinfo', 'Country or residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
-        $this->getFormGenerator()->addQuick($this->objCbxDeliveryCountryID, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycountry', 'Country'),  transm(CMS_CURRENTMODULE, 'form_field_deliverycountry_iconinfo', 'Country or residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objCbxDeliveryCountryID, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycountry', 'Country'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycountry_iconinfo', 'Country or residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objCbxDeliveryCountryID, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycountry', 'Country'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycountry_iconinfo', 'Country or residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
            
 
             //delivery: address line 2
@@ -486,8 +486,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryAddressStreet->addValidator($objValidator);  
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtDeliveryAddressStreet->addValidator($objValidator);                 
-        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET_iconinfo', 'Street name and house number if it deviates from the billing address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
+        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressStreet, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET', 'Street + house number'),  transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSSTREET_iconinfo', 'Street name and house number if it deviates from the billing address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
 
 
             //delivery: address line 1
@@ -501,8 +501,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryAddressMisc->addValidator($objValidator);
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtDeliveryAddressStreet->addValidator($objValidator);                      
-        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Extra address info'),  transm(CMS_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
+        // $this->getFormGenerator()->add($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Appt. building/ company dept. etc (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryAddressMisc, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC', 'Extra address info'),  transm(APP_ADMIN_CURRENTMODULE, 'form_FIELD_DELIVERYADDRESSMISC_iconinfo', 'Apartment building, company dept, floor, 2nd red door on the left etc.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS)));
 
             
             //delivery: postal code or zip
@@ -517,7 +517,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.' ');
         $this->objEdtDeliveryPostalCode->addValidator($objValidator);      
         $this->objEdtDeliveryPostalCode->setOnchange("validateField(this, true, '".$this->objCbxDeliveryCountryID->getId()."')");
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryPostalCode, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip'),  transm(CMS_CURRENTMODULE, 'form_field_deliverypostalcodezip_iconinfo', 'Postal code or Zip code.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)));
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryPostalCode, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverypostalcodezip', 'Postal code/zip'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverypostalcodezip_iconinfo', 'Postal code or Zip code.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP)));
     
             //delivery: city
         $this->objEdtDeliveryCity = new DRInputText();
@@ -530,8 +530,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryCity->addValidator($objValidator);       
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtDeliveryCity->addValidator($objValidator);                                
-        // $this->getFormGenerator()->add($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycity', 'City'),  transm(CMS_CURRENTMODULE, 'form_field_deliverycity_iconinfo', 'City of residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverycity', 'City'),  transm(CMS_CURRENTMODULE, 'form_field_deliverycity_iconinfo', 'City of residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycity', 'City'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycity_iconinfo', 'City of residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryCity, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycity', 'City'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverycity_iconinfo', 'City of residence.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
             //delivery: state/region
         $this->objEdtDeliveryStateRegion = new DRInputText();
@@ -544,38 +544,38 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtDeliveryStateRegion->addValidator($objValidator); 
         $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
         $this->objEdtDeliveryStateRegion->addValidator($objValidator);         
-        $this->getFormGenerator()->addQuick($this->objEdtDeliveryStateRegion, $sFormSectionDelivery, transm(CMS_CURRENTMODULE, 'form_field_deliverystateregion', 'State/region/province'),  transm(CMS_CURRENTMODULE, 'form_field_deliverystateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtDeliveryStateRegion, $sFormSectionDelivery, transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverystateregion', 'State/region/province'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_deliverystateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
             //is client
         $this->objChkIsClient = new InputCheckbox();
         $this->objChkIsClient->setNameAndID('chkIsClient');
         // $this->objChkIsClient->setOnkeyup("setDirtyRecord()");          
-        $this->getFormGenerator()->add($this->objChkIsClient, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_isclient', 'is client'));   
+        $this->getFormGenerator()->add($this->objChkIsClient, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_isclient', 'is client'));   
             
             //is supplier
         $this->objChkIsSupplier = new InputCheckbox();
         $this->objChkIsSupplier->setNameAndID('chkIsSupplier');
         // $this->objChkIsSupplier->setOnkeyup("setDirtyRecord()");                  
-        $this->getFormGenerator()->add($this->objChkIsSupplier,  $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_issupplier', 'is supplier'));         
+        $this->getFormGenerator()->add($this->objChkIsSupplier,  $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_issupplier', 'is supplier'));         
     
 
             //on mailing list
         $this->objChkOnMailingList = new InputCheckbox();
         $this->objChkOnMailingList->setNameAndID('chkOnMailingList');
         // $this->objChkOnMailingList->setOnkeyup("setDirtyRecord()");                          
-        $this->getFormGenerator()->add($this->objChkOnMailingList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onmailinglist', 'on mailing list'));   
+        $this->getFormGenerator()->add($this->objChkOnMailingList, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_onmailinglist', 'on mailing list'));   
         
                 //on black list
         $this->objChkOnBlackList = new InputCheckbox();
         $this->objChkOnBlackList->setNameAndID('chkOnBlackList');
         // $this->objChkOnBlackList->setOnkeyup("setDirtyRecord()");                                  
-        $this->getFormGenerator()->add($this->objChkOnBlackList, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_onblacklist', 'on blacklist'));   
+        $this->getFormGenerator()->add($this->objChkOnBlackList, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_onblacklist', 'on blacklist'));   
     
                 //allowed purchase on credit
         $this->objChkAllowedPurchaseCredit = new InputCheckbox();
         $this->objChkAllowedPurchaseCredit->setNameAndID('chkAllowedPurchaseOnCredit');
         // $this->objChkAllowedPurchaseCredit->setOnkeyup("setDirtyRecord()");                                  
-        $this->getFormGenerator()->add($this->objChkAllowedPurchaseCredit, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_allowedpurchaseoncredit', 'allowed purchase on credit'));   
+        $this->getFormGenerator()->add($this->objChkAllowedPurchaseCredit, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_allowedpurchaseoncredit', 'allowed purchase on credit'));   
     
 
 
@@ -586,7 +586,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objDTFirstContact->setPHPDateFormat($objAuthenticationSystem->getUsers()->getDateFormatLong());
         $this->objDTFirstContact->setPHPTimeFormat($objAuthenticationSystem->getUsers()->getTimeFormatLong());
         $this->objDTFirstContact->setFirstDayOfWeek($objAuthenticationSystem->getUsers()->getWeekStartsOn()); //reads user preferences first day      
-        $this->getFormGenerator()->add($this->objDTFirstContact, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_first_contact', 'First contact')); 
+        $this->getFormGenerator()->add($this->objDTFirstContact, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_first_contact', 'First contact')); 
 
             //last contact
         $this->objDTLastContact = new DRInputDateTime();
@@ -595,7 +595,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objDTLastContact->setPHPDateFormat($objAuthenticationSystem->getUsers()->getDateFormatLong());
         $this->objDTLastContact->setPHPTimeFormat($objAuthenticationSystem->getUsers()->getTimeFormatLong());
         $this->objDTLastContact->setFirstDayOfWeek($objAuthenticationSystem->getUsers()->getWeekStartsOn()); //reads user preferences first day
-        $this->getFormGenerator()->add($this->objDTLastContact, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_last_contact', 'Last contact')); 
+        $this->getFormGenerator()->add($this->objDTLastContact, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_last_contact', 'Last contact')); 
 
            //notes
         $this->objTxtArNotes = new Textarea();
@@ -603,8 +603,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objTxtArNotes->setClass('fullwidthtag');     
         $objValidator = new TCharacterWhitelist(WHITELIST_SAFE);
         $this->objTxtArNotes->addValidator($objValidator);         
-        // $this->getFormGenerator()->add($this->objTxtArNotes, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_notes', 'Notes (only seen by you)'),  transm(CMS_CURRENTMODULE, 'form_field_notes_iconinfo', 'Extra notes regarding contact.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));     
-        $this->getFormGenerator()->addQuick($this->objTxtArNotes, $sFormSectionMisc, transm(CMS_CURRENTMODULE, 'form_field_notes', 'Notes (only seen by you)'),  transm(CMS_CURRENTMODULE, 'form_field_notes_iconinfo', 'Extra notes regarding contact.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        // $this->getFormGenerator()->add($this->objTxtArNotes, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_notes', 'Notes (only seen by you)'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_notes_iconinfo', 'Extra notes regarding contact.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));     
+        $this->getFormGenerator()->addQuick($this->objTxtArNotes, $sFormSectionMisc, transm(APP_ADMIN_CURRENTMODULE, 'form_field_notes', 'Notes (only seen by you)'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_notes_iconinfo', 'Extra notes regarding contact.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));
     }
 
     /**
@@ -927,12 +927,12 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_contact_new', 'Create new contact<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn\'t allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_contact_new', 'Create new contact<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn\'t allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_contact_edit', 'Edit contact: [contact]<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn\'t allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>', 'contact', $this->getModel()->getDisplayRecordShort());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_contact_edit', 'Edit contact: [contact]<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn\'t allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>', 'contact', $this->getModel()->getDisplayRecordShort());           
     }
 
     /**
@@ -963,7 +963,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthCreate()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_CREATE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_CREATE);
     }
 
     /**
@@ -973,7 +973,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthView()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_VIEW);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_VIEW);
     }
 
 
@@ -984,7 +984,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthChange()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_CHANGE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_CHANGE);
     }
 
 
@@ -995,7 +995,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
      */
     public function getAuthDelete()
     {
-        return auth(CMS_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_DELETE);
+        return auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Contacts::PERM_CAT_CONTACTS, TModuleAbstract::PERM_OP_DELETE);
     }    
 
 

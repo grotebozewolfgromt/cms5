@@ -350,11 +350,11 @@ class TCMSAuthenticationSystem extends TAuthenticationSystemAbstract
         $bAccess = false;
 
         //=== module access
-        ////global CMS_CURRENTMODULE;
+        ////global APP_ADMIN_CURRENTMODULE;
 
-        if (CMS_CURRENTMODULE != '') //the framework has non-module pages too (home, settings, loginform)
+        if (APP_ADMIN_CURRENTMODULE != '') //the framework has non-module pages too (home, settings, loginform)
         {
-            if (!auth(CMS_CURRENTMODULE, AUTH_CATEGORY_MODULEACCESS, AUTH_OPERATION_MODULEACCESS))
+            if (!auth(APP_ADMIN_CURRENTMODULE, AUTH_CATEGORY_MODULEACCESS, AUTH_OPERATION_MODULEACCESS))
             {
                 showAccessDenied(transcms('message_noacess_tomodule','you don\'t have access to this (part of) the module'));
                 die();

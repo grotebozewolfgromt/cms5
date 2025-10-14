@@ -50,7 +50,7 @@
         $objPlainText->setText($objPlainText->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objPlainText->setText($sFileContents);
-    $objForm->add($objPlainText, '', transm(CMS_CURRENTMODULE, 'list2ul_form_field_plaintext', 'Input: plain text (every item on a new line)'));
+    $objForm->add($objPlainText, '', transm(APP_ADMIN_CURRENTMODULE, 'list2ul_form_field_plaintext', 'Input: plain text (every item on a new line)'));
 
     //method: new line
     $objRdMethodNL = new InputRadio();
@@ -61,7 +61,7 @@
         $objRdMethodNL->setChecked($objRdMethodNL->getValueSubmitted() == 'newline');
     else
         $objRdMethodNL->setChecked(true);
-    $objForm->add($objRdMethodNL, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_method_newline', 'every line is a list item'));
+    $objForm->add($objRdMethodNL, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_method_newline', 'every line is a list item'));
 
     
     //method: bullet points
@@ -73,7 +73,7 @@
         $objRdMethodBullet->setChecked($objRdMethodBullet->getValueSubmitted() == 'bullet');
     else
         $objRdMethodBullet->setChecked(false);    
-    $objForm->add($objRdMethodBullet, '', transm(CMS_CURRENTMODULE, 'plaintext2html_form_field_method_bulletppints', 'every bullet point is a list item'));    
+    $objForm->add($objRdMethodBullet, '', transm(APP_ADMIN_CURRENTMODULE, 'plaintext2html_form_field_method_bulletppints', 'every bullet point is a list item'));    
 
     //bullet character
     $objBulletChar = new InputText();
@@ -85,13 +85,13 @@
         $objBulletChar->setValue($objBulletChar->getValueSubmitted(Form::METHOD_POST, FormInputAbstract::GETVALUESUBMITTED_RETURN_RAW));
     else
         $objBulletChar->setValue('•');
-    $objForm->add($objBulletChar, '', transm(CMS_CURRENTMODULE, 'list2ul_form_field_bulletcharacter', 'Bullet character that marks a new item'));
+    $objForm->add($objBulletChar, '', transm(APP_ADMIN_CURRENTMODULE, 'list2ul_form_field_bulletcharacter', 'Bullet character that marks a new item'));
     
     
     
     //submit
     $objSubmit = new InputSubmit();    
-    $objSubmit->setValue(transm(CMS_CURRENTMODULE, 'list2ul_form_button_convert', 'convert'));
+    $objSubmit->setValue(transm(APP_ADMIN_CURRENTMODULE, 'list2ul_form_button_convert', 'convert'));
     $objSubmit->setName('btnSubmit');
     $objForm->add($objSubmit, '');    
     
@@ -124,11 +124,11 @@
         $objHTML->setReadOnly(true); 
         $objPlainText->setRows(10);   
         $objHTML->setText($sResult);
-        $objForm->add($objHTML, '', transm(CMS_CURRENTMODULE, 'list2ul_form_field_html', 'Output: html'));  
+        $objForm->add($objHTML, '', transm(APP_ADMIN_CURRENTMODULE, 'list2ul_form_field_html', 'Output: html'));  
         
         
         $objBtnCopyClipboard = new InputButton();
-        $objBtnCopyClipboard->setValue(transm(CMS_CURRENTMODULE, 'list2ul_form_button_copytoclipboard', 'Copy HTML to clipboard'));
+        $objBtnCopyClipboard->setValue(transm(APP_ADMIN_CURRENTMODULE, 'list2ul_form_button_copytoclipboard', 'Copy HTML to clipboard'));
         $objBtnCopyClipboard->setName('btnCopyToClipboard');
         $objBtnCopyClipboard->setOnclick("copyToClipboardEditBox('edtHTML')");
         $objForm->add($objBtnCopyClipboard, '');            
@@ -156,7 +156,7 @@
  
     
     
-    $sTitle = transm(CMS_CURRENTMODULE, CMS_CURRENTMODULE);
+    $sTitle = transm(APP_ADMIN_CURRENTMODULE, APP_ADMIN_CURRENTMODULE);
     $sHTMLTitle = $sTitle;
     $sHTMLMetaDescription = $sTitle;
     

@@ -47,13 +47,13 @@ class list_productcategories extends TCRUDListControllerAJAX
 
         // $arrTableColumnsShow = array(
         $this->arrTableColumnsShow = array(
-            array('', TProductCategories::FIELD_ID, transm(CMS_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ID, 'ID')),
-            array('', TProductCategories::FIELD_NAME, transm(CMS_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_NAME, 'Name')),
-            array('', TProductCategories::FIELD_URLSLUG, transm(CMS_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_URLSLUG, 'Slug')),
-            array('', TProductCategories::FIELD_ISDEFAULT, transm(CMS_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ISDEFAULT, 'Default')),
-            array('', TProductCategories::FIELD_ISFAVORITE, transm(CMS_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ISFAVORITE, 'Favorite')),
-            array('', TSysModel::FIELD_RECORDCREATED, transm(CMS_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCREATED, 'Created')),
-            array('', TSysModel::FIELD_RECORDCHANGED, transm(CMS_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCHANGED, 'Changed')),
+            array('', TProductCategories::FIELD_ID, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ID, 'ID')),
+            array('', TProductCategories::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_NAME, 'Name')),
+            array('', TProductCategories::FIELD_URLSLUG, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_URLSLUG, 'Slug')),
+            array('', TProductCategories::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ISDEFAULT, 'Default')),
+            array('', TProductCategories::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ISFAVORITE, 'Favorite')),
+            array('', TSysModel::FIELD_RECORDCREATED, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCREATED, 'Created')),
+            array('', TSysModel::FIELD_RECORDCHANGED, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCHANGED, 'Changed')),
             array('', TSysModel::FIELD_POSITION, 'Pos'),
                 );
         
@@ -66,7 +66,7 @@ class list_productcategories extends TCRUDListControllerAJAX
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TProductCategories::getTable(), TProductCategories::FIELD_NAME);
-        $objFilter->setNameNice(transm(CMS_CURRENTMODULE, 'dbfilter_column_'.TProductCategories::FIELD_NAME, 'Name'));
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TProductCategories::FIELD_NAME, 'Name'));
         $objFilters->addFilter($objFilter);
         
         return 0;
@@ -139,8 +139,8 @@ class list_productcategories extends TCRUDListControllerAJAX
      */
     function getTitle()
     {
-        //global CMS_CURRENTMODULE;
-        return transm(CMS_CURRENTMODULE, 'tab_title_productcategories', 'Product categories');
+        //global APP_ADMIN_CURRENTMODULE;
+        return transm(APP_ADMIN_CURRENTMODULE, 'tab_title_productcategories', 'Product categories');
     }
 
     /**

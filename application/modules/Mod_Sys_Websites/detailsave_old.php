@@ -22,12 +22,12 @@
     
     // if ($objModel->getNew())
     // {          
-    //     $sTitle = transm(CMS_CURRENTMODULE, 'detail_title_newrecord', CMS_CURRENTMODULE.': Add record to database');
+    //     $sTitle = transm(APP_ADMIN_CURRENTMODULE, 'detail_title_newrecord', APP_ADMIN_CURRENTMODULE.': Add record to database');
     // }
     // else
     //     $sTitle = transcms('detail_title_edititem', 'Edit: [item]', 'item', $objModel->getDisplayRecordShort());
     if ($objModel->getNew())   
-        $sTitle = transcms(TRANS_DETAILSAVE_CREATERECORD_TITLE, '[module]: Add record to database', 'module', CMS_CURRENTMODULE);
+        $sTitle = transcms(TRANS_DETAILSAVE_CREATERECORD_TITLE, '[module]: Add record to database', 'module', APP_ADMIN_CURRENTMODULE);
     else
         $sTitle = transcms(TRANS_DETAILSAVE_EDITRECORD_TITLE, 'Edit: [item]', 'item', $objModel->getDisplayRecordShort());
 

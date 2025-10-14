@@ -212,12 +212,12 @@ class detailsave_activelanguagespersite extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_activelanguagespersite_new', 'Create new language for a site');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_activelanguagespersite_new', 'Create new language for a site');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_activelanguagespersite_edit', 'Edit site language');           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_activelanguagespersite_edit', 'Edit site language');           
     }
 
     /**

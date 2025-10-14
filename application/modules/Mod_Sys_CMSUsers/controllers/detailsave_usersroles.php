@@ -537,12 +537,12 @@ class detailsave_usersroles extends TCRUDDetailSaveController
      */
     public function getTitle()
     {
-        //global CMS_CURRENTMODULE;
+        //global APP_ADMIN_CURRENTMODULE;
 
         if ($this->getModel()->getNew())   
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_usersgroups_new', 'Create new role');
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_usersgroups_new', 'Create new role');
         else
-            return transm(CMS_CURRENTMODULE, 'pagetitle_detailsave_usersgroups_edit', 'Edit role: [role]', 'role', $this->getModel()->getRoleName());           
+            return transm(APP_ADMIN_CURRENTMODULE, 'pagetitle_detailsave_usersgroups_edit', 'Edit role: [role]', 'role', $this->getModel()->getRoleName());           
     }
 
     /**
