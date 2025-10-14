@@ -9,15 +9,15 @@
 	<title><?php echo $sHTMLTitle; ?></title>
 	<meta name="description" content="<?php echo $sHTMLMetaDescription ?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" type="image/png" href="<?php echo APP_URL_CMS_IMAGES ?>/projecticons/icon128.png">
+    <link rel="shortcut icon" type="image/png" href="<?php echo APP_URL_ADMIN_IMAGES ?>/projecticons/icon128.png">
     <meta name="viewport" content="width=800, initial-scale=1">     
-    <link rel="stylesheet" href="<?php echo APP_URL_CMS ?>/vendor/cookieconsent/cookieconsent.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="<?php echo APP_URL_ADMIN ?>/vendor/cookieconsent/cookieconsent.css" media="print" onload="this.media='all'">
     <?php
         if (!APP_DEBUGMODE)
         {
             ?>
-                <script defer src="<?php echo APP_URL_CMS ?>/vendor/cookieconsent/cookieconsent.js"></script>
-                <script defer src="<?php echo APP_URL_CMS ?>/vendor/cookieconsent/cookieconsent-init.js"></script>                     
+                <script defer src="<?php echo APP_URL_ADMIN ?>/vendor/cookieconsent/cookieconsent.js"></script>
+                <script defer src="<?php echo APP_URL_ADMIN ?>/vendor/cookieconsent/cookieconsent-init.js"></script>                     
             <?php
         }
     ?>
@@ -72,7 +72,7 @@
             include_once APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'lib_ui.js'; //---> uses PHP
         
             //zebraprint
-            if (APP_CMS_PRINTING_ZPL_ENABLE)   
+            if (APP_ADMIN_PRINTING_ZPL_ENABLE)   
             {      
                 include_once APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'zebraprint'.DIRECTORY_SEPARATOR.'lib_zebraprint.js'; //---> uses PHP            
                 include_once APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'zebraprint'.DIRECTORY_SEPARATOR.'ZPL.js'; //---> uses PHP            
@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <!-- <a href="#" onclick="event.preventDefault(); toggleHamburgerMenu();"><img src="<?php echo APP_URL_CMS_IMAGES; ?>/icon-menu.png" alt="menu"></a> -->
+    <!-- <a href="#" onclick="event.preventDefault(); toggleHamburgerMenu();"><img src="<?php echo APP_URL_ADMIN_IMAGES; ?>/icon-menu.png" alt="menu"></a> -->
 
  
 	<?php include(APP_PATH_CMS_TEMPLATES.DIRECTORY_SEPARATOR.'tpl_block_header.php'); ?>
@@ -120,7 +120,7 @@
                     
     <?php
     
-        if (auth(AUTH_MODULE_CMS, AUTH_CATEGORY_SYSSITES, AUTH_OPERATION_SYSSITES_VISIBILITY) && APP_CMS_SHOWWEBSITESINNAVIGATION)
+        if (auth(AUTH_MODULE_CMS, AUTH_CATEGORY_SYSSITES, AUTH_OPERATION_SYSSITES_VISIBILITY) && APP_ADMIN_SHOWWEBSITESINNAVIGATION)
         {
             $bAllowedSiteChange = true;
             $bAllowedSiteChange = auth(AUTH_MODULE_CMS, AUTH_CATEGORY_SYSSITES, AUTH_OPERATION_SYSSITES_SWITCH);
@@ -165,7 +165,7 @@
                 {
                     $objSysModulesDB->setRecordPointerToIndex($iIndexMod);
 
-                    // $sIconPath = APP_URL_CMS_IMAGES.'/icon-module16x16.png';  //default                              
+                    // $sIconPath = APP_URL_ADMIN_IMAGES.'/icon-module16x16.png';  //default                              
                     // if (is_file(getPathModuleImages($objSysModulesDB->getNameInternal()).DIRECTORY_SEPARATOR.'icon-module16x16.png'))
                     //     $sIconPath = getURLModuleImages($objSysModulesDB->getNameInternal()).'/icon-module16x16.png';    
 

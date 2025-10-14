@@ -108,7 +108,7 @@
                             <?php echo $objModel->get(TSysLanguages::FIELD_LOCALE, TSysLanguages::getTable()); ?>
                         </td>
                         <td>
-                            <img alt="<?php echo $sTranslatedTranslated ?>" src="<?php echo APP_URL_CMS_IMAGES ?>/icon-checked-true32x32.png">
+                            <img alt="<?php echo $sTranslatedTranslated ?>" src="<?php echo APP_URL_ADMIN_IMAGES ?>/icon-checked-true32x32.png">
                         </td>
                         <td>
                             <?php 
@@ -116,12 +116,12 @@
                                 
                                 //checkout
                                 if ($bRecordCheckedOut)
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
 
                                 
                                 //lock
                                 if ($bRecordLocked)
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
                                
                                 
                                 //edit-icon
@@ -129,7 +129,7 @@
                                 {   
                                     if (isset($sURLDetailPage))
                                         echo '<a href="'.$sURLDetailPage.'?'.ACTION_VARIABLE_ID.'='.$objModel->getID().'">';
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
                                     if (isset($sURLDetailPage))
                                         echo '</a>';                                       
                                    
@@ -154,7 +154,7 @@
                             <?php echo $objAvailableLanguages->get(TSysLanguages::FIELD_LOCALE, TSysLanguages::getTable()); ?>
                         </td>
                         <td>
-                            <img alt="<?php echo $sTranslatedTranslated ?>" src="<?php echo APP_URL_CMS_IMAGES ?>/icon-checked-false32x32.png">
+                            <img alt="<?php echo $sTranslatedTranslated ?>" src="<?php echo APP_URL_ADMIN_IMAGES ?>/icon-checked-false32x32.png">
                         </td>
                         <td>
                             <?php 
@@ -166,7 +166,7 @@
                                 {   
                                     if (isset($sURLDetailPage))
                                         echo '<a href="'.$sURLDetailPage.'?'.ACTION_VARIABLE_PARENTID.'='.$_GET[ACTION_VARIABLE_ID].'">';
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
                                     if (isset($sURLDetailPage))
                                         echo '</a>';                                       
                                    
@@ -186,7 +186,7 @@
         if ($objModel->count() == 0)
         {
             echo '<center>';
-            echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-alert-grey128x128.png"><br>';
+            echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-alert-grey128x128.png"><br>';
             echo transcms('message_noitemstodisplay','[ no items to display ]');
             echo '<br>';
             echo '</center>';

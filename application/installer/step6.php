@@ -33,7 +33,7 @@ class step6 extends TInstallerScreen
 
 		if ($this->getMode() == TInstallerScreen::MODE_UPDATE) //update
 		{
-			$this->setURLNextButton(APP_URL_CMS);
+			$this->setURLNextButton(APP_URL_ADMIN);
 			$this->setURLPreviousButton('index.php');
 			$this->setTextNextButton('Log In');
 		}
@@ -542,9 +542,9 @@ class step6 extends TInstallerScreen
 	function getTitle()
 	{
 		if ($this->getMode() == TInstallerScreen::MODE_UPDATE)
-			return 'Update '.APP_CMS_APPLICATIONNAME;
+			return 'Update '.APP_APPLICATIONNAME;
 		else		
-			return 'Install '.APP_CMS_APPLICATIONNAME;
+			return 'Install '.APP_APPLICATIONNAME;
 
 	}
 

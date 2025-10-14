@@ -62,7 +62,7 @@ function confirmLogout()
     const objDialog = new DRDialog();
     objDialog.populate();
     objDialog.setTitle("<?php echo transg('cms_dialog_surelogout_title', 'Quit?') ?>");
-    objDialog.setBody("<?php echo transcms('cms_dialog_surelogout_body','Want to log out of [applicationname]?', 'applicationname', APP_CMS_APPLICATIONNAME) ?>");
+    objDialog.setBody("<?php echo transcms('cms_dialog_surelogout_body','Want to log out of [applicationname]?', 'applicationname', APP_APPLICATIONNAME) ?>");
 
 
     //cancel button

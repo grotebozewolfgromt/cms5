@@ -161,7 +161,7 @@ class detailsave_loginipblackwhitelist extends TCRUDDetailSaveController
     {
         $sMessageTextWhitelistEnabledConfig = '';
         
-        if (APP_CMS_LOGINONLYWHITELISTEDIPS)
+        if (APP_ADMIN_LOGINONLYWHITELISTEDIPS)
             $sMessageTextWhitelistEnabledConfig = transm($this->getModule(), 'loginipblackwhitelistdetail_notification_whitelistenabledconfig_enabled', 'Note: whitelist is ENABLED in config file.');
         else
             $sMessageTextWhitelistEnabledConfig = transm($this->getModule(), 'loginipblackwhitelistdetail_notification_whitelistenabledconfig_disabled', 'Note: whitelist is DISABLED in config file.');

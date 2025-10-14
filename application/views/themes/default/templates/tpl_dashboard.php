@@ -4,7 +4,7 @@
  
 ?>
 
-<h1><?php echo transcms('tpl_dashboard_h1_title', 'Welcome to [applicationname], [user]', 'applicationname', APP_CMS_APPLICATIONNAME, 'user', $objAuthenticationSystem->getUsers()->getUsernamePublic()); ?></h1>
+<h1><?php echo transcms('tpl_dashboard_h1_title', 'Welcome to [applicationname], [user]', 'applicationname', APP_APPLICATIONNAME, 'user', $objAuthenticationSystem->getUsers()->getUsernamePublic()); ?></h1>
 <!-- <h2><?php echo transcms('tpl_dashboard_h2_modules', 'modules'); ?></h2> -->
 
 Still a bit empty here, but imagine all kinds of fancy stuff ;)
@@ -27,7 +27,7 @@ Still a bit empty here, but imagine all kinds of fancy stuff ;)
         {
             $objSysModulesDB->setRecordPointerToIndex($iIndexMod);
 
-            $sIconPath = APP_URL_CMS_IMAGES.'/icon-module128x128.png';  //default                              
+            $sIconPath = APP_URL_ADMIN_IMAGES.'/icon-module128x128.png';  //default                              
             if (is_file(getPathModuleImages($objSysModulesDB->getNameInternal()).DIRECTORY_SEPARATOR.'icon-module128x128.png'))
                 $sIconPath = getURLModuleImages($objSysModulesDB->getNameInternal()).'/icon-module128x128.png'; 
             
@@ -58,7 +58,7 @@ Still a bit empty here, but imagine all kinds of fancy stuff ;)
 //    $sIconPath = '';
 //    foreach($arrSysModules as $sModule)
 //    {
-//        $sIconPath = APP_URL_CMS_IMAGES.'/icon-module16x16.png';                                
+//        $sIconPath = APP_URL_ADMIN_IMAGES.'/icon-module16x16.png';                                
 //        if (is_file(getPathModuleImages($sModule).DIRECTORY_SEPARATOR.'icon-module16x16.png'))
 //            $sIconPath = getURLModuleImages($sModule).'/icon-module16x16.png';
 //        echo '<img src="'.$sIconPath.'"><a href="'. getURLModule($sModule).'/index.php">'.transm($sModule, 'cmsmodulelist_modulename',$sModule).'</a><br>';

@@ -25,7 +25,7 @@
  * global JS vars
  */
 var arrZebraPinters = [];
-arrZebraPinters["<?php echo APP_CMS_PRINTING_ZPL_PRINTER1_NAME; ?>"] = "<?php echo APP_CMS_PRINTING_ZPL_PRINTER1_IPADDRESS; ?>";
+arrZebraPinters["<?php echo APP_ADMIN_PRINTING_ZPL_PRINTER1_NAME; ?>"] = "<?php echo APP_ADMIN_PRINTING_ZPL_PRINTER1_IPADDRESS; ?>";
 var bZebraPrintBrowserExtensionInstalled = false;
 
 /**

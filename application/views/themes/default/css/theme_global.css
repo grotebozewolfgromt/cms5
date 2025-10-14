@@ -131,7 +131,7 @@ body
 
 @font-face {
     font-family: Poppins;
-    src: url(<?php echo APP_URL_CMS_FONTS ?>/Poppins-Light.otf);
+    src: url(<?php echo APP_URL_ADMIN_FONTS ?>/Poppins-Light.otf);
 }
 
 

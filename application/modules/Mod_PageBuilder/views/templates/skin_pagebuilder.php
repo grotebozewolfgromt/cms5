@@ -4,7 +4,7 @@
 	<title><?php echo $sHTMLTitle; ?></title>
 	<meta name="description" content="<?php echo $sHTMLMetaDescription; ?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" type="image/png" href="<?php echo APP_URL_CMS_IMAGES ?>/projecticons/icon128.png">
+    <link rel="shortcut icon" type="image/png" href="<?php echo APP_URL_ADMIN_IMAGES ?>/projecticons/icon128.png">
     <meta name="viewport" content="width=800, initial-scale=1">                     
     <style>
         <?php 

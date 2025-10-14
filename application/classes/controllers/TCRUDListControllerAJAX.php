@@ -367,13 +367,13 @@ abstract class TCRUDListControllerAJAX
 
                     if ($sSortOrder == SORT_ORDER_ASCENDING)
                     {
-                        // $sColumnHead.='<img src="'.APP_URL_CMS_IMAGES.'/icon-sortasc16x16.png">';
+                        // $sColumnHead.='<img src="'.APP_URL_ADMIN_IMAGES.'/icon-sortasc16x16.png">';
                         $sColumnHead.='<dr-icon-spinner><svg class="iconchangefill" style="margin-left: 5px; margin-top:13px;" enable-background="new 0 0 32 32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" ><g id="background"><rect fill="none" height="32" width="32"/></g><g id="arrow_x5F_down"><polygon points="2.002,10 16.001,24 30.002,10  "/></g></svg></dr-icon-spinner>';    
                         $bAddedSpinner = true;
                     }
                     elseif ($sSortOrder == SORT_ORDER_DESCENDING)
                     {
-                        // $sColumnHead.='<img src="'.APP_URL_CMS_IMAGES.'/icon-sortdesc16x16.png">';
+                        // $sColumnHead.='<img src="'.APP_URL_ADMIN_IMAGES.'/icon-sortdesc16x16.png">';
                         $sColumnHead.='<dr-icon-spinner><svg class="iconchangefill" style="margin-left: 5px" enable-background="new 0 0 32 32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="backbord"><rect fill="none" height="32" width="32"/></g><g id="arrow_x5F_up"><polygon points="30,22 16.001,8 2.001,22  "/></g></svg></dr-icon-spinner>';
                         $bAddedSpinner = true;
                     }   
@@ -668,11 +668,11 @@ abstract class TCRUDListControllerAJAX
             
             //checkout
             if ($bRecordCheckedOut)
-                $sColumnValue = '<img src="'.APP_URL_CMS_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
+                $sColumnValue = '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
 
             //lock
             if ($bRecordLocked)
-                $sColumnValue = '<img src="'.APP_URL_CMS_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
+                $sColumnValue = '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
             
             //edit-icon
             if (isset($sURLDetailPage) && $bEditAllowedThisRecord)
@@ -696,7 +696,7 @@ abstract class TCRUDListControllerAJAX
             {
                 if (isset($sURLTranslatePage))
                     $sColumnValue.= '<a href="'.$sURLTranslatePage.'?'.ACTION_VARIABLE_ID.'='.$iIDValue.'">';
-                $sColumnValue.= '<img src="'.APP_URL_CMS_IMAGES.'/icon-translate32x32.png" alt="'.$sTranslatedTranslate.'">';
+                $sColumnValue.= '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-translate32x32.png" alt="'.$sTranslatedTranslate.'">';
                 if (isset($sURLTranslatePage))
                     $sColumnValue.= '</a>';          
             }

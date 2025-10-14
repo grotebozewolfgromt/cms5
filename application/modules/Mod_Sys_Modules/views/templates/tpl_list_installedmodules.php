@@ -64,7 +64,7 @@
     ?>
     <div class="overview_quicksearch">
         <form name="frmQuickSearch" id="frmQuickSearch" action="<?php echo APP_URLTHISSCRIPT; ?>">
-            <input type="image" src="<?php echo APP_URL_CMS_IMAGES ?>/icon-quicksearch128x128.png" >        
+            <input type="image" src="<?php echo APP_URL_ADMIN_IMAGES ?>/icon-quicksearch128x128.png" >        
             <input type="search" name="<?php echo TCRUDListController::FIELD_QUICKSEARCH; ?>" class="quicksearchbox" placeholder="<?php echo transcms('overview_edit_quicksearch_default', 'search'); ?>" value="<?php echo $sQuickSearchFieldValue; ?>" onsearch="onQuickSearch(this)">        
         </form>
     </div>
@@ -175,12 +175,12 @@
 
                                     if ($sSortOrder == SORT_ORDER_ASCENDING)
                                     {
-                                        $sColumnHead.='<img src="'.APP_URL_CMS_IMAGES.'/icon-sortasc16x16.png">';
+                                        $sColumnHead.='<img src="'.APP_URL_ADMIN_IMAGES.'/icon-sortasc16x16.png">';
                                     }
 
                                     if ($sSortOrder == SORT_ORDER_DESCENDING)
                                     {
-                                        $sColumnHead.='<img src="'.APP_URL_CMS_IMAGES.'/icon-sortdesc16x16.png">';
+                                        $sColumnHead.='<img src="'.APP_URL_ADMIN_IMAGES.'/icon-sortdesc16x16.png">';
                                     }                                      
                                 }
                             }   
@@ -298,9 +298,9 @@
                                                     break;
                                             case TP_BOOL:  
                                                 if ($objModel->get($sColumnName, $sTableName, true))
-                                                    $sColumnValue = '<img alt="'.$sTranslatedBooleanYes.'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-true32x32.png">';
+                                                    $sColumnValue = '<img alt="'.$sTranslatedBooleanYes.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-true32x32.png">';
                                                 else
-                                                    $sColumnValue = '<img alt="'.$sTranslatedBooleanNo.'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-false32x32.png">';
+                                                    $sColumnValue = '<img alt="'.$sTranslatedBooleanNo.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-false32x32.png">';
                                                 break;
                                             case TP_CURRENCY:
                                                     $sColumnValue = $objModel->get($sColumnName, $sTableName, true)->getValueFormatted();
@@ -354,11 +354,11 @@
                                         if ($bOrderOneUpAllowed)
                                         {
                                             $sURL = addVariableToURL($sURL, ACTION_VARIABLE_ORDERONEUP, ACTION_VALUE_ORDERONEUP); //move one up
-                                            $sColumnValue = '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_CMS_IMAGES.'/icon-up-enabled32x32.png"></a>';                                        
+                                            $sColumnValue = '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-up-enabled32x32.png"></a>';                                        
                                         }
                                         else
                                         {
-                                            $sColumnValue = '<img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_CMS_IMAGES.'/icon-up-disabled32x32.png">';
+                                            $sColumnValue = '<img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-up-disabled32x32.png">';
                                         }
 
 
@@ -366,11 +366,11 @@
                                         if ($bOrderOneDownAllowed)
                                         {
                                             $sURL = addVariableToURL($sURL, ACTION_VARIABLE_ORDERONEUP, ACTION_VALUE_ORDERONEDOWN); //move one down
-                                            $sColumnValue.= '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_CMS_IMAGES.'/icon-down-enabled32x32.png"></a>';                                        
+                                            $sColumnValue.= '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-down-enabled32x32.png"></a>';                                        
                                         }
                                         else
                                         {
-                                            $sColumnValue.= '<img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_CMS_IMAGES.'/icon-down-disabled32x32.png">';
+                                            $sColumnValue.= '<img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-down-disabled32x32.png">';
                                         }                                    
 
                                     }
@@ -384,7 +384,7 @@
                                     switch ($iColumnIndex) //which field
                                     {
                                         case $iColumnIndexIcon: //icon
-                                            $sIconPath = APP_URL_CMS_IMAGES.'/icon-module32x32.png';  //default                              
+                                            $sIconPath = APP_URL_ADMIN_IMAGES.'/icon-module32x32.png';  //default                              
                                             if (is_file(getPathModuleImages($sInternalModuleName).DIRECTORY_SEPARATOR.'icon-module32x32.png'))
                                                 $sIconPath = getURLModuleImages($sInternalModuleName).'/icon-module32x32.png';     
                                             $sColumnValue = '<img src="'.$sIconPath.'" alt="'.'">';
@@ -398,23 +398,23 @@
                                         case $iColumnIndexDirExists: //directory exists
                                             if (file_exists(APP_PATH_MODULES.DIRECTORY_SEPARATOR.$sInternalModuleName))
                                             {
-                                                $sColumnValue = '<img alt="'.transcms('boolean_yes', 'yes').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-true32x32.png">&nbsp;';
+                                                $sColumnValue = '<img alt="'.transcms('boolean_yes', 'yes').'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-true32x32.png">&nbsp;';
                                                 $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_folder_yes', 'folder exists');
                                             }
                                             else
                                             {
-                                                $sColumnValue = '<img alt="'.transcms('boolean_no', 'no').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-false32x32.png">&nbsp;';
+                                                $sColumnValue = '<img alt="'.transcms('boolean_no', 'no').'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-false32x32.png">&nbsp;';
                                                 $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_folder_no', 'folder missing');
                                             }
                                             $sColumnValue.= '<br>';
                                             if (file_exists(APP_PATH_MODULES.DIRECTORY_SEPARATOR.$sInternalModuleName.DIRECTORY_SEPARATOR.'index.php'))
                                             {
-                                                $sColumnValue.= '<img alt="'.transcms('boolean_yes', 'yes').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-true32x32.png">&nbsp;';
+                                                $sColumnValue.= '<img alt="'.transcms('boolean_yes', 'yes').'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-true32x32.png">&nbsp;';
                                                 $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_index_yes', 'index file exists');                                                
                                             }
                                             else
                                             {
-                                                $sColumnValue.= '<img alt="'.transcms('boolean_no', 'no').'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-false32x32.png">&nbsp;';
+                                                $sColumnValue.= '<img alt="'.transcms('boolean_no', 'no').'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-false32x32.png">&nbsp;';
                                                 $sColumnValue.= transm(APP_ADMIN_CURRENTMODULE, 'cmsmodulelist_moduleexists_index_no', 'index file missing');                                                
                                             }
                                             break; 
@@ -452,7 +452,7 @@
                             /*
                                 if (isset($sURLDetailPage) && $bEditAllowed)
                                 {
-                                    ?><a href="<?php if (isset($sURLDetailPage)) { echo $sURLDetailPage.'?'.ACTION_VARIABLE_ID.'='.$objModel->getID(); } ?>"><img src="<?php echo APP_URL_CMS_IMAGES.DIRECTORY_SEPARATOR;?>icon-edit32x32.png"></a><?php
+                                    ?><a href="<?php if (isset($sURLDetailPage)) { echo $sURLDetailPage.'?'.ACTION_VARIABLE_ID.'='.$objModel->getID(); } ?>"><img src="<?php echo APP_URL_ADMIN_IMAGES.DIRECTORY_SEPARATOR;?>icon-edit32x32.png"></a><?php
                                 }
                                 else
                                     echo '&nbsp;';   
@@ -464,12 +464,12 @@
                                 
                                 //checkout
                                 if ($bRecordCheckedOut)
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
 
                                 
                                 //lock
                                 if ($bRecordLocked)
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
                                
                                 
                                 //edit-icon
@@ -484,7 +484,7 @@
                                         if ($objModel->getTableUseIDField())
                                             echo '<a href="'.$sURLDetailPage.'?'.ACTION_VARIABLE_ID.'='.$objModel->getID().'">'; //I choose not to use addvariableToID() because of speed
                                     }
-                                    echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
+                                    echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
                                     if (isset($sURLDetailPage))
                                         echo '</a>';                                       
                                    
@@ -507,7 +507,7 @@
         if ($objModel->count() == 0)
         {
             echo '<center>';
-            echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-alert-grey128x128.png"><br>';
+            echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-alert-grey128x128.png"><br>';
             echo transcms('message_noitemstodisplay','[ no items to display ]');
             echo '<br>';
             echo '</center>';

@@ -56,7 +56,7 @@ class list_loginipblackwhitelist extends TCRUDListController
             array('', TSysCMSLoginIPBlackWhitelist::FIELD_WHITELISTED, transm(APP_ADMIN_CURRENTMODULE, 'overview_column_'.TSysCMSLoginIPBlackWhitelist::FIELD_WHITELISTED, 'White')),
                 );
         
-        if (!APP_CMS_LOGINONLYWHITELISTEDIPS)
+        if (!APP_ADMIN_LOGINONLYWHITELISTEDIPS)
             sendMessageNotification(transm(APP_ADMIN_CURRENTMODULE, 'blackwhitelist_notification_whitelist_disabled', 'Whitelist is DISABLED in config file.<br>So, whitelist items are ignored'));
      
         

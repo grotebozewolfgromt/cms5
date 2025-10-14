@@ -328,7 +328,7 @@ class step6 extends TInstallerScreen
 	 */
 	public function getDescription()
 	{
-		return 'In this step we are going to create a user for '.APP_CMS_APPLICATIONNAME.' to log in.';
+		return 'In this step we are going to create a user for '.APP_APPLICATIONNAME.' to log in.';
 	}
 
 	/**

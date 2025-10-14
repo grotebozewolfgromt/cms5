@@ -40,7 +40,7 @@
 <h2>
     <?php echo transcms('settings_installer_h2', 'Installer'); ?>
     <dr-icon-info>
-        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_explanation', 'The installer installs, updates and removes the installation of [applicationname].<br>To use the installer, it needs to be enabled and you need a password to prevent others from using it.<br><br><b>Disable the installer when you don\'t use it to prevent malicious actors manipulating and removing data from the system.</b>', 'applicationname', APP_CMS_APPLICATIONNAME);?>
+        <?php echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_explanation', 'The installer installs, updates and removes the installation of [applicationname].<br>To use the installer, it needs to be enabled and you need a password to prevent others from using it.<br><br><b>Disable the installer when you don\'t use it to prevent malicious actors manipulating and removing data from the system.</b>', 'applicationname', APP_APPLICATIONNAME);?>
     </dr-icon-info>
 </h2>
 <?php 
@@ -67,7 +67,7 @@
     //run installer
     if (auth(APP_ADMIN_CURRENTMODULE, Mod_Sys_Settings::PERM_CAT_MAINTENANCE, Mod_Sys_Settings::PERM_OP_EXECUTE) && $bInstallerEnabled)    
     {
-        ?><input type="button" class="button_normal" onclick="openInNewTab('<?php echo APP_URL_CMS_INSTALLERSCRIPT; ?>')" value="<?php echo transcms('settings_execute_installer', 'Start installer'); ?>" style="width: 200px;"><?php
+        ?><input type="button" class="button_normal" onclick="openInNewTab('<?php echo APP_URL_ADMIN_INSTALLERSCRIPT; ?>')" value="<?php echo transcms('settings_execute_installer', 'Start installer'); ?>" style="width: 200px;"><?php
     }
 
     echo transm(APP_ADMIN_CURRENTMODULE, 'settings_installer_message_disablwhennotuse', 'Disable the installer for security reasons when you are not actively using it.<br>You can always enable it when you actually need it.').'<br>';

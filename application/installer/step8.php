@@ -57,7 +57,7 @@ class step8 extends TInstallerScreen
 		$sBody.= 'Installation finished: '.date('Y-m-d H:i').'h<br>';
 		$sBody.= '<h2>Paths</h2>';
 		$sBody.= 'Path: '.APP_PATH_CMS.'<br>';
-		$sBody.= 'URL: <a href="'.APP_URL_CMS.'" target="_blank">'.APP_URL_CMS.'</a><br>';
+		$sBody.= 'URL: <a href="'.APP_URL_ADMIN.'" target="_blank">'.APP_URL_ADMIN.'</a><br>';
 		$sBody.= 'Path config file application: '.$this->sConfigPathApplication.'<br>';
 		$sBody.= '<h2>Login admin panel</h2>';
 		$sBody.= 'User name: '.$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_LOGINUSERNAME].'<br>';
@@ -71,7 +71,7 @@ class step8 extends TInstallerScreen
 		$sBody.= 'Port: '.APP_DB_PORT.'<br>';
 		$sBody.= 'Table Prefix: '.APP_DB_TABLEPREFIX.'<br>';
 		$sBody.= '<br>';
-		$sBody.= 'Thank you for installing '.APP_CMS_APPLICATIONNAME.'.<br>';
+		$sBody.= 'Thank you for installing '.APP_APPLICATIONNAME.'.<br>';
 		$sBody.= 'Click "Log in" to start.';
 
 
@@ -106,7 +106,7 @@ class step8 extends TInstallerScreen
 	 */
 	public function getDescription()
 	{
-		return 'The installation of '.APP_CMS_APPLICATIONNAME.' is complete, below you can find the details of the installation.<br>These details are important: write them down, copy-paste or print them, so you can\'t lose them';
+		return 'The installation of '.APP_APPLICATIONNAME.' is complete, below you can find the details of the installation.<br>These details are important: write them down, copy-paste or print them, so you can\'t lose them';
 	}
 
 	/**
@@ -147,7 +147,7 @@ class step8 extends TInstallerScreen
 	 */
 	public function getURLNextController()
 	{
-		return APP_URL_CMS;
+		return APP_URL_ADMIN;
 	}	
 }
 

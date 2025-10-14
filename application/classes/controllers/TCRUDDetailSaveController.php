@@ -478,7 +478,7 @@ abstract class TCRUDDetailSaveController
                         {
                             $sURL = '';
                             $sURL = APP_URLTHISSCRIPT;
-                            if (APP_CMS_SAVESUCCESSNOTIFICATION)
+                            if (APP_ADMIN_SAVESUCCESSNOTIFICATION)
                                 $sURL = addVariableToURL($sURL, GETARRAYKEY_CMSMESSAGE_SUCCESS, transcms('message_saverecord_success', 'Record save successful'));
                             $sURL = addVariableToURL($sURL, ACTION_VARIABLE_ID, $this->objModel->getID());
 
@@ -487,7 +487,7 @@ abstract class TCRUDDetailSaveController
                         }
 
                         //continue displaying the record
-                        if (APP_CMS_SAVESUCCESSNOTIFICATION)
+                        if (APP_ADMIN_SAVESUCCESSNOTIFICATION)
                             sendMessageSuccess(transcms('message_saverecord_success', 'Record save successful'));
                     }
                 }

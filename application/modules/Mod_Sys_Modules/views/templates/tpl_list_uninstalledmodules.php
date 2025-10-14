@@ -96,7 +96,7 @@ use dr\modules\Mod_Sys_Modules\Mod_Sys_Modules;
         if (!$arrUninstalledModules)
         {
             echo '<center>';
-            echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-alert-grey128x128.png"><br>';
+            echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-alert-grey128x128.png"><br>';
             echo transm(APP_ADMIN_CURRENTMODULE, 'message_nomodulestodisplay','[ all available modules are installed ]');
             echo '<br>';
             echo '</center>';

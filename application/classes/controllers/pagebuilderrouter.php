@@ -23,7 +23,7 @@ include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
  * It can show a screen to choose the right pagebuilder.
  * 
  * Every time you want to use a pagebuilder somewhere in your module (or somewhere else):
- * Just link to this router with <a href="APP_URL_CMS_PAGEBUILDERROUTER"></a> and this class takes 
+ * Just link to this router with <a href="APP_URL_ADMIN_PAGEBUILDERROUTER"></a> and this class takes 
  * the user to the right pagebuilder.
  * What the right pagebuilder is depends on the module that is stored in the TPageBuilderDocumentAbstract::getTable()
  * 

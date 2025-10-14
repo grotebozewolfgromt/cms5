@@ -86,9 +86,9 @@ class TSysCMSUsers extends TSysUsersAbstract
         $objGoogle_account_info = $objGoogle_Service_Oauth2->userinfo->get();
         $iCountryID = 0;
         
-        if (!APP_CMS_ANYONECANREGISTERACCOUNT)
+        if (!APP_ADMIN_ANYONECANREGISTERACCOUNT)
         {
-            logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'Cannot create new account upon google login, because account creation is not allowed according to APP_CMS_ANYONECANREGISTERACCOUNT');
+            logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'Cannot create new account upon google login, because account creation is not allowed according to APP_ADMIN_ANYONECANREGISTERACCOUNT');
             return false;
         }
 

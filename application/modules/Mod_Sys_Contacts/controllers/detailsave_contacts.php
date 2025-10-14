@@ -155,14 +155,14 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtRecordId->setNameAndID('edtRecordId');
         $this->objEdtRecordId->setClass('quarterwidthtag');    
         $this->objEdtRecordId->setReadOnly(true);             
-        $this->getFormGenerator()->addQuick($this->objEdtRecordId, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_recordid', 'Contact id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_recordid_iconinfo', 'This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.[encrypt]','application', APP_CMS_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtRecordId, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_recordid', 'Contact id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_recordid_iconinfo', 'This is a unique number used internally to identify this contact in [application].<br>This number is automatically assigned by [application].<br>You can NOT change this number.<br><br>Be aware that this number is enumerable, meaning that malicious actors can use this information to access other records.<br>Malicious actors know that when id 100 exists that probably 99 and 101 also exist.<br>To counter this, you can use Nice Id.[encrypt]','application', APP_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
             //Nice id
         $this->objEdtNiceId = new DRInputText();
         $this->objEdtNiceId->setNameAndID('edtNiceId');
         $this->objEdtNiceId->setClass('quarterwidthtag');    
         $this->objEdtNiceId->setReadOnly(true);               
-        $this->getFormGenerator()->addQuick($this->objEdtNiceId, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_niceid', 'Nice Id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_niceid_iconinfo', 'This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.[encrypt]','application', APP_CMS_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
+        $this->getFormGenerator()->addQuick($this->objEdtNiceId, $sFormSectionId, transm(APP_ADMIN_CURRENTMODULE, 'form_field_niceid', 'Nice Id'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_niceid_iconinfo', 'This is a unique alfanumeric identifier to identify this contact in [application].<br>This identifier is automatically assigned.<br>This identifier is random and therefore not enumerable, hence safer to work with.<br><br>You can not change this identifyer.<br>If you want to, use Custom Id instead.[encrypt]','application', APP_APPLICATIONNAME, 'encrypt', $this->getTextEncryptedIconInfo(false)));
 
 
             //custom identifier

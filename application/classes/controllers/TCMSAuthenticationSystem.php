@@ -144,7 +144,7 @@ class TCMSAuthenticationSystem extends TAuthenticationSystemAbstract
      */
     public function getApplicationName()
     {
-        return APP_CMS_APPLICATIONNAME;
+        return APP_APPLICATIONNAME;
     }
     
 
@@ -403,7 +403,7 @@ class TCMSAuthenticationSystem extends TAuthenticationSystemAbstract
      */
     public function getCanAnyoneCreateAccount()
     {
-        return APP_CMS_ANYONECANREGISTERACCOUNT;
+        return APP_ADMIN_ANYONECANREGISTERACCOUNT;
     }
 
   /**
@@ -515,7 +515,7 @@ class TCMSAuthenticationSystem extends TAuthenticationSystemAbstract
      */
     public function getUseSigninWithGoogle()
     {
-        return APP_CMS_ENABLESIGNINWITHGOOGLE;
+        return APP_ADMIN_ENABLESIGNINWITHGOOGLE;
     }
     
     /**
@@ -590,7 +590,7 @@ class TCMSAuthenticationSystem extends TAuthenticationSystemAbstract
      */
     public function getStealthModeBlackWhitelistedIPs()
     {
-        return APP_CMS_STEALTHMODEBLACKWHITELISTEDIPS;
+        return APP_ADMIN_STEALTHMODEBLACKWHITELISTEDIPS;
     }
 
 }

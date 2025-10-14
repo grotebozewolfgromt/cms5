@@ -220,12 +220,12 @@
                                     
                                     //checkout
                                     if ($bRecordCheckedOut)
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
 
                                     
                                     //lock
                                     if ($bRecordLocked)
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
                                 
                                     
                                     //edit-icon
@@ -264,7 +264,7 @@
                                     {
                                         if (isset($sURLTranslatePage))
                                             echo '<a href="'.$sURLTranslatePage.'?'.ACTION_VARIABLE_ID.'='.$iIDValue.'">';
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-translate32x32.png" alt="'.$sTranslatedTranslate.'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-translate32x32.png" alt="'.$sTranslatedTranslate.'">';
                                         if (isset($sURLTranslatePage))
                                             echo '</a>';          
                                     }

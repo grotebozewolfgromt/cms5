@@ -112,8 +112,8 @@ function redirectToHTTPS()
     $sURLHTTPS = str_replace('http://', 'https://', $sURL);
     if (defined('APP_PATH_WWW'))
         $sPathWWW = APP_PATH_WWW;
-    elseif (defined('APP_URL_CMS'))
-        $sPathWWW = APP_URL_CMS;
+    elseif (defined('APP_URL_ADMIN'))
+        $sPathWWW = APP_URL_ADMIN;
 
     //only when path in config file is indeed httpS instead of http (otherwise that can cause problems on dev server)    
     if (stripos($sPathWWW, 'https://') === false) 
@@ -428,11 +428,11 @@ function removeVariableFromURL($sURL, $sVariable = '')
 
 /**
  * returns the domain name 
- * it tries constants APP_PATH_DOMAIN and APP_PATH_DOMAIN_CMS first, 
+ * it tries constants APP_PATH_DOMAIN and APP_PATH_DOMAIN_ADMIN first, 
  * if not exists, it is extracted from url
  * function can filter subdomains
  * 
- * @param $sURL when empty it returns APP_PATH_DOMAIN or APP_PATH_DOMAIN_CMS, otherwise when string is empty $_SERVER["HTTP_HOST"] is assumed
+ * @param $sURL when empty it returns APP_PATH_DOMAIN or APP_PATH_DOMAIN_ADMIN, otherwise when string is empty $_SERVER["HTTP_HOST"] is assumed
  * @param $bRemoveSubdomains filters out subdomains
  * @return string 
  */
@@ -446,8 +446,8 @@ function getDomain($sURL = '', $bRemoveSubdomains = true)
     {
         if (defined('APP_PATH_DOMAIN'))
             return APP_PATH_DOMAIN;
-        elseif (defined('APP_PATH_DOMAIN_CMS'))
-            return APP_PATH_DOMAIN_CMS;
+        elseif (defined('APP_PATH_DOMAIN_ADMIN'))
+            return APP_PATH_DOMAIN_ADMIN;
     }
 
     //if constants don't help, try to figure it out by looking at the url

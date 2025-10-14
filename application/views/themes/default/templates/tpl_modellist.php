@@ -60,7 +60,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
 
 <!-- <div class="overview_quicksearch">
     <form name="frmQuickSearch" id="frmQuickSearch" action="<?php echo APP_URLTHISSCRIPT; ?>">
-        <input type="image" src="<?php echo APP_URL_CMS_IMAGES ?>/icon-quicksearch128x128.png" >        
+        <input type="image" src="<?php echo APP_URL_ADMIN_IMAGES ?>/icon-quicksearch128x128.png" >        
         <input type="search" name="<?php echo TCRUDListController::FIELD_QUICKSEARCH; ?>" class="quicksearchbox" placeholder="<?php echo transcms('overview_edit_quicksearch_default', 'search'); ?>" value="<?php echo $sQuickSearchFieldValue; ?>" onsearch="onQuickSearch(this)">        
     </form>
 </div> -->
@@ -152,12 +152,12 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
 
                                     if ($sSortOrder == SORT_ORDER_ASCENDING)
                                     {
-                                        $sColumnHead.='<img src="'.APP_URL_CMS_IMAGES.'/icon-sortasc16x16.png">';
+                                        $sColumnHead.='<img src="'.APP_URL_ADMIN_IMAGES.'/icon-sortasc16x16.png">';
                                     }
 
                                     if ($sSortOrder == SORT_ORDER_DESCENDING)
                                     {
-                                        $sColumnHead.='<img src="'.APP_URL_CMS_IMAGES.'/icon-sortdesc16x16.png">';
+                                        $sColumnHead.='<img src="'.APP_URL_ADMIN_IMAGES.'/icon-sortdesc16x16.png">';
                                     }      
                                 }
                             }                            
@@ -277,9 +277,9 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                                                     break;
                                             case TP_BOOL:  
                                                     if ($objModel->get($sColumnName, $sTableName, true))
-                                                        $sColumnValue = '<img alt="'.$sTranslatedBooleanYes.'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-true32x32.png">';
+                                                        $sColumnValue = '<img alt="'.$sTranslatedBooleanYes.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-true32x32.png">';
                                                     else
-                                                        $sColumnValue = '<img alt="'.$sTranslatedBooleanNo.'" src="'.APP_URL_CMS_IMAGES.'/icon-checked-false32x32.png">';
+                                                        $sColumnValue = '<img alt="'.$sTranslatedBooleanNo.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-checked-false32x32.png">';
                                                     break;
                                             case TP_COLOR:  
                                                     $sColumnValue = '<div class="color" style="height:10px;width:40px; background-color: #'.$objModel->get($sColumnName, $sTableName, true).'"></div>';
@@ -337,11 +337,11 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                                         if ($bOrderOneUpAllowed)
                                         {
                                             $sURL = addVariableToURL($sURL, ACTION_VARIABLE_ORDERONEUP, ACTION_VALUE_ORDERONEUP); //move one up
-                                            $sColumnValue = '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_CMS_IMAGES.'/icon-up-enabled32x32.png"></a>';                                        
+                                            $sColumnValue = '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-up-enabled32x32.png"></a>';                                        
                                         }
                                         else
                                         {
-                                            $sColumnValue = '<img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_CMS_IMAGES.'/icon-up-disabled32x32.png">';
+                                            $sColumnValue = '<img alt="'.$sTranslatedMoveOneUp.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-up-disabled32x32.png">';
                                         }
                                         
                                         
@@ -349,11 +349,11 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                                         if ($bOrderOneDownAllowed)
                                         {
                                             $sURL = addVariableToURL($sURL, ACTION_VARIABLE_ORDERONEUP, ACTION_VALUE_ORDERONEDOWN); //move one down
-                                            $sColumnValue.= '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_CMS_IMAGES.'/icon-down-enabled32x32.png"></a>';                                        
+                                            $sColumnValue.= '<a href="'.$sURL.'"><img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-down-enabled32x32.png"></a>';                                        
                                         }
                                         else
                                         {
-                                            $sColumnValue.= '<img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_CMS_IMAGES.'/icon-down-disabled32x32.png">';
+                                            $sColumnValue.= '<img alt="'.$sTranslatedMoveOneDown.'" src="'.APP_URL_ADMIN_IMAGES.'/icon-down-disabled32x32.png">';
                                         }                                    
         
                                     }   
@@ -369,12 +369,12 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                                     
                                     //checkout
                                     if ($bRecordCheckedOut)
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-checkout-locked32x32.png" alt="'.transcms('recordlist_record_checkedout', 'Record CHECKED OUT by [source], not available for editing', 'source', $objModel->getCheckoutSource()) .'">';
 
                                     
                                     //lock
                                     if ($bRecordLocked)
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-lock-closed32x32.png" alt="'.transcms('recordlist_record_locked', 'Record LOCKED by [source], not available for editing','source', $objModel->getLockedSource()).'">';
                                 
                                     
                                     //edit-icon
@@ -388,7 +388,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                                             if ($objModel->getTableUseIDField())
                                                 echo '<a href="'.addVariableToURL($sURLDetailPage, ACTION_VARIABLE_ID, $iIDValue).'">'; //I choose not to use addvariableToID() because of speed
                                         }
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-edit32x32.png" alt="'.$sTranslatedEdit.'">';
                                         if (isset($sURLDetailPage))
                                             echo '</a>';                                       
                                     
@@ -399,7 +399,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
                                     {
                                         if (isset($sURLTranslatePage))
                                             echo '<a href="'.$sURLTranslatePage.'?'.ACTION_VARIABLE_ID.'='.$iIDValue.'">';
-                                        echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-translate32x32.png" alt="'.$sTranslatedTranslate.'">';
+                                        echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-translate32x32.png" alt="'.$sTranslatedTranslate.'">';
                                         if (isset($sURLTranslatePage))
                                             echo '</a>';          
                                     }
@@ -420,7 +420,7 @@ if(isset($_GET[TCRUDListController::FIELD_QUICKSEARCH]))
             if ($objModel->count() == 0)
             {
                 echo '<center>';
-                echo '<img src="'.APP_URL_CMS_IMAGES.'/icon-alert-grey128x128.png"><br>';
+                echo '<img src="'.APP_URL_ADMIN_IMAGES.'/icon-alert-grey128x128.png"><br>';
                 echo transcms('message_noitemstodisplay','[ no items to display ]');
                 echo '<br>';
                 echo '</center>';

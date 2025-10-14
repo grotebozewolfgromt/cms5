@@ -36,9 +36,9 @@ class dashboard extends TControllerAbstract
      */
     public function bindVarsEarly()
     {
-        $sTitle = transcms('home_title', '[applicationname] Dashboard', 'applicationname', APP_CMS_APPLICATIONNAME);
-        $sHTMLTitle = transcms('home_htmltitle', '[applicationname] Dashboard', 'applicationname', APP_CMS_APPLICATIONNAME);
-        $sHTMLMetaDescription = transcms('home_htmlmetadescription', '[applicationname] Dashboard', APP_CMS_APPLICATIONNAME);
+        $sTitle = transcms('home_title', '[applicationname] Dashboard', 'applicationname', APP_APPLICATIONNAME);
+        $sHTMLTitle = transcms('home_htmltitle', '[applicationname] Dashboard', 'applicationname', APP_APPLICATIONNAME);
+        $sHTMLMetaDescription = transcms('home_htmlmetadescription', '[applicationname] Dashboard', APP_APPLICATIONNAME);
 
         return get_defined_vars();
     }

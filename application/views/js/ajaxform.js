@@ -560,7 +560,7 @@ async function handleSaveAFC(fnCallbackAfterSave = null, objSpinner = null)
         // sendNotification("<?php echo transg('detailsave_message_save_sucess_title', 'Saving');?>", "<?php echo transm(APP_ADMIN_CURRENTMODULE, 'detailsave_message_save_sucess_message', 'Your record was saved with id: ');?>"+iRecordID, "notification");        
         <?php 
         //send notifications?
-        if (APP_CMS_SAVESUCCESSNOTIFICATION)
+        if (APP_ADMIN_SAVESUCCESSNOTIFICATION)
         { 
             ?>
                 sendNotification("<?php echo transg('detailsave_message_save_sucess_title', 'Saving');?>", "<?php echo transm(APP_ADMIN_CURRENTMODULE, 'detailsave_message_save_sucess_message', 'Your record was saved with id: ');?>"+iRecordID, "notification");        

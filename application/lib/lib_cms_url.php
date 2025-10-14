@@ -94,23 +94,23 @@ function getModuleFromURL()
 
 function getURLCMSSettings()
 {
-    // return APP_URL_CMS.'/settings.php';
+    // return APP_URL_ADMIN.'/settings.php';
     return APP_URL_MODULES.'/Mod_Sys_Settings/';
 }
 
 function getURLCMSDashboard()
 {
-    return APP_URL_CMS.'/dashboard';
+    return APP_URL_ADMIN.'/dashboard';
 }
 
 function getURLCMSCronjob()
 {
-    return APP_URL_CMS.'/cronjob.php?'.ACTION_VARIABLE_ID.'='.APP_CRONJOBID;
+    return APP_URL_ADMIN.'/cronjob.php?'.ACTION_VARIABLE_ID.'='.APP_CRONJOBID;
 }
 
 function getURLCMSLogin()
 {
-    return APP_URL_CMS.'/loginform';
+    return APP_URL_ADMIN.'/loginform';
 }
 
 function getPathModuleImages($sModuleName)
@@ -208,22 +208,22 @@ function getURLPagebuilder($sModuleName)
 
 function getURLPasswordRecoverEnterEmail()
 {
-    return APP_URL_CMS.'/passwordrecover_enteremail';
+    return APP_URL_ADMIN.'/passwordrecover_enteremail';
 }
 
 function getURLPasswordRecoverEnterNewPassword()
 {
-    return APP_URL_CMS.'/passwordrecover_enternewpassword';
+    return APP_URL_ADMIN.'/passwordrecover_enternewpassword';
 }
 
 function getURLCreateAccountEnterCredentials()
 {
-    return APP_URL_CMS.'/createaccount_entercredentials';
+    return APP_URL_ADMIN.'/createaccount_entercredentials';
 }
 
 function getURLCreateAccountEmailConfirm()
 {
-    return APP_URL_CMS.'/createaccount_emailconfirmed';
+    return APP_URL_ADMIN.'/createaccount_emailconfirmed';
 }
 
 

@@ -256,7 +256,7 @@ class list_pages extends TCRUDListController
     public function getDetailPageURL()
     {
         //only include the return url
-        return  addVariableToURL(APP_URL_CMS_PAGEBUILDERROUTER, 
+        return  addVariableToURL(APP_URL_ADMIN_PAGEBUILDERROUTER, 
                                 ACTION_VARIABLE_RETURNURL, 
                                 removeVariableFromURL(getURLThisScript()));         
     }

@@ -67,7 +67,7 @@ class step4 extends TInstallerScreen
 				<input type="text" name="edtSchema" value="<?php echo $this->sDefaultSchema; ?>"><br>
 				<label for="edtPort">Port</label><br>
 				<input type="text" name="edtPort" value="<?php echo $this->sDefaultPort; ?>"><br>                
-				<label for="edtTablePrefix">Table prefix (store multiple instances of <?php echo APP_CMS_APPLICATIONNAME; ?> in 1 schema)</label><br>
+				<label for="edtTablePrefix">Table prefix (store multiple instances of <?php echo APP_APPLICATIONNAME; ?> in 1 schema)</label><br>
 				<input type="text" name="edtTablePrefix" value="<?php echo $this->sDefaultTablePrefix; ?>"><br>                
 				<br>
 				If you don't know these credentials, reach out to your web hosting provider or system administrator.

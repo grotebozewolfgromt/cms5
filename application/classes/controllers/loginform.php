@@ -54,8 +54,8 @@ class loginform extends TLoginFormControllerAbstract
      */
     public function bindVarsEarly()
     {
-        $sTitle = APP_CMS_APPLICATIONNAME;
-        $sHTMLTitle = transcms('index_htmltitle', '[applicationname] login','applicationname', APP_CMS_APPLICATIONNAME);
+        $sTitle = APP_APPLICATIONNAME;
+        $sHTMLTitle = transcms('index_htmltitle', '[applicationname] login','applicationname', APP_APPLICATIONNAME);
         $sHTMLMetaDescription = transcms('index_htmlmetadescription', 'Protected sitemanager environment');
     
         $objAuthenticationSystem = $this->objAuthenticationSystem;
@@ -126,7 +126,7 @@ class loginform extends TLoginFormControllerAbstract
      */
     public function getStealthModeBlackWhitelistedIPs()
     {
-        return APP_CMS_STEALTHMODEBLACKWHITELISTEDIPS;
+        return APP_ADMIN_STEALTHMODEBLACKWHITELISTEDIPS;
     }    
 
 }

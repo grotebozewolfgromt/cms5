@@ -4,17 +4,17 @@
         <title><?php echo $sHTMLTitle ?></title>
         <meta name="description" content="<?php echo $sHTMLMetaDescription ?>">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="shortcut icon" type="image/png" href="<?php echo APP_URL_CMS_IMAGES ?>/projecticons/icon128.png">
+        <link rel="shortcut icon" type="image/png" href="<?php echo APP_URL_ADMIN_IMAGES ?>/projecticons/icon128.png">
         <meta name="viewport" content="width=300, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo APP_URL_CMS ?>/vendor/cookieconsent/cookieconsent.css" media="print" onload="this.media='all'">
-        <script defer src="<?php echo APP_URL_CMS ?>/vendor/cookieconsent/cookieconsent.js"></script>
-        <script defer src="<?php echo APP_URL_CMS ?>/vendor/cookieconsent/cookieconsent-init.js"></script>  
-        <script src="<?php echo APP_URL_CMS_JAVASCRIPTS.'/lib_global_notification.js'?>"></script>                  
+        <link rel="stylesheet" href="<?php echo APP_URL_ADMIN ?>/vendor/cookieconsent/cookieconsent.css" media="print" onload="this.media='all'">
+        <script defer src="<?php echo APP_URL_ADMIN ?>/vendor/cookieconsent/cookieconsent.js"></script>
+        <script defer src="<?php echo APP_URL_ADMIN ?>/vendor/cookieconsent/cookieconsent-init.js"></script>  
+        <script src="<?php echo APP_URL_ADMIN_JAVASCRIPTS.'/lib_global_notification.js'?>"></script>                  
         <?php /*
-        <link href="<?php echo APP_URL_CMS_STYLESHEETS ?>/global_reset.css" rel="stylesheet" type="text/css">        
-        <link href="<?php echo APP_URL_CMS_VIEWS_STYLESHEETS ?>/theme_global.css" rel="stylesheet" type="text/css">                       
-        <link href="<?php echo APP_URL_CMS_VIEWS_STYLESHEETS ?>/theme_withoutmenu.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo APP_URL_CMS_VIEWS_STYLESHEETS ?>/theme_notification.css" rel="stylesheet" type="text/css">                       
+        <link href="<?php echo APP_URL_ADMIN_STYLESHEETS ?>/global_reset.css" rel="stylesheet" type="text/css">        
+        <link href="<?php echo APP_URL_ADMIN_VIEWS_STYLESHEETS ?>/theme_global.css" rel="stylesheet" type="text/css">                       
+        <link href="<?php echo APP_URL_ADMIN_VIEWS_STYLESHEETS ?>/theme_withoutmenu.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo APP_URL_ADMIN_VIEWS_STYLESHEETS ?>/theme_notification.css" rel="stylesheet" type="text/css">                       
         <script>
             <?php include_once APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'lib_global_header.js'; ?>
             <?php include_once APP_PATH_CMS_VIEWS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'cms_header.js'; ?>           

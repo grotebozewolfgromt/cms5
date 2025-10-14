@@ -29,7 +29,7 @@ $bIsModule = false; //is cms or module
 
 //==== inspect the url  on length
 //and determine the module and controller
-$sURLPath = ltrimLiteral(APP_URLTHISSCRIPT, APP_URL_CMS.'/'); //APP_URL_CMS and getURLThisScript() should be the same for the first part
+$sURLPath = ltrimLiteral(APP_URLTHISSCRIPT, APP_URL_ADMIN.'/'); //APP_URL_ADMIN and getURLThisScript() should be the same for the first part
 $sURLPath = explode('?', $sURLPath)[0]; //strip parameters
 $arrURLPath = explode('/', $sURLPath);
 $iCountURLPathLength = count($arrURLPath);
@@ -42,14 +42,14 @@ switch ($iCountURLPathLength)
         $bIsModule = false;
         break;
     // case 2: //web component?
-    //     if (APP_CMS_WEBCOMPONENTSDIR === $arrURLPath[0])
+    //     if (APP_ADMIN_WEBCOMPONENTSDIR === $arrURLPath[0])
     //     {
     //         $bIsWebcomponent = true;
     //         $sController = $arrURLPath[1];
     //     }
     //     break;
     case 3: //controller in module
-        if (APP_CMS_MODULESDIR === $arrURLPath[0])
+        if (APP_ADMIN_MODULESDIR === $arrURLPath[0])
         {
             $sController = $arrURLPath[2];
             $sModule = $arrURLPath[1];
@@ -88,7 +88,7 @@ if (($sController == 'install') && ($sModule == ''))
 {
     if (is_dir(APP_PATH_CMS_INSTALLER))
     {
-        header('Location: '.APP_URL_CMS_INSTALLERSCRIPT);
+        header('Location: '.APP_URL_ADMIN_INSTALLERSCRIPT);
     }
     else
     {

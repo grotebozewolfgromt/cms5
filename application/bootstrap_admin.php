@@ -32,16 +32,16 @@
         {
             if ((APP_DEBUGMODE === false) && (APP_INSTALLER_ENABLED === false)) //ignore when in debug-mode
             {
-                echo '<h1>'.APP_CMS_APPLICATIONNAME.' installer found!</h1><br>';
-                echo 'You need to remove the installer first before you can use '.APP_CMS_APPLICATIONNAME.'.<br>';
+                echo '<h1>'.APP_APPLICATIONNAME.' installer found!</h1><br>';
+                echo 'You need to remove the installer first before you can use '.APP_APPLICATIONNAME.'.<br>';
                 echo 'The installer allows you (and everybody else) to install and remove data without a password or any other protection.';
                 echo '<br>';
-                echo '<h2>If you have NOT installed '.APP_CMS_APPLICATIONNAME.' yet</h2>';
+                echo '<h2>If you have NOT installed '.APP_APPLICATIONNAME.' yet</h2>';
                 echo '<ol>';
-                echo '<li>Install '.APP_CMS_APPLICATIONNAME.'. <a href="'.APP_URL_CMS_INSTALLERSCRIPT.'">click here to install</a></li>';
+                echo '<li>Install '.APP_APPLICATIONNAME.'. <a href="'.APP_URL_ADMIN_INSTALLERSCRIPT.'">click here to install</a></li>';
                 echo '<li>Remove the "installer" directory</li>';
                 echo '</ol>';        
-                echo '<h2>If you already have installed '.APP_CMS_APPLICATIONNAME.'</h2>';
+                echo '<h2>If you already have installed '.APP_APPLICATIONNAME.'</h2>';
                 echo '<ol>';
                 echo '<li>You need to remove the "installer" directory, and this message will dissappear</li>';
                 echo '<li>If you';
@@ -52,14 +52,14 @@
                 echo '      <li>like get hacked yourself</li>';
                 echo '      <li>suffer from brain damage</li>';
                 echo '  </ul>';
-                echo 'you can ignore these warnings and <a href="'.APP_CMS_FIRSTPAGECONTROLLER.'">log in here</a><br>';
+                echo 'you can ignore these warnings and <a href="'.APP_ADMIN_FIRSTPAGECONTROLLER.'">log in here</a><br>';
                 echo 'But that won\'t make this message dissappear</li>';
                 echo '</ol>';
                 echo '<br>';
     
                 // echo '<br>';
                 
-                //header('Location: '.APP_URL_CMS_INSTALLSCRIPT);
+                //header('Location: '.APP_URL_ADMIN_INSTALLSCRIPT);
                 die();
             }
         }
@@ -68,8 +68,8 @@
 
         //================== RATE LIMIT CMS ======================
 
-        if (APP_CMS_RATELIMITER_ENABLE)
-            rateLimiter(APP_PATH_CMS_CACHE_RATELIMITER_PERDAY, getIPAddressClient('_'), APP_CMS_RATELIMITER_REQUESTS, APP_CMS_RATELIMITER_PERSECS, true);
+        if (APP_ADMIN_RATELIMITER_ENABLE)
+            rateLimiter(APP_PATH_CMS_CACHE_RATELIMITER_PERDAY, getIPAddressClient('_'), APP_ADMIN_RATELIMITER_REQUESTS, APP_ADMIN_RATELIMITER_PERSECS, true);
 
         //================== CMS5 MODULES ==========================
             

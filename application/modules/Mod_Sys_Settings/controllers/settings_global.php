@@ -358,7 +358,7 @@ class settings_global extends TCRUDDetailSaveController
 
         //theme
         if (file_exists(APP_PATH_CMS_VIEWS_THEMES.DIRECTORY_SEPARATOR.$this->objSelTheme->getValueSubmitted()))//double check directory exists, because when it goes wrong the whole UI is gone!
-            $this->objConfigFile->set('APP_CMS_THEME', $this->objSelTheme->getValueSubmitted());
+            $this->objConfigFile->set('APP_ADMIN_THEME', $this->objSelTheme->getValueSubmitted());
         else
         {
             sendMessageError(transm($this->getModule(), 'errormessage_themes_dirnotfound', 'Themes directory "[directory]" not found. Setting NOT saved!', 'directory', $this->objSelTheme->getValueSubmitted()));
@@ -366,29 +366,29 @@ class settings_global extends TCRUDDetailSaveController
         }
 
         //show websites in navigation
-        $this->objConfigFile->set('APP_CMS_SHOWWEBSITESINNAVIGATION', $this->objChkWebsitesInNavigation->getValueSubmittedAsBool());
+        $this->objConfigFile->set('APP_ADMIN_SHOWWEBSITESINNAVIGATION', $this->objChkWebsitesInNavigation->getValueSubmittedAsBool());
 
         //show save notification
-        $this->objConfigFile->set('APP_CMS_SAVESUCCESSNOTIFICATION', $this->objChkSaveSuccessNotification->getValueSubmittedAsBool());
+        $this->objConfigFile->set('APP_ADMIN_SAVESUCCESSNOTIFICATION', $this->objChkSaveSuccessNotification->getValueSubmittedAsBool());
 
         //anyone can register
-        $this->objConfigFile->set('APP_CMS_ANYONECANREGISTERACCOUNT', $this->objChkAnyoneCanRegister->getValueSubmittedAsBool());
+        $this->objConfigFile->set('APP_ADMIN_ANYONECANREGISTERACCOUNT', $this->objChkAnyoneCanRegister->getValueSubmittedAsBool());
 
         //login only whitelisted ips
-        $this->objConfigFile->set('APP_CMS_LOGINONLYWHITELISTEDIPS', $this->objChkLoginOnlyWhiteListedIPs->getValueSubmittedAsBool());
+        $this->objConfigFile->set('APP_ADMIN_LOGINONLYWHITELISTEDIPS', $this->objChkLoginOnlyWhiteListedIPs->getValueSubmittedAsBool());
 
         //stealth mode whitelisted ips
-        $this->objConfigFile->set('APP_CMS_STEALTHMODEBLACKWHITELISTEDIPS', $this->objChkStealthMode->getValueSubmittedAsBool());
+        $this->objConfigFile->set('APP_ADMIN_STEALTHMODEBLACKWHITELISTEDIPS', $this->objChkStealthMode->getValueSubmittedAsBool());
 
         //image resize
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_MAX_WIDTHPX', $this->objEdtImgWidthMax->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_MAX_HEIGHTPX', $this->objEdtImgHeightMax->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_LARGE_WIDTHPX', $this->objEdtImgWidthLarge->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_LARGE_HEIGHTPX', $this->objEdtImgHeightLarge->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_MEDIUM_WIDTHPX', $this->objEdtImgWidthMedium->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_MEDIUM_HEIGHTPX', $this->objEdtImgHeightMedium->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_THUMBNAIL_WIDTHPX', $this->objEdtImgWidthThumbnail->getValueSubmittedAsInt());
-        $this->objConfigFile->set('APP_CMS_IMAGE_RESIZE_THUMBNAIL_HEIGHTPX', $this->objEdtImgHeightThumbnail->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_MAX_WIDTHPX', $this->objEdtImgWidthMax->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_MAX_HEIGHTPX', $this->objEdtImgHeightMax->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_LARGE_WIDTHPX', $this->objEdtImgWidthLarge->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_LARGE_HEIGHTPX', $this->objEdtImgHeightLarge->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_MEDIUM_WIDTHPX', $this->objEdtImgWidthMedium->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_MEDIUM_HEIGHTPX', $this->objEdtImgHeightMedium->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_THUMBNAIL_WIDTHPX', $this->objEdtImgWidthThumbnail->getValueSubmittedAsInt());
+        $this->objConfigFile->set('APP_ADMIN_IMAGE_RESIZE_THUMBNAIL_HEIGHTPX', $this->objEdtImgHeightThumbnail->getValueSubmittedAsInt());
     }
     
     /**
@@ -452,33 +452,33 @@ class settings_global extends TCRUDDetailSaveController
         $this->objSelTheme->clear();
         foreach($arrThemeDirs as $sDir)
         {
-            $this->objSelTheme->addOption($sDir, $sDir, ($sDir == APP_CMS_THEME));
+            $this->objSelTheme->addOption($sDir, $sDir, ($sDir == APP_ADMIN_THEME));
         }
 
         //anyone can register
-        $this->objChkAnyoneCanRegister->setChecked(APP_CMS_ANYONECANREGISTERACCOUNT);
+        $this->objChkAnyoneCanRegister->setChecked(APP_ADMIN_ANYONECANREGISTERACCOUNT);
 
         //websites in navigation
-        $this->objChkWebsitesInNavigation->setChecked(APP_CMS_SHOWWEBSITESINNAVIGATION);
+        $this->objChkWebsitesInNavigation->setChecked(APP_ADMIN_SHOWWEBSITESINNAVIGATION);
 
         //websites in navigation
-        $this->objChkSaveSuccessNotification->setChecked(APP_CMS_SAVESUCCESSNOTIFICATION);
+        $this->objChkSaveSuccessNotification->setChecked(APP_ADMIN_SAVESUCCESSNOTIFICATION);
 
         //login only allowed for whitelisted ip addresses
-        $this->objChkLoginOnlyWhiteListedIPs->setChecked(APP_CMS_LOGINONLYWHITELISTEDIPS);
+        $this->objChkLoginOnlyWhiteListedIPs->setChecked(APP_ADMIN_LOGINONLYWHITELISTEDIPS);
 
         //stealth mode
-        $this->objChkStealthMode->setChecked(APP_CMS_STEALTHMODEBLACKWHITELISTEDIPS);
+        $this->objChkStealthMode->setChecked(APP_ADMIN_STEALTHMODEBLACKWHITELISTEDIPS);
 
         //image sizes
-        $this->objEdtImgWidthMax->setValue(APP_CMS_IMAGE_RESIZE_MAX_WIDTHPX);
-        $this->objEdtImgHeightMax->setValue(APP_CMS_IMAGE_RESIZE_MAX_HEIGHTPX);
-        $this->objEdtImgWidthLarge->setValue(APP_CMS_IMAGE_RESIZE_LARGE_WIDTHPX);
-        $this->objEdtImgHeightLarge->setValue(APP_CMS_IMAGE_RESIZE_LARGE_HEIGHTPX);
-        $this->objEdtImgWidthMedium->setValue(APP_CMS_IMAGE_RESIZE_MEDIUM_WIDTHPX);
-        $this->objEdtImgHeightMedium->setValue(APP_CMS_IMAGE_RESIZE_MEDIUM_HEIGHTPX);
-        $this->objEdtImgWidthThumbnail->setValue(APP_CMS_IMAGE_RESIZE_THUMBNAIL_WIDTHPX);
-        $this->objEdtImgHeightThumbnail->setValue(APP_CMS_IMAGE_RESIZE_THUMBNAIL_HEIGHTPX);
+        $this->objEdtImgWidthMax->setValue(APP_ADMIN_IMAGE_RESIZE_MAX_WIDTHPX);
+        $this->objEdtImgHeightMax->setValue(APP_ADMIN_IMAGE_RESIZE_MAX_HEIGHTPX);
+        $this->objEdtImgWidthLarge->setValue(APP_ADMIN_IMAGE_RESIZE_LARGE_WIDTHPX);
+        $this->objEdtImgHeightLarge->setValue(APP_ADMIN_IMAGE_RESIZE_LARGE_HEIGHTPX);
+        $this->objEdtImgWidthMedium->setValue(APP_ADMIN_IMAGE_RESIZE_MEDIUM_WIDTHPX);
+        $this->objEdtImgHeightMedium->setValue(APP_ADMIN_IMAGE_RESIZE_MEDIUM_HEIGHTPX);
+        $this->objEdtImgWidthThumbnail->setValue(APP_ADMIN_IMAGE_RESIZE_THUMBNAIL_WIDTHPX);
+        $this->objEdtImgHeightThumbnail->setValue(APP_ADMIN_IMAGE_RESIZE_THUMBNAIL_HEIGHTPX);
     }
     
    /**

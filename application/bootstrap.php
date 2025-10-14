@@ -42,20 +42,20 @@ use dr\classes\patterns\TConfigFile;
 
         //================== DEFINING CONSTANTS (and defaults) ===================        
    
-            define('APP_URL_CMS_CLASSES', APP_URL_CMS.'/classes');
+            define('APP_URL_ADMIN_CLASSES', APP_URL_ADMIN.'/classes');
             define('APP_PATH_CMS_CLASSES', APP_PATH_CMS.DIRECTORY_SEPARATOR.'classes');            
 
             //===installer scripts
-            define('APP_URL_CMS_INSTALLER', APP_URL_CMS.'/installer');
+            define('APP_URL_ADMIN_INSTALLER', APP_URL_ADMIN.'/installer');
             define('APP_PATH_CMS_INSTALLER', APP_PATH_CMS.DIRECTORY_SEPARATOR.'installer');            
 
-            define('APP_URL_CMS_INSTALLERSCRIPT', APP_URL_CMS_INSTALLER.'/index.php');
+            define('APP_URL_ADMIN_INSTALLERSCRIPT', APP_URL_ADMIN_INSTALLER.'/index.php');
             define('APP_PATH_CMS_INSTALLERSCRIPT', APP_PATH_CMS_INSTALLER.DIRECTORY_SEPARATOR.'installer.php');            
 
-            define('APP_URL_CMS_INSTALLSCRIPT', APP_URL_CMS_INSTALLER.'/step1.php');
+            define('APP_URL_ADMIN_INSTALLSCRIPT', APP_URL_ADMIN_INSTALLER.'/step1.php');
             define('APP_PATH_CMS_INSTALLSCRIPT', APP_PATH_CMS_INSTALLER.DIRECTORY_SEPARATOR.'install.php');            
 
-            define('APP_URL_CMS_UNINSTALLSCRIPT', APP_URL_CMS_INSTALLER.'/uninstall.php?confirm='.APP_INSTALLER_PASSWORD);
+            define('APP_URL_ADMIN_UNINSTALLSCRIPT', APP_URL_ADMIN_INSTALLER.'/uninstall.php?confirm='.APP_INSTALLER_PASSWORD);
             define('APP_PATH_CMS_UNINSTALLSCRIPT', APP_PATH_CMS_INSTALLER.DIRECTORY_SEPARATOR.'uninstall.php');
 
             //===Models, (Views), Controllers
@@ -63,41 +63,41 @@ use dr\classes\patterns\TConfigFile;
             define('APP_PATH_CMS_CONTROLLERS', APP_PATH_CMS_CLASSES.DIRECTORY_SEPARATOR.'controllers');   
 
             //===Views/theme specific paths
-            define('APP_URL_CMS_VIEWS', APP_URL_CMS.'/views');                        
+            define('APP_URL_ADMIN_VIEWS', APP_URL_ADMIN.'/views');                        
             define('APP_PATH_CMS_VIEWS', APP_PATH_CMS.DIRECTORY_SEPARATOR.'views');                        
 
-            define('APP_URL_CMS_VIEWS_THEMES', APP_URL_CMS_VIEWS.'/themes');                        
+            define('APP_URL_ADMIN_VIEWS_THEMES', APP_URL_ADMIN_VIEWS.'/themes');                        
             define('APP_PATH_CMS_VIEWS_THEMES', APP_PATH_CMS_VIEWS.DIRECTORY_SEPARATOR.'themes');                        
-            define('APP_URL_CMS_VIEWS_CURRENTTHEME', APP_URL_CMS_VIEWS_THEMES.'/'.APP_CMS_THEME);                        
-            define('APP_PATH_CMS_VIEWS_CURRENTTHEME', APP_PATH_CMS_VIEWS_THEMES.DIRECTORY_SEPARATOR.APP_CMS_THEME);                        
+            define('APP_URL_ADMIN_VIEWS_CURRENTTHEME', APP_URL_ADMIN_VIEWS_THEMES.'/'.APP_ADMIN_THEME);                        
+            define('APP_PATH_CMS_VIEWS_CURRENTTHEME', APP_PATH_CMS_VIEWS_THEMES.DIRECTORY_SEPARATOR.APP_ADMIN_THEME);                        
 
-            define('APP_URL_CMS_VIEWS_STYLESHEETS', APP_URL_CMS_VIEWS_CURRENTTHEME.'/css');
+            define('APP_URL_ADMIN_VIEWS_STYLESHEETS', APP_URL_ADMIN_VIEWS_CURRENTTHEME.'/css');
             define('APP_PATH_CMS_VIEWS_STYLESHEETS', APP_PATH_CMS_VIEWS_CURRENTTHEME.DIRECTORY_SEPARATOR.'css');            
 
-            define('APP_URL_CMS_VIEWS_JAVASCRIPTS', APP_URL_CMS_VIEWS_CURRENTTHEME.'/js');
+            define('APP_URL_ADMIN_VIEWS_JAVASCRIPTS', APP_URL_ADMIN_VIEWS_CURRENTTHEME.'/js');
             define('APP_PATH_CMS_VIEWS_JAVASCRIPTS', APP_PATH_CMS_VIEWS_CURRENTTHEME.DIRECTORY_SEPARATOR.'js');            
 
-            define('APP_URL_CMS_IMAGES', APP_URL_CMS_VIEWS_CURRENTTHEME.'/images');
+            define('APP_URL_ADMIN_IMAGES', APP_URL_ADMIN_VIEWS_CURRENTTHEME.'/images');
             define('APP_PATH_CMS_IMAGES', APP_PATH_CMS_VIEWS_CURRENTTHEME.DIRECTORY_SEPARATOR.'images');
 
             //==Global (none theme-specific)
-            define('APP_URL_CMS_STYLESHEETS', APP_URL_CMS_VIEWS.'/css');
+            define('APP_URL_ADMIN_STYLESHEETS', APP_URL_ADMIN_VIEWS.'/css');
             define('APP_PATH_CMS_STYLESHEETS', APP_PATH_CMS_VIEWS.DIRECTORY_SEPARATOR.'css');            
 
-            define('APP_URL_CMS_JAVASCRIPTS', APP_URL_CMS_VIEWS.'/js');
+            define('APP_URL_ADMIN_JAVASCRIPTS', APP_URL_ADMIN_VIEWS.'/js');
             define('APP_PATH_CMS_JAVASCRIPTS', APP_PATH_CMS_VIEWS.DIRECTORY_SEPARATOR.'js');    
 
-            define('APP_URL_CMS_FONTS', APP_URL_CMS_VIEWS.'/fonts');
+            define('APP_URL_ADMIN_FONTS', APP_URL_ADMIN_VIEWS.'/fonts');
             define('APP_PATH_CMS_FONTS', APP_PATH_CMS_VIEWS.DIRECTORY_SEPARATOR.'font');    
             
             define('APP_PATH_CMS_TEMPLATES', APP_PATH_CMS_VIEWS_CURRENTTHEME.DIRECTORY_SEPARATOR.'templates');                        
 
-            define('APP_URL_CMS_PAGEBUILDERROUTER', APP_URL_CMS.'/pagebuilderrouter');                        
+            define('APP_URL_ADMIN_PAGEBUILDERROUTER', APP_URL_ADMIN.'/pagebuilderrouter');                        
 
-            define('APP_URL_MODULES', APP_URL_CMS.'/'.APP_CMS_MODULESDIR);
-            define('APP_PATH_MODULES', APP_PATH_CMS.DIRECTORY_SEPARATOR.APP_CMS_MODULESDIR);            
+            define('APP_URL_MODULES', APP_URL_ADMIN.'/'.APP_ADMIN_MODULESDIR);
+            define('APP_PATH_MODULES', APP_PATH_CMS.DIRECTORY_SEPARATOR.APP_ADMIN_MODULESDIR);            
                     
-            define('APP_URL_VENDOR', APP_URL_CMS.'/vendor');
+            define('APP_URL_VENDOR', APP_URL_ADMIN.'/vendor');
             define('APP_PATH_VENDOR', APP_PATH_CMS.DIRECTORY_SEPARATOR.'vendor');            
 
             define('APP_PATH_LIBRARIES', APP_PATH_CMS.DIRECTORY_SEPARATOR.'lib');
@@ -133,8 +133,8 @@ use dr\classes\patterns\TConfigFile;
             //still empty
 
         //WEB COMPONENTS
-            define('APP_CMS_WEBCOMPONENTSDIR', 'webcomponents');//the url-rewritten directory in the url in which web components are stored (needed in urlrouter). While the actual directory would be http://localhost/cms5/application/classes/dom/tag/webcomponents/, now it will be http://localhost/cms5/application/[webcomponentsdir]/  
-            define('APP_URL_CMS_WEBCOMPONTENTS', APP_URL_CMS.'/'.APP_CMS_WEBCOMPONENTSDIR); //a nice url-rewritten path (supported by the url router) for the CMS only
+            define('APP_ADMIN_WEBCOMPONENTSDIR', 'webcomponents');//the url-rewritten directory in the url in which web components are stored (needed in urlrouter). While the actual directory would be http://localhost/cms5/application/classes/dom/tag/webcomponents/, now it will be http://localhost/cms5/application/[webcomponentsdir]/  
+            define('APP_URL_ADMIN_WEBCOMPONTENTS', APP_URL_ADMIN.'/'.APP_ADMIN_WEBCOMPONENTSDIR); //a nice url-rewritten path (supported by the url router) for the CMS only
             define('APP_PATH_CMS_WEBCOMPONENTS', APP_PATH_CMS.DIRECTORY_SEPARATOR.'classes'.DIRECTORY_SEPARATOR.'dom'.DIRECTORY_SEPARATOR.'tag/webcomponents');
 
         //================== ERROR LOG =========================
@@ -270,7 +270,7 @@ use dr\classes\patterns\TConfigFile;
         //     logError(__FILE__.':'.__LINE__, 'Database connection problem');
 
         //     if (file_exists(APP_PATH_CMS_INSTALLSCRIPT)) //framework probably not installed when cant connect
-        //         die('Database connection error.<br>This error is maybe caused because you didn\'t install the system (properly).<br><a href="'.APP_URL_CMS_INSTALLERSCRIPT.'">Start installer</a>');
+        //         die('Database connection error.<br>This error is maybe caused because you didn\'t install the system (properly).<br><a href="'.APP_URL_ADMIN_INSTALLERSCRIPT.'">Start installer</a>');
         //     else
         //         die('Error occured, see error logfile for details'); //deliberately very vague
         // }

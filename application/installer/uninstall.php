@@ -258,7 +258,7 @@ class uninstall extends TInstallerScreen
 	 */
 	function getTitle()
 	{
-		return 'Uninstall '.APP_CMS_APPLICATIONNAME;
+		return 'Uninstall '.APP_APPLICATIONNAME;
 	}
 
 	/**
@@ -267,7 +267,7 @@ class uninstall extends TInstallerScreen
 	 */
 	public function getDescription()
 	{
-		return 'By uninstalling '.APP_CMS_APPLICATIONNAME.' you will remove all data in the database.<br>Please be patient until the process is finished.';
+		return 'By uninstalling '.APP_APPLICATIONNAME.' you will remove all data in the database.<br>Please be patient until the process is finished.';
 	}
 
 	/**

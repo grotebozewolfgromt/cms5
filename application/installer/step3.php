@@ -151,8 +151,8 @@ class step3 extends TInstallerScreen
 			$objConfig->set('APP_PEPPER', generateRandomString(20, 30, 'abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789-_(){}.=+'));        
 			$objConfig->set('APP_CRONJOBID', generateRandomString(10, 12, 'abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789-_'));        
 			$objConfig->set('APP_INSTALLER_PASSWORD', $sInstallPassword);			
-			$objConfig->set('APP_PATH_DOMAIN_CMS', getDomain(getURLThisScript(), false));        
-			$objConfig->set('APP_URL_CMS', dirname(dirname(getURLThisScript())));        
+			$objConfig->set('APP_PATH_DOMAIN_ADMIN', getDomain(getURLThisScript(), false));        
+			$objConfig->set('APP_URL_ADMIN', dirname(dirname(getURLThisScript())));        
 			$objConfig->set('APP_PATH_UPLOADS_PUBLIC', dirname($sCMSRootPath).DIRECTORY_SEPARATOR.'uploads');        
 			$objConfig->set('APP_URL_UPLOADS_PUBLIC', dirname(dirname(dirname(getURLThisScript()))).'/uploads');        
 			if ($_SERVER['REQUEST_SCHEME'] === 'http')

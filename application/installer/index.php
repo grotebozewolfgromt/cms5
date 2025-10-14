@@ -43,7 +43,7 @@ class index extends TInstallerScreen
 		$this->setTextPreviousButton('Exit');
 		
 		$objConfigDefaults = $this->loadConfigDefaults();
-		$this->setTitle($this->getTitle().' to '.$objConfigDefaults->get('APP_CMS_APPLICATIONNAME').' '.$objConfigDefaults->get('APP_VERSION'));
+		$this->setTitle($this->getTitle().' to '.$objConfigDefaults->get('APP_APPLICATIONNAME').' '.$objConfigDefaults->get('APP_VERSION'));
 
     	ob_start();
 		?>
@@ -60,7 +60,7 @@ class index extends TInstallerScreen
 			<br>
 			<h2>Note</h2>		
 			This installer is in English.<br>
-			Once you've installed <?php echo $objConfigDefaults->get('APP_CMS_APPLICATIONNAME'); ?>, users are able to choose a different language.
+			Once you've installed <?php echo $objConfigDefaults->get('APP_APPLICATIONNAME'); ?>, users are able to choose a different language.
 		<?php
 	    $sBody = ob_get_contents();
 	    ob_end_clean();  

@@ -500,7 +500,7 @@ class uploadfilemanager
     */
    public function renderLayout()
    {
-      $sURLJSONFileList = addVariableToURL(APP_URL_CMS.'/uploadfilemanager', uploadfilemanager::ACTION_VARIABLE_SHOWFILELIST, uploadfilemanager::ACTION_VALUE_SHOWFILELIST);
+      $sURLJSONFileList = addVariableToURL(APP_URL_ADMIN.'/uploadfilemanager', uploadfilemanager::ACTION_VARIABLE_SHOWFILELIST, uploadfilemanager::ACTION_VALUE_SHOWFILELIST);
 
       echo '<script>';
       echo renderTemplate(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'uploadfilemanager.js', get_defined_vars());

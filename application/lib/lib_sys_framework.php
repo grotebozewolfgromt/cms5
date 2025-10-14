@@ -1062,7 +1062,7 @@ function logDebug($sSource, $sValue, $bShowOnScreen = false)
     echo '<h2>What to do next?</h2>';
     echo '1. This installation removed the database, but didn\'t remove files.<br>';
     echo '2. You need to remove files in order to get rid of everything.<br>';
-    echo '3. If you want to reinstall the database, you can <a href="'.APP_URL_CMS_INSTALLERSCRIPT.'">go here</a> to start the installer.<br>';
+    echo '3. If you want to reinstall the database, you can <a href="'.APP_URL_ADMIN_INSTALLERSCRIPT.'">go here</a> to start the installer.<br>';
     echo '4. Bye bye!<br>';
 
 	        

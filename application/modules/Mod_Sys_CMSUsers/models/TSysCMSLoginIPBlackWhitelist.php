@@ -31,7 +31,7 @@ class TSysCMSLoginIPBlackWhitelist extends TSysIPBlackWhitelistAbstract
 	 */
 	public function getWhitelistEnabled()
 	{
-		return APP_CMS_LOGINONLYWHITELISTEDIPS;
+		return APP_ADMIN_LOGINONLYWHITELISTEDIPS;
 	}
 
 

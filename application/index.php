@@ -5,5 +5,5 @@
     
     //====== page defaults
     
-    header('Location: '.APP_URL_CMS.'/'.APP_CMS_FIRSTPAGECONTROLLER);
+    header('Location: '.APP_URL_ADMIN.'/'.APP_ADMIN_FIRSTPAGECONTROLLER);
 ?>

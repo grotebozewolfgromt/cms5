@@ -12,7 +12,7 @@
     </div>
 
     <div class="header-logo">
-        <?php echo APP_CMS_APPLICATIONNAME; ?>
+        <?php echo APP_APPLICATIONNAME; ?>
     </div>
 
     <div class="header-search">
