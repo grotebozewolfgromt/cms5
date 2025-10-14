@@ -496,48 +496,6 @@ class DRDBFilters extends HTMLElement
         this.shadowRoot.appendChild(objChipEdit);        
     }
 
-    // #attributeToString(objHTMLObject, sAttrName, sDefault = "")
-    // {
-    //     if (objHTMLObject.hasAttribute(sAttrName))
-    //         return objHTMLObject.getAttribute(sAttrName);
-
-    //     return sDefault;
-    // }
-
-    // #attributeToArray(objHTMLObject, sAttrName)
-    // {
-    //     if (objHTMLObject.getAttribute(sAttrName))
-    //         return JSON.parse(objHTMLObject.getAttribute(sAttrName));
-
-    //     return [];
-    // }
-
-    // #attributeToBoolean(objHTMLObject, sAttrName, bDefault = false)
-    // {
-    //     // console.log("attributename: this.getAttribute(sAttrName)", sAttrName, this.getAttribute(sAttrName))
-    //     if (objHTMLObject.getAttribute(sAttrName) !== null)
-    //     {
-    //         if (objHTMLObject.getAttribute(sAttrName) == "")
-    //             return true;
-
-    //         if (objHTMLObject.getAttribute(sAttrName) == "false")
-    //             return false
-    //         else
-    //             return true;
-    //     }
-
-    //     return bDefault;
-    // }    
-
-    // #attributeToInt(objHTMLObject, sAttrName, iDefault = 0)
-    // {
-    //     if (objHTMLObject.getAttribute(sAttrName) !== null)
-    //     {
-    //         return parseInt(objHTMLObject.getAttribute(sAttrName));
-    //     }
-
-    //     return iDefault;
-    // }    
 
     /**
      * renders new filter menu
@@ -605,7 +563,6 @@ class DRDBFilters extends HTMLElement
             //     this.#addEventListenersFilter(this.children[iIndex]);
             // }
             
-
 
             //quicksearch
             if (this.shadowRoot.children[iIndex].classList.contains("chipquicksearch"))
