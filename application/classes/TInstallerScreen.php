@@ -118,6 +118,8 @@ abstract class TInstallerScreen
 		//text can depend on mode
 		$this->sTitle = $this->getTitle();
 		$this->sDescription = $this->getDescription();		
+		$this->sURLNextButton = $this->getURLNextController();
+		$this->sURLPreviousButton = $this->getURLPreviousController();
 
 		//check access
 		if (!$this->handleInstallerEnabled()) 
@@ -701,6 +703,20 @@ abstract class TInstallerScreen
 	 */
 	abstract public function getAllowedActions();
 
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	abstract public function getURLNextController();
+
+
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	abstract public function getURLPreviousController();
 
 
 }

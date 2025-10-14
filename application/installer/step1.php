@@ -42,7 +42,7 @@ class step1 extends TInstallerScreen
 		$this->disableNextButton();
 		$this->enablePreviousButton();
 		$this->setURLNextButton('?'.TInstallerScreen::GETVARIABLE_ACTION.'=screenLicenseAgree');
-		$this->setURLPreviousButton('index.php');
+		// $this->setURLPreviousButton('index.php');
 
     	ob_start();
 		?>
@@ -90,7 +90,7 @@ class step1 extends TInstallerScreen
 		}
 
 		//not agreed
-		header('Location: step1.php');
+		header('Location: '.$this->getURLNextController());
 	}
 
 	
@@ -142,6 +142,29 @@ class step1 extends TInstallerScreen
 	{
 		return array('screenShowLicense', 'screenLicenseAgree');
 	}
+
+
+
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'index.php';
+	}		
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return 'step2.php';
+	}
+
 
 
 }

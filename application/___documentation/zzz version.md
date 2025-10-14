@@ -47,6 +47,10 @@
 * bugfix: validators phone note 1+2
 * keyup ondervangen dr-input-text
 * ajaxform.js: dr-input-text werd niet meegenomen
+* installer updated: define next en previous controllers
+* installer step 5 -> step 6
+* installer step 7 -> step 5
+* installer asks which fields to encrypt
 
 encrypted fields specificeren
 config: _CMS -> _ADMIN

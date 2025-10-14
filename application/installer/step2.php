@@ -41,8 +41,6 @@ class step2 extends TInstallerScreen
 	    $sBody = '';
 		$this->enableNextButton();
 		$this->enablePreviousButton();
-		$this->setURLNextButton('step3.php');
-		$this->setURLPreviousButton('step1.php');
 
 		//checks
 		$sBody.= $this->checkInt64();
@@ -172,6 +170,25 @@ class step2 extends TInstallerScreen
 	}
 
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'step1.php';
+	}	
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return 'step3.php';
+	}	
 
 }
 

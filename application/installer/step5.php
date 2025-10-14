@@ -1,5 +1,6 @@
 <?php
 
+use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
 use dr\classes\TInstallerScreen;
 
 define('APP_MAINTENANCEMODE_SKIPCHECK', true); //skip maintenance-mode check in bootstrap
@@ -8,520 +9,277 @@ $sCMSRootPath = dirname( dirname(__FILE__) );
 include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
 
 /**
- * STEP 5: create schema + inserting data into database
+ * GDPR
  * 
- * 
- * installler/step5.php created 20-8-2025
+ * installler/step5.php created 09-10-2025
  * 
  * @author dennis renirie
  */
 class step5 extends TInstallerScreen
 {
-	private $objTableVersionsFromDBModels = null;
-    private $arrPreviousDependenciesModelClasses = array();
+
+	const SESSIONAK_INSTALLER_RETAINDAYS = 'contact-retaindatadays';
+	const SESSIONAK_INSTALLER_ENCRYPTFIELDS = 'contact-searchfields';
+
+	private $iRetainData = 3650;
+	private $arrFields = array();
+
+	private $bValidForm = true;
+
+	private $sURLSubmitForm = 'step5.php?'.TInstallerScreen::GETVARIABLE_MODE.'='.TInstallerScreen::MODE_SUBMITTEDFORM;
 
 	/**
-	 * SCREEN 1: insert data
+	 * SCREEN 1: settings regarding gdpr
 	 */
-	public function screenInsertData()
+	public function screenSettings()
 	{
 		//init
 	    $sBody = '';
-		$this->disableNextButton();
-		$this->disablePreviousButton();
-		$this->setURLSSE('step5.php?'.TInstallerScreen::GETVARIABLE_ACTION.'=runInstallUpdate&'.TInstallerScreen::GETVARIABLE_MODE.'='.$this->getMode());
+		$this->enableNextButton();
+		$this->enablePreviousButton();
 
-		if ($this->getMode() == TInstallerScreen::MODE_UPDATE) //update
+
+		//==== SET MODE
+		if (!isset($_GET[TInstallerScreen::GETVARIABLE_MODE]))//the first time entering this screen, then the user is inputting data in the form
+			$this->setMode(TInstallerScreen::MODE_INPUTFORM);
+
+
+		//=== MODE: input
+		if ($this->getMode() == TInstallerScreen::MODE_INPUTFORM)
 		{
-			$this->setURLNextButton(APP_URL_CMS);
-			$this->setURLPreviousButton('index.php');
-			$this->setTextNextButton('Log In');
-		}
-		else //install
-		{
-			$this->setURLNextButton('step6.php');
-			$this->setURLPreviousButton('step4.php');
+			$this->setURLNextButton($this->sURLSubmitForm);
+			$this->setTextNextButton('Save');			
 		}
 
 		
-
-
-
-		$this->renderHTMLProgressScreen(get_defined_vars());
-	}
-
-	/**
-	 * runs the actual installation process
-	 */
-	public function runInstallUpdate()
-	{
-		header('Content-Type: text/event-stream');
-		header('Cache-Control: no-cache'); 		
-		$bSuccess = true; //when errors occur, this becomes false
-		$iTotalSteps = 11;
-
-		// //LONG RUNNING TASK
-		// for($i = 1; $i <= 5; $i++) {
-		// 	$this->sendSSEMessage($i, 'on iteration ' . $i . ' of 10' , $i*10, 5, 100, 100); 
-
-		// 	sleep(1);
-		// }
-
-		$this->objTableVersionsFromDBModels = new dr\classes\models\TSysTableVersions();
-
-
-		// ==== INSTALLATION ONLY ==== 
-		
-		//step 1: create database schema
-		if (!$this->installDBSchema(0,$iTotalSteps))
+		//==== MODE: submitted
+		if ($this->getMode() == TInstallerScreen::MODE_SUBMITTEDFORM)
 		{
-			$this->sendSSEMessage('CLOSE', '<br><b>Installation failed. This is critical error, the installation is aborted.</b>.<br>', 100, 100, 100, 100);		
-			return false;
-		}
+			$this->setURLNextButton($this->sURLSubmitForm);
+			$this->setTextNextButton('Create');	
 
-		//step 2: create system tables
-		if (!$this->installSystemDatabaseTables(1,$iTotalSteps))
-			$bSuccess = false;
+			$sBody.= '<h2>Doing checks:</h2>';
+			$sBody.= $this->sanitizeForm();
+			$sBody.= $this->validateForm();
+			$this->saveFormInSession();
+			$sBody.= '<br>';			
 
-		//step 3: install modules
-		if (!$this->installModules(2,$iTotalSteps))
-			$bSuccess = false;
-
-		// ==== UPDATING ==== 		
-
-		//step 4: update table versions (1/2)
-		if (!$this->updateTableVersions1(3,$iTotalSteps))
-			$bSuccess = false;
-
-		//step 5: update system tables
-		if (!$this->updateSytemTableVersions(4,$iTotalSteps))
-			$bSuccess = false;
-
-		//step 6: update modules
-		if (!$this->updateModules(5,$iTotalSteps))
-			$bSuccess = false;
-
-		//step 7: permissions
-		if (!$this->updatePermissions(6,$iTotalSteps))
-			$bSuccess = false;
-
-		//step 8: settings
-		if (!$this->updateSettings(7,$iTotalSteps))
-			$bSuccess = false;
-
-		//step 9: update table versions (2/2)
-		if (!$this->updateTableVersions2(8,$iTotalSteps))
-			$bSuccess = false;
-
-		// ==== PROPAGATE DATA ==== 
-		//I propagate data at the end, because that makes the chance bigger that we have a working installation
-		//when the installation process is interrupted.
-
-		//step 11: propagate data system tables
-		if (!$this->propagateDataSystemTables(9,$iTotalSteps))
-			$bSuccess = false;
-
-		//step 12: propagate data modules
-		if (!$this->propagateDataModules(10 ,$iTotalSteps))
-			$bSuccess = false;
-
-		//finish
-		if ($this->getMode() == TInstallerScreen::MODE_UPDATE)
-		{
-			if ($bSuccess)
-				$this->sendSSEMessage('CLOSE', '<br><b>Update proces completed </b> '.TInstallerScreen::STATUS_SUCCESS.'<br>Click "Log In"-button to go back to the admin panel.', 100, 100, 100, 100);		
-			else
-				$this->sendSSEMessage('CLOSE', '<br><b>Update process completed, but there were errors</b> '.TInstallerScreen::STATUS_FAILED.'<br>Scroll up to see where the error occurred.<br>Refresh the page to run the installation again, or click "Finish".', 100, 100, 100, 100);		
-
-			//update config file to disable the updater
-			$this->disableInstaller();
-		}
-		else
-		{
-			if ($bSuccess)
-				$this->sendSSEMessage('CLOSE', '<br><b>Installation proces completed </b> '.TInstallerScreen::STATUS_SUCCESS.'<br>Click "'.$this->getTextNextButton().'"-button to create a new user.', 100, 100, 100, 100);		
-			else
-				$this->sendSSEMessage('CLOSE', '<br><b>Installation process completed, but there were errors</b> '.TInstallerScreen::STATUS_FAILED.'<br>Scroll up to see where the error occurred.<br>Refresh the page to run the installation again, or click "'.$this->getTextNextButton().'"-button to continue.', 100, 100, 100, 100);		
-		}
-	}
-
-	/**
-	 * create database schema
-	 */	
-	private function installDBSchema($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'installDBSchema';
-
-
-		//start database connection
-		$objConn = new dr\classes\db\TDBConnectionMySQL();
-		$objConn->setErrorReporting(dr\classes\db\TDBConnection::REPORT_ERROR_OFF);
-		$objConn->setHost(APP_DB_HOST);
-		$objConn->setUsername(APP_DB_USER);
-		$objConn->setPassword(APP_DB_PASSWORD);
-		// $objConn->setDatabaseName(APP_DB_DATABASE);--> dont use here, we only check connection details, because the database schema doesnt exist yet and will therefore give an error
-		$objConn->setPort(APP_DB_PORT);
-
-		$this->sendSSEMessage($sID.'message', 'Establish database connection ', $iCurrentStep, $iMaxSteps, 0, 4); 
-		if ($objConn->connect())
-		{
-			$this->sendSSEMessage($sID.'connectionconfirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, 1, 4); 
-
-			$objQuery = $objConn->getPreparedStatement();
-
-			$this->sendSSEMessage($sID.'messagecheckexists', 'Check if database schema "'.APP_DB_DATABASE.'" exists ', $iCurrentStep, $iMaxSteps, 2, 4); 
-			if (!$objQuery->databaseExists(APP_DB_DATABASE))
-			{          
-				$this->sendSSEMessage($sID.'schemaexistsdone', TInstallerScreen::STATUS_DONE.'<br>Schema doesn\'t, create new schema "'.APP_DB_DATABASE.'" ', $iCurrentStep, $iMaxSteps, 3, 4); 
-
-				if ($objQuery->createDatabase(APP_DB_DATABASE))
-					$this->sendSSEMessage($sID.'createschemasucces', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, 4, 4); 
-				else
-					$this->sendSSEMessage($sID.'createschemasucces', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, 4, 4);
-			}
-			else
+			//good form
+			if ($this->bValidForm)
 			{
-				$this->sendSSEMessage($sID.'schemaexistsdone', TInstallerScreen::STATUS_DONE.'<br>Schema "'.APP_DB_DATABASE.'" already exists. So don\'t create it. '.TInstallerScreen::STATUS_DONE.'<br>', $iCurrentStep, $iMaxSteps, 4, 4); 
-			}
-
-		}
-		else
-		{
-			$this->sendSSEMessage($sID.'connectionfailed', TInstallerScreen::STATUS_FAILED.'<br><b>Please revise your database credentials by clicking the "'.$this->getTextPreviousButton().'"-button</b>', $iCurrentStep, $iMaxSteps, 4, 4); 
-		}		
-
-		return true;
-	}
-
-	/**
-	 * install db tables
-	 */
-	private function installSystemDatabaseTables($iCurrentStep, $iMaxSteps)
-	{
-		$iCountTables = 0;
-		$iModCounter = 0;
-		$sID = 'systbl';
-		$sTableName = '';
-        $arrSystemDBTables = getSystemModelsInstantiated();
-        $iCountTables = count($arrSystemDBTables);
-
-        $this->sendSSEMessage($sID.'message', 'Creating system database tables:<br>', $iCurrentStep, $iMaxSteps, 0, $iCountTables); 
-        error_log('creating system database tables:');
-
-        foreach ($arrSystemDBTables as $objModel)
-        {
-			$sTableName = $objModel::getTable();
-			
-			$this->sendSSEMessage($sID.$sTableName, ' - Create '.$sTableName.' ', $iCurrentStep, $iMaxSteps, $iModCounter+1, $iCountTables); 
-
-			if (!$objModel->install(null))
-			{
-				$this->sendSSEMessage($sID.$sTableName.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, $iModCounter+1, $iCountTables); 
-				error_log('table creation failed for table '.$sTableName);
-				return false;
+				$sBody.= $this->saveInConfigFile();
+				header('location: step6.php');  
+				return; //EXIT
 			}
 			
-			$this->sendSSEMessage($sID.$sTableName.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, $iModCounter+1, $iCountTables); 
-			++$iModCounter;
-        }        
+		}
 
-		return true;
+
+
+		ob_start();
+		?>
+			<h2>Data retention</h2>
+			<label for="edtDaysRetainData">How many days would you like retain data? (3650 = 10 years, 0 = never anonymize)</label><br>
+			<input type="text" name="edtDaysRetainData" value="3650"><br>
+			<ul>
+				<li>After the period above expires, data will be anonymized.</li>
+				<li><span style="color:darkred;">Anonymization is permanent and can not be undone.</span></li>
+				<li>The date of last contact is used to determine whether to anonymize data or not.</li>
+			</ul>
+			<br>
+			<h2>Encrypt fields</h2>
+			To abide by the GDPR you are required to encrypt personal identifyable fields of contacts.<br>
+			Encryption prevents data leaks in data breaches, but encryption makes fields <b>unsearchable</b> and <b>unsortable</b>.<br>
+			<br>
+			<label>Which fields would you like to encrypt and make unsearchable?</label><br>
+			<input type="checkbox" name="chkFields[]" value="name" checked> Last name<br>
+			<input type="checkbox" name="chkFields[]" value="address" checked> Address<br>
+			<input type="checkbox" name="chkFields[]" value="postalcode" checked> Postal Code / Zip code<br>
+			<input type="checkbox" name="chkFields[]" value="phone" checked> Phone number<br>
+			<input type="checkbox" name="chkFields[]" value="email" checked> Email address<br>
+			<br>
+			<i>Notes</i><br>
+			<ul>
+				<li><span style="color:darkred;">This choice is permanent and can not be undone<span></li>
+				<li>For high risk environments, like a website on the internet: <b>select all fields</b></li>
+				<li>For low risk environments, like a local hosted web application: you could decide to select less fields</li>
+			</ul>
+		<?php
+		$sBody = ob_get_contents();
+		ob_end_clean();  
+
+		$this->renderHTMLTemplate(get_defined_vars());
 	}
 
+
+
 	/**
-	 * install modules
+	 * validates form input
 	 */
-	private function installModules($iCurrentStep, $iMaxSteps)
+	private function validateForm()
 	{
-		$iCountModules = 0;
-		$sID = 'modules';
-		$sCurrMod = '';
-        $arrModuleFolders = getModuleFolders();
-		$iCountModules = count($arrModuleFolders);
-		$bSuccess = true;
+		//init
+		$sBody = '';
+		$sSanitized = '';
 
-        $this->sendSSEMessage($sID.'message', 'Installing modules:<br>', $iCurrentStep, $iMaxSteps, 0, $iCountModules); 
-        error_log('Installing modules:');
 
-        for ($iModIndex = 0; $iModIndex < $iCountModules; $iModIndex++)
-        {
-            $sCurrMod = getModuleFullNamespaceClass($arrModuleFolders[$iModIndex]);
-            $objCurrMod = new $sCurrMod;
+		//==== check days
+		$sBody.= 'Numeric days ';
+		if (!is_numeric($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_RETAINDAYS]))
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Days is not numeric!<br>';
+			$this->bValidForm = false;
+		}
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';		
+	
 
-            $this->sendSSEMessage($sID.$sCurrMod, ' - Installing '.get_class_short($objCurrMod).' ', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules); 
-            error_log('installing module '.$sCurrMod.' ...');
-            
-            if (!$objCurrMod->installModule())
-            {
-				$this->sendSSEMessage($sID.$sCurrMod.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules); 
-				error_log('install failed for module '.$sCurrMod);
-                
-                $bSuccess = false;
-            }         
-			else
-				$this->sendSSEMessage($sID.$sCurrMod.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules); 			
-        }		
-
-		return $bSuccess;
+		return $sBody;
 	}	
 
 	/**
-	 * update table versions (1/2)
+	 * sanitizes form input
 	 */
-	private function updateTableVersions1($iCurrentStep, $iMaxSteps)
+	private function sanitizeForm()
 	{
-		$sID = 'updatetableversions1';
+		if (isset($_POST['edtDaysRetainData']))
+		{
+			$_POST['edtDaysRetainData'] = filterBadCharsWhiteList($_POST['edtDaysRetainData'], '0123456789');
+		}
 
-        $this->sendSSEMessage($sID.'message', 'Synchronizing table versions ', $iCurrentStep, $iMaxSteps, 0, 1); 
-        error_log('Table version system: running synchronisation ...');
-        
-        
-        if ($this->objTableVersionsFromDBModels->synchronizeTablesDB())
-        { 
-           $this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);             
-		   return true;
-        }
-        else
-        {
-           $this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);             
-           error_log('synchronizeTablesDB() failed!');   
-           
-           //it failed but we continue to run the script
-		   return false;
-        }		
-
-		return true;
 	}
 
 	/**
-	 * update system table versions
+	 * stores form values in session
 	 */
-	private function updateSytemTableVersions($iCurrentStep, $iMaxSteps)
+	private function saveFormInSession()
 	{
-		$iCountModels = 0;
-		$sID = 'updateSytemTableVersions';
-		$arrSystemDBTables = getSystemModelsInstantiated();
-		$iCountModels = count($arrSystemDBTables);
-		$iModelIndex = 0;
+		if (isset($_POST['edtDaysRetainData']))
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_RETAINDAYS] 		= $_POST['edtDaysRetainData'];
+		else
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_RETAINDAYS]			= 0;
+
+		if (isset($_POST['chkFields']))		
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] 		= $_POST['chkFields'];
+		else
+			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] 		= array();
+	}
+
+	
+	/**
+	 * stores values in config file
+	 */
+	private function saveInConfigFile()
+	{
+		//init
+		$sBody = '';
+
+		//==== CONFIG FRAMEWORK
+		$objConfig = new dr\classes\TConfigFileApplication();
+		$sBody.= 'Open config file application for host: '.$_SERVER['SERVER_NAME'].' ';
+		if (file_exists($this->sConfigPathApplication))//load existing config file (so we can overwrite values)
+		{			
+			if (!$objConfig->loadFile($this->sConfigPathApplication))
+			{
+				$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+				$this->disableNextButton();
+			}
+			else
+			{
+				$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';
+			}
+
+			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ANONYMIZEDATAAFTERDAYS', $_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_RETAINDAYS]);        
+
+			//config: searchable fields: create array with proper fields
+			/*
+			$arrDBFields = array();
+			if ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS])
+			{
+				foreach ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] as $sFormField)
+				{
+					switch($sFormField)
+					{
+						case 'name':
+							$arrDBFields[] = TSysContacts::FIELD_LASTNAME;
+							break;
+						case 'address':
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGADDRESSMISC;
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGADDRESSSTREET;
+							$arrDBFields[] = TSysContacts::FIELD_DELIVERYADDRESSMISC;
+							$arrDBFields[] = TSysContacts::FIELD_DELIVERYADDRESSSTREET;					
+							break;
+						case 'postalcode':
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGPOSTALCODEZIP;
+							$arrDBFields[] = TSysContacts::FIELD_DELIVERYPOSTALCODEZIP;
+							break;
+						case 'phone':
+							$arrDBFields[] = TSysContacts::FIELD_PHONENUMBER1;
+							$arrDBFields[] = TSysContacts::FIELD_PHONENUMBER2;
+							break;
+						case 'email':
+							$arrDBFields[] = TSysContacts::FIELD_EMAILADDRESSENCRYPTED;
+							$arrDBFields[] = TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED;
+							break;
+
+					}
+				}
+			}
+			if (count($arrDBFields) > 0)
+				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', implode(',',$arrDBFields));        
+			else
+				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', '');        
+			*/
 
 
-        $this->sendSSEMessage($sID.'message', 'Refactoring system database tables:<br>', $iCurrentStep, $iMaxSteps, 0, $iCountModels); 
-        error_log('Refactoring system database tables:');
+			//store fields to encrypt
+			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME', false); //default
+			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS', false); //default
+			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP', false); //default
+			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER', false); //default
+			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS', false); //default
+			if ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS])
+			{
+				foreach ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step5::SESSIONAK_INSTALLER_ENCRYPTFIELDS] as $sFormField)
+				{
+					switch($sFormField)
+					{
+						case 'name':
+							$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME', true);
+							break;
+						case 'address':
+							$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS', true);
+							break;
+						case 'postalcode':
+							$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP', true);
+							break;
+						case 'phone':
+							$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER', true);
+							break;
+						case 'email':
+							$objConfig->set('APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS', true);
+							break;
 
-        foreach ($arrSystemDBTables as $objSystemObject) //tmodel
-        {
-			$sTableName = $objSystemObject::getTable();
-
-			$this->sendSSEMessage($sID.$sTableName.'title', ' - Refactor '.$sTableName.' ', $iCurrentStep, $iMaxSteps, $iModelIndex+1, $iCountModels); 
-			error_log('refactor table '.$sTableName.' ...');			
+					}
+				}
+			}			
 			
-			if (!$objSystemObject->refactorDB($this->arrPreviousDependenciesModelClasses, $this->objTableVersionsFromDBModels))
+
+			$sBody.= 'Save database credentials to config file application for host: '.$_SERVER['SERVER_NAME'].' ';
+			if ($objConfig->saveFile($this->sConfigPathApplication))
 			{
-				$this->sendSSEMessage($sID.$sTableName.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, $iModelIndex+1, $iCountModels); 
-				error_log('refactor failed for table '.$sTableName);
-                
-                return false;
-			}
-			else		
-				$this->sendSSEMessage($sID.$sTableName.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, $iModelIndex+1, $iCountModels); 			
-
-			$iModelIndex++;
-        }                   
-       
-
-
-		return true;
-	}		
-
-
-	/**
-	 * update modules
-	 */
-	private function updateModules($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'updatemodules';
-		$arrModuleFolders = getModuleFolders();
-		$iCountModules = 0;
-		$iCountModules = count($arrModuleFolders);
-
-        $this->sendSSEMessage($sID.'message', 'Updating modules:<br>', $iCurrentStep, $iMaxSteps, 0, $iCountModules); 
-        error_log('Updating module database tables:');
-
-
-        for ($iModIndex = 0; $iModIndex < count($arrModuleFolders); $iModIndex++)
-        {
-            $sCurrMod = getModuleFullNamespaceClass($arrModuleFolders[$iModIndex]);
-            $objCurrMod = new $sCurrMod;
-
-			$this->sendSSEMessage($sID.$sCurrMod.'title', ' - Updating '.get_class_short($objCurrMod).' ', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules); 
-			error_log('refactor table '.$sCurrMod.' ...');			
-            
-            if (!$objCurrMod->updateModels($this->arrPreviousDependenciesModelClasses, $this->objTableVersionsFromDBModels))
-            {
-				$this->sendSSEMessage($sID.$sCurrMod.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules);                     
-                error_log('updating tables (TSysModel) failed for module '.$sCurrMod);
-                return false;
-            }     
-			else
-				$this->sendSSEMessage($sID.$sCurrMod.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules); 
-        }
-		
-		return true;
-	}	
-
-	/**
-	 * update permissions
-	 */	
-	private function updatePermissions($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'updatepermissions';
-
-        $this->sendSSEMessage($sID.'message', 'Updating permissions, this can take a couple of seconds ', $iCurrentStep, $iMaxSteps, 0, 1); 
-        error_log('updating permissions ... ');   
-
-        $objPermissions = new dr\modules\Mod_Sys_CMSUsers\models\TSysCMSPermissions();
-        if (!$objPermissions->updatePermissions())
-        {
-			$this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);                     
-            error_log('updating permissions failed');
-            return false;
-        }
-		else
-		{
-			$this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);                     		
-			return true;
-		}
-
-		return true;
-	}
-
-	/**
-	 * update settings
-	 */	
-	private function updateSettings($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'updatepermissions';
-
-        $this->sendSSEMessage($sID.'message', 'Updating settings ', $iCurrentStep, $iMaxSteps, 0, 1); 
-        error_log('updating settings ... ');   
-
-        $objSettings = new dr\modules\Mod_Sys_Settings\models\TSysSettings();
-        if (!$objSettings->updateSettingsDB())
-        {
-            $this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);                      
-            error_log('updating settings failed');
-            return false;
-        }
-		else
-		{
-			$this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);                     		
-			return true;
-		}
- 
-		return true;
-	}	
-
-	/**
-	 * update table versions (2/2)
-	 */	
-	private function updateTableVersions2($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'updatepermissions2';
-
-        $this->sendSSEMessage($sID.'message', 'Table version system: updating version numbers ', $iCurrentStep, $iMaxSteps, 0, 1); 
-        error_log('table version system: updating version numbers ... ');
-        
-        if ($this->objTableVersionsFromDBModels->saveToDB())
-        {
-			$this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);                                            
-			return true;
-        }
-        else
-        {
-			$this->sendSSEMessage($sID.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, 1, 1);                                            
-            error_log('table version system: saveToDB() failed');   
-            
-            return false;
-        }
-        
-        unset($this->objTableVersionsFromDBModels);		
-		return true;
-	}	
-
-	/**
-	 * propagate data system tables
-	 */	
-	private function propagateDataSystemTables($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'propagateDataSystemTables';
-        $arrSystemDBTables = getSystemModelsInstantiated();
-		$iCountModels = 0;
-		$iCountModels = count($arrSystemDBTables);
-		$iIndex = 0;
-		$bSuccess = true;
-
-        $this->sendSSEMessage($sID.'message', 'Propagate data for system tables:<br>', $iCurrentStep, $iMaxSteps, 0, $iCountModels); 
-        error_log('propagating system database tables:');
-        
-        foreach ($arrSystemDBTables as $objModel)
-        {
-			$sCurrModel = $objModel::getTable();
-
-			$this->sendSSEMessage($sID.$sCurrModel.'title', ' - Propagating data in '.$sCurrModel.' ', $iCurrentStep, $iMaxSteps, $iIndex+1, $iCountModels); 
-			error_log('refactor table '.$sCurrModel.' ...');	
-
-			if (!$objModel->propagateData())
-			{
-				$this->sendSSEMessage($sID.$sCurrModel.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, $iIndex+1, $iCountModels);                     
-				error_log('propagating data failed for: '.$sCurrModel);                
-				$bSuccess =  false;
+				$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';
 			}
 			else
-				$this->sendSSEMessage($sID.$sCurrModel.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, $iIndex+1, $iCountModels);                     
+			{
+				$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+				$this->disableNextButton();
+			}
 
+		}
 
-			$iIndex++;
-        }        
-
-
-		return $bSuccess;
-	}
-
-	/**
-	 * propagate data modules
-	 */	
-	private function propagateDataModules($iCurrentStep, $iMaxSteps)
-	{
-		$sID = 'propagateDataModules';
-		$bSuccess = true;		
-		$arrModuleFolders = array();
-		$arrModuleFolders = getModuleFolders();
-		$iCountModules = count($arrModuleFolders);
-
-        $this->sendSSEMessage($sID.'message', 'Propagate data modules:<br>', $iCurrentStep, $iMaxSteps, 0, $iCountModules); 
-        error_log('propagating data modules:');
-        
-        for ($iModIndex = 0; $iModIndex < $iCountModules; $iModIndex++)
-        {
-            $sCurrMod = getModuleFullNamespaceClass($arrModuleFolders[$iModIndex]);
-			$objCurrMod = new $sCurrMod;
-
-            $this->sendSSEMessage($sID.$sCurrMod.'title', ' - Propagating data for '.get_class_short($objCurrMod).' ', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules); 
-            error_log('propagate data module '.$sCurrMod.' ...');
-            
-
-            if (!$objCurrMod->propagateDataModule())
-            {
-				$this->sendSSEMessage($sID.$sCurrMod.'confirm', TInstallerScreen::STATUS_FAILED.'<br>', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules);
-                error_log('data propagation failed for module '.$sCurrMod);
-
-                $bSuccess = false;
-            }            
-			else
-				$this->sendSSEMessage($sID.$sCurrMod.'confirm', TInstallerScreen::STATUS_SUCCESS.'<br>', $iCurrentStep, $iMaxSteps, $iModIndex+1, $iCountModules);
-        }
-
-		return $bSuccess;
+		return $sBody;
 	}
 
 	//=== ABSTRACT FUNCTIONS ===
@@ -541,11 +299,7 @@ class step5 extends TInstallerScreen
 	 */
 	function getTitle()
 	{
-		if ($this->getMode() == TInstallerScreen::MODE_UPDATE)
-			return 'Update '.APP_CMS_APPLICATIONNAME;
-		else		
-			return 'Install '.APP_CMS_APPLICATIONNAME;
-
+		return 'Privacy laws';
 	}
 
 	/**
@@ -554,11 +308,7 @@ class step5 extends TInstallerScreen
 	 */
 	public function getDescription()
 	{
-		if ($this->getMode() == TInstallerScreen::MODE_UPDATE)
-			return 'We are going to update the software for you.<br>Don\'t close this webpage until the update in finished, please be patient.';
-		else
-			return 'We are going to install the software for you.<br>Don\'t close this webpage until the installation in finished, please be patient.';
-
+		return 'To abide by privacy protection laws like GDPR, we have to ask you some questions';
 	}
 
 	/**
@@ -567,7 +317,7 @@ class step5 extends TInstallerScreen
 	 */
 	public function getDefaultAction()
 	{
-		return 'screenInsertData';
+		return 'screenSettings';
 	}
 
 	/**
@@ -578,13 +328,29 @@ class step5 extends TInstallerScreen
 	 */
 	public function getAllowedActions()
 	{
-		return array('screenInsertData', 'runInstallUpdate');
+		return array('screenSettings');
 	}
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'step4.php';
+	}		
 
 
-
-
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return 'step6.php';
+	}	
 }
 
 $objScreen = new step5();

@@ -48,10 +48,7 @@ class step8 extends TInstallerScreen
 	    $sBody = '';
 		$this->enableNextButton();
 		$this->disablePreviousButton();
-		$this->setURLNextButton(APP_URL_CMS);	
 		$this->setTextNextButton('Log in');	
-		$this->setURLPreviousButton('step7.php');	
-		$this->setTextPreviousButton('Previous');	
 
 		//set configs
 		$this->disableInstaller();
@@ -62,7 +59,7 @@ class step8 extends TInstallerScreen
 		$sBody.= 'Path: '.APP_PATH_CMS.'<br>';
 		$sBody.= 'URL: <a href="'.APP_URL_CMS.'" target="_blank">'.APP_URL_CMS.'</a><br>';
 		$sBody.= 'Path config file application: '.$this->sConfigPathApplication.'<br>';
-		$sBody.= '<h2>Login</h2>';
+		$sBody.= '<h2>Login admin panel</h2>';
 		$sBody.= 'User name: '.$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_LOGINUSERNAME].'<br>';
 		$sBody.= 'Password: '.$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_PASSWORDSTARS].'<br>';
 		$sBody.= 'Email: '.$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_EMAIL].'<br>';
@@ -132,7 +129,26 @@ class step8 extends TInstallerScreen
 		return array('screenInstallationReport');
 	}
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'step7.php';
+	}		
 
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return APP_URL_CMS;
+	}	
 }
 
 $objScreen = new step8();

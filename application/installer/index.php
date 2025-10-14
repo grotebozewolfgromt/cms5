@@ -79,7 +79,7 @@ class index extends TInstallerScreen
 				header('Location: step1.php');
 				break;
 			case 'update':
-				header('Location: step5.php?'.TInstallerScreen::GETVARIABLE_MODE.'='.TInstallerScreen::MODE_UPDATE);
+				header('Location: step6.php?'.TInstallerScreen::GETVARIABLE_MODE.'='.TInstallerScreen::MODE_UPDATE);
 				break;
 			case 'uninstall':
 				header('Location: uninstall.php');
@@ -148,6 +148,28 @@ class index extends TInstallerScreen
 	public function useInstallPassword()
 	{
 		return false;
+	}
+
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return ''; //it depends on the user input
+	}
+
+
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'https://www.archimedescms.com';
 	}
 
 }

@@ -75,8 +75,6 @@ class step3 extends TInstallerScreen
 	    $sBody = '';
 		$this->enableNextButton();
 		$this->enablePreviousButton();
-		$this->setURLNextButton('step4.php');
-		$this->setURLPreviousButton('step2.php');
 
 		//rename directory
 		// $sBody.= $this->renameDir(); --> doesn't work
@@ -308,6 +306,26 @@ class step3 extends TInstallerScreen
 	}
 
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'step2.php';
+	}		
+
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return 'step4.php';
+	}	
 
 }
 

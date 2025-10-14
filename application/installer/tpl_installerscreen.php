@@ -347,19 +347,21 @@
                 </div>
                 <div class="commandpanel">
                         <button id="btnNext" onClick="handleNextButton();"
-                        <?php
-                                if (!$bNextButtonEnabled)
-                                        echo ' disabled';
-                                echo '>';
-                                echo $this->getTextNextButton();
-                        ?></button>
+                                <?php
+                                        if (!$bNextButtonEnabled)
+                                                echo ' disabled';
+                                        echo '>';
+                                        echo $this->getTextNextButton();
+                                ?>
+                        </button>
                         <button id="btnPrevious" onClick="handlePreviousButton();"
-                        <?php
-                                if (!$bPreviousButtonEnabled)
-                                        echo ' disabled';
-                                echo '>';
-                                echo $this->getTextPreviousButton();
-                        ?></button>
+                                <?php
+                                        if (!$bPreviousButtonEnabled)
+                                                echo ' disabled';
+                                        echo '>';
+                                        echo $this->getTextPreviousButton();
+                                ?>
+                        </button>
                 </div>
 
         </div>

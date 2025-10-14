@@ -1,7 +1,7 @@
 <?php
 
-use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
 use dr\classes\TInstallerScreen;
+use dr\modules\Mod_Sys_CMSUsers\models\TSysCMSUsers;
 
 define('APP_MAINTENANCEMODE_SKIPCHECK', true); //skip maintenance-mode check in bootstrap
 
@@ -9,37 +9,35 @@ $sCMSRootPath = dirname( dirname(__FILE__) );
 include_once($sCMSRootPath.DIRECTORY_SEPARATOR.'bootstrap_cms.php');
 
 /**
- * GDPR
+ * Create a new user in the CMS
  * 
- * installler/step7.php created 09-10-2025
+ * 
+ * installler/step6.php created 21-8-2025
  * 
  * @author dennis renirie
  */
-class step7 extends TInstallerScreen
+class step6 extends TInstallerScreen
 {
-
-	const SESSIONAK_INSTALLER_RETAINDAYS = 'contact-retaindatadays';
-	const SESSIONAK_INSTALLER_SEARCHFIELDS = 'contact-searchfields';
-
-	private $iRetainData = 3650;
-	private $arrFields = array();
+	private $sDefaultUsername = '';
+	private $sDefaultPassword = '';
+	private $sDefaultPasswordRepeat = '';
+	private $sDefaultEmail = '';
 
 	private $bValidForm = true;
 
 	private $sURLSubmitForm = 'step7.php?'.TInstallerScreen::GETVARIABLE_MODE.'='.TInstallerScreen::MODE_SUBMITTEDFORM;
 
 	/**
-	 * SCREEN 1: settings regarding gdpr
+	 * SCREEN 1: shows screen for users to enter the database credentials
 	 */
-	public function screenSettings()
+	public function screenEnterLoginCredentials()
 	{
 		//init
 	    $sBody = '';
 		$this->enableNextButton();
-		$this->disablePreviousButton();
-		$this->setURLPreviousButton('step6.php');	
-		$this->setTextPreviousButton('Previous');	
-
+		$this->enablePreviousButton();
+		$this->setURLPreviousButton('index.php');	
+		$this->setTextPreviousButton('Abort');	
 
 		//==== SET MODE
 		if (!isset($_GET[TInstallerScreen::GETVARIABLE_MODE]))//the first time entering this screen, then the user is inputting data in the form
@@ -50,7 +48,7 @@ class step7 extends TInstallerScreen
 		if ($this->getMode() == TInstallerScreen::MODE_INPUTFORM)
 		{
 			$this->setURLNextButton($this->sURLSubmitForm);
-			$this->setTextNextButton('Save');			
+			$this->setTextNextButton('Create');			
 		}
 
 		
@@ -61,123 +59,98 @@ class step7 extends TInstallerScreen
 			$this->setTextNextButton('Create');	
 
 			$sBody.= '<h2>Doing checks:</h2>';
-			$sBody.= $this->sanitizeForm();
+			$this->setFormAsDefaultVars();
 			$sBody.= $this->validateForm();
-			$this->saveFormInSession();
 			$sBody.= '<br>';			
 
 			//good form
 			if ($this->bValidForm)
 			{
-				$sBody.= $this->saveInConfigFile();
-				header('location: step8.php');  
+				$this->createUser();
 				return; //EXIT
 			}
 			
 		}
 
-
-
+		//==== SHOW FORM
 		ob_start();
 		?>
-			<h2>Data retention</h2>
-			<label for="edtDaysRetainData">How many days would you like retain data? (3650 = 10 years, 0 = never anonymize)</label><br>
-			<input type="text" name="edtDaysRetainData" value="3650"><br>
-			<ul>
-				<li>After this period expires, data will be anonymized.</li>
-				<li>The date of last contact is used to determine whether to anonymize.</li>
-				<li>Anonymization is permanent and can not be undone.</li>
-			</ul>
-			<h2>Searchable fields</h2>
-			Because of the GDPR we are required to encrypt personal identifyable fields of contacts.<br>
-			Encryption prevents data leaks in data breaches, but encryption makes fields <b>unsearchable</b>.<br>
+
+			<h2>Enter login credentials:</h2>
+
+			<label for="edtUsername">User name</label><br>
+			<input type="text" name="edtUsername" value="<?php echo $this->sDefaultUsername; ?>"><br>
+			<label for="edtPassword">Password</label><br>
+			<input type="password" name="edtPassword" value="<?php echo $this->sDefaultPassword; ?>"><br>
+			<label for="edtPasswordRepeat">Repeat password</label><br>
+			<input type="password" name="edtPasswordRepeat" value=""><br>
+			<label for="edtEmail">Email address (to email status messages)</label><br>
+			<input type="text" name="edtEmail" value="<?php echo $this->sDefaultEmail; ?>"><br>
 			<br>
-			<label>Which fields would you like to be unencrypted and thus able to search?</label><br>
-			<input type="checkbox" name="chkFields[]" value="name"> Last name<br>
-			<input type="checkbox" name="chkFields[]" value="address"> Address<br>
-			<input type="checkbox" name="chkFields[]" value="postalcode"> Postal Code / Zip code<br>
-			<input type="checkbox" name="chkFields[]" value="phone"> Phone number<br>
-			<input type="checkbox" name="chkFields[]" value="email"> Email address<br>
-			<br>
-			<i>Notes</i><br>
-			<ul>
-				<li>Data above will be <b>unencrypted</b>, thus <b>leaks data</b> when a data breach occurs.</li>
-				<li>For high risk environments, like a website on the internet, it's wise to <b>select no fields</b></li>
-				<li>For low risk environments, like a locally hosted web application, you can select more fields</li>
-				<li>Please select only the fields that you strictly need to identify your contact.</li>
-			</ul>
+			Write these credentials down, because you need them in the future to log in.<br>
+			You can change these credentials after logging in if you want to.
 		<?php
-		$sBody = ob_get_contents();
+		$sBody.= ob_get_contents();
 		ob_end_clean();  
+
+
 
 		$this->renderHTMLTemplate(get_defined_vars());
 	}
 
 
-
 	/**
-	 * validates form input
+	 * handles submitted user login credentials
 	 */
-	private function validateForm()
+	public function createUser()
 	{
 		//init
+		global $sCMSRootPath;
+		$this->enableNextButton(); //when errors occur, I disable it -> this can be done in other functions that are called below
+		$this->enablePreviousButton(); //when errors occur, I disable it -> this can be done in other functions that are called below
+		$this->setURLNextButton($this->getURLNextController());
+		$this->setURLPreviousButton('step7.php');
+		$this->setTextNextButton('Next &gt;');
+		$this->setTextPreviousButton('&lt; Back');
+
 		$sBody = '';
-		$sSanitized = '';
+		$bSuccess = true;
 
+		$this->setFormAsDefaultVars();
+		$this->setFormAsSessionVars();
 
-		//==== check days
-		$sBody.= 'Numeric days ';
-		if (!is_numeric($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_RETAINDAYS]))
+		//==== CREATING A USER
+        //technically we are not creating a new user, just changing the credentials of the first user
+		$sBody.= 'Creating user "'.$this->sDefaultUsername.'" in database ';
+
+        $objUser = new TSysCMSUsers();
+        $objUser->loadFromDB(); //we should only have 1 user
+        $objUser->limitOne(); //we should only have 1 user
+		if ($objUser->count() > 0)
+		{
+			$objUser->setUsername($this->sDefaultUsername);
+			$objUser->setUsernamePublic($this->sDefaultUsername);
+			$objUser->setPasswordDecrypted($this->sDefaultPassword);
+			$objUser->setPasswordExpires(null);
+			$objUser->setEmailAddressDecrypted($this->sDefaultEmail);
+			$objUser->setLoginEnabled(true); //===> default is false
+			if ($objUser->saveToDB())
+			{
+				$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';
+			}
+			else
+			{
+				$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+				error_log('install: create user: saving user failed');
+			}
+		}
+		else
 		{
 			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
-			$sBody.= 'Days is not numeric!<br>';
-			$this->bValidForm = false;
-		}
-		else
-			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';		
-	
-
-		return $sBody;
-	}	
-
-	/**
-	 * sanitizes form input
-	 */
-	private function sanitizeForm()
-	{
-		if (isset($_POST['edtDaysRetainData']))
-		{
-			$_POST['edtDaysRetainData'] = filterBadCharsWhiteList($_POST['edtDaysRetainData'], '0123456789');
+			error_log('install: create user: loading existing user failed');
 		}
 
-	}
-
-	/**
-	 * stores form values in session
-	 */
-	private function saveFormInSession()
-	{
-		if (isset($_POST['edtDaysRetainData']))
-			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_RETAINDAYS] 		= $_POST['edtDaysRetainData'];
-		else
-			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_RETAINDAYS]			= 0;
-
-		if (isset($_POST['chkFields']))		
-			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_SEARCHFIELDS] 		= $_POST['chkFields'];
-		else
-			$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_SEARCHFIELDS] 		= array();
-	}
-
-	
-	/**
-	 * stores values in config file
-	 */
-	private function saveInConfigFile()
-	{
-		//init
-		$sBody = '';
-
-		//==== CONFIG FRAMEWORK
+		//==== SAVE EMAIL ADDRESS IN CONFIG	
 		$objConfig = new dr\classes\TConfigFileApplication();
 		$sBody.= 'Open config file application for host: '.$_SERVER['SERVER_NAME'].' ';
 		if (file_exists($this->sConfigPathApplication))//load existing config file (so we can overwrite values)
@@ -192,48 +165,10 @@ class step7 extends TInstallerScreen
 				$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';
 			}
 
-			$objConfig->set('APP_DATAPROTECTION_CONTACTS_ANONYMIZEDATAAFTERDAYS', $_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_RETAINDAYS]);        
+			//set actual value in config file
+			$objConfig->set('APP_EMAIL_ADMIN', $this->sDefaultEmail);        
 
-			//create array with proper fields
-			$arrDBFields = array();
-			if ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_SEARCHFIELDS])
-			{
-				foreach ($_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][step7::SESSIONAK_INSTALLER_SEARCHFIELDS] as $sFormField)
-				{
-					switch($sFormField)
-					{
-						case 'name':
-							$arrDBFields[] = TSysContacts::FIELD_LASTNAME;
-							break;
-						case 'address':
-							$arrDBFields[] = TSysContacts::FIELD_BILLINGADDRESSMISC;
-							$arrDBFields[] = TSysContacts::FIELD_BILLINGADDRESSSTREET;
-							$arrDBFields[] = TSysContacts::FIELD_DELIVERYADDRESSMISC;
-							$arrDBFields[] = TSysContacts::FIELD_DELIVERYADDRESSSTREET;					
-							break;
-						case 'postalcode':
-							$arrDBFields[] = TSysContacts::FIELD_BILLINGPOSTALCODEZIP;
-							$arrDBFields[] = TSysContacts::FIELD_DELIVERYPOSTALCODEZIP;
-							break;
-						case 'phone':
-							$arrDBFields[] = TSysContacts::FIELD_PHONENUMBER1;
-							$arrDBFields[] = TSysContacts::FIELD_PHONENUMBER2;
-							break;
-						case 'email':
-							$arrDBFields[] = TSysContacts::FIELD_EMAILADDRESSENCRYPTED;
-							$arrDBFields[] = TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED;
-							break;
-
-					}
-				}
-			}
-			if (count($arrDBFields) > 0)
-				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', implode(',',$arrDBFields));        
-			else
-				$objConfig->set('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', '');        
-
-
-			$sBody.= 'Save database credentials to config file application for host: '.$_SERVER['SERVER_NAME'].' ';
+			$sBody.= 'Save values to config file application for host: '.$_SERVER['SERVER_NAME'].' ';
 			if ($objConfig->saveFile($this->sConfigPathApplication))
 			{
 				$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';
@@ -241,14 +176,132 @@ class step7 extends TInstallerScreen
 			else
 			{
 				$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
-				$this->disableNextButton();
 			}
 
 		}
 
-		return $sBody;
+		
+		$sBody.= '<br>We are almost there, click "Next"-button.';
+
+		$this->renderHTMLTemplate(get_defined_vars());
 	}
 
+	/**
+	 * validates form input
+	 */
+	private function validateForm()
+	{
+		//init
+		$sBody = '';
+		$sSanitized = '';
+		$sWhitelistUsername = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-';
+		$sWhitelistPassword = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-%@^!?=&*+$#.~;|{}';
+		$sWhitelistEmail = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-@.';
+
+
+		//==== check empty username
+		$sBody.= 'Check empty username ';
+		if ($this->sDefaultUsername == '')
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Empty username is not allowed!<br>';
+			$this->bValidForm = false;
+		}
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';		
+
+		//==== check invalid chars username
+		$sBody.= 'Check invalid characters in username ';
+		$sSanitized = filterBadCharsWhiteList($this->sDefaultUsername, $sWhitelistUsername);
+		if ($this->sDefaultUsername !== $sSanitized)
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Username contains invalid characters. The characters that are allowed: '.$sWhitelistUsername.'<br>';
+			$this->bValidForm = false;
+		}
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';		
+
+	
+
+		//==== check empty password
+		$sBody.= 'Check empty password ';
+		if ($this->sDefaultPassword == '')
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Empty password is not allowed!<br>';
+			$this->bValidForm = false;
+		}	
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';		
+	
+
+		//==== check invalid chars password
+		$sBody.= 'Check invalid characters in password ';
+		$sSanitized = filterBadCharsWhiteList($this->sDefaultPassword, $sWhitelistPassword);
+		if ($this->sDefaultPassword !== $sSanitized)
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Password contains invalid characters. The characters that are allowed: '.$sWhitelistPassword.'<br>';
+			$this->bValidForm = false;
+		}
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';		
+
+
+
+		//==== check same password
+		$sBody.= 'Check passwords if passwords are the same ';
+		if ($this->sDefaultPassword != $this->sDefaultPasswordRepeat)
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Passwords do NOT match!<br>';
+			$this->bValidForm = false;
+		}
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';
+
+		//==== check invalid chars email
+		$sBody.= 'Check invalid characters in email address ';
+		$sSanitized = filterBadCharsWhiteList($this->sDefaultEmail, $sWhitelistEmail);
+		if ($this->sDefaultEmail !== $sSanitized)
+		{
+			$sBody.= TInstallerScreen::STATUS_FAILED.'<br>';
+			$sBody.= 'Email address contains invalid characters. The characters that are allowed: '.$sWhitelistEmail.'<br>';
+			$this->bValidForm = false;
+		}
+		else
+			$sBody.= TInstallerScreen::STATUS_SUCCESS.'<br>';			
+
+		return $sBody;
+	}
+	
+	/**
+	 * copy $_POST to internal default variables like $sDefaultUsername
+	 */
+	private function setFormAsDefaultVars()
+	{
+		if (isset($_POST['edtUsername']))
+			$this->sDefaultUsername = $_POST['edtUsername'];			
+		if (isset($_POST['edtPassword']))
+			$this->sDefaultPassword = $_POST['edtPassword'];			
+		if (isset($_POST['edtPasswordRepeat']))
+			$this->sDefaultPasswordRepeat = $_POST['edtPasswordRepeat'];			
+		if (isset($_POST['edtEmail']))
+			$this->sDefaultEmail = $_POST['edtEmail'];			
+	}
+
+	/**
+	 * copy $this->sDefaultUsername to $_SESSION
+	 */
+	private function setFormAsSessionVars()
+	{
+		$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_LOGINUSERNAME] = $this->sDefaultUsername;
+		$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_PASSWORDSTARS] = generateChars('*', strlen($this->sDefaultPassword));
+		$_SESSION[TInstallerScreen::SESSIONAK_INSTALLER][TInstallerScreen::SESSIONAK_INSTALLER_EMAIL] = $this->sDefaultEmail;
+	}
+
+	
 	//=== ABSTRACT FUNCTIONS ===
 
 	/**
@@ -266,7 +319,7 @@ class step7 extends TInstallerScreen
 	 */
 	function getTitle()
 	{
-		return 'Privacy laws';
+		return 'Create login';
 	}
 
 	/**
@@ -275,7 +328,7 @@ class step7 extends TInstallerScreen
 	 */
 	public function getDescription()
 	{
-		return 'To abide by privacy protection laws like GDPR, we have to ask you some questions';
+		return 'In this step we are going to create a user for '.APP_CMS_APPLICATIONNAME.' to log in.';
 	}
 
 	/**
@@ -284,7 +337,7 @@ class step7 extends TInstallerScreen
 	 */
 	public function getDefaultAction()
 	{
-		return 'screenSettings';
+		return 'screenEnterLoginCredentials';
 	}
 
 	/**
@@ -295,10 +348,30 @@ class step7 extends TInstallerScreen
 	 */
 	public function getAllowedActions()
 	{
-		return array('screenSettings');
+		return array('screenEnterLoginCredentials', 'screenCreateUser');
 	}
 
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'step6.php';
+	}		
+
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return 'step8.php';
+	}	
 }
 
-$objScreen = new step7();
+$objScreen = new step6();

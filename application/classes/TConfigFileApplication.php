@@ -100,6 +100,11 @@ class TConfigFileApplication extends TConfigFilePHPConstants
 			array('APP_CMS_IMAGE_RESIZE_THUMBNAIL_HEIGHTPX', 150, TP_INTEGER, 'Resolution (height) for automatic resizing an image to thumbnail format'),			
 			array('APP_DATAPROTECTION_CONTACTS_SEARCHFIELDS', '', TP_STRING, 'Which encrypted database fields of contacts table should be included in unencrypted search field. Values separated by comma'),
 			array('APP_DATAPROTECTION_CONTACTS_ANONYMIZEDATAAFTERDAYS', 3650, TP_INTEGER, 'Anonymize data after how many days of last contact.'),
+			array('APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME', true, TP_BOOL, 'Encrypt table column last name?'),
+			array('APP_DATAPROTECTION_CONTACTS_ENCRYPT_ADDRESS', true, TP_BOOL, 'Encrypt table columns with address data?'),
+			array('APP_DATAPROTECTION_CONTACTS_ENCRYPT_POSTALZIP', true, TP_BOOL, 'Encrypt table columns with postal /zip codes?'),
+			array('APP_DATAPROTECTION_CONTACTS_ENCRYPT_PHONENUMBER', true, TP_BOOL, 'Encrypt table columns with phone numbers?'),
+			array('APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS', true, TP_BOOL, 'Encrypt table columns with email addresses?'),
 			array('APP_FORMS_LIMITSHOWSUBMIT_SECS', 2, TP_INTEGER, 'The time between when forms show and when they can be submitted. 2=user needs to wait at least 2 seconds. Prevents rapid form spamming.'),
 			array('APP_FORMS_LIMITSUBMITS_SECS', 5, TP_INTEGER, 'The time between when forms are submitted. 5=user needs to wait at least 5 seconds between submitting forms. Prevents rapid form spamming.'),
 		);

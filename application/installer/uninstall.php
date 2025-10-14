@@ -290,6 +290,26 @@ class uninstall extends TInstallerScreen
 		return array('screenConfirmUninstall', 'screenSubmitConfirmation', 'screenUninstall', 'runUninstall');
 	}
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'index.php';
+	}		
+
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return '';
+	}		
 
 
 }

@@ -106,7 +106,7 @@ class list_contacts extends TCRUDListControllerAJAX
             array('', TSysContacts::FIELD_FIRSTNAMEINITALS, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_FIRSTNAMEINITALS, 'Initials')),
             array('', TSysContacts::FIELD_LASTNAME, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_LASTNAME, 'Last name')),
             array('', TSysContacts::FIELD_BILLINGADDRESSSTREET, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Address')),
-            array('', TSysContacts::FIELD_BILLINGPOSTALCODEZIP, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal/zip')),
+            array('', TSysContacts::FIELD_BILLINGPOSTALCODEZIP, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal')),
             array('', TSysContacts::FIELD_BILLINGCITY, transm(CMS_CURRENTMODULE, 'overview_column_'.TSysContacts::FIELD_BILLINGCITY, 'City'))        
                 );
                 

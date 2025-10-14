@@ -46,7 +46,6 @@ class step4 extends TInstallerScreen
 		$this->enableNextButton();
 		$this->enablePreviousButton();
 		$this->setURLNextButton('step4.php?'.TInstallerScreen::GETVARIABLE_ACTION.'=screenCheckDBCredentials');
-		$this->setURLPreviousButton('step3.php');	
 
 
 		//prevent exposing existing values in config file
@@ -96,8 +95,7 @@ class step4 extends TInstallerScreen
 		global $sCMSRootPath;
 		$this->disableNextButton(); //when errors occur, I disable it -> this can be done in other functions that are called below
 		$this->enablePreviousButton(); //when errors occur, I disable it -> this can be done in other functions that are called below
-		$this->setURLNextButton('step5.php');
-		$this->setURLPreviousButton('step4.php');
+		$this->setURLPreviousButton('step4.php'); //plain step4
 		$sBody = '';
 
 		//sanitize
@@ -381,7 +379,26 @@ class step4 extends TInstallerScreen
 		return array('screenEnterDBCredentials', 'screenCheckDBCredentials');
 	}
 
+	/**
+	 * specify what is the previous controller in the process.
+	 * this will be the default url for previous button,
+	 * which you can override this with setURLPreviousButton()
+	 */	
+	public function getURLPreviousController()
+	{
+		return 'step3.php';
+	}		
 
+
+	/**
+	 * specify what is the next controller in the process.
+	 * this will be the default url for next button,
+	 * which you can override this with setURLNextButton()
+	 */
+	public function getURLNextController()
+	{
+		return 'step5.php';
+	}	
 
 }
 
