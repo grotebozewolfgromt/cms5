@@ -49,6 +49,9 @@
 * ajaxform.js: dr-input-text werd niet meegenomen
 
 encrypted fields specificeren
+config: _CMS -> _ADMIN
+bootstrap: _CMS -> _ADMIN
+upload dir private and public
 
 
 ## 13 okt 2025:
