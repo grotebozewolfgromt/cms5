@@ -48,7 +48,7 @@ class TSysContacts extends TSysModel
 	const FIELD_FIRSTNAMEINITALS 				= 'sFirstNameInitials'; //first name or initials
 	const FIELD_LASTNAME 						= 'sLastName'; 
 	const FIELD_LASTNAMEPREFIXID 				= 'sLastNamePrefixID';  //tussenvoegsel: Van Der,Van, Le, Von etc.
-	const FIELD_EMAILADDRESSENCRYPTED   		= 'sEAE';//Email Address Encrypted internally stored in encrypted form - 2 way encrypted email address
+	const FIELD_EMAILADDRESSENCRYPTED   		= 'sEmailAddress';//Email Address Encrypted internally stored in encrypted form - 2 way encrypted email address
 	const FIELD_EMAILADDRESSFINGERPRINT 		= 'sEAF';//Fingerprint Email Address, so we can lookup a record based on email address. We can't salt this, because we need to be able to search on it in the database for password recovery
 	const FIELD_ONMAILINGLIST					= 'bOnMailingList';
 	const FIELD_ONBLACKLIST						= 'bOnBlackList';
@@ -69,11 +69,11 @@ class TSysContacts extends TSysModel
 	const FIELD_BILLINGCITY 					= 'sBillingCity';
 	const FIELD_BILLINGSTATEREGION 				= 'sBillingStateRegion'; //state, region, province
 	const FIELD_BILLINGCOUNTRYID 				= 'iBillingCountryID'; //contryid from the system
-	const FIELD_BILLINGVATNUMBER 				= 'sBillingVatNumber';//vat number encrypted
-	const FIELD_BILLINGEMAILADDRESSENCRYPTED   	= 'sBEAE';//Email Address Encrypted internally stored in encrypted form - 2 way encrypted email address
+	const FIELD_VATNUMBER 						= 'sVatNumber';//vat number encrypted
+	const FIELD_BILLINGEMAILADDRESSENCRYPTED   	= 'sBillingEmailAdress';//Email Address Encrypted internally stored in encrypted form - 2 way encrypted email address
 	const FIELD_BILLINGEMAILADDRESSFINGERPRINT 	= 'sBEAF';//Fingerprint Email Address, so we can lookup a record based on email address. We can't salt this, because we need to be able to search on it in the database for password recovery
-	const FIELD_BILLINGBANKACCOUNTNO 			= 'sBBANO';//bank account number encrypted
-	const FIELD_BILLINGBICSWIFT 				= 'sBICSWIFT';//bank BIC or SWIFT code
+	const FIELD_BILLINGBANKACCOUNTNO 			= 'sBillingBankAccountNO';//bank account number encrypted
+	const FIELD_BILLINGBICSWIFT 				= 'sBillingBICSWIFT';//bank BIC or SWIFT code
 
 	const FIELD_DELIVERYADDRESSMISC 			= 'sDeliveryAddressMisc'; //appartment building/ company department
 	const FIELD_DELIVERYADDRESSSTREET 			= 'sDeliveryAddressStreet'; //street
@@ -408,12 +408,12 @@ class TSysContacts extends TSysModel
 
 	public function getBillingVATNumberDecrypted()
 	{
-		return $this->get(TSysContacts::FIELD_BILLINGVATNUMBER, '', true);
+		return $this->get(TSysContacts::FIELD_VATNUMBER, '', true);
 	}
 
 	public function setBillingVATNumberEncrypted($sVATNumber)
 	{
-		$this->set(TSysContacts::FIELD_BILLINGVATNUMBER, $sVATNumber, '', true);
+		$this->set(TSysContacts::FIELD_VATNUMBER, $sVATNumber, '', true);
 	}	
 
     /**
@@ -962,8 +962,8 @@ class TSysContacts extends TSysModel
         $this->setFieldEncryptionDisabled(TSysContacts::FIELD_BILLINGCOUNTRYID);		
 
 		//Billing: VAT number
-		$this->setFieldCopyProps(TSysContacts::FIELD_BILLINGVATNUMBER, TSysContacts::FIELD_BILLINGADDRESSSTREET);
-		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_BILLINGVATNUMBER, TSysContacts::ENCRYPTION_BILL_VATNO_PASSPHRASE);			                          
+		$this->setFieldCopyProps(TSysContacts::FIELD_VATNUMBER, TSysContacts::FIELD_BILLINGADDRESSSTREET);
+		$this->setFieldEncryptionPassphrase(TSysContacts::FIELD_VATNUMBER, TSysContacts::ENCRYPTION_BILL_VATNO_PASSPHRASE);			                          
 
         //Billing: 2-way encrypted email address
 		$this->setFieldCopyProps(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, TSysContacts::FIELD_EMAILADDRESSENCRYPTED);

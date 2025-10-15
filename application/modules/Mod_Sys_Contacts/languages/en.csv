@@ -51,8 +51,8 @@ form_field_billingbankaccountno;IBAN;IBAN
 form_field_billingbankaccountno_iconinfo;International Bank Account Number (IBAN) or account id.[encrypt];International Bank Account Number (IBAN) or account id.[encrypt]
 form_field_billingbic;BIC/SWIFT;BIC/SWIFT
 form_field_billingbic_iconinfo;BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt];BIC or SWIFT are bank identification codes for routing and identifying financial transactions.[encrypt]
-form_field_billingemailaddress;Email address;Email address
-form_field_billingemailaddress_iconinfo;Email address.[encrypt];Email address.[encrypt]
+form_field_billingemailaddress;Billing email address;Billing email address
+form_field_billingemailaddress_iconinfo;Email address for billing.[encrypt];Email address for billing.[encrypt]
 form_field_deliverycountry;Country;Country
 form_field_deliverycountry_iconinfo;Country or residence.[encrypt];Country or residence.[encrypt]
 form_FIELD_DELIVERYADDRESSSTREET;Street + house number;Street + house number
@@ -74,6 +74,10 @@ form_field_first_contact;First contact;First contact
 form_field_last_contact;Last contact;Last contact
 form_field_notes;Notes (only seen by you);Notes (only seen by you)
 form_field_notes_iconinfo;Extra notes regarding contact.[encrypt];Extra notes regarding contact.[encrypt]
+pagetitle_detailsave_contact_edit;Edit contact: [contact]<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn't allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>;Edit contact: [contact]<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn't allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>
+detailsave_button_exit;Exit;Exit
+detailsavetemplate_button_save;Save;Save
+detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
 overview_column_iID;Id;Id
 overview_column_sNiceID;Nice Id;Nice Id
 overview_column_sCustomID;Custom id;Custom id
@@ -104,8 +108,5 @@ dbfilter_column_sBillingCity;City (billing);City (billing)
 dbfilter_column_sDeliveryCity;City (delivery);City (delivery)
 dbfilter_column_sSearchKeywords;Search keywords;Search keywords
 modulename_title;Contacts;Contacts
-pagetitle_detailsave_contact_edit;Edit contact: [contact]<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn't allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>;Edit contact: [contact]<dr-icon-info>To comply with data protection regulations, we encrypt sensitive personal data.<br>This is safe, but doesn't allow you to search for this data.<br><br>To help you find your contacts, you can use search keywords to identify this contact.<br>Some keywords can be generated automatically when saving, depending on your settings.<br><br>Be aware that these search keywords are stored without encryption, when a data breach occurs this information is exposed.</dr-icon-info>
-detailsave_button_exit;Exit;Exit
-detailsavetemplate_button_save;Save;Save
-detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
-menuitem_modulename;Contacts;Contacts
+dbfilter_column_sEmailAddress;Email address (personal);Email address (personal)
+dbfilter_column_sBillingEmailAdress;Email address (billing);Email address (billing)

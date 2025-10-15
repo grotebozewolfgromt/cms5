@@ -107,7 +107,7 @@ class step5 extends TInstallerScreen
 			</ul>
 			<br>
 			<h2>Add values to search field</h2>
-			To make searching contacts easier, you can let us automatically store values in the search field.<br>
+			To make searching contacts easier, you can let us automatically store values in the contact-search-field upon saving a contact.<br>
 			<label>Which values would you like to store in the search field?</label><br>
 			<input type="checkbox" name="chkFieldsSearch[]" value="name"> Last name<br>
 			<input type="checkbox" name="chkFieldsSearch[]" value="address"> Address<br>
@@ -117,7 +117,7 @@ class step5 extends TInstallerScreen
 			<br>
 			<i>Notes</i><br>
 			<ul>
-				<li>The search field is NOT encrypted, and will leak data when a data breach occurs</li>
+				<li>The contact-search-field is NOT encrypted, and will leak data when a data breach occurs</li>
 				<li>For high risk environments, like a website on the internet: <b>select no fields</b></li>
 				<li>For low risk environments, like a local hosted web application: you could decide to select more fields</li>
 			</ul>			

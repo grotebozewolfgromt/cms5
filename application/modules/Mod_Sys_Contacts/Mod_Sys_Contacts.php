@@ -49,7 +49,7 @@ class Mod_Sys_Contacts extends TModuleAbstract
     public function getTabsheets()
     {
         return array(
-            array('list_contacts', Mod_Sys_Contacts::PERM_CAT_CONTACTS, 'all contacts', 'Manage all contacts.<br><br>Regretfully due to data protection laws like the GDPR is personal identifyable data encrypted, hence it is not searchable nor sortable.<br>To make your life a bit easier you can use the built-in ID (iterateable number), Nice-Id (random text) or assign your own Custom Identifier to find your contact.')
+            array('list_contacts', Mod_Sys_Contacts::PERM_CAT_CONTACTS, 'all contacts', 'Manage all contacts.<br><br>Regretfully due to data protection laws like the GDPR some personal identifyable data is encrypted, hence it is not searchable nor sortable.<br>To make your life a bit easier you can use the built-in ID (iterateable number), Nice-Id (random text) or assign your own Custom Identifier to find your contact.')
         );
     } 
     

@@ -211,6 +211,17 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtChamberCommerce->addValidator($objValidator);     
         $this->getFormGenerator()->addQuick($this->objEdtChamberCommerce, $sFormSectionBusiness, transm(APP_ADMIN_CURRENTMODULE, 'form_field_chamberofcommerceno', 'Chamber of commerce #'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_chamberofcommerceno_iconinfo', 'Chamber of commerce registration number.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
                 
+            //billing: vat no
+        $this->objEdtBillingVatNumber = new DRInputText();
+        $this->objEdtBillingVatNumber->setNameAndID('edtBillingVATNumber');
+        $this->objEdtBillingVatNumber->setClass('fullwidthtag');                         
+        $this->objEdtBillingVatNumber->setMaxLength(20);    
+        $objValidator = new TMaximumLength(20);
+        $this->objEdtBillingVatNumber->addValidator($objValidator);       
+        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
+        $this->objEdtBillingVatNumber->addValidator($objValidator);     
+        // $this->getFormGenerator()->add($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno', 'VAT number (encrypted, not searchable)')); 
+        $this->getFormGenerator()->addQuick($this->objEdtBillingVatNumber, $sFormSectionBusiness, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno', 'VAT number'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno_iconinfo', 'VAT number or (sales) tax id.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
 
             //salutations
         $this->objCbxSalutations = new DRInputCombobox();
@@ -381,7 +392,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
             //billing: postal code or zip
         $this->objEdtBillingPostalCode = new DRInputText();
         $this->objEdtBillingPostalCode->setNameAndID('edtBillingPostalCode');
-        // $this->objEdtBillingPostalCode->setClass('fullwidthtag');                         
+        $this->objEdtBillingPostalCode->setClass('quarterwidthtag');                         
         $this->objEdtBillingPostalCode->setMaxLength(10);    
         $objValidator = new TMaximumLength(10);
         $this->objEdtBillingPostalCode->addValidator($objValidator);          
@@ -420,19 +431,6 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         // $this->getFormGenerator()->add($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion', 'State/region/provice'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false))); 
         $this->getFormGenerator()->addQuick($this->objEdtBillingStateRegion, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion', 'State/region/provice'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingstateregion_iconinfo', 'State, region or province.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(false)));        
     
-
-            //billing: vat no
-        $this->objEdtBillingVatNumber = new DRInputText();
-        $this->objEdtBillingVatNumber->setNameAndID('edtBillingVATNumber');
-        $this->objEdtBillingVatNumber->setClass('fullwidthtag');                         
-        $this->objEdtBillingVatNumber->setMaxLength(20);    
-        $objValidator = new TMaximumLength(20);
-        $this->objEdtBillingVatNumber->addValidator($objValidator);       
-        $objValidator = new TCharacterWhitelist(WHITELIST_ALPHANUMERIC.WHITELIST_ALPHABETICAL_ACCENTS.' -().');
-        $this->objEdtBillingVatNumber->addValidator($objValidator);     
-        // $this->getFormGenerator()->add($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno', 'VAT number (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingVatNumber, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno', 'VAT number'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingvatno_iconinfo', 'VAT number or (sales) tax id.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(true)));
-
             //billing: bank account no
         $this->objEdtBillingBankAccountNo = new DRInputText();
         $this->objEdtBillingBankAccountNo->setNameAndID('edtBillingBankAccountNumber');
@@ -461,10 +459,12 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->objEdtBillingEmailAddress->setNameAndID('edtBillingEmailAddress');
         $this->objEdtBillingEmailAddress->setClass('fullwidthtag');                         
         $this->objEdtBillingEmailAddress->setMaxLength(100);    
+        $objValidator = new TEmailAddress(true, true, true);
+        $this->objEdtBillingEmailAddress->addValidator($objValidator); 
         $objValidator = new TMaximumLength(100);
         $this->objEdtBillingEmailAddress->addValidator($objValidator);                      
         // $this->getFormGenerator()->add($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address (encrypted, not searchable)')); 
-        $this->getFormGenerator()->addQuick($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress', 'Email address'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress_iconinfo', 'Email address.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)));
+        $this->getFormGenerator()->addQuick($this->objEdtBillingEmailAddress, $sFormSectionBilling, transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress', 'Billing email address'),  transm(APP_ADMIN_CURRENTMODULE, 'form_field_billingemailaddress_iconinfo', 'Email address for billing.[encrypt]', 'encrypt', $this->getTextEncryptedIconInfo(APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS)));
                         
 
             //delivery: country
@@ -508,7 +508,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
             //delivery: postal code or zip
         $this->objEdtDeliveryPostalCode = new DRInputText();
         $this->objEdtDeliveryPostalCode->setNameAndID('edtDeliveryPostalCode');
-        // $this->objEdtDeliveryPostalCode->setClass('fullwidthtag');                         
+        $this->objEdtDeliveryPostalCode->setClass('quarterwidthtag');                         
         $this->objEdtDeliveryPostalCode->setMaxLength(10);    
         $objValidator = new TMaximumLength(10);
         $this->objEdtDeliveryPostalCode->addValidator($objValidator);   
@@ -661,7 +661,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
         $this->getModel()->set(TSysContacts::FIELD_BILLINGCITY, $this->objEdtBillingCity->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGSTATEREGION, $this->objEdtBillingStateRegion->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGCOUNTRYID, $this->objCbxBillingCountryID->getValueSubmittedAsInt());
-        $this->getModel()->set(TSysContacts::FIELD_BILLINGVATNUMBER, $this->objEdtBillingVatNumber->getValueSubmitted(), '', true);
+        $this->getModel()->set(TSysContacts::FIELD_VATNUMBER, $this->objEdtBillingVatNumber->getValueSubmitted(), '', true);
         $this->getModel()->setBillingEmailAddressDecrypted($this->objEdtBillingEmailAddress->getValueSubmitted());
         $this->getModel()->set(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, $this->objEdtBillingBankAccountNo->getValueSubmitted(), '', true);
         $this->getModel()->set(TSysContacts::FIELD_BILLINGBICSWIFT, $this->objEdtBillingBIC->getValueSubmitted());
@@ -761,7 +761,7 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
             $this->objCountries->generateHTMLSelect($this->iDefaultCountryID, $this->objCbxBillingCountryID);    
         else
             $this->objCountries->generateHTMLSelect($this->getModel()->get(TSysContacts::FIELD_BILLINGCOUNTRYID), $this->objCbxBillingCountryID);    
-        $this->objEdtBillingVatNumber->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGVATNUMBER, '', true));
+        $this->objEdtBillingVatNumber->setValue($this->getModel()->get(TSysContacts::FIELD_VATNUMBER, '', true));
         $this->objEdtBillingEmailAddress->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, '', APP_DATAPROTECTION_CONTACTS_ENCRYPT_EMAILADDRESS));
         $this->objEdtBillingBankAccountNo->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGBANKACCOUNTNO, '', true));
         $this->objEdtBillingBIC->setValue($this->getModel()->get(TSysContacts::FIELD_BILLINGBICSWIFT));
