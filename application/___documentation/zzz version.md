@@ -35,11 +35,12 @@
 * labels component maken
 
 
-## 15 okt 2025: dbfilters
+## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen
 * bugfix: dr-context-menu: mouse-down to show menu werd gekeken naar rect of object. Dit gaf problemen wanneer een popover overlapte, omdat dit ook deze kliks op pakte
 * default filter values werken nu. Mogelijk om datum van vandaag te selecteren by default
 * renames database fields contacts
+* start gemaakt met dr-input-tags
 
 ## 14 okt 2025:
 * dr-input-text vervangt <input type="text"> in detailsave_contacts

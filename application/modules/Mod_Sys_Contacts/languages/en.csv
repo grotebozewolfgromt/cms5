@@ -110,3 +110,4 @@ dbfilter_column_sSearchKeywords;Search keywords;Search keywords
 modulename_title;Contacts;Contacts
 dbfilter_column_sEmailAddress;Email address (personal);Email address (personal)
 dbfilter_column_sBillingEmailAdress;Email address (billing);Email address (billing)
+menuitem_modulename;Contacts;Contacts

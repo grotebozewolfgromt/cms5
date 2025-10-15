@@ -98,7 +98,6 @@ function onPageLoad(objEvent)
                     }
 
                     //validate field
-                    console.log("attach onchange:"+ objElement.name, objElement, objElement.getAttribute("onchange"), objElement.getAttribute("readonly"));
                     if ((objElement.getAttribute("onchange") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                     {
                         objElement.addEventListener("change", (objEvent)=> 
@@ -128,7 +127,6 @@ function onPageLoad(objEvent)
                         }
 
                         //validate field
-                        console.log("attach onchange:"+ objElement.name, objElement, objElement.getAttribute("onchange"), objElement.getAttribute("readonly"));
                         if ((objElement.getAttribute("onchange") === null) && (objElement.getAttribute("readonly") === null)) //don't attach eventlistener when there is already one or when it's readonly
                         {
                             objElement.addEventListener("change", (objEvent)=> 

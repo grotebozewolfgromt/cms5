@@ -22,6 +22,7 @@ use dr\classes\dom\tag\form\Textarea;
 use dr\classes\dom\tag\webcomponents\DRInputText;
 use dr\classes\dom\tag\webcomponents\DRInputCombobox;
 use dr\classes\dom\tag\webcomponents\DRInputDateTime;
+use dr\classes\dom\tag\webcomponents\DRInputTags;
 use dr\classes\dom\validator\TCharacterWhitelist;
 use dr\classes\dom\validator\TEmailAddress;
 use dr\classes\dom\validator\TMaximumLength;
@@ -177,7 +178,8 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
 
 
             //search keywords
-        $this->objTagKeywords = new DRInputText();
+        // $this->objTagKeywords = new DRInputText();
+        $this->objTagKeywords = new DRInputTags();
         $this->objTagKeywords->setNameAndID('edtTagSearchKeywords');
         $this->objTagKeywords->setClass('fullwidthtag');         
         $this->objTagKeywords->setMaxLength(255);                

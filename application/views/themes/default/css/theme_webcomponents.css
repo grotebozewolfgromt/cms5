@@ -159,7 +159,8 @@ dr-tabsheets .tabcontent div.active
 
 /* ===== dr-input-text + dr-input-combobox ==== */
 dr-input-text,
-dr-input-combobox
+dr-input-combobox,
+dr-input-tags
 {
     border-style: solid;
     border-color: light-dark( var(--lightmode-color-dr-input-border),  var(--darkmode-color-dr-input-border));

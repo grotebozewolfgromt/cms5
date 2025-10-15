@@ -1,5 +1,10 @@
 UNIQUE ID KEY;DEFAULT ENGLISH;TRANSLATION FOREIGN LANGUAGE
 validator_maxlength_error_maxlengthexceeded;The maximumlength [length] of field is exceeded;The maximumlength [length] of field is exceeded
+dr-input-tags_placeholder;Input value and hit Enter key;Input value and hit Enter key
+validator_characterwhitelist_error_dirtyinput;Only the following characters are allowed [chars] characters;Only the following characters are allowed [chars] characters
+dr-input-combobox_placeholder_default;Select an item;Select an item
+dr-input-combobox_placeholder_search_default;Search;Search
+validator_emailaddress_error_notvalidemailaddress;This is not a valid email address;This is not a valid email address
 day_shorthand;d;d
 month_shorthand;m;m
 year_shorthand;y;y
@@ -32,7 +37,6 @@ hour_shorthand;h;h
 minute_shorthand;m;m
 second_shorthand;s;s
 time_now_full;now;now
-tcruddetailsavecontrollerajax_message_error_recordcheckedout;This record is checked out by "[checkoutsource]".<br>The other user should exit this record before you can view/edit it;This record is checked out by "[checkoutsource]".<br>The other user should exit this record before you can view/edit it
 cms_dialog_surelogout_title;Quit?;Quit?
 cms_dialog_bulkaction_title;Execute bulk action?;Execute bulk action?
 recordlist_message_fetchrequestfailed;Retrieving data FAILED!!!;Retrieving data FAILED!!!
@@ -42,68 +46,8 @@ paginator_table_loadnextresults;Load next [x] results;Load next [x] results
 detailsavetemplate_error_save_failed_title;Save FAILED!!!;Save FAILED!!!
 detailsave_message_save_sucess_title;Saving;Saving
 detailsave_message_save_fetchrequestfailed;Save FAILED!!!;Save FAILED!!!
-TTreeModel_favorites_title;Favorites;Favorites
-authenticationsystem_sessionexpired;Login session expired;Login session expired
-validator_required_error_fieldrequired;This is a required field;This is a required field
-validator_characterwhitelist_error_dirtyinput;Only the following characters are allowed [chars] characters;Only the following characters are allowed [chars] characters
-loginform_field_username;username;username
-loginform_field_password;password;password
-loginform_field_keepmeloggedin;keep me logged in;keep me logged in
-loginform_button_login;log in;log in
-form_input_error_flooddetected_formshowandsubmit;You submitted the form too quick. Wait at least [secs] seconds before trying again.;You submitted the form too quick. Wait at least [secs] seconds before trying again.
-tcruddetailsavecontrollerajax_message_save_ok;Save succesful;Save succesful
-form_input_error_flooddetected_formsubmits;You submitted too many forms in a short timespan. Wait at least [secs] seconds before trying again.;You submitted too many forms in a short timespan. Wait at least [secs] seconds before trying again.
 previous_results_paginator;Previous;Previous
-next_results_paginator;Next;Next
-TPageBuilderDocumentsAbstract_visibility_private;Private;Private
-TPageBuilderDocumentsAbstract_visibility_unlisted;Unlisted;Unlisted
-TPageBuilderDocumentsAbstract_visibility_public;Public;Public
 Results [x] - [y];Results [x] - [y];Results [x] - [y]
-dr-input-combobox_placeholder_default;Select an item;Select an item
-dr-input-combobox_placeholder_search_default;Search;Search
-dr-input-upload-clickordropfilehere;Click or drop file here;Click or drop file here
-dr-input-upload-filetypenotsupported;File type is not supported.<br><br>Supported are:<br>;File type is not supported.<br><br>Supported are:<br>
-dr-input-upload-delete;Delete;Delete
-dr-input-upload-preview;Preview;Preview
-dr-input-upload-rename;Rename;Rename
-dr-input-upload-alt;Set img alt text;Set img alt text
-dr-input-upload-altdescription;Change or set ALT text of image: <dr-icon-info>Images can have an alternative (alt) text to describe the contents of the image.<br>This is useful for SEO purposes, text-based browsers, screen readers and if image can not be displayed because of an error.<br>Example: &ltimg src=&quotmountain.jpg&quot alt=&quotboat on a lake with mountain in background&quot&gt</dr-icon-info>;Change or set ALT text of image: <dr-icon-info>Images can have an alternative (alt) text to describe the contents of the image.<br>This is useful for SEO purposes, text-based browsers, screen readers and if image can not be displayed because of an error.<br>Example: &ltimg src=&quotmountain.jpg&quot alt=&quotboat on a lake with mountain in background&quot&gt</dr-icon-info>
-dr-input-upload-altsetbutton;Set text;Set text
-dr-input-upload-copyurltoclipboard;Copy URL to clipboard;Copy URL to clipboard
-dr-input-upload-copyurltoclipboarddone;Copied URL to clipboard:;Copied URL to clipboard:
-dr-input-upload-close;Close;Close
-dr-input-upload-cancel;Cancel;Cancel
-dr-input-upload-error;Error;Error
-dr-input-upload-errorunknown;Error occurred when uploading.<br>Do you have a working network/internet connection?;Error occurred when uploading.<br>Do you have a working network/internet connection?
-dr-input-upload-errortimeout;Connection timed out;Connection timed out
-dr-input-upload-ok;Ok;Ok
-dr-input-upload-uploading;Uploading file ...;Uploading file ...
-dr-input-upload-processing;Processing file ...;Processing file ...
-dr-input-upload-queue;In queue ...;In queue ...
-dr-input-upload-abort;Abort upload;Abort upload
-dr-input-upload-maxfilesizeexceeded;Maximum file size exceeded.<br>Max file size: ;Maximum file size exceeded.<br>Max file size: 
-tcruddetailsavecontrollerajax_message_save_nosuccess_formsubmitflooddetected;Form submitted to quickly, please wait a few seconds before trying again;Form submitted to quickly, please wait a few seconds before trying again
-validator_emailaddress_error_notvalidemailaddress;This is not a valid email address;This is not a valid email address
-weekday_sunday_full;Sunday;Sunday
-weekday_monday_full;Monday;Monday
-weekday_tuesday_full;Tuesday;Tuesday
-weekday_wednesday_full;Wednesday;Wednesday
-weekday_thursday_full;Thursday;Thursday
-weekday_friday_full;Friday;Friday
-weekday_saturday_full;Saturday;Saturday
-authenticationsystem_errormessage_handlelogin_correctinputerrors;Please correct input errors;Please correct input errors
-validator_ipaddress_error_notvalidipaddress;This is not a valid IP address;This is not a valid IP address
-Next [x] results (page [y]);Next [x] results (page [y]);Next [x] results (page [y])
-validator_onlyalphabetical_error_notonlyalphabetical;Only alphabetical characters allowed;Only alphabetical characters allowed
-validator_onlynumeric_error_notnumeric;This value is not numeric;This value is not numeric
-validator_minlength_error_minlengthatleast;Input needs to be at least [length] characters;Input needs to be at least [length] characters
-authenticationsystem_logoutcompleted;log out completed;log out completed
-tcruddetailsavecontrollerajax_message_save_nosuccess_csrftokeninvalid;Form validation failed;Form validation failed
-tcruddetailsavecontrollerajax_message_error_checksuminvalid;Checksum failed for record with ID 14.<br>\nThe contents is changed outside this application and NOT TO BE TRUSTED.<br>\nCheck contents before saving!<br>\nWhen saving a new checksum will be calculated,<br>which re-validates the record;Checksum failed for record with ID 14.<br>\nThe contents is changed outside this application and NOT TO BE TRUSTED.<br>\nCheck contents before saving!<br>\nWhen saving a new checksum will be calculated,<br>which re-validates the record
-TAJAXFormController_error_inputerror;Input error: [error];Input error: [error]
-tcruddetailsavecontrollerajax_message_save_nosuccess_inputerror;Input error encountered, please correct mistakes;Input error encountered, please correct mistakes
-validator_colorhox_error_nothexcolor;This is not a valid hexadecimal color value;This is not a valid hexadecimal color value
-loginform_field_emailaddress;email address;email address
-passwordrecoverform_button_sendemail;send email;send email
-drinputupload_message_upload_ok;Upload succesful;Upload succesful
-drinputupload_message_delete_ok;Delete succesful;Delete succesful
+next_results_paginator;Next;Next
+TTreeModel_favorites_title;Favorites;Favorites
+tcruddetailsavecontrollerajax_message_save_ok;Save succesful;Save succesful
