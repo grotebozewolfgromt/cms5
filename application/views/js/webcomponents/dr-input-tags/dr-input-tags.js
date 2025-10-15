@@ -19,6 +19,7 @@
  * @todo values uit attribuut lezen
  * @todo waardes uit chips lezen en als values setten
  * @todo whitelist filteren als enter
+ * @todo filter duplicates
  * 
  * @author Dennis Renirie
  * 
