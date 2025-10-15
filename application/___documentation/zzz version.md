@@ -27,13 +27,6 @@
 
 * @todo als pagebuilder niet op slaat, moet je een form toevoegen waarin de textboxen vallen
 
-## TODO searching + gdpr
-* bugfixes: dbfilters
-    - checkbox 'enable' vervangt knop 'set filter'
-    - minimaal 3 characters zoeken beperking verwijderen
-    - number filter geeft met integer ook .0000 terug'
-* labels component maken
-
 
 ## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen
