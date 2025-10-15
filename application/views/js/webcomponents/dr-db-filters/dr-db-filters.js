@@ -454,7 +454,6 @@ class DRDBFilters extends HTMLElement
             sFilterIndex = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.filterindex);
             sNameNice = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.namenice);
 
-            // if (sChipStatus == this.arrFilterStatus.available)
             this.arrAvailableFilters.push(this.children[iIndex]);//always add to menu
 
             if (sChipStatus == this.arrFilterStatus.applied)

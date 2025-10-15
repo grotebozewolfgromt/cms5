@@ -22,7 +22,8 @@ use dr\classes\types\TFloat;
  */
 class DRDBFilters extends HTMLTag
 {
-	private $arrFilters = array();
+	private $arrFiltersInternal = array(); //internal admin of filters
+	private $arrFiltersReceived = array(); //filters sent to us from web-component by reading JSON
 
 	public function __construct($objParentNode = null)
 	{
@@ -30,10 +31,6 @@ class DRDBFilters extends HTMLTag
 		$this->setTagName('dr-db-filters');
 
 		//proper includes
-		// includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-db-filters'.DIRECTORY_SEPARATOR.'style.css');
-		// includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-context-menu'.DIRECTORY_SEPARATOR.'style.css');
-		// includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-input-combobox'.DIRECTORY_SEPARATOR.'style.css');
-
 		includeJSWebcomponent('dr-popover');
 		includeJSWebcomponent('dr-input-combobox');
 		includeJSWebcomponent('dr-input-checkbox-group');
@@ -43,9 +40,6 @@ class DRDBFilters extends HTMLTag
 		includeJSWebcomponent('dr-input-text'); 
 		includeJSWebcomponent('dr-input-number'); 
 		includeJSWebcomponent('dr-db-filters'); 
-		// includeJSDOMEnd(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-input-combobox'.DIRECTORY_SEPARATOR.'dr-input-combobox.js');
-		// includeJSDOMEnd(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-context-menu'.DIRECTORY_SEPARATOR.'dr-context-menu.js');
-		// includeJSDOMEnd(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-db-filters'.DIRECTORY_SEPARATOR.'dr-db-filters.js');
 	}
 
 	/**
@@ -53,12 +47,12 @@ class DRDBFilters extends HTMLTag
 	 */
 	public function addFilter(DRDBFilter $objFilter)
 	{
-		$this->arrFilters[] = $objFilter;
+		$this->arrFiltersInternal[] = $objFilter;
 	}
 
 	/**
 	 * reads JSON data produced by javascript web component: <dr-db-filter>
-	 * and convert it into internal filter objects in internal array $arrFilters
+	 * and convert it into internal filter objects in internal array $arrFiltersInternal
 	 * 
 	 * @param bool $bPostArray true=$_POST and false=$_GET
 	 * @param string the field in $_POST[$sField] or $_GET[$sField] array that contains the JSON data
@@ -93,14 +87,14 @@ class DRDBFilters extends HTMLTag
 			//reset/remove internal filters, 
 			//but keep the ones with status "available", 
 			//otherwise they are also removed from the GUI and the user can't see them
-			$objFiltersCopy = $this->arrFilters;//copy
-			$this->arrFilters = array();
+			$objFiltersCopy = $this->arrFiltersInternal;//copy
+			$this->arrFiltersInternal = array();
 			$iCountFilters = count($objFiltersCopy);
 			for ($iIndex = 0; $iIndex < $iCountFilters; $iIndex++)
 			{
 				//keep the ones with status "available"
 				if ($objFiltersCopy[$iIndex]->getStatus() == DRDBFilter::STATUS_AVAILABLE)
-					$this->arrFilters[] = $objFiltersCopy[$iIndex];
+					$this->arrFiltersInternal[] = $objFiltersCopy[$iIndex];
 			}
 						
 			//loop JSON array
@@ -116,7 +110,7 @@ class DRDBFilters extends HTMLTag
 				if (($iFilterIndex >= $iCountFilters) || ($iFilterIndex < 0)) //looking for invalid indexes
 					return;
 				else
-					$objAvailableFilter = $this->arrFilters[$iFilterIndex];
+					$objAvailableFilter = $this->arrFiltersInternal[$iFilterIndex];
 
 				//status
 				switch ($arrJSON[$iIndex][DRDBFilter::ATTR_STATUS]) //prevent injection by checking validity of values
@@ -190,7 +184,7 @@ class DRDBFilters extends HTMLTag
 				//name nice
 				$objFilter->setNameNice($objAvailableFilter->getNameNice());
 				
-				$this->arrFilters[] = $objFilter;
+				$this->arrFiltersInternal[] = $objFilter;
 			}
 			// vardumpdie($arrJSON, "froietmetfrikandellen");
 
@@ -221,23 +215,23 @@ class DRDBFilters extends HTMLTag
 		$this->arrChildNodes = array();
 
 		//loop filters
-		$iChildCount = count($this->arrFilters);
+		$iChildCount = count($this->arrFiltersInternal);
 		for ($iIndex = 0; $iIndex < $iChildCount; $iIndex++)
 		{
 			$objChildNode = new HTMLTag($this);
 			$objChildNode->setTagName('div');
-			$objChildNode->setAttribute(DRDBFilter::ATTR_STATUS, $this->arrFilters[$iIndex]->getStatus());
-			if ($this->arrFilters[$iIndex]->getDisabled())//only append when disabled=true (otherwise it will always be disabled)
-				$objChildNode->setAttribute(DRDBFilter::ATTR_DISABLED, $this->arrFilters[$iIndex]->getDisabled());
-			$objChildNode->setAttribute(DRDBFilter::ATTR_FILTERTYPE, $this->arrFilters[$iIndex]->getType());				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUE, $this->arrFilters[$iIndex]->getValue());				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUEEND, $this->arrFilters[$iIndex]->getValueEnd());		
+			$objChildNode->setAttribute(DRDBFilter::ATTR_STATUS, $this->arrFiltersInternal[$iIndex]->getStatus());
+			if ($this->arrFiltersInternal[$iIndex]->getDisabled())//only append when disabled=true (otherwise it will always be disabled)
+				$objChildNode->setAttribute(DRDBFilter::ATTR_DISABLED, $this->arrFiltersInternal[$iIndex]->getDisabled());
+			$objChildNode->setAttribute(DRDBFilter::ATTR_FILTERTYPE, $this->arrFiltersInternal[$iIndex]->getType());				
+			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUE, $this->arrFiltersInternal[$iIndex]->getValue());				
+			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUEEND, $this->arrFiltersInternal[$iIndex]->getValueEnd());		
 			$objChildNode->setAttribute(DRDBFilter::ATTR_FILTERINDEX, $iIndex);				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_COMPARISONOPERATOR, $this->arrFilters[$iIndex]->getComparisonOperator());				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_NAMENICE, $this->arrFilters[$iIndex]->getNameNice());
-			$objChildNode->setTextContent($this->arrFilters[$iIndex]->getNameNice());
-			if ($this->arrFilters[$iIndex]->getHTMLElement())
-				$objChildNode->appendChild($this->arrFilters[$iIndex]->getHTMLElement());
+			$objChildNode->setAttribute(DRDBFilter::ATTR_COMPARISONOPERATOR, $this->arrFiltersInternal[$iIndex]->getComparisonOperator());				
+			$objChildNode->setAttribute(DRDBFilter::ATTR_NAMENICE, $this->arrFiltersInternal[$iIndex]->getNameNice());
+			$objChildNode->setTextContent($this->arrFiltersInternal[$iIndex]->getNameNice());
+			if ($this->arrFiltersInternal[$iIndex]->getHTMLElement())
+				$objChildNode->appendChild($this->arrFiltersInternal[$iIndex]->getHTMLElement());
 			$this->appendChild($objChildNode);			
 		}
 	}
@@ -252,10 +246,10 @@ class DRDBFilters extends HTMLTag
 		$objFilter = null;
 
 		//loop filters
-		$iChildCount = count($this->arrFilters);
+		$iChildCount = count($this->arrFiltersInternal);
 		for ($iIndex = 0; $iIndex < $iChildCount; $iIndex++)
 		{
-			$objFilter =  $this->arrFilters[$iIndex];
+			$objFilter =  $this->arrFiltersInternal[$iIndex];
 
 			if (($objFilter->getStatus() == DRDBFilter::STATUS_APPLIED) && ($objFilter->getDisabled() == false))
 			{

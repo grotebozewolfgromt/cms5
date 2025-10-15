@@ -145,7 +145,7 @@ class list_contacts extends TCRUDListControllerAJAX
 
         //unique id
         $objFilter = new DRDBFilter();
-        $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+        $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_UNIQUEID);
@@ -154,7 +154,7 @@ class list_contacts extends TCRUDListControllerAJAX
 
         //nice id
         $objFilter = new DRDBFilter();
-        $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+        $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_NICEID);
@@ -165,7 +165,7 @@ class list_contacts extends TCRUDListControllerAJAX
         if (!APP_DATAPROTECTION_CONTACTS_ENCRYPT_LASTNAME)
         {
             $objFilter = new DRDBFilter();
-            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_LASTNAME);
