@@ -22,8 +22,8 @@ use dr\classes\types\TFloat;
  */
 class DRDBFilters extends HTMLTag
 {
-	private $arrFiltersInternal = array(); //internal admin of filters
-	private $arrFiltersReceived = array(); //filters sent to us from web-component by reading JSON
+	private $arrFiltersAll = array(); //internal admin of filters. 1 per database field
+	private $arrFiltersDB = array(); //filters that will be used to make a database query of. These are sent to us from web-component by reading JSON. Note: there can be multiple filters for a database field
 
 	public function __construct($objParentNode = null)
 	{
@@ -47,12 +47,12 @@ class DRDBFilters extends HTMLTag
 	 */
 	public function addFilter(DRDBFilter $objFilter)
 	{
-		$this->arrFiltersInternal[] = $objFilter;
+		$this->arrFiltersAll[] = $objFilter;
 	}
 
 	/**
 	 * reads JSON data produced by javascript web component: <dr-db-filter>
-	 * and convert it into internal filter objects in internal array $arrFiltersInternal
+	 * and convert it into internal filter objects in internal array $arrFiltersAll
 	 * 
 	 * @param bool $bPostArray true=$_POST and false=$_GET
 	 * @param string the field in $_POST[$sField] or $_GET[$sField] array that contains the JSON data
@@ -64,7 +64,6 @@ class DRDBFilters extends HTMLTag
 		$iCountFilters = 0;
 		$iCountJSON = 0;
 		$objFilter = null;
-		$objFiltersCopy = array(); //stores temp copy of internal filters
 		$iFilterIndex = 0;
 
 
@@ -82,35 +81,23 @@ class DRDBFilters extends HTMLTag
 		//read JSON
 		//and add these filters
 		$iCountJSON = count($arrJSON);
+		$iCountFilters = count($this->arrFiltersAll);
 		if ($iCountJSON > 0)
-		{
-			//reset/remove internal filters, 
-			//but keep the ones with status "available", 
-			//otherwise they are also removed from the GUI and the user can't see them
-			$objFiltersCopy = $this->arrFiltersInternal;//copy
-			$this->arrFiltersInternal = array();
-			$iCountFilters = count($objFiltersCopy);
-			for ($iIndex = 0; $iIndex < $iCountFilters; $iIndex++)
-			{
-				//keep the ones with status "available"
-				if ($objFiltersCopy[$iIndex]->getStatus() == DRDBFilter::STATUS_AVAILABLE)
-					$this->arrFiltersInternal[] = $objFiltersCopy[$iIndex];
-			}
-						
+		{						
 			//loop JSON array
 			for ($iIndex = 0; $iIndex < $iCountJSON; $iIndex++)
 			{
 				$objFilter = new DRDBFilter();
 
-				//find corresponding filter as "available" filter
-				//this allows us to find the database field (that we don't want to send to the GUI for everyone to read)
+				//find corresponding filter in internal filter array
+				//this allows us to find the database field (that we don't want to send database field to the GUI for everyone to read)
 				//but also allows us to do extra security checks
-				$objAvailableFilter = null;
+				$objCurrentFilter = null;
 				$iFilterIndex = strToInt($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERINDEX], true); //WARNING: Quicksearch doesn't give filterindex back!
 				if (($iFilterIndex >= $iCountFilters) || ($iFilterIndex < 0)) //looking for invalid indexes
 					return;
 				else
-					$objAvailableFilter = $this->arrFiltersInternal[$iFilterIndex];
+					$objCurrentFilter = $this->arrFiltersAll[$iFilterIndex];
 
 				//status
 				switch ($arrJSON[$iIndex][DRDBFilter::ATTR_STATUS]) //prevent injection by checking validity of values
@@ -140,7 +127,7 @@ class DRDBFilters extends HTMLTag
 
 				//database field --> for security reasons use the database fields from available filters instead of storing it in the publicly available filters
 				if ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE] != DRDBFilter::TYPE_QUICKSEARCH) //quicksearch has no fields
-					$objFilter->setDBTableField($objAvailableFilter->getDBTable(), $objAvailableFilter->getDBField());
+					$objFilter->setDBTableField($objCurrentFilter->getDBTable(), $objCurrentFilter->getDBField());
 
 
 				//disabled
@@ -161,7 +148,7 @@ class DRDBFilters extends HTMLTag
 					$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
 
 				//value and endvalue
-				switch ($objAvailableFilter->getType()) //prevent injection by checking validity of values
+				switch ($objCurrentFilter->getType()) //prevent injection by checking validity of values
 				{
 					case DRDBFilter::TYPE_BOOLEAN:
 						$objFilter->setValue(strToBool($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE]));
@@ -182,9 +169,11 @@ class DRDBFilters extends HTMLTag
 				}
 
 				//name nice
-				$objFilter->setNameNice($objAvailableFilter->getNameNice());
+				$objFilter->setNameNice($objCurrentFilter->getNameNice());
 				
-				$this->arrFiltersInternal[] = $objFilter;
+				//only add when it's not disabled
+				if ($arrJSON[$iIndex][DRDBFilter::ATTR_DISABLED] === false)
+					$this->arrFiltersDB[] = $objFilter;
 			}
 			// vardumpdie($arrJSON, "froietmetfrikandellen");
 
@@ -215,23 +204,23 @@ class DRDBFilters extends HTMLTag
 		$this->arrChildNodes = array();
 
 		//loop filters
-		$iChildCount = count($this->arrFiltersInternal);
+		$iChildCount = count($this->arrFiltersAll);
 		for ($iIndex = 0; $iIndex < $iChildCount; $iIndex++)
 		{
 			$objChildNode = new HTMLTag($this);
 			$objChildNode->setTagName('div');
-			$objChildNode->setAttribute(DRDBFilter::ATTR_STATUS, $this->arrFiltersInternal[$iIndex]->getStatus());
-			if ($this->arrFiltersInternal[$iIndex]->getDisabled())//only append when disabled=true (otherwise it will always be disabled)
-				$objChildNode->setAttribute(DRDBFilter::ATTR_DISABLED, $this->arrFiltersInternal[$iIndex]->getDisabled());
-			$objChildNode->setAttribute(DRDBFilter::ATTR_FILTERTYPE, $this->arrFiltersInternal[$iIndex]->getType());				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUE, $this->arrFiltersInternal[$iIndex]->getValue());				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUEEND, $this->arrFiltersInternal[$iIndex]->getValueEnd());		
+			$objChildNode->setAttribute(DRDBFilter::ATTR_STATUS, $this->arrFiltersAll[$iIndex]->getStatus());
+			if ($this->arrFiltersAll[$iIndex]->getDisabled())//only append when disabled=true (otherwise it will always be disabled)
+				$objChildNode->setAttribute(DRDBFilter::ATTR_DISABLED, $this->arrFiltersAll[$iIndex]->getDisabled());
+			$objChildNode->setAttribute(DRDBFilter::ATTR_FILTERTYPE, $this->arrFiltersAll[$iIndex]->getType());				
+			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUE, $this->arrFiltersAll[$iIndex]->getValue());				
+			$objChildNode->setAttribute(DRDBFilter::ATTR_VALUEEND, $this->arrFiltersAll[$iIndex]->getValueEnd());		
 			$objChildNode->setAttribute(DRDBFilter::ATTR_FILTERINDEX, $iIndex);				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_COMPARISONOPERATOR, $this->arrFiltersInternal[$iIndex]->getComparisonOperator());				
-			$objChildNode->setAttribute(DRDBFilter::ATTR_NAMENICE, $this->arrFiltersInternal[$iIndex]->getNameNice());
-			$objChildNode->setTextContent($this->arrFiltersInternal[$iIndex]->getNameNice());
-			if ($this->arrFiltersInternal[$iIndex]->getHTMLElement())
-				$objChildNode->appendChild($this->arrFiltersInternal[$iIndex]->getHTMLElement());
+			$objChildNode->setAttribute(DRDBFilter::ATTR_COMPARISONOPERATOR, $this->arrFiltersAll[$iIndex]->getComparisonOperator());				
+			$objChildNode->setAttribute(DRDBFilter::ATTR_NAMENICE, $this->arrFiltersAll[$iIndex]->getNameNice());
+			$objChildNode->setTextContent($this->arrFiltersAll[$iIndex]->getNameNice());
+			if ($this->arrFiltersAll[$iIndex]->getHTMLElement())
+				$objChildNode->appendChild($this->arrFiltersAll[$iIndex]->getHTMLElement());
 			$this->appendChild($objChildNode);			
 		}
 	}
@@ -246,10 +235,10 @@ class DRDBFilters extends HTMLTag
 		$objFilter = null;
 
 		//loop filters
-		$iChildCount = count($this->arrFiltersInternal);
+		$iChildCount = count($this->arrFiltersDB);
 		for ($iIndex = 0; $iIndex < $iChildCount; $iIndex++)
 		{
-			$objFilter =  $this->arrFiltersInternal[$iIndex];
+			$objFilter =  $this->arrFiltersDB[$iIndex];
 
 			if (($objFilter->getStatus() == DRDBFilter::STATUS_APPLIED) && ($objFilter->getDisabled() == false))
 			{

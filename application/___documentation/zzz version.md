@@ -36,6 +36,10 @@
 * labels component maken
 
 
+## 15 okt 2025:
+* bugfix: applied filters werden verkeerde databasevelden uitgelezen
+
+
 ## 14 okt 2025:
 * dr-input-text vervangt <input type="text"> in detailsave_contacts
 * velden toegevoegd: mag op rekening kopen + note phone1 + note phone 2

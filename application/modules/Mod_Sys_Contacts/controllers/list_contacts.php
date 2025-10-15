@@ -145,7 +145,7 @@ class list_contacts extends TCRUDListControllerAJAX
 
         //unique id
         $objFilter = new DRDBFilter();
-        $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
+        $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_UNIQUEID);
@@ -178,7 +178,7 @@ class list_contacts extends TCRUDListControllerAJAX
         {
             //address: billing
             $objFilter = new DRDBFilter();
-            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGADDRESSSTREET);
@@ -200,7 +200,7 @@ class list_contacts extends TCRUDListControllerAJAX
         {
             //postal code: billing
             $objFilter = new DRDBFilter();
-            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
@@ -221,7 +221,7 @@ class list_contacts extends TCRUDListControllerAJAX
         {
             //personal email
             $objFilter = new DRDBFilter();
-            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_EMAILADDRESSENCRYPTED);
@@ -242,7 +242,7 @@ class list_contacts extends TCRUDListControllerAJAX
         {
             //phone 1
             $objFilter = new DRDBFilter();
-            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER1);
@@ -251,7 +251,7 @@ class list_contacts extends TCRUDListControllerAJAX
             
             //phone 2
             $objFilter = new DRDBFilter();
-            $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+            $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
             $objFilter->setDisabled(true);//disabled by default when adding filter chip
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER2);
