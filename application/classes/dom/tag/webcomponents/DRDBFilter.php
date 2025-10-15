@@ -2,6 +2,7 @@
 namespace dr\classes\dom\tag\webcomponents;
 
 use dr\classes\dom\tag\form\FormInputAbstract;
+use dr\classes\types\TDateTime;
 
 /**
  * represents a filter in <dr-db-filter>
@@ -146,6 +147,15 @@ class DRDBFilter
 	{
 		return $this->sValue;
 	}
+
+	/**
+	 * set value by using a TDateTime object
+	 */
+	public function setValueAsDate(TDateTime $objDate)
+	{
+		$this->setValue($objDate->getISOString());
+	}
+
 
 	/**
 	 * set end value

@@ -5,6 +5,8 @@ use dr\modules\Mod_Sys_Contacts\models\TSysContacts;
 use dr\classes\controllers\TCRUDListController;
 use dr\classes\controllers\TCRUDListControllerAJAX;
 use dr\classes\dom\tag\webcomponents\DRDBFilter;
+use dr\classes\dom\tag\webcomponents\DRDBFilters;
+use dr\classes\types\TDateTime;
 use dr\modules\Mod_Sys_Contacts\Mod_Sys_Contacts;
 
 include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
@@ -135,7 +137,7 @@ class list_contacts extends TCRUDListControllerAJAX
 
         //id
         $objFilter = new DRDBFilter();
-        $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+        $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_NUMBER);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_ID);
@@ -170,6 +172,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_LASTNAME);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_LASTNAME, 'Last name'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
         }
 
@@ -183,6 +186,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGADDRESSSTREET);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGADDRESSSTREET, 'Street (billing)'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
 
             //address: delivery
@@ -192,6 +196,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_DELIVERYADDRESSSTREET);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYADDRESSSTREET, 'Street (delivery)'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
         }     
 
@@ -205,6 +210,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGPOSTALCODEZIP, 'Postal code (billing)'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
             
             //postal code: delivery
@@ -214,6 +220,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGPOSTALCODEZIP);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYPOSTALCODEZIP, 'Postal code (delivery)'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);            
             $objFilters->addFilter($objFilter);  
         }     
 
@@ -226,6 +233,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_EMAILADDRESSENCRYPTED);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_EMAILADDRESSENCRYPTED, 'Email address (personal)'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
             
             //billing email
@@ -235,6 +243,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGEMAILADDRESSENCRYPTED, 'Email address (billing)'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
         }     
 
@@ -247,6 +256,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER1);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER1, 'Phone number 1'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
             $objFilters->addFilter($objFilter);  
             
             //phone 2
@@ -256,6 +266,7 @@ class list_contacts extends TCRUDListControllerAJAX
             $objFilter->setType(DRDBFilter::TYPE_STRING);
             $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_PHONENUMBER2);
             $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_PHONENUMBER2, 'Phone number 2'));
+            $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);            
             $objFilters->addFilter($objFilter);  
         }           
 
@@ -266,15 +277,19 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_NOTES);
         $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NOTES, 'Notes'));
+        $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
         $objFilters->addFilter($objFilter);     
 
         //first contact
         $objFilter = new DRDBFilter();
-        $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+        $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_DATE);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_FIRSTCONTACT);
         $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_FIRSTCONTACT, 'First contact'));
+        // $objDate = new TDateTime();
+        // $objDate->setDate(2025, 10, 15);
+        // $objFilter->setValueAsDate($objDate);
         $objFilters->addFilter($objFilter);      
 
         //last contact
@@ -293,6 +308,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_BILLINGCITY);
         $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_BILLINGCITY, 'City (billing)'));
+        $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
         $objFilters->addFilter($objFilter);          
         
         //delivery city
@@ -302,6 +318,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_DELIVERYCITY);
         $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_DELIVERYCITY, 'City (delivery)'));
+        $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
         $objFilters->addFilter($objFilter);   
         
         //search keywords
@@ -311,6 +328,7 @@ class list_contacts extends TCRUDListControllerAJAX
         $objFilter->setType(DRDBFilter::TYPE_STRING);
         $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_SEARCHKEYWORDS);
         $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_SEARCHKEYWORDS, 'Search keywords'));
+        $objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);        
         $objFilters->addFilter($objFilter);   
         
         

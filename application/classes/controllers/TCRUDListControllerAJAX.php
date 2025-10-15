@@ -986,7 +986,7 @@ abstract class TCRUDListControllerAJAX
     {
         if ($this->objDBFilters)
         {
-            $this->objDBFilters->readJSON(true, TCRUDListControllerAJAX::ACTION_VARIABLE_FILTERS);
+            $this->objDBFilters->createDBFiltersJSON(true, TCRUDListControllerAJAX::ACTION_VARIABLE_FILTERS);
             $this->objDBFilters->createDBQuery($this->objModel);
         }
     }
@@ -1194,7 +1194,7 @@ abstract class TCRUDListControllerAJAX
 
   
     /**
-     * defines database query to execute
+     * defines database query to execute and the database filters
      * 
      * @return integer how many levels of tables to auto join: -1=unlimited, 0=none; 1=1level
      */

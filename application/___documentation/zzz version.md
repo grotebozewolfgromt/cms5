@@ -30,15 +30,15 @@
 ## TODO searching + gdpr
 * bugfixes: dbfilters
     - checkbox 'enable' vervangt knop 'set filter'
-    - bug: status_applied chips werken niet ==> veld-index probleem
     - minimaal 3 characters zoeken beperking verwijderen
     - number filter geeft met integer ook .0000 terug'
 * labels component maken
 
 
-## 15 okt 2025:
+## 15 okt 2025: dbfilters
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen
 * bugfix: dr-context-menu: mouse-down to show menu werd gekeken naar rect of object. Dit gaf problemen wanneer een popover overlapte, omdat dit ook deze kliks op pakte
+* default filter values werken nu. Mogelijk om datum van vandaag te selecteren by default
 
 ## 14 okt 2025:
 * dr-input-text vervangt <input type="text"> in detailsave_contacts

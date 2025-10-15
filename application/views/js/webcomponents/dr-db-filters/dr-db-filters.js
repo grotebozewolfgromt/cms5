@@ -445,6 +445,10 @@ class DRDBFilters extends HTMLElement
         let sChipFilterType = this.arrFilterTypes.string;
         let sFilterIndex = "";
         let sNameNice = "";
+        let bEnabled = false;
+        let sValueStart = "";
+        let sValueEnd = "";
+        let sComparisonOperator = "";
 
         //==== add revamped chips
         for (let iIndex = 0; iIndex < this.children.length; iIndex++)
@@ -453,11 +457,17 @@ class DRDBFilters extends HTMLElement
             sChipFilterType = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.filtertype, this.arrFilterTypes.string);
             sFilterIndex = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.filterindex);
             sNameNice = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.namenice);
+            bEnabled = !DRComponentsLib.attributeToBoolean(this.children[iIndex], this.arrChipAttributes.disabled);
+            sValueStart = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.value);
+            sValueEnd = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.valueend);
+            if (this.arrChipAttributes.comparisonoperator)
+                sComparisonOperator = DRComponentsLib.attributeToString(this.children[iIndex], this.arrChipAttributes.comparisonoperator);
 
             this.arrAvailableFilters.push(this.children[iIndex]);//always add to menu
 
             if (sChipStatus == this.arrFilterStatus.applied)
-                this.addFilterUI(this.sSVGIconFilter, sNameNice, sFilterIndex, sChipFilterType);
+                this.addFilterUI(this.sSVGIconFilter, sNameNice, sFilterIndex, sChipFilterType, bEnabled, null, false, sValueStart, sValueEnd, sComparisonOperator);
+            //addFilterUI(sSVGPre, sText, iFilterIndex, sFilterType = this.arrFilterTypes.string, bEnabled = false, objOriginalChip = null, bOpenImmediately = false, sValueStart = "", sValueEnd = "", sComparisonOperator = "")
         }
 
 
@@ -1414,7 +1424,7 @@ class DRDBFilters extends HTMLElement
      * @param {HTMLElement} objOriginalChip the original chip in the DOM
      * @return HTMLElement created <div> element representing the chip
      */
-    addFilterUI(sSVGPre, sText, iFilterIndex, sFilterType = this.arrFilterTypes.string, bEnabled = false, objOriginalChip = null, bOpenImmediately = false)
+    addFilterUI(sSVGPre, sText, iFilterIndex, sFilterType = this.arrFilterTypes.string, bEnabled = false, objOriginalChip = null, bOpenImmediately = false, sValueStart = "", sValueEnd = "", sComparisonOperator = "")
     {
         const objParentChip = document.createElement("div"); //create new revamped chip
         
@@ -1429,6 +1439,13 @@ class DRDBFilters extends HTMLElement
         objParentChip.setAttribute(this.arrChipAttributes.filterindex, iFilterIndex);
         objParentChip.setAttribute(this.arrChipAttributes.disabled, !bEnabled);         
         objParentChip.setAttribute(this.arrChipAttributes.namenice, sText); //nicename to attribute      
+        if (sValueStart !== "")
+            objParentChip.setAttribute(this.arrChipAttributes.value, sValueStart);
+        if (sValueEnd !== "")
+            objParentChip.setAttribute(this.arrChipAttributes.valueend, sValueEnd);
+        if (sComparisonOperator !== "")
+            objParentChip.setAttribute(this.arrChipAttributes.comparisonoperator, sComparisonOperator);
+
 
         //add first icon (either filter or search)
         const objPreButton = document.createElement("div");  

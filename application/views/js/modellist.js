@@ -32,7 +32,7 @@ window.addEventListener("load", (objEvent)=>
     objDRDBFilters.addEventListener("change", (objEvent) => 
     { 
 
-        console.log("catchieeeeeeeeeeeeeee");
+        // console.log("catchieeeeeeeeeeeeeee");
         let sURL = "<?php echo APP_URLTHISSCRIPT; ?>";
         if (objJSONTable)    
             sURL = objJSONTable.newrequesturl;    

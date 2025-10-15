@@ -13,7 +13,49 @@ use dr\classes\types\TFloat;
  * this is a HTML tag where you can add database filters and this class converts it to the format that <dr-db-filter> needs
  * 
  * WARNING:
- * 1. this class replaces table names and field with indexes for security reasons (prevents nefarious actor from messing with it client side)\
+ * - this class replaces table names and field with indexes for security reasons (prevents nefarious actor from messing with it client side)\
+ * 
+ * 
+ * EXAMPLE PHP:
+  		//defining database filters
+        $objFilters = $this->objDBFilters;
+
+        //notes
+        $objFilter = new DRDBFilter();
+        $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
+        $objFilter->setDisabled(true);//disabled by default when adding filter chip
+        $objFilter->setType(DRDBFilter::TYPE_STRING);
+        $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_NOTES);
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_NOTES, 'Notes'));
+		$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
+        $objFilters->addFilter($objFilter);     
+
+        //first contact
+        $objFilter = new DRDBFilter();
+        $objFilter->setStatus(DRDBFilter::STATUS_APPLIED); //showing in menu instead of directly visible
+        $objFilter->setDisabled(false);//disabled by default when adding filter chip
+        $objFilter->setType(DRDBFilter::TYPE_DATE);
+        $objFilter->setDBTableField(TSysContacts::getTable(), TSysContacts::FIELD_FIRSTCONTACT);
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TSysContacts::FIELD_FIRSTCONTACT, 'First contact'));
+        $objDate = new TDateTime();
+        $objDate->setDate(2025, 02, 4);
+        $objFilter->setValueAsDate($objDate);
+		$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_EQUALS);
+        $objFilters->addFilter($objFilter);      
+
+ * EXAMPE JS:
+    //listen to filters changing
+    objDRDBFilters = document.querySelector("dr-db-filters");
+    objDRDBFilters.addEventListener("change", (objEvent) => 
+    { 
+
+        let sURL = "<?php echo APP_URLTHISSCRIPT; ?>";
+        if (objJSONTable)    
+            sURL = objJSONTable.newrequesturl;    
+
+        fetchJSONTable(sURL, true);
+    });
+
  * 
  * @author Dennis Renirie
  * 4 apr 2025 DRDBFilters created
@@ -51,13 +93,36 @@ class DRDBFilters extends HTMLTag
 	}
 
 	/**
+	 * creates filters in $this->arrFiltersDB by looking at values of filters in $this->arrFiltersAll
+	 * 
+	 */
+	public function createDBFiltersDefaults()
+	{
+		$this->arrFiltersDB = array();
+
+		$iCountFilters = count($this->arrFiltersAll);
+		if ($iCountFilters > 0)
+		{						
+			//loop JSON array
+			for ($iIndex = 0; $iIndex < $iCountFilters; $iIndex++)
+			{
+				if ($this->arrFiltersAll[$iIndex]->getValue() !== '')
+				{
+					$objFilter = clone $this->arrFiltersAll[$iIndex];
+					$this->arrFiltersDB[] = $objFilter;
+				}
+			}
+		}		
+	}
+
+	/**
 	 * reads JSON data produced by javascript web component: <dr-db-filter>
-	 * and convert it into internal filter objects in internal array $arrFiltersAll
+	 * creates filters in $this->arrFiltersDB by looking at JSON retrieved from $_POST or $_GET
 	 * 
 	 * @param bool $bPostArray true=$_POST and false=$_GET
 	 * @param string the field in $_POST[$sField] or $_GET[$sField] array that contains the JSON data
 	 */
-	public function readJSON($b_POSTArray, $sField)
+	public function createDBFiltersJSON($b_POSTArray, $sField)
 	{
 		$arrJSON = array();
 		$iIndex = 0;
@@ -65,7 +130,7 @@ class DRDBFilters extends HTMLTag
 		$iCountJSON = 0;
 		$objFilter = null;
 		$iFilterIndex = 0;
-
+		$this->arrFiltersDB = array();//reset
 
 		if ($b_POSTArray)
 		{
@@ -77,107 +142,111 @@ class DRDBFilters extends HTMLTag
 			if (isset($_GET[$sField]))
 				$arrJSON = json_decode($_GET[$sField], true);
 		} 
+		$iCountJSON = count($arrJSON);
+
+		//use defaults when no json
+		if ($iCountJSON == 0)
+		{
+			$this->createDBFiltersDefaults();
+			return;
+		}
 
 		//read JSON
 		//and add these filters
-		$iCountJSON = count($arrJSON);
 		$iCountFilters = count($this->arrFiltersAll);
-		if ($iCountJSON > 0)
-		{						
-			//loop JSON array
-			for ($iIndex = 0; $iIndex < $iCountJSON; $iIndex++)
+		for ($iIndex = 0; $iIndex < $iCountJSON; $iIndex++) 		//loop JSON array
+		{
+			$objFilter = new DRDBFilter();
+
+			//find corresponding filter in internal filter array
+			//this allows us to find the database field (that we don't want to send database field to the GUI for everyone to read)
+			//but also allows us to do extra security checks
+			$objCurrentFilter = null;
+			$iFilterIndex = strToInt($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERINDEX], true); //WARNING: Quicksearch doesn't give filterindex back!
+			if (($iFilterIndex >= $iCountFilters) || ($iFilterIndex < 0)) //looking for invalid indexes
+				return;
+			else
+				$objCurrentFilter = $this->arrFiltersAll[$iFilterIndex];
+
+			//status
+			switch ($arrJSON[$iIndex][DRDBFilter::ATTR_STATUS]) //prevent injection by checking validity of values
 			{
-				$objFilter = new DRDBFilter();
-
-				//find corresponding filter in internal filter array
-				//this allows us to find the database field (that we don't want to send database field to the GUI for everyone to read)
-				//but also allows us to do extra security checks
-				$objCurrentFilter = null;
-				$iFilterIndex = strToInt($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERINDEX], true); //WARNING: Quicksearch doesn't give filterindex back!
-				if (($iFilterIndex >= $iCountFilters) || ($iFilterIndex < 0)) //looking for invalid indexes
-					return;
-				else
-					$objCurrentFilter = $this->arrFiltersAll[$iFilterIndex];
-
-				//status
-				switch ($arrJSON[$iIndex][DRDBFilter::ATTR_STATUS]) //prevent injection by checking validity of values
-				{
-					case DRDBFilter::STATUS_AVAILABLE:
-					case DRDBFilter::STATUS_APPLIED:
-						$objFilter->setStatus($arrJSON[$iIndex][DRDBFilter::ATTR_STATUS]);
-						break;
-					default:
-						$objFilter->setStatus(DRDBFilter::STATUS_APPLIED);
-				}
-
-				//type
-				switch ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE]) //prevent injection by checking validity of values
-				{
-					case DRDBFilter::TYPE_BOOLEAN:
-					case DRDBFilter::TYPE_DATE:
-					case DRDBFilter::TYPE_NUMBER:
-					case DRDBFilter::TYPE_QUICKSEARCH:
-					case DRDBFilter::TYPE_STRING:
-					case DRDBFilter::TYPE_HTMLELEMENT:
-						$objFilter->setType($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE]);
-						break;
-					default:
-						$objFilter->setType(DRDBFilter::TYPE_STRING);
-				}
-
-				//database field --> for security reasons use the database fields from available filters instead of storing it in the publicly available filters
-				if ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE] != DRDBFilter::TYPE_QUICKSEARCH) //quicksearch has no fields
-					$objFilter->setDBTableField($objCurrentFilter->getDBTable(), $objCurrentFilter->getDBField());
-
-
-				//disabled
-				if ($arrJSON[$iIndex][DRDBFilter::ATTR_DISABLED] === false)
-					$objFilter->setDisabled(false);
-				else
-					$objFilter->setDisabled(true);
-
-				//comparison operator
-				if ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE] != DRDBFilter::TYPE_QUICKSEARCH) //quicksearch has always comparison operator "like" 
-				{				
-					if (array_key_exists($arrJSON[$iIndex][DRDBFilter::ATTR_COMPARISONOPERATOR], DRDBFilter::COMP_OP_TRANSLATION)) //prevent injection by checking validity of values
-						$objFilter->setComparisonOperator($arrJSON[$iIndex][DRDBFilter::ATTR_COMPARISONOPERATOR]);
-					else
-						$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_EQUALTO);
-				}
-				else
-					$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
-
-				//value and endvalue
-				switch ($objCurrentFilter->getType()) //prevent injection by checking validity of values
-				{
-					case DRDBFilter::TYPE_BOOLEAN:
-						$objFilter->setValue(strToBool($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE]));
-						// $objFilter->setValueEnd(strToBool($arrJSON[$iIndex]['valueend'])); ==> range of booleans doesn't exist
-						break;
-					case DRDBFilter::TYPE_DATE:
-						$objFilter->setValue(filterBadCharsWhiteListLiteral($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE], WHITELIST_ISO8601));
-						$objFilter->setValueEnd(filterBadCharsWhiteListLiteral($arrJSON[$iIndex][DRDBFilter::ATTR_VALUEEND], WHITELIST_ISO8601));
-						break;
-					case DRDBFilter::TYPE_NUMBER:
-						$objFloat = new TDecimal($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE], 4);
-						$objFilter->setValue($objFloat->getValue());
-						$objFloat->setValue($arrJSON[$iIndex][DRDBFilter::ATTR_VALUEEND]);
-						$objFilter->setValueEnd($objFloat->getValue());
-						break;
-					default: //quicksearch and string and everything else
-						$objFilter->setValue(filterBadCharsWhiteList($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE], REGEX_ALPHANUMERIC_UNDERSCORE_MINUS, true));
-				}
-
-				//name nice
-				$objFilter->setNameNice($objCurrentFilter->getNameNice());
-				
-				//only add when it's not disabled
-				if ($arrJSON[$iIndex][DRDBFilter::ATTR_DISABLED] === false)
-					$this->arrFiltersDB[] = $objFilter;
+				case DRDBFilter::STATUS_AVAILABLE:
+				case DRDBFilter::STATUS_APPLIED:
+					$objFilter->setStatus($arrJSON[$iIndex][DRDBFilter::ATTR_STATUS]);
+					break;
+				default:
+					$objFilter->setStatus(DRDBFilter::STATUS_APPLIED);
 			}
-			// vardumpdie($arrJSON, "froietmetfrikandellen");
 
+			//type
+			switch ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE]) //prevent injection by checking validity of values
+			{
+				case DRDBFilter::TYPE_BOOLEAN:
+				case DRDBFilter::TYPE_DATE:
+				case DRDBFilter::TYPE_NUMBER:
+				case DRDBFilter::TYPE_QUICKSEARCH:
+				case DRDBFilter::TYPE_STRING:
+				case DRDBFilter::TYPE_HTMLELEMENT:
+					$objFilter->setType($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE]);
+					break;
+				default:
+					$objFilter->setType(DRDBFilter::TYPE_STRING);
+			}
+
+			//database field --> for security reasons use the database fields from available filters instead of storing it in the publicly available filters
+			if ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE] != DRDBFilter::TYPE_QUICKSEARCH) //quicksearch has no fields
+				$objFilter->setDBTableField($objCurrentFilter->getDBTable(), $objCurrentFilter->getDBField());
+
+
+			//disabled
+			if ($arrJSON[$iIndex][DRDBFilter::ATTR_DISABLED] === false)
+				$objFilter->setDisabled(false);
+			else
+				$objFilter->setDisabled(true);
+
+			//comparison operator
+			if ($arrJSON[$iIndex][DRDBFilter::ATTR_FILTERTYPE] != DRDBFilter::TYPE_QUICKSEARCH) //quicksearch has always comparison operator "like" 
+			{				
+				if (array_key_exists($arrJSON[$iIndex][DRDBFilter::ATTR_COMPARISONOPERATOR], DRDBFilter::COMP_OP_TRANSLATION)) //prevent injection by checking validity of values
+					$objFilter->setComparisonOperator($arrJSON[$iIndex][DRDBFilter::ATTR_COMPARISONOPERATOR]);
+				else
+					$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_EQUALTO);
+			}
+			else
+				$objFilter->setComparisonOperator(DRDBFilter::COMPARISONOPERATOR_LIKE);
+
+			//value and endvalue
+			switch ($objCurrentFilter->getType()) //prevent injection by checking validity of values
+			{
+				case DRDBFilter::TYPE_BOOLEAN:
+					$objFilter->setValue(strToBool($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE]));
+					// $objFilter->setValueEnd(strToBool($arrJSON[$iIndex]['valueend'])); ==> range of booleans doesn't exist
+					break;
+				case DRDBFilter::TYPE_DATE:
+					$objFilter->setValue(filterBadCharsWhiteListLiteral($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE], WHITELIST_ISO8601));
+					$objFilter->setValueEnd(filterBadCharsWhiteListLiteral($arrJSON[$iIndex][DRDBFilter::ATTR_VALUEEND], WHITELIST_ISO8601));
+					break;
+				case DRDBFilter::TYPE_NUMBER:
+					$objFloat = new TDecimal($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE], 4);
+					$objFilter->setValue($objFloat->getValue());
+					$objFloat->setValue($arrJSON[$iIndex][DRDBFilter::ATTR_VALUEEND]);
+					$objFilter->setValueEnd($objFloat->getValue());
+					break;
+				default: //quicksearch and string and everything else
+					$objFilter->setValue(filterBadCharsWhiteList($arrJSON[$iIndex][DRDBFilter::ATTR_VALUE], REGEX_ALPHANUMERIC_UNDERSCORE_MINUS, true));
+			}
+
+			//name nice
+			$objFilter->setNameNice($objCurrentFilter->getNameNice());
+			
+			//only add when it's not disabled
+			if ($arrJSON[$iIndex][DRDBFilter::ATTR_DISABLED] === false)
+				$this->arrFiltersDB[] = $objFilter;
 		}
+		// vardumpdie($arrJSON, "froietmetfrikandellen");
+
+
 
 	}
 
