@@ -38,7 +38,7 @@
 
 ## 15 okt 2025:
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen
-
+* bugfix: dr-context-menu: mouse-down to show menu werd gekeken naar rect of object. Dit gaf problemen wanneer een popover overlapte, omdat dit ook deze kliks op pakte
 
 ## 14 okt 2025:
 * dr-input-text vervangt <input type="text"> in detailsave_contacts

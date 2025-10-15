@@ -82,6 +82,7 @@
  * 26 apr 2025 dr-context-menu.js responds to ESC-KEY
  * 26 sept 2025 dr-context-menu.js niet nodig om id op te geven, dit component zoekt niet meer naar id om zichzelf te verwijderen
  * 26 sept 2025 dr-context-menu.js text aligned to left
+ * 15 okt 2025 dr-context-menu.js bugfix: mouse-down to show menu werd gekeken naar rect of object. Dit gaf problemen wanneer een popover overlapte, omdat dit ook deze kliks op pakte
  */
 ?>
 
@@ -914,14 +915,17 @@ class DRContextMenu extends HTMLElement
     {
 
         //when clicked on anchor
-        // if (this.objAnchor)
-        // {             
-        //     this.objAnchor.addEventListener("click", ()=>
-        //     {
-        //         this.toggle();
-        //     }, { signal: this.objAbortController.signal });
+        if (this.objAnchor)
+        {             
+            this.objAnchor.addEventListener("mousedown", ()=>
+            {
+                this.toggle();
+                    if (this.isHidden())
+                        if (this.bRemoveFromDOMOnHide)
+                            this.removeFromDOM();
+            }, { signal: this.objAbortController.signal });
 
-        // }
+        }
 
         //when ESC-key pressed
         document.addEventListener("keyup", (objEvent)=>
@@ -939,18 +943,13 @@ class DRContextMenu extends HTMLElement
             }
         }, { signal: this.objAbortController.signal }); 
 
+
+
         //when clicked with mouse on document
         document.addEventListener("mousedown", (objEvent)=>
         {               
             if (this.objAnchor)
             {
-                if (this.isMouseCursorInRect(objEvent, this.objAnchor.getBoundingClientRect()))
-                {
-                    this.toggle();
-                    if (this.isHidden())
-                        if (this.bRemoveFromDOMOnHide)
-                            this.removeFromDOM();
-                }
                 
                 //hide when clicked outside the anchor and bubble
                 if (this.isShowing())
