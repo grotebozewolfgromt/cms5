@@ -29,7 +29,7 @@ class DRInputTags extends FormInputAbstract
 		$this->setAttribute('whitelist', WHITELIST_SAFE); //assume safe whitelist as default
 
 		//translations
-		$this->setAttribute('placeholder', transg('dr-input-tags_placeholder', 'Input value and hit Enter key'));
+		$this->setAttribute('placeholder', transg('dr-input-tags_placeholder', 'Input value and press Enter'));
 
 		//proper includes
 		// includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-input-tags'.DIRECTORY_SEPARATOR.'style.css');
@@ -156,26 +156,26 @@ class DRInputTags extends FormInputAbstract
 			return false;
 	}		
 
-	/**
-	 * set blacklist characters
-	 * empty string parameter disables the blacklist
-	 */
-	public function setBlacklist($sBlacklistCharacters)
-	{
-		$this->setAttribute('blacklist', $sBlacklistCharacters);
-		parent::setBlacklist($sBlacklistCharacters);
-	}
+	// /**
+	//  * set blacklist characters
+	//  * empty string parameter disables the blacklist
+	//  */
+	// public function setBlacklist($sBlacklistCharacters)
+	// {
+	// 	$this->setAttribute('blacklist', $sBlacklistCharacters);
+	// 	parent::setBlacklist($sBlacklistCharacters);
+	// }
 
-	/**
-	 * get blacklist characters
-	 * if empty, blacklist is disabled
-	 * 
-	 * @return string
-	 */
-	public function getBlacklist()
-	{
-		return $this->getAttribute('blacklist');
-	}
+	// /**
+	//  * get blacklist characters
+	//  * if empty, blacklist is disabled
+	//  * 
+	//  * @return string
+	//  */
+	// public function getBlacklist()
+	// {
+	// 	return $this->getAttribute('blacklist');
+	// }
 
 	/**
 	 * set whitelist characters

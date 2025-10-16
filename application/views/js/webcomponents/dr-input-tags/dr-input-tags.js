@@ -3,23 +3,25 @@
  * dr-input-tags.js
  *
  * class to create tags as chips
+ * The <div> around a tag text I call a chip. 
+ * Each tag has a chip
  * 
  * FILTER-CHANGE EVENT:
- * object fires event "change" when filter changed:
+ * object fires event "change" when tags changed (text changed, added or deleted):
  * window.addEventListener('change', (e) => { console.log(e)})
  * 
  * WARNING:
+ * - tags are assumed to be unique. You can't add 2 tags that are the same.
  * 
  * DEPENDENCIES:
  * 
  * @todo click to change value
- * @todo click X to remove tag
  * @todo maxlength
  * @todo values oppakken vanuit slot
- * @todo values uit attribuut lezen
- * @todo waardes uit chips lezen en als values setten
- * @todo whitelist filteren als enter
- * @todo filter duplicates
+ * @todo remove all
+ * @todo copy + paste
+ * @todo input comma to add multiple tags
+ * @todo maximum and minimum number of tags
  * 
  * @author Dennis Renirie
  * 
@@ -67,11 +69,11 @@ class DRInputTags extends HTMLElement
 
                 line-height: 1.2rem;
                 font-size: 0.65rem;
+                cursor: pointer;
             }
 
             .highlight:hover
             {
-                cursor: pointer;
                 background-color: light-dark(var(--lightmode-color-drdbfilters-chips-highlight-background-hover, rgb(216, 216, 216)), var(--darkmode-color-drdbfilters-chips-highlight-background-hover, rgb(124, 124, 124)));
             }
 
@@ -115,6 +117,8 @@ class DRInputTags extends HTMLElement
 
             .chipinput [type=text]
             {
+                box-sizing: border-box;
+
                 width: 100%;
                 background-color: #00000000; /* transpararent */
                 border-width: 0px;
@@ -143,6 +147,8 @@ class DRInputTags extends HTMLElement
     #sValueSeparator = ",";
     #sValue = "";//form value. Values are separated by #sValueSeparator
     sTransEditboxPlaceholder = "Enter new tag";
+    #bDisabled = false;
+    #sWhiteListChars = ""; //there characters are allowed in a chip. When empty, whitelist feature is disabled
 
     static formAssociated = true;      
 
@@ -163,13 +169,14 @@ class DRInputTags extends HTMLElement
 
         //get template and clone it
         const objCloneTemplate = objTemplate.content.cloneNode(true); 
-        this.shadowRoot.appendChild(objCloneTemplate);    
-
+        this.shadowRoot.appendChild(objCloneTemplate);
     }    
 
     #readAttributes()
     {
+        this.#sValue = DRComponentsLib.attributeToString(this, "value", this.#sValue);
         this.#sValueSeparator = DRComponentsLib.attributeToString(this, "separator", this.#sValueSeparator);
+        this.#sWhiteListChars = DRComponentsLib.attributeToString(this, "whitelist", this.#sWhiteListChars);
         this.sTransEditboxPlaceholder = DRComponentsLib.attributeToString(this, "placeholder", this.sTransEditboxPlaceholder);
     }
 
@@ -182,7 +189,13 @@ class DRInputTags extends HTMLElement
         this.#objInputText.type = "text";
         this.#objInputText.placeholder = this.sTransEditboxPlaceholder;
         this.#objAddNewTagChip.appendChild(this.#objInputText);
-        this.shadowRoot.appendChild(this.#objAddNewTagChip);        
+        this.shadowRoot.appendChild(this.#objAddNewTagChip);     
+        
+        //update UI
+        this.updateUI();
+
+        //update form value
+        this.#objFormInternals.setFormValue(this.getValue());        
     }
 
 
@@ -196,13 +209,38 @@ class DRInputTags extends HTMLElement
         {
             if (!objEvent.repeat)
             {
-                if (objEvent.key == "Enter")
+                if ((objEvent.key == "Enter")  || (objEvent.key == this.#sValueSeparator))
                 {
+                    //don't accept value separator as input
+                    if (objEvent.key == this.#sValueSeparator)
+                        objEvent.preventDefault(); 
+
                     if (this.#objInputText.value.length >= 1) //must have at least 1 character
                     {
-                        this.addTagUI(this.#objInputText.value);   
-                        this.#objInputText.value = "";
-                        this.#dispatchEventTagsChanged(this.#objInputText, "Hit enter on keyboard");
+                        //filter white list
+                        let sCleanValue = DRComponentsLib.sanitizeWhitelist(this.#objInputText.value, this.#sWhiteListChars);
+                        sCleanValue = sCleanValue.replace(this.#sValueSeparator, "");
+
+                        if (!this.chipExists(sCleanValue)) //add when unique
+                        {                   
+                            //update values         
+                            if (this.#sValue === "") //empty value: no separator
+                                this.#sValue+= sCleanValue;
+                            else
+                                this.#sValue+= this.#sValueSeparator + sCleanValue;
+                            this.#objFormInternals.setFormValue(this.#sValue);
+
+                            console.log("dr-input-tags: add: this.#sValue == ", this.#sValue);
+
+                            this.updateUI();
+                            this.#dispatchEventTagsChanged(this.#objInputText, "Enter on keyboard");
+                            this.#objInputText.value = "";
+                        }
+                        else
+                        {
+                            DRComponentsLib.beep();
+                            console.error("dr-input-tags: value not accepted, because tag already exists");                            
+                        }
                     }
                 }
             }
@@ -217,7 +255,52 @@ class DRInputTags extends HTMLElement
      */
     #addEventListenersChip(objDivChip)
     {
+        const objCtrl = new AbortController();
+        const objBtnRemove = objDivChip.querySelector(".remove");
+        const objDivText = objDivChip.querySelector(".chipinnertext");
 
+        //==== text
+        if (!this.#bDisabled)
+        {
+            objDivText.addEventListener("mousedown", (objEvent) => 
+            {            
+
+                //@todo edit text on chip
+
+            }, { signal: objCtrl.signal });   
+        }
+
+        //===== remove
+        if ((objBtnRemove) && (!this.#bDisabled))
+        {
+            objBtnRemove.addEventListener("mousedown", (objEvent) => 
+            {
+                console.log("button removeeeeeee", objBtnRemove);
+
+                //remove event listener
+                let sChipText = objDivText.textContent;
+                if (objDivText)
+                {
+                    this.#arrChipsAbortControllers[sChipText].abort();
+                }
+
+                //remove from DOM
+                this.shadowRoot.removeChild(objDivChip);
+
+                //update values
+                this.#sValue = this.#chipsToValue(); //update internal value
+                this.#objFormInternals.setFormValue(this.#sValue);   //update form value
+
+                console.log("dr-input-tags: remove: this.#sValue == ", this.#sValue);
+
+                //dispatch filter-changed-event based on "disabled" attribute --> AFTER being removed from DOM
+                if (!DRComponentsLib.attributeToBoolean(objDivChip, this.#bDisabled, false))                
+                    this.#dispatchEventTagsChanged(this.#objInputText, "Clicked remove chip");
+            }, { signal: objCtrl.signal });      
+        }   
+
+        //add controllers to internal array
+        this.#arrChipsAbortControllers[objDivText.textContent] = objCtrl;         
     }
 
     /**
@@ -272,10 +355,68 @@ class DRInputTags extends HTMLElement
     }
 
     /**
+     * check if text already exists on a chip
+     * 
+     * @param {string} sText 
+     * @returns {boolean} true=exists false=doesnt exist
+     */
+    chipExists(sText)
+    {
+        const arrTexts = [...this.shadowRoot.querySelectorAll(".chipinnertext")];
+        const iLenChips = arrTexts.length;
+
+        for (let iIndex = 0; iIndex < iLenChips; iIndex++)
+        {
+            if (arrTexts[iIndex].textContent == sText)
+                return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * creates chips in the UI based on the string value
+     * the values in the string are separated by the internal value sepator
+     */
+    #valueToChips(sValuesSeparatedByValueSeparator)
+    {
+        const arrValues = sValuesSeparatedByValueSeparator.split(this.#sValueSeparator);
+        const iLenValues = arrValues.length;
+        let sCleanValue = "";
+
+        for (let iIndex = 0; iIndex < iLenValues; iIndex++)
+        {
+            sCleanValue = DRComponentsLib.sanitizeWhitelist(arrValues[iIndex], this.#sWhiteListChars); //filter white list
+            sCleanValue = sCleanValue.replace(this.#sValueSeparator, "");
+
+            if (sCleanValue != "") //empty not allowed
+                if (!this.chipExists(sCleanValue)) //add when unique
+                    this.addTagUI(sCleanValue);   
+        }
+    }
+
+    /**
+     * converts the text of the chips into a string where values are separated by the value separator
+     * @returns {string}
+     */
+    #chipsToValue()
+    {
+        const arrTextDivs = [...this.shadowRoot.querySelectorAll(".chipinnertext")];
+        const iLenChips = arrTextDivs.length;
+        const arrValues = [];
+
+        for (let iIndex = 0; iIndex < iLenChips; iIndex++)
+            arrValues.push(arrTextDivs[iIndex].textContent);
+
+        return arrValues.join(this.#sValueSeparator);        
+    }
+
+    /**
      * update User Interface
      */
     updateUI()
     {
+        this.#valueToChips(this.#sValue);
     }
 
 
@@ -316,6 +457,42 @@ class DRInputTags extends HTMLElement
         return this.#sValue;
     }
 
+    /** 
+     * set disabled
+    */
+    setDisabled(bValue)
+    {
+        this.#bDisabled = bValue;
+        // this.#objFormInternals.setFormValue(sValues);         
+        this.updateUI();
+    }
+
+    /** 
+     * get value where values are separated by value separator
+    */    
+    getDisabled()
+    {
+        return this.#bDisabled;
+    }
+
+    /** 
+     * set whitelist characters that are allowed in tag
+    */
+    setWhitelist(sCharsWhitelist)
+    {
+        this.#sWhiteListChars = sCharsWhitelist;
+        // this.#objFormInternals.setFormValue(sValues);         
+        // this.updateUI();
+    }
+
+    /** 
+     * get whitelist characters that are allowed in tag
+    */    
+    getWhitelist()
+    {
+        return this.#sWhiteListChars;
+    }
+
 
     /** 
      * set value separator
@@ -351,6 +528,38 @@ class DRInputTags extends HTMLElement
         return this.getValue();
     }
 
+    /** 
+     * set disabled
+    */
+    set disabled(bDisabled)
+    {
+        this.setDisabled(bDisabled);
+    }
+
+    /** 
+     * get disabled
+    */
+    get disabled()
+    {
+        return this.getDisabled();
+    }
+
+    /** 
+     * set whitleist
+    */
+    set whitelist(sWhitelistChars)
+    {
+        this.setWhitelist(sWhitelistChars);
+    }
+
+    /** 
+     * get whitleist
+    */
+    get whitelist()
+    {
+        return this.getWhitelist();
+    }
+
  
     /**
      * broadcasts "change" event
@@ -376,7 +585,7 @@ class DRInputTags extends HTMLElement
 
     static get observedAttributes() 
     {
-        return ["separator", "value"];
+        return ["separator", "value", "disabled", "whitelist"];
     }
 
     attributeChangedCallback(sAttrName, sOldVal, sNewVal) 
@@ -384,13 +593,23 @@ class DRInputTags extends HTMLElement
         // console.log("attribute changed in combobox", sAttrName, sNewVal);
         switch(sAttrName)
         {
+            case "disabled":
+                this.#bDisabled = sNewVal;
+                if (this.#bConnectedCallbackHappened)
+                    this.updateUI();
+                break;
             case "separator":
-                this.separator = sNewVal;
+                this.#sValueSeparator = sNewVal;
                 if (this.#bConnectedCallbackHappened)
                     this.updateUI();
                 break;
             case "value":
-                this.value = sNewVal;
+                this.#sValue = sNewVal;
+                if (this.#bConnectedCallbackHappened)
+                    this.updateUI();
+                break;
+            case "whitelist":
+                this.#sWhiteListChars = sNewVal;
                 if (this.#bConnectedCallbackHappened)
                     this.updateUI();
                 break;

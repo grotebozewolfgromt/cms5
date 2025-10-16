@@ -28,6 +28,12 @@
 * @todo als pagebuilder niet op slaat, moet je een form toevoegen waarin de textboxen vallen
 
 
+## 16 okt 2025: labels component
+* 16 okt 2025 lib_string.js add: sanitizeWhitelist()
+* 16 okt 2025 DRComponentsLib.js add: sanitizeWhitelist()
+* dr-input-tags: basisversie werkt
+
+
 ## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen
 * bugfix: dr-context-menu: mouse-down to show menu werd gekeken naar rect of object. Dit gaf problemen wanneer een popover overlapte, omdat dit ook deze kliks op pakte

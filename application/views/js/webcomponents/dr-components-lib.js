@@ -11,10 +11,13 @@
  * - Prevents us from writing the same function over and over again for each web component 
  * - easier to maintain: a bug in one function needs to be updated for each component
  * - easier to maintain: each web components gets smaller and therefore easier to maintain
+ * - want to keep a separate JS library from our normal JS library in case we decide to open source the component
  * 
  * NAMING CONVENTION:
  * - each component is named <dr-*-*> in html tags (hence the name of the file)
  * - each JS class is named DR*
+ * 
+ * 16 okt 2025 DRComponentsLib.js add: sanitizeWhitelist()
  */
 class DRComponentsLib
 {
@@ -379,4 +382,95 @@ class DRComponentsLib
             "7z": "application/x-7z-compressed"
         }[sFileExtension] || "application/octet-stream";
     }
+
+    /**
+     * filter a string
+     * function sanitizes a value against a whitelist of characters
+     * when whitelist is empty the whitelist is assumed to be disabled
+     * 
+     * @param {string} sValue 
+     * @param {string} sWhitelistChars when empty, returns original string
+     * @return {string}
+     */
+    static sanitizeWhitelist(sDirtyValue, sWhitelistChars)
+    {
+        //declare + init
+        let sCleanValue = "";
+        const iLenValue = sDirtyValue.length;
+        const iLenWhite = sWhitelistChars.length;
+
+        //conditions
+        if (sDirtyValue.length == 0)
+            return "";
+
+        if (sWhitelistChars.length == 0)
+            return sDirtyValue;
+
+        //filter white list
+        for (let iIndexValue = 0; iIndexValue < iLenValue; ++iIndexValue) //loop letters value
+        {
+            for (let iIndexWhite = 0; iIndexWhite < iLenWhite; ++iIndexWhite) //loop letters whitelist
+            {
+                if (sDirtyValue[iIndexValue] === sWhitelistChars[iIndexWhite])
+                    sCleanValue+= sDirtyValue[iIndexValue];
+            }                                
+        }
+                       
+        return sCleanValue;
+    }
+
+    /**
+     * Helper function to emit a beep sound in the browser using the Web Audio API.
+     * 
+     * @param {number} iDuration - The curation of the beep sound in milliseconds.
+     * @param {number} iFrequency - The frequency of the beep sound.
+     * @param {number} iVolumePercent - The volume of the beep sound in percent
+     * 
+     * @returns {Promise} - A promise that resolves when the beep sound is finished.
+     */
+    static beep(iDuration = 100, iFrequency = 400, iVolumePercent = 100)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            // Set default iDuration if not provided
+            iDuration = iDuration || 200;
+            iFrequency = iFrequency || 440;
+            iVolumePercent = iVolumePercent || 100;
+
+            try
+            {                
+                // The browser will limit the number of concurrent audio contexts
+                // So be sure to re-use them whenever you can
+                const myAudioContext = new AudioContext();
+
+                let oscillatorNode = myAudioContext.createOscillator();
+                let gainNode = myAudioContext.createGain();
+                oscillatorNode.connect(gainNode);
+
+                // Set the oscillator frequency in hertz
+                oscillatorNode.frequency.value = iFrequency;
+
+                // Set the type of oscillator
+                oscillatorNode.type= "square";
+                gainNode.connect(myAudioContext.destination);
+
+                // Set the gain to the iVolumePercent
+                gainNode.gain.value = iVolumePercent * 0.01;
+
+                // Start audio with the desired iDuration
+                oscillatorNode.start(myAudioContext.currentTime);
+                oscillatorNode.stop(myAudioContext.currentTime + iDuration * 0.001);
+
+                // Resolve the promise when the sound is finished
+                oscillatorNode.onended = () => 
+                {
+                    resolve();
+                };
+            }
+            catch(error)
+            {
+                reject(error);
+            }
+        });
+    }    
 }

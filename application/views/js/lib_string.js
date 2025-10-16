@@ -15,6 +15,7 @@
  * @author Dennis Renirie
  * 
  * 02 jan 2025 lib_string.js lib created
+ * 16 okt 2025 lib_string.js add: sanitizeWhitelist()
  */
 ?>
 
@@ -83,6 +84,42 @@ function sanitizeStringNumber(sInput, bAllowDecimal = true, bAllowEmpty = false)
     return sResult;
 }
 
+
+/**
+ * filter a string
+ * function sanitizes a value against a whitelist of characters
+ * when whitelist is empty the whitelist is assumed to be disabled
+ * 
+ * @param {string} sValue 
+ * @param {string} sWhitelistChars when empty, returns original string
+ * @return {string}
+ */
+function sanitizeWhitelist(sDirtyValue, sWhitelistChars)
+{
+    //declare + init
+    let sCleanValue = "";
+    const iLenValue = sDirtyValue.length;
+    const iLenWhite = sWhitelistChars.length;
+
+    //conditions
+    if (sDirtyValue.length == 0)
+        return "";
+
+    if (sWhitelistChars.length == 0)
+        return sDirtyValue;
+
+    //filter white list
+    for (let iIndexValue = 0; iIndexValue < iLenValue; ++iIndexValue) //loop letters value
+    {
+        for (let iIndexWhite = 0; iIndexWhite < iLenWhite; ++iIndexWhite) //loop letters whitelist
+        {
+            if (sDirtyValue[iIndexValue] === sWhitelistChars[iIndexWhite])
+                sCleanValue+= sDirtyValue[iIndexValue];
+        }                                
+    }
+                    
+    return sCleanValue;
+}
 
 /**
  * strips html tags from string

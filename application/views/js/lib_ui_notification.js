@@ -7,6 +7,8 @@
  * author: https://www.cssscript.com/demo/custom-notifications-notify/
  */
 
+
+
 /**
  * universal notification system across framework
  * @param sTitle string language aware title
@@ -20,7 +22,67 @@ function sendNotification(sTitle, sDescription, sType)
 }
 
 
-/* specific implementation of the notification system */
+/**
+ * Helper function to emit a beep sound in the browser using the Web Audio API.
+ * 
+ * @param {number} iDuration - The curation of the beep sound in milliseconds.
+ * @param {number} iFrequency - The frequency of the beep sound.
+ * @param {number} iVolumePercent - The volume of the beep sound in percent
+ * 
+ * @returns {Promise} - A promise that resolves when the beep sound is finished.
+ */
+function beep(iDuration = 100, iFrequency = 400, iVolumePercent = 100)
+{
+    return new Promise((resolve, reject) =>
+    {
+        // Set default iDuration if not provided
+        iDuration = iDuration || 200;
+        iFrequency = iFrequency || 440;
+        iVolumePercent = iVolumePercent || 100;
+
+        try
+        {                
+            // The browser will limit the number of concurrent audio contexts
+            // So be sure to re-use them whenever you can
+            const myAudioContext = new AudioContext();
+
+            let oscillatorNode = myAudioContext.createOscillator();
+            let gainNode = myAudioContext.createGain();
+            oscillatorNode.connect(gainNode);
+
+            // Set the oscillator frequency in hertz
+            oscillatorNode.frequency.value = iFrequency;
+
+            // Set the type of oscillator
+            oscillatorNode.type= "square";
+            gainNode.connect(myAudioContext.destination);
+
+            // Set the gain to the iVolumePercent
+            gainNode.gain.value = iVolumePercent * 0.01;
+
+            // Start audio with the desired iDuration
+            oscillatorNode.start(myAudioContext.currentTime);
+            oscillatorNode.stop(myAudioContext.currentTime + iDuration * 0.001);
+
+            // Resolve the promise when the sound is finished
+            oscillatorNode.onended = () => 
+            {
+                resolve();
+            };
+        }
+        catch(error)
+        {
+            reject(error);
+        }
+    });
+}    
+
+
+
+
+
+
+/* ===== specific implementation of the notification system ===== */
 
 let wrapper = undefined;
 
