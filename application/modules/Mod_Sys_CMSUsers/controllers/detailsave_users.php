@@ -497,7 +497,7 @@ class detailsave_users extends TCRUDDetailSaveController
         $objLangs = new TSysLanguages();
         $objLangs->sort(TSysLanguages::FIELD_LANGUAGE);
         $objLangs->limitNone();
-        $objLangs->loadFromDBByCMSLanguage();
+        $objLangs->loadFromDBByAdminLanguage();
         $objLangs->generateHTMLSelect($this->getModel()->get(TSysCMSUsers::FIELD_LANGUAGEID), $this->objOptLanguage);
         
         //timezones

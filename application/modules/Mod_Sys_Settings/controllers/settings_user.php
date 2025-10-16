@@ -353,7 +353,7 @@ class settings_user extends TCRUDDetailSaveController
         //language
         $objLangs = new \dr\modules\Mod_Sys_Localisation\models\TSysLanguages();
         $objLangs->sort(\dr\modules\Mod_Sys_Localisation\models\TSysLanguages::FIELD_LANGUAGE);
-        $objLangs->loadFromDBByCMSLanguage();
+        $objLangs->loadFromDBByAdminLanguage();
         $objLangs->generateHTMLSelect($this->getModel()->get(TSysCMSUsers::FIELD_LANGUAGEID), $this->objOptLanguage);
         
         //timezones

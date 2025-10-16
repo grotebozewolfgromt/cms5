@@ -44,9 +44,6 @@ class DRComponentsLib
         // console.log("attributename: this.getAttribute(sAttrName)", sAttrName, this.getAttribute(sAttrName))
         if (objHTMLObject.getAttribute(sAttrName) !== null)
         {
-            if (objHTMLObject.getAttribute(sAttrName) == "")
-                return true;
-
             if (objHTMLObject.getAttribute(sAttrName) == "false")
                 return false
             else

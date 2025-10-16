@@ -751,3 +751,21 @@ function setDirtyRecord()
     console.log("set document to dirty");
 }
 
+
+/**
+ * is called when the combobox with translation-languages has changed
+ * 
+ * @param {DRInputCombobox} objSource 
+ */
+function onLanguageTranslationChange(objSource)
+{
+    //anything to change?
+    if (objSource.getValuePrevious() == objSource.getValue())
+        return; //exit
+
+    console.log("onLanguageTranslationChange FIREEEEEEEE. From", objSource.getValuePrevious(), "to", objSource.getValue());
+    alert("todo");
+
+    //@todo save form values to db: current language
+    //@todo load values from in form: new language
+}

@@ -146,7 +146,7 @@ class createaccount_entercredentials extends TCreateAccountEnterCredentialsContr
         //language
         $objLangs = new \dr\modules\Mod_Sys_Localisation\models\TSysLanguages();
         $objLangs->sort(\dr\modules\Mod_Sys_Localisation\models\TSysLanguages::FIELD_LANGUAGE);
-        $objLangs->loadFromDBByCMSLanguage();
+        $objLangs->loadFromDBByAdminLanguage();
         $objLangs->generateHTMLSelect($this->objSelLanguage->getValueSubmitted(), $this->objSelLanguage);
         
     }    

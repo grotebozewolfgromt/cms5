@@ -77,9 +77,9 @@ includeJSDOMEnd( APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DI
 // echo $sTest;
 
 
-$objTemp = new TSysContactsLastNamePrefixes();
-vardump($objTemp->install());
-die();
+// $objTemp = new TSysContactsLastNamePrefixes();
+// vardump($objTemp->install());
+// die();
 
 ?>
 <dr-dialog title="titeltje">
@@ -89,6 +89,15 @@ die();
 </dr-dialog>
 <button onclick="document.querySelector('dr-dialog').showModal();">show dialog html</button>
 <button onclick="showdloag();">show dialog js</button>
+
+
+
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
 
 <script>
 

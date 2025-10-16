@@ -27,7 +27,7 @@ class TSysLanguages extends TSysModel
 {
 	const FIELD_LOCALE 			= 'sLocale';
 	const FIELD_LANGUAGE 		= 'sLanguage'; //the language name in english
-	const FIELD_ISCMSLANGUAGE 	= 'bIsCMSLanguage'; //-> active languages per site are stored in TSysActiveLanguagesPerSite
+	const FIELD_ISADMINLANGUAGE 	= 'bIsAdminLanguage'; //-> active languages per site are stored in TSysActiveLanguagesPerSite
 	// const FIELD_ISSYSTEMDEFAULT = 'bIsSystemDefault';
 	// const FIELD_ISVISIBLE 		= 'bIsVisible'; //preventing 400 locales are shown in html select boxes
 
@@ -54,12 +54,12 @@ class TSysLanguages extends TSysModel
 	
 	public function getIsCMSLanguage()
 	{
-			return  $this->get(TSysLanguages::FIELD_ISCMSLANGUAGE);
+			return  $this->get(TSysLanguages::FIELD_ISADMINLANGUAGE);
 	}
 	
 	public function setIsCMSLanguage($bIsCMSLanguage)
 	{
-			$this->set(TSysLanguages::FIELD_ISCMSLANGUAGE, $bIsCMSLanguage);
+			$this->set(TSysLanguages::FIELD_ISADMINLANGUAGE, $bIsCMSLanguage);
 	}        
 			
 
@@ -87,10 +87,10 @@ class TSysLanguages extends TSysModel
 	 * 
 	 * @return boolean load ok?
 	 */
-	public function loadFromDBByCMSLanguage()
+	public function loadFromDBByAdminLanguage()
 	{              
 			$this->clear();
-			$this->find(TSysLanguages::FIELD_ISCMSLANGUAGE, true);
+			$this->find(TSysLanguages::FIELD_ISADMINLANGUAGE, true);
 			return $this->loadFromDB();                
 	}
 	
@@ -137,7 +137,7 @@ class TSysLanguages extends TSysModel
 			$this->newRecord();
 			$this->set(TSysLanguages::FIELD_LOCALE, APP_LOCALE_DEFAULT);
 			$this->set(TSysLanguages::FIELD_LANGUAGE, 'English');
-			$this->set(TSysLanguages::FIELD_ISCMSLANGUAGE, true);
+			$this->set(TSysLanguages::FIELD_ISADMINLANGUAGE, true);
 			$this->set(TSysLanguages::FIELD_ISDEFAULT, true);
 			$this->set(TSysLanguages::FIELD_ISFAVORITE, true);
 			
@@ -616,7 +616,7 @@ class TSysLanguages extends TSysModel
 				$this->set(TSysLanguages::FIELD_LANGUAGE, $arrColumns[1]);
 				// if ($arrColumns[0] == APP_LOCALE_DEFAULT)
 				// {
-				// 	$this->set(TSysLanguages::FIELD_ISCMSLANGUAGE, true);
+				// 	$this->set(TSysLanguages::FIELD_ISADMINLANGUAGE, true);
 				// 	$this->set(TSysLanguages::FIELD_ISSYSTEMDEFAULT, true);
 				// 	$this->set(TSysLanguages::FIELD_ISVISIBLE, true);
 				// }
@@ -682,31 +682,31 @@ class TSysLanguages extends TSysModel
 		$this->setFieldFulltext(TSysLanguages::FIELD_LANGUAGE, true);
 		
 		//active language
-		$this->setFieldDefaultValue(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldType(TSysLanguages::FIELD_ISCMSLANGUAGE, CT_BOOL);
-		$this->setFieldLength(TSysLanguages::FIELD_ISCMSLANGUAGE, 0);
-		$this->setFieldDecimalPrecision(TSysLanguages::FIELD_ISCMSLANGUAGE, 0);
-		$this->setFieldPrimaryKey(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldNullable(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldEnumValues(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldUnique(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldIndexed(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldFulltext(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldForeignKeyClass(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldForeignKeyTable(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldForeignKeyField(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldForeignKeyJoin(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldForeignKeyActionOnUpdate(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldForeignKeyActionOnDelete(TSysLanguages::FIELD_ISCMSLANGUAGE, null);
-		$this->setFieldAutoIncrement(TSysLanguages::FIELD_ISCMSLANGUAGE, false);
-		$this->setFieldUnsigned(TSysLanguages::FIELD_ISCMSLANGUAGE, false);	
-        $this->setFieldEncryptionDisabled(TSysLanguages::FIELD_ISCMSLANGUAGE);				
+		$this->setFieldDefaultValue(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldType(TSysLanguages::FIELD_ISADMINLANGUAGE, CT_BOOL);
+		$this->setFieldLength(TSysLanguages::FIELD_ISADMINLANGUAGE, 0);
+		$this->setFieldDecimalPrecision(TSysLanguages::FIELD_ISADMINLANGUAGE, 0);
+		$this->setFieldPrimaryKey(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldNullable(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldEnumValues(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldUnique(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldIndexed(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldFulltext(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldForeignKeyClass(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldForeignKeyTable(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldForeignKeyField(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldForeignKeyJoin(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldForeignKeyActionOnUpdate(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldForeignKeyActionOnDelete(TSysLanguages::FIELD_ISADMINLANGUAGE, null);
+		$this->setFieldAutoIncrement(TSysLanguages::FIELD_ISADMINLANGUAGE, false);
+		$this->setFieldUnsigned(TSysLanguages::FIELD_ISADMINLANGUAGE, false);	
+        $this->setFieldEncryptionDisabled(TSysLanguages::FIELD_ISADMINLANGUAGE);				
                 
 		//system default
-		// $this->setFieldCopyProps(TSysLanguages::FIELD_ISSYSTEMDEFAULT, TSysLanguages::FIELD_ISCMSLANGUAGE);
+		// $this->setFieldCopyProps(TSysLanguages::FIELD_ISSYSTEMDEFAULT, TSysLanguages::FIELD_ISADMINLANGUAGE);
                 
 		//shown in cms selectboxes
-		// $this->setFieldCopyProps(TSysLanguages::FIELD_ISVISIBLE, TSysLanguages::FIELD_ISCMSLANGUAGE);
+		// $this->setFieldCopyProps(TSysLanguages::FIELD_ISVISIBLE, TSysLanguages::FIELD_ISADMINLANGUAGE);
 	}
 	
 	
@@ -720,7 +720,7 @@ class TSysLanguages extends TSysModel
 	*/
 	public function getFieldsPublic()
 	{
-		return array(TSysLanguages::FIELD_LANGUAGE, TSysLanguages::FIELD_LOCALE, TSysLanguages::FIELD_ISCMSLANGUAGE, TSysLanguages::FIELD_ISDEFAULT, TSysLanguages::FIELD_ISFAVORITE, TSysModel::FIELD_POSITION);
+		return array(TSysLanguages::FIELD_LANGUAGE, TSysLanguages::FIELD_LOCALE, TSysLanguages::FIELD_ISADMINLANGUAGE, TSysLanguages::FIELD_ISDEFAULT, TSysLanguages::FIELD_ISFAVORITE, TSysModel::FIELD_POSITION);
 	}
 	
 	/**

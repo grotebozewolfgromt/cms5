@@ -80,3 +80,7 @@ dr-input-upload-abort;Abort upload;Abort upload
 dr-input-upload-maxfilesizeexceeded;Maximum file size exceeded.<br>Max file size: ;Maximum file size exceeded.<br>Max file size: 
 TAJAXFormController_error_inputerror;Input error: [error];Input error: [error]
 tcruddetailsavecontrollerajax_message_save_nosuccess_inputerror;Input error encountered, please correct mistakes;Input error encountered, please correct mistakes
+Next [x] results (page [y]);Next [x] results (page [y]);Next [x] results (page [y])
+Previous [x] results (page [y]);Previous [x] results (page [y]);Previous [x] results (page [y])
+validator_minlength_error_minlengthatleast;Input needs to be at least [length] characters;Input needs to be at least [length] characters
+tcruddetailsavecontrollerajax_message_error_recordcheckedout;This record is checked out by "[checkoutsource]".<br>The other user should exit this record before you can view/edit it;This record is checked out by "[checkoutsource]".<br>The other user should exit this record before you can view/edit it

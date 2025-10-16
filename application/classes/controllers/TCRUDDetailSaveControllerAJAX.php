@@ -57,7 +57,8 @@ namespace dr\classes\controllers;
  * 13 jan 2025: TCRUDDetailSaveControllerAJAX: created
  */
 
- use dr\classes\models\TSysModel;
+use dr\classes\dom\tag\webcomponents\DRInputCombobox;
+use dr\classes\models\TSysModel;
 
  use dr\classes\locale\TLocalisation;
 use dr\classes\types\TDateTime;
@@ -68,9 +69,9 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
     protected $objModel = null;
     private $sReturnURL = '';
     protected $bstopHandlingURLParams = false; //stops handling url parameters. Could happen when components (like dr-file-upload) already handled their own stuff.
-    protected $objTranslationLanguages = null; //TSysModel
+    protected $objLanguagesTranslations = null; //TSysModel
 
-    protected $objCbxTranslationLanguages = null;//DRInputCombobox
+    protected $objCbxLanguagesTranslations = null;//DRInputCombobox
 
 
     /**
@@ -80,13 +81,13 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
     {
         global $objLocalisation;  
         
-        //WE DO NOT INHERIT THE PARENT!!!! INTENTIONALLY!!!!!
+        //WE DO NOT INHERIT THE PARENT!!!! INTENTIONALLY!!!!! because the parent handles parameters, which we also need to handle for database specific things!
         //parent::__construct();        
 
         $this->objModel = $this->getNewModel();
         $this->sReturnURL = $this->getReturnURL();
         if ($this->getUseTranslations())
-            $this->objTranslationLanguages = new TSysLanguages();
+            $this->objLanguagesTranslations = new TSysLanguages();
 
         // includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-icon-info'.DIRECTORY_SEPARATOR.'style.css');
         includeJSDOMEnd(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-icon-info'.DIRECTORY_SEPARATOR.'dr-icon-info.js');
@@ -103,6 +104,8 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         $this->onCreate();
 
         //create components for form
+        if ($this->getUseTranslations())
+            $this->objCbxLanguagesTranslations = new DRInputCombobox();
         $this->populateParent();
 
         //stop handling url parameters? ==> could happen when components (like dr-file-upload) already handled their own stuff.
@@ -153,6 +156,8 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         else //HANDLE: LOAD record
         {
             $this->onLoadPre();
+            if ($this->getUseTranslations())
+                $this->loadLanguagesTranslationsFromDB();
             $this->handleCreateLoad(); //load and create record
             $this->onLoadPost();
             $this->modelToView();       
@@ -179,6 +184,36 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
     {
         return $this->bstopHandlingURLParams;
     }
+
+    /**
+     * 1. load languages from database and put them in the combobox
+     * 2. attaches JS event listener
+     */
+    private function loadLanguagesTranslationsFromDB()
+    {
+        //load languages for translation combobox
+        $this->objLanguagesTranslations->select(array(TSysModel::FIELD_ID, TSysLanguages::FIELD_LANGUAGE, TSysLanguages::FIELD_ISDEFAULT, TSysLanguages::FIELD_ISFAVORITE));
+        $this->objLanguagesTranslations->where(TSysLanguages::FIELD_ISFAVORITE, true, COMPARISON_OPERATOR_EQUAL_TO, '', TP_BOOL);
+        $this->objLanguagesTranslations->sort(TSysLanguages::FIELD_LANGUAGE, SORT_ORDER_ASCENDING);
+        $this->objLanguagesTranslations->limit(1000);
+        $this->objLanguagesTranslations->loadFromDB();
+
+        //show
+        $this->objCbxLanguagesTranslations->clear();
+        while ($this->objLanguagesTranslations->next())
+        {
+            $this->objCbxLanguagesTranslations->addItem
+                (
+                    $this->objLanguagesTranslations->getID(),
+                    $this->objLanguagesTranslations->getLanguage(), 
+                    $this->objLanguagesTranslations->getIsDefault()
+                );
+        }
+
+        //attach JS event listener
+        $this->objCbxLanguagesTranslations->setOnchange("onLanguageTranslationChange(this)");
+    }
+
 
     /**
      * handle check-in
@@ -538,7 +573,9 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         includeJS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'ajaxform.js');
         
         $arrVars['sUploadSubDirectoryName'] = $this->getUploadDirWithID();
-        $arrVars['iRecordID'] = $this->objModel->getID();       
+        $arrVars['iRecordID'] = $this->objModel->getID();      
+        $arrVars['objCbxLanguagesTranslations'] = $this->objCbxLanguagesTranslations; //can be null when not instantiated
+
         parent::render($arrVars);
     }
 

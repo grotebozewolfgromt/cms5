@@ -136,6 +136,18 @@ class HTMLTag
 	}
 
 	/**
+	 * alias for removeAllChildNodes()
+	 */
+	public function removeChildNodesAll()
+	{
+		unset($this->arrChildNodes);
+		$this->arrChildNodes = array();
+		$this->resetChildNodePointer();
+	}
+
+	
+
+	/**
 	 * removes child node from parent node in DOM
 	 * 
 	 * @return bool true = child is found, false = child not found

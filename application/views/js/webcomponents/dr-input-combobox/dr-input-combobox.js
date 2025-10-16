@@ -52,6 +52,9 @@
  * 18 jun 2025 dr-input-combobox.js stores old value, which is dispatched as parameter with "change" event
  * 18 jun 2025 dr-input-combobox.js css: items don't wrap
  * 26 sept 2025 dr-input-combobox.js BUGFIX: formvalue not set on creation. dus een record openen, dan save, werden de values van de box niet gesaved
+ * 16 okt 2025 dr-input-combobox.js rename sValueOld => sValuePrevious
+ * 16 okt 2025 dr-input-combobox.js add: getValuePrevious(); en get valueprevious()
+ * 16 okt 2025 dr-input-combobox.js bugfixes: valuePrevious and valueInit wordt nu geset bij het kopieren naar shadowRoot
  */
 ?>
 
@@ -208,7 +211,7 @@ class DRInputCombobox extends HTMLElement
     #sType = this.arrTypes.selectone; //see arrTypes for values
     #sValue = ""; //selects automatically the item with this value
     #sValueInit = "";//initial value. This is used to know if a value is changed by the user so we determine the dirty-parameter which tells us if the user has changed anything so we can ask to save
-    #sValueOld = "";// the previous value. This way we can dispatch an event with the old and new value (useful for language comboboxes to save text of last language to database before loading texts for the new language)
+    #sValuePrevious = "";// the previous value. This way we can dispatch an event with the old and new value (useful for language comboboxes to save text of last language to database before loading texts for the new language)
     #bAlwaysReturnValue = true; //Selects the first value in the list which is returned when the user doesnt select anything (WARNING: overwrites the placeholder). TRUE = default behavior of <select> also. 
     #sPlaceholder = ""; //initial text to show when no item is selected
     #sValueSeparator = ",";// separates values that are being set() and get() from this component. this only is used when selecting multiple items
@@ -260,7 +263,8 @@ class DRInputCombobox extends HTMLElement
         if (!this.#bConnectedCallbackHappened)//first time running
         {
             this.#sValueInit = this.#sValue; //so we are able to determine the dirty-flag
-            this.#sValueOld = this.#sValue; //so we are able to dispatch event with old and new value
+            this.#sValuePrevious = this.#sValue; //so we are able to dispatch event with old and new value
+            console.log("asdfasdfasdfasdf poiepert", this.#sValue);
         }
         this.#sPlaceholder = DRComponentsLib.attributeToString(this, "placeholder", "");
         this.#sValueSeparator = DRComponentsLib.attributeToString(this, "valueseparator", ",");
@@ -352,7 +356,26 @@ class DRInputCombobox extends HTMLElement
     #cloneComboboxItemsFromDOMToShadow()
     {
         for (let iIndex = 0; iIndex < this.children.length; iIndex++)
+        {
+            //the first one is the default value for the combobox (for now, will be overwritten once we've found at a "selected"-attribute)
+            if (iIndex == 0) 
+            {
+                this.#sValueInit = this.children[iIndex].getAttribute("value");
+                this.#sValuePrevious = this.#sValueInit;
+                this.#sValue = this.#sValueInit;
+                console.log("init value", this.#sValue);
+            }
+
+            //we've found a new selected value
+            if (DRComponentsLib.attributeToBoolean(this.children[iIndex], "selected", false))
+            {
+                this.#sValueInit = this.children[iIndex].getAttribute("value");
+                this.#sValuePrevious = this.#sValueInit;
+                this.#sValue = this.#sValueInit;
+            }
+
             this.#objDivItemList.appendChild(this.children[iIndex].cloneNode(true));             
+        }
     }
 
     /**
@@ -722,7 +745,7 @@ class DRInputCombobox extends HTMLElement
                     this.#objBubblePulldown.hide();
 
                     //update value
-                    this.#sValueOld = this.#sValue; //store last value
+                    this.#sValuePrevious = this.#sValue; //store last value
                     this.#sValue = objPapa.children[iIndex].getAttribute("value");
                     if (this.getDirty())
                         this.#dispatchEventInputChanged(objPapa.children[iIndex], "clicked on value");
@@ -747,7 +770,7 @@ class DRInputCombobox extends HTMLElement
                             break;
                         case "Enter":
                             //update value
-                            this.#sValueOld = this.#sValue; //store last value
+                            this.#sValuePrevious = this.#sValue; //store last value
                             this.#sValue = objPapa.children[iIndex].getAttribute("value");
                             if (this.getDirty())
                                 this.#dispatchEventInputChanged(objPapa.children[iIndex], "clicked on value");
@@ -806,7 +829,7 @@ class DRInputCombobox extends HTMLElement
                         arrValues.splice(iDelIndex, 1);
                     
                     }
-                    this.#sValueOld = this.#sValue; //store last value
+                    this.#sValuePrevious = this.#sValue; //store last value
                     this.#sValue = arrValues.join(this.#sValueSeparator);                        
                     
                     if (this.getDirty())
@@ -934,7 +957,7 @@ class DRInputCombobox extends HTMLElement
             {
                 source: objSource,
                 description: sDescription,
-                valueold: this.#sValueOld,
+                valueold: this.#sValuePrevious,
                 valuenew: this.#sValue,
             }
         }));
@@ -1099,6 +1122,14 @@ class DRInputCombobox extends HTMLElement
         return this.getValue();
     }
 
+    /** 
+     * get last internal value 
+    */
+    get valueprevious()
+    {
+        return this.getValuePrevious();
+    }
+
 
     /**
      */
@@ -1142,7 +1173,7 @@ class DRInputCombobox extends HTMLElement
      */
     setValue(sValue)
     {
-        this.#sValueOld = this.#sValue; //store last value
+        this.#sValuePrevious = this.#sValue; //store last value
         this.#sValue = sValue;
         if (!this.#bConnectedCallbackHappened)
             this.#sValueInit = sValue;
@@ -1172,6 +1203,14 @@ class DRInputCombobox extends HTMLElement
         }
 
         return this.#sValue;
+    }
+
+    /**
+     * get previous value before the value was changed
+     */
+    getValuePrevious()
+    {
+        return this.#sValuePrevious;
     }
 
     /**

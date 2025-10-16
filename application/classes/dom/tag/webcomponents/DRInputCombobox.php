@@ -151,6 +151,14 @@ class DRInputCombobox extends FormInputAbstract
 	}	
 
 	/**
+	 * removes all items from combobox
+	 */
+	public function clear()
+	{
+		
+	}
+
+	/**
 	 * adds item to the combobox
 	 * (this is flat, like a 1d list)
 	 * 

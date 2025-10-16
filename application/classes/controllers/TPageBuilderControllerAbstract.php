@@ -665,7 +665,7 @@ abstract class TPageBuilderControllerAbstract extends TCRUDDetailSaveControllerA
         $this->objEdtNameInternal->setValue($this->objModel->getNameInternal());
 
         //languages
-        $objLang->where(TSysLanguages::FIELD_ISCMSLANGUAGE, true);
+        $objLang->where(TSysLanguages::FIELD_ISADMINLANGUAGE, true);
         $objLang->loadFromDB();
         $objLang->generateHTMLSelect($this->objModel->getTranslationLanguageID(), $this->objSelLanguage);        
 

@@ -22,11 +22,12 @@
     </div>
     <div class="headercolumn-language">
         <?php 
-            if (isset($objLanguages))
+            if (isset($objCbxLanguagesTranslations))
             {
-                echo '<dr-combobox>';
-                //@todo                
-                echo '</dr-combobox>';
+                if ($objCbxLanguagesTranslations !== null)
+                {
+                    echo $objCbxLanguagesTranslations->render();
+                }
             }
         ?>
     </div>

@@ -90,7 +90,7 @@ class list_products extends TCRUDListControllerAJAX
         $objFilter->setType(DRDBFilter::TYPE_HTMLELEMENT);
         $objFilter->setDBTableField(TSysLanguages::getTable(), TSysLanguages::FIELD_ID);
         $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_language', 'Language'));
-        $objSysLang->loadFromDBByCMSLanguage(); //load languages from database
+        $objSysLang->loadFromDBByAdminLanguage(); //load languages from database
         $objCombobox = new DRInputCombobox();
         while ($objSysLang->next())
         {

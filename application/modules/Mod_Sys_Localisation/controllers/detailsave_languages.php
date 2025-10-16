@@ -47,7 +47,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
     
     private $objEditLocale = null;//dr\classes\dom\tag\form\InputText
     private $objEditLanguage = null;//dr\classes\dom\tag\form\InputText
-    private $objChkCMSLanguage = null;//dr\classes\dom\tag\form\InputCheckbox
+    private $objChkAdminLanguage = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objChkFavorite = null;//dr\classes\dom\tag\form\InputCheckbox
     private $objChkDefaultSystem = null;//dr\classes\dom\tag\form\InputCheckbox
     
@@ -92,10 +92,10 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         $this->getFormGenerator()->add($this->objEditLanguage, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_language', 'Language name (in English)')); 
 
             //is cms language
-        $this->objChkCMSLanguage = new InputCheckbox();
-        $this->objChkCMSLanguage->setNameAndID('chkCMSLanguage');
-        // $this->objChkCMSLanguage->setOnchange("setDirtyRecord()");
-        $this->getFormGenerator()->add($this->objChkCMSLanguage, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_iscmslanguage', 'is CMS language (makes CMS available in this language, creates language files)'));   
+        $this->objChkAdminLanguage = new InputCheckbox();
+        $this->objChkAdminLanguage->setNameAndID('chkAdminLanguage');
+        // $this->objChkAdminLanguage->setOnchange("setDirtyRecord()");
+        $this->getFormGenerator()->add($this->objChkAdminLanguage, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_FIELD_ISADMINLANGUAGE', 'is Admin Panel language (makes Admin Panel available in this language, and thus creates language files)'));   
         
             //is shown in selectboxes
         $this->objChkFavorite = new InputCheckbox();
@@ -107,7 +107,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         $this->objChkDefaultSystem = new InputCheckbox();
         $this->objChkDefaultSystem->setNameAndID('chkDefaultSystem');
         // $this->objChkDefaultSystem->setOnchange("setDirtyRecord()");
-        $this->getFormGenerator()->add($this->objChkDefaultSystem, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_isdefaultsystem', 'Is system default (system assumes this language by default, only 1 language can be default)'));         
+        $this->getFormGenerator()->add($this->objChkDefaultSystem, '', transm(APP_ADMIN_CURRENTMODULE, 'languages_form_field_isdefaultsystem', 'Is application default (application assumes this language by default, only 1 language can be default)'));         
 
 //            //active languages per site
 //        $objChkActLangSite = null;
@@ -141,7 +141,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
     {
         $this->getModel()->set(TSysLanguages::FIELD_LOCALE, $this->objEditLocale->getValueSubmitted());
         $this->getModel()->set(TSysLanguages::FIELD_LANGUAGE, $this->objEditLanguage->getValueSubmitted());
-        $this->getModel()->set(TSysLanguages::FIELD_ISCMSLANGUAGE, $this->objChkCMSLanguage->getValueSubmittedAsBool());                
+        $this->getModel()->set(TSysLanguages::FIELD_ISADMINLANGUAGE, $this->objChkAdminLanguage->getValueSubmittedAsBool());                
         $this->getModel()->set(TSysLanguages::FIELD_ISFAVORITE, $this->objChkFavorite->getValueSubmittedAsBool());                
         $this->getModel()->set(TSysLanguages::FIELD_ISDEFAULT, $this->objChkDefaultSystem->getValueSubmittedAsBool());                
     }
@@ -159,7 +159,7 @@ class detailsave_languages extends TCRUDDetailSaveControllerAJAX
         
         $this->objEditLocale->setValue($this->getModel()->get(TSysLanguages::FIELD_LOCALE));
         $this->objEditLanguage->setValue($this->getModel()->get(TSysLanguages::FIELD_LANGUAGE));
-        $this->objChkCMSLanguage->setChecked($this->getModel()->get(TSysLanguages::FIELD_ISCMSLANGUAGE));
+        $this->objChkAdminLanguage->setChecked($this->getModel()->get(TSysLanguages::FIELD_ISADMINLANGUAGE));
         $this->objChkFavorite->setChecked($this->getModel()->get(TSysLanguages::FIELD_ISFAVORITE));
         $this->objChkDefaultSystem->setChecked($this->getModel()->get(TSysLanguages::FIELD_ISDEFAULT));
     }

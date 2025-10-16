@@ -38,7 +38,7 @@ class list_languages extends TCRUDListController
             TSysLanguages::FIELD_LOCKEDSOURCE,
             TSysLanguages::FIELD_LOCALE,
             TSysLanguages::FIELD_LANGUAGE,
-            TSysLanguages::FIELD_ISCMSLANGUAGE,
+            TSysLanguages::FIELD_ISADMINLANGUAGE,
             TSysLanguages::FIELD_ISFAVORITE,
             TSysLanguages::FIELD_ISDEFAULT
                                     ));
@@ -49,7 +49,7 @@ class list_languages extends TCRUDListController
         $arrTableColumnsShow = array(
             array('', TSysLanguages::FIELD_LANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_LANGUAGE, 'Language')),
             array('', TSysLanguages::FIELD_LOCALE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_LOCALE, 'Locale')),
-            array('', TSysLanguages::FIELD_ISCMSLANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISCMSLANGUAGE, 'CMS lang')),
+            array('', TSysLanguages::FIELD_ISADMINLANGUAGE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISADMINLANGUAGE, 'CMS lang')),
             array('', TSysLanguages::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISFAVORITE, 'Favorite')),
             array('', TSysLanguages::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'languages_overview_column_'.TSysLanguages::FIELD_ISDEFAULT, 'Default'))        
                 );

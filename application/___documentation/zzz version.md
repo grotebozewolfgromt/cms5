@@ -38,6 +38,13 @@
 * minor css things
 * abstract function CRUDDetailSaveControllerAJAX: getUseTranslations()
 * betere scheiding CRUDDetailSaveControllerAJAX en TAJAXFormController
+* begin gemaakt aan onLanguageTranslationChange() om taal te veranderen
+ * 16 okt 2025 dr-input-combobox.js add: getValuePrevious(); en get valueprevious()
+ * 16 okt 2025 dr-input-combobox.js bugfixes: valuePrevious and valueInit wordt nu geset bij het kopieren naar shadowRoot
+ 
+ * gebleven bij: function onLanguageTranslationChange(objSource)
+    //@todo save form values to db: current language
+    //@todo load values from in form: new language
 
 ## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen
