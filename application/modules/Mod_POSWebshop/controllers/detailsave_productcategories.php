@@ -467,6 +467,18 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
         return auth(APP_ADMIN_CURRENTMODULE, Mod_POSWebshop::PERM_CAT_PRODUCTCATEGORIES, TModuleAbstract::PERM_OP_DELETE);
     }
 
-
+    /**
+     * use translations?
+     * When getUseTranslations() the parent CRUD controller will do the following
+     * 1. instantiates $objLanguagesTranslations
+     * 2. shows a combobox with translations on top of the page
+     * 3. loads database to show these translations
+     * 
+     * @return bool
+     */
+    public function getUseTranslations()
+    {
+        return true;
+    }    
 
 }

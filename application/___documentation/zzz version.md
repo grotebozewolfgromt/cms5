@@ -36,6 +36,8 @@
 * 2x bufgix: sanitizeWhitelist() function 
 * dr-input-tags: copy/paste werkt nu
 * minor css things
+* abstract function CRUDDetailSaveControllerAJAX: getUseTranslations()
+* betere scheiding CRUDDetailSaveControllerAJAX en TAJAXFormController
 
 ## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen

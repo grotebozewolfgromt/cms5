@@ -4,6 +4,8 @@ namespace dr\classes\controllers;
 /**
  * Description of TAJAXFormController
  * 
+ * 
+ * 
  * A general controller for html forms that are submitted with AJAX.
  * This can be submitting contact forms or saving stuff to database.
  * 
@@ -23,8 +25,14 @@ namespace dr\classes\controllers;
  * 
  ***********************************************************************
  * WARNING:
- * There is an accompanying ajaxform.js file for this class for the AJAX stuff!
  ***********************************************************************
+ * There is an accompanying ajaxform.js file for this class for the AJAX stuff!
+ * 
+ ******************************************************
+ * TAJAXFormController VS TAJAXFormController
+ ******************************************************
+ * TAJAXFormController is for all forms, which are not always CRUD forms.
+ * Example: A contact form can use this class, while nothing is written to the database
  * 
  *  
  * @author drenirie
@@ -135,7 +143,6 @@ abstract class TAJAXFormController
         {   
             if ($_GET[ACTION_VARIABLE_SAVE] == ACTION_VALUE_SAVE)
             {
-                $this->viewToModel();
                 $this->handleSubmit();
                 return;
             }
@@ -520,12 +527,7 @@ abstract class TAJAXFormController
     
  
 
-    /**
-     * load record, if new, then create one
-     */
-    abstract protected function handleCreateLoad();
-    
-    
+
     /**
      * handle cancel button click
      */
@@ -538,89 +540,15 @@ abstract class TAJAXFormController
      */    
     abstract protected function populate();
  
-    /**
-     * what is the category that the auth() function uses?
-     */
-    // abstract protected function getAuthorisationCategory();
-    
-    /**
-     * transfer form elements to database
-     */
-    abstract protected function viewToModel();
-    
-    /**
-     * transfer database elements to form
-     */
-    abstract protected function modelToView();
-
-    
-    /**
-     * is called just before a record is loaded
-     */
-    abstract public function onLoadPre();
 
 
-    /**
-     * is called after a record is loaded
-     */
-    abstract public function onLoadPost();
-    
     
     /**
      * is called when this controller is created,
      * so you can instantiate classes or initiate values for example 
      */
     abstract public function onCreate();    
-    
-    /**
-     * is called BEFORE a record is saved
-     * this method has to send the proper error messages to the user!!
-     * 
-     * THIS METHOD NEEDS TO RETURN ERROR ARRAY IN THE DEFINED JSON FORMAT (see header class), 
-     * OTHERWISE IT WILL NOT SAVE!!
-     * 
-     * @return array, empty array = no errors
-     */
-    abstract public function onSavePre();
-    
-  
-    /**
-     * is called AFTER a record is saved
-     * this method has to send the proper error messages to the user!!
-     * 
-     * THIS METHOD NEEDS TO RETURN ERROR ARRAY IN THE DEFINED JSON FORMAT (see header class), 
-     * OTHERWISE IT WILL NOT SAVE!!
-     * 
-     * @param boolean $bWasSaveSuccesful did saveToDB() return false or true?
-     * @return array, empty array = no errors
-     */
-    abstract public function onSavePost($bWasSaveSuccesful);    
 
-    /**
-     * sometimes you don;t want to user the checkin checkout system, even though the model supports it
-     * for example: the settings.
-     * The user needs to be able to navigate through the tabsheets, without locking records
-     * 
-     * ATTENTION: if this method returns true and the model doesn't support it: the checkinout will NOT happen!
-     * 
-     * @return bool return true if you want to use the check-in/checkout-system
-     */
-    abstract public function getUseCheckinout();
-
-    /**
-     * returns a new model object
-     *
-     * @return TSysModel
-     */
-    abstract public function getNewModel();
-
-    /**
-     * initialise a new model object.
-     * This are the initial values
-     *
-     * @return TSysModel
-     */
-    abstract public function initModel();
 
     /**
      * return path of the page template
@@ -663,33 +591,5 @@ abstract class TAJAXFormController
      */
     // abstract public function showTabs();    
 
-
-    /**
-     * is this user allowed to create this record?
-     * 
-     * CRUD: Crud
-     */
-    abstract public function getAuthCreate();
-
-    /**
-     * is this user allowed to view this record
-     * 
-     * CRUD: cRud
-     */
-    abstract public function getAuthView();
-
-    /**
-     * is this user allowed to update this record
-     * 
-     * CRUD: crUd
-     */
-    abstract public function getAuthChange();
-
-    /**
-     * is this user allowed to delete this record
-     * 
-     * CRUD: crUd
-     */
-    abstract public function getAuthDelete();    
 
 }

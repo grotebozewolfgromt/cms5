@@ -46,6 +46,12 @@ namespace dr\classes\controllers;
  * -$this->getModule() ==> APP_ADMIN_CURRENTMODULE
  * 
  * 
+ ******************************************************
+ * TAJAXFormController VS TAJAXFormController
+ ******************************************************
+ * TAJAXFormController is for all forms, which are not always CRUD forms.
+ * Example: A contact form can use this class, while nothing is written to the database
+ * 
  * @author drenirie
  * 
  * 13 jan 2025: TCRUDDetailSaveControllerAJAX: created
@@ -55,13 +61,17 @@ namespace dr\classes\controllers;
 
  use dr\classes\locale\TLocalisation;
 use dr\classes\types\TDateTime;
+use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
 
 abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
 {
     protected $objModel = null;
     private $sReturnURL = '';
     protected $bstopHandlingURLParams = false; //stops handling url parameters. Could happen when components (like dr-file-upload) already handled their own stuff.
-    
+    protected $objTranslationLanguages = null; //TSysModel
+
+    protected $objCbxTranslationLanguages = null;//DRInputCombobox
+
 
     /**
      * 
@@ -75,6 +85,8 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
 
         $this->objModel = $this->getNewModel();
         $this->sReturnURL = $this->getReturnURL();
+        if ($this->getUseTranslations())
+            $this->objTranslationLanguages = new TSysLanguages();
 
         // includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-icon-info'.DIRECTORY_SEPARATOR.'style.css');
         includeJSDOMEnd(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-icon-info'.DIRECTORY_SEPARATOR.'dr-icon-info.js');
@@ -199,60 +211,6 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
             return false;
 
 
-        // //define default
-        // $arrJSONResponse = array(
-        //                             TAJAXFormController::JSON_SAVERESPONSE_MESSAGE => '',
-        //                             JSONAK_RESPONSE_ERRORCODE => TAJAXFormController::JSONAK_RESPONSE_OK,
-        //                             JSONAK_RESPONSE_ERRORCOUNT => 0,
-        //                             TAJAXFormController::JSON_SAVERESPONSE_RECORDID => -1,
-        //                             JSONAK_RESPONSE_ERRORS => array()
-        //                         );
-
-
-        // //==== DETECT MAX # FIELDS  ====
-        // if ((int)ini_get('max_input_vars') ==  count($_POST))  
-        // {
-        //     logError(__CLASS__.':'.__LINE__, 'WARNING: $_POST array ('.count($_POST).') is bigger than max_input_vars ('.ini_get('max_input_vars').') in php.ini. Record not saved, user received error');
-
-        //     $arrJSONResponse[TAJAXFormController::JSON_SAVERESPONSE_MESSAGE] = transg('tcruddetailsavecontrollerajax_message_save_nosuccess_maxinputvars_exceeded', 'RECORD NOT SAVED!!!! Too much data is being sent. Didn\'t save to prevent loss of data integrity');
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORCODE] = TAJAXFormController::JSON_ERRORCODE_MAXINPUTVARSEXCEEDED;
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORCOUNT] = 1;
-
-        //     header(JSONAK_RESPONSE_HEADER);
-        //     echo json_encode($arrJSONResponse);               
-        //     return; //stop further execution to display the error
-        // }
-            
-        // //==== DETECT CSRF (cross site request forgery)  ====
-        // if (!$this->objFormGenerator->isAntiCSRFTokenValid())  
-        // {
-        //     logError(__CLASS__.':'.__LINE__, 'Cross Site Forgery Request token not valid');
-
-        //     $arrJSONResponse[TAJAXFormController::JSON_SAVERESPONSE_MESSAGE] = transg('tcruddetailsavecontrollerajax_message_save_nosuccess_csrftokeninvalid', 'Form verification failed');
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORCODE] = TAJAXFormController::JSON_ERRORCODE_ANTICSRFTOKENFAILED;
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORCOUNT] = 1;
-
-        //     header(JSONAK_RESPONSE_HEADER);
-        //     echo json_encode($arrJSONResponse);               
-        //     return; //stop further execution to display the error
-        // }        
-
-        // //==== DETECT FIELD ERRORS ====
-        // $arrErrors = array();
-        // $arrErrors = $this->detectErrorSubmit();
-        // if (count($arrErrors) > 0) //if NOT empty, errors occured
-        // {
-        //     $arrJSONResponse[TAJAXFormController::JSON_SAVERESPONSE_MESSAGE] = transg('tcruddetailsavecontrollerajax_message_save_nosuccess_inputerror', 'Input error encountered, please correct mistakes');
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORCODE] = TAJAXFormController::JSON_ERRORCODE_INPUTERROR;
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORCOUNT] = count($arrErrors);
-        //     $arrJSONResponse[JSONAK_RESPONSE_ERRORS] = $arrErrors;
-
-
-        //     header(JSONAK_RESPONSE_HEADER);
-        //     echo json_encode($arrJSONResponse);            
-        //     return;
-        // }
- 
         //===== LOADING RECORD ======
         //we load record, for 2 reasons:
         //1. so we can overwrite it later with the values from the fields
@@ -634,6 +592,114 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         return generatePrettyURLSafeURL($this->objModel->getID().'-'.$this->getUploadDir());
     }
 
+
+//=====================================================================================
+
+	// ************************************************
+	// ====== ONLY ABSTRACT FUNCTIONS BELOW ==========
+	//
+	// *   for easy copy/pasting in child classes     *
+	// ************************************************
+	
+//=====================================================================================    
+        
+    /**
+     * what is the category that the auth() function uses?
+     */
+    // abstract protected function getAuthorisationCategory();
+    
+    /**
+     * transfer form elements to database
+     */
+    abstract protected function viewToModel();
+    
+    /**
+     * transfer database elements to form
+     */
+    abstract protected function modelToView();
+
+    /**
+     * is called just before a record is loaded
+     */
+    abstract public function onLoadPre();
+
+
+    /**
+     * is called after a record is loaded
+     */
+    abstract public function onLoadPost();
+    
+  /**
+     * is called BEFORE a record is saved
+     * this method has to send the proper error messages to the user!!
+     * 
+     * THIS METHOD NEEDS TO RETURN ERROR ARRAY IN THE DEFINED JSON FORMAT (see header class), 
+     * OTHERWISE IT WILL NOT SAVE!!
+     * 
+     * @return array, empty array = no errors
+     */
+    abstract public function onSavePre();
+    
+  
+    /**
+     * is called AFTER a record is saved
+     * this method has to send the proper error messages to the user!!
+     * 
+     * THIS METHOD NEEDS TO RETURN ERROR ARRAY IN THE DEFINED JSON FORMAT (see header class), 
+     * OTHERWISE IT WILL NOT SAVE!!
+     * 
+     * @param boolean $bWasSaveSuccesful did saveToDB() return false or true?
+     * @return array, empty array = no errors
+     */
+    abstract public function onSavePost($bWasSaveSuccesful);        
+
+
+    /**
+     * sometimes you don;t want to user the checkin checkout system, even though the model supports it
+     * for example: the settings.
+     * The user needs to be able to navigate through the tabsheets, without locking records
+     * 
+     * ATTENTION: if this method returns true and the model doesn't support it: the checkinout will NOT happen!
+     * 
+     * @return bool return true if you want to use the check-in/checkout-system
+     */
+    abstract public function getUseCheckinout();
+
+    /**
+     * returns a new model object
+     *
+     * @return TSysModel
+     */
+    abstract public function getNewModel();
+
+    /**
+     * initialise a new model object.
+     * This are the initial values
+     *
+     * @return TSysModel
+     */
+    abstract public function initModel();
+
+    /**
+     * is this user allowed to create this record?
+     * 
+     * CRUD: Crud
+     */
+    abstract public function getAuthCreate();
+
+    /**
+     * is this user allowed to view this record
+     * 
+     * CRUD: cRud
+     */
+    abstract public function getAuthView();
+
+    /**
+     * is this user allowed to update this record
+     * 
+     * CRUD: crUd
+     */
+    abstract public function getAuthDelete();    
     /**
      * returns string with subdirectory within module directory for uploadfilemanager
      * it is a directoryname (i.e. 'how-to-tie-a-not'), not a full path (/etc/httpd/... etc)
@@ -644,4 +710,15 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
      */
     abstract public function getUploadDir();
 
+
+    /**
+     * use translations?
+     * When getUseTranslations() the parent CRUD controller will do the following
+     * 1. instantiates $objLanguagesTranslations
+     * 2. shows a combobox with translations on top of the page
+     * 3. loads database to show these translations
+     * 
+     * @return bool
+     */
+    abstract public function getUseTranslations();
 }

@@ -243,4 +243,18 @@ class pagebuilder extends TPageBuilderControllerAbstract
         return auth(APP_ADMIN_CURRENTMODULE, Mod_PageBuilder::PERM_CAT_WEBPAGES, Mod_PageBuilder::PERM_OP_CHANGE_301REDIRECT);
     }    
 
+    /**
+     * use translations?
+     * When getUseTranslations() the parent CRUD controller will do the following
+     * 1. instantiates $objLanguagesTranslations
+     * 2. shows a combobox with translations on top of the page
+     * 3. loads database to show these translations
+     * 
+     * @return bool
+     */
+    public function getUseTranslations()
+    {
+        return true;
+    }    
+
 }
