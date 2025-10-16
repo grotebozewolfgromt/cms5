@@ -149,6 +149,7 @@ class DRInputTags extends HTMLElement
     sTransEditboxPlaceholder = "Enter new tag";
     #bDisabled = false;
     #sWhiteListChars = ""; //there characters are allowed in a chip. When empty, whitelist feature is disabled
+    #iMaxLength = 0;//maximum number of characters allowed                          --> 0 = no limit
 
     static formAssociated = true;      
 
@@ -177,6 +178,8 @@ class DRInputTags extends HTMLElement
         this.#sValue = DRComponentsLib.attributeToString(this, "value", this.#sValue);
         this.#sValueSeparator = DRComponentsLib.attributeToString(this, "separator", this.#sValueSeparator);
         this.#sWhiteListChars = DRComponentsLib.attributeToString(this, "whitelist", this.#sWhiteListChars);
+        this.#iMaxLength = DRComponentsLib.attributeToInt(this, "maxlength", this.#iMaxLength);
+
         this.sTransEditboxPlaceholder = DRComponentsLib.attributeToString(this, "placeholder", this.sTransEditboxPlaceholder);
     }
 
@@ -215,33 +218,43 @@ class DRInputTags extends HTMLElement
                     if (objEvent.key == this.#sValueSeparator)
                         objEvent.preventDefault(); 
 
-                    if (this.#objInputText.value.length >= 1) //must have at least 1 character
+                    //must have at least 1 character
+                    if (this.#objInputText.value.length == 0) 
+                        return;
+
+                    //filter white list
+                    let sCleanValue = DRComponentsLib.sanitizeWhitelist(this.#objInputText.value, this.#sWhiteListChars);
+                    sCleanValue = sCleanValue.replace(this.#sValueSeparator, "");
+
+                    //when maxlength doesn't exceed
+                    if ((this.#sValue.length + sCleanValue.length) > this.#iMaxLength)
                     {
-                        //filter white list
-                        let sCleanValue = DRComponentsLib.sanitizeWhitelist(this.#objInputText.value, this.#sWhiteListChars);
-                        sCleanValue = sCleanValue.replace(this.#sValueSeparator, "");
-
-                        if (!this.chipExists(sCleanValue)) //add when unique
-                        {                   
-                            //update values         
-                            if (this.#sValue === "") //empty value: no separator
-                                this.#sValue+= sCleanValue;
-                            else
-                                this.#sValue+= this.#sValueSeparator + sCleanValue;
-                            this.#objFormInternals.setFormValue(this.#sValue);
-
-                            console.log("dr-input-tags: add: this.#sValue == ", this.#sValue);
-
-                            this.updateUI();
-                            this.#dispatchEventTagsChanged(this.#objInputText, "Enter on keyboard");
-                            this.#objInputText.value = "";
-                        }
-                        else
-                        {
-                            DRComponentsLib.beep();
-                            console.error("dr-input-tags: value not accepted, because tag already exists");                            
-                        }
+                        DRComponentsLib.beep();
+                        console.error("dr-input-tags: maximum character length of", this.#iMaxLength, "exceeded");
+                        return;
                     }
+
+                    //only when unique
+                    if (this.chipExists(sCleanValue)) 
+                    {
+                        DRComponentsLib.beep();
+                        console.error("dr-input-tags: value not accepted, because tag already exists");                            
+                        return;
+                    }
+                
+
+                    //update values         
+                    if (this.#sValue === "") //empty value: no separator
+                        this.#sValue+= sCleanValue;
+                    else
+                        this.#sValue+= this.#sValueSeparator + sCleanValue;
+                    this.#objFormInternals.setFormValue(this.#sValue);
+
+                    console.log("dr-input-tags: add: this.#sValue == ", this.#sValue);
+
+                    this.updateUI();
+                    this.#dispatchEventTagsChanged(this.#objInputText, "Enter on keyboard");
+                    this.#objInputText.value = "";
                 }
             }
         }, { signal: this.#objAbortController.signal });  

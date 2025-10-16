@@ -32,6 +32,7 @@
 * 16 okt 2025 lib_string.js add: sanitizeWhitelist()
 * 16 okt 2025 DRComponentsLib.js add: sanitizeWhitelist()
 * dr-input-tags: basisversie werkt
+* dr-input-tags: overschrijden maxlength is niet meer toegestaan
 
 
 ## 15 okt 2025: dbfilters + labels component
