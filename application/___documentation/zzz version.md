@@ -33,6 +33,8 @@
 * 16 okt 2025 DRComponentsLib.js add: sanitizeWhitelist()
 * dr-input-tags: basisversie werkt
 * dr-input-tags: overschrijden maxlength is niet meer toegestaan
+* 2x bufgix: sanitizeWhitelist() function 
+* dr-input-tags: copy/paste werkt nu
 
 
 ## 15 okt 2025: dbfilters + labels component

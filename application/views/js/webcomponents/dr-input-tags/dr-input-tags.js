@@ -16,12 +16,13 @@
  * DEPENDENCIES:
  * 
  * @todo click to change value
- * @todo maxlength
- * @todo values oppakken vanuit slot
- * @todo remove all
- * @todo copy + paste
- * @todo input comma to add multiple tags
+ * @todo maxlength weergeven
+ * @todo values oppakken vanuit <slot>
+ * @todo remove all button
+ * @todo copy + paste button
  * @todo maximum and minimum number of tags
+ * @todo allow dragging + dropping. Dit maakt t mogelijk om met 2 instanties: 1=available tags, 2=appplied tags
+ * @todo auto complete suggestions
  * 
  * @author Dennis Renirie
  * 
@@ -212,6 +213,22 @@ class DRInputTags extends HTMLElement
         {
             if (!objEvent.repeat)
             {
+                //hijack "paste"
+                if ((objEvent.ctrlKey || objEvent.metaKey) && (objEvent.key == "v"))
+                {                        
+                    this.pasteFromClipboard();
+                    objEvent.preventDefault();
+                    return;
+                }           
+
+                //hijack "copy"
+                if ((objEvent.ctrlKey || objEvent.metaKey) && (objEvent.key == "c"))
+                {
+                    this.copyToClipboard();
+                    objEvent.preventDefault();
+                    return;
+                }    
+
                 if ((objEvent.key == "Enter")  || (objEvent.key == this.#sValueSeparator))
                 {
                     //don't accept value separator as input
@@ -221,6 +238,7 @@ class DRInputTags extends HTMLElement
                     //must have at least 1 character
                     if (this.#objInputText.value.length == 0) 
                         return;
+                     
 
                     //filter white list
                     let sCleanValue = DRComponentsLib.sanitizeWhitelist(this.#objInputText.value, this.#sWhiteListChars);
@@ -250,7 +268,7 @@ class DRInputTags extends HTMLElement
                         this.#sValue+= this.#sValueSeparator + sCleanValue;
                     this.#objFormInternals.setFormValue(this.#sValue);
 
-                    console.log("dr-input-tags: add: this.#sValue == ", this.#sValue);
+                    // console.log("dr-input-tags: add: this.#sValue == ", this.#sValue);
 
                     this.updateUI();
                     this.#dispatchEventTagsChanged(this.#objInputText, "Enter on keyboard");
@@ -279,6 +297,7 @@ class DRInputTags extends HTMLElement
             {            
 
                 //@todo edit text on chip
+                console.log("todo: edit text");
 
             }, { signal: objCtrl.signal });   
         }
@@ -304,7 +323,7 @@ class DRInputTags extends HTMLElement
                 this.#sValue = this.#chipsToValue(); //update internal value
                 this.#objFormInternals.setFormValue(this.#sValue);   //update form value
 
-                console.log("dr-input-tags: remove: this.#sValue == ", this.#sValue);
+                console.log("dr-input-tags: remove: new value: this.#sValue == ", this.#sValue);
 
                 //dispatch filter-changed-event based on "disabled" attribute --> AFTER being removed from DOM
                 if (!DRComponentsLib.attributeToBoolean(objDivChip, this.#bDisabled, false))                
@@ -396,6 +415,7 @@ class DRInputTags extends HTMLElement
         const arrValues = sValuesSeparatedByValueSeparator.split(this.#sValueSeparator);
         const iLenValues = arrValues.length;
         let sCleanValue = "";
+        this.#sValue = sValuesSeparatedByValueSeparator; //update internal value
 
         for (let iIndex = 0; iIndex < iLenValues; iIndex++)
         {
@@ -423,6 +443,53 @@ class DRInputTags extends HTMLElement
 
         return arrValues.join(this.#sValueSeparator);        
     }
+
+    /** 
+     * copies all tags to clipboard.
+     * Values are separated by the value separator
+     * 
+     */
+    copyToClipboard()
+    {
+        try 
+        {
+            navigator.clipboard.writeText(this.#sValue);
+            console.log("Copied text to clipboard: '" + this.#sValue + "'");
+        } 
+        catch (a) 
+        {
+            console.error("Error when trying to use navigator.clipboard.writeText()", a);
+        }
+    }
+
+    /**
+     * removes all tags
+     */
+    removeAllTags()
+    {
+        this.#sValue = "";
+        this.updateUI();
+    }
+
+    /** 
+     * pastes text from clipboard.
+     * Values are separated by the value separator
+     */
+    async pasteFromClipboard()
+    {
+        try 
+        {
+            const sClipboard = await navigator.clipboard.readText();
+            this.#sValue+= sClipboard;
+            this.#valueToChips(this.#sValue);
+            
+            console.log("pasted text from clipboard: '" + sClipboard + "'");
+        } 
+        catch (a) 
+        {
+            console.error("Error when trying to use navigator.clipboard.writeText()", a);
+        }
+    }    
 
     /**
      * update User Interface

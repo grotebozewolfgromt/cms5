@@ -114,7 +114,10 @@ function sanitizeWhitelist(sDirtyValue, sWhitelistChars)
         for (let iIndexWhite = 0; iIndexWhite < iLenWhite; ++iIndexWhite) //loop letters whitelist
         {
             if (sDirtyValue[iIndexValue] === sWhitelistChars[iIndexWhite])
+            {
                 sCleanValue+= sDirtyValue[iIndexValue];
+                iIndexWhite = iLenWhite;//skip rest of whitelist loop
+            }
         }                                
     }
                     

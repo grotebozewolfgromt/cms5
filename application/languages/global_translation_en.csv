@@ -51,3 +51,9 @@ Results [x] - [y];Results [x] - [y];Results [x] - [y]
 next_results_paginator;Next;Next
 TTreeModel_favorites_title;Favorites;Favorites
 tcruddetailsavecontrollerajax_message_save_ok;Save succesful;Save succesful
+authenticationsystem_sessionexpired;Login session expired;Login session expired
+validator_required_error_fieldrequired;This is a required field;This is a required field
+loginform_field_username;username;username
+loginform_field_password;password;password
+loginform_field_keepmeloggedin;keep me logged in;keep me logged in
+loginform_button_login;log in;log in
