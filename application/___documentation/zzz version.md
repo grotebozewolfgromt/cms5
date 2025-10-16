@@ -35,7 +35,7 @@
 * dr-input-tags: overschrijden maxlength is niet meer toegestaan
 * 2x bufgix: sanitizeWhitelist() function 
 * dr-input-tags: copy/paste werkt nu
-
+* minor css things
 
 ## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen

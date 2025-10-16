@@ -92,6 +92,7 @@ class DRInputText extends HTMLElement
                 margin-right: 5px;
                 margin-left: 5px;
                 bottom: 0px;
+                white-space: nowrap;
             }
 
             #charcounter.warning

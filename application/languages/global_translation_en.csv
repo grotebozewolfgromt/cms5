@@ -57,3 +57,24 @@ loginform_field_username;username;username
 loginform_field_password;password;password
 loginform_field_keepmeloggedin;keep me logged in;keep me logged in
 loginform_button_login;log in;log in
+dr-input-upload-clickordropfilehere;Click or drop file here;Click or drop file here
+dr-input-upload-filetypenotsupported;File type is not supported.<br><br>Supported are:<br>;File type is not supported.<br><br>Supported are:<br>
+dr-input-upload-delete;Delete;Delete
+dr-input-upload-preview;Preview;Preview
+dr-input-upload-rename;Rename;Rename
+dr-input-upload-alt;Set img alt text;Set img alt text
+dr-input-upload-altdescription;Change or set ALT text of image: <dr-icon-info>Images can have an alternative (alt) text to describe the contents of the image.<br>This is useful for SEO purposes, text-based browsers, screen readers and if image can not be displayed because of an error.<br>Example: &ltimg src=&quotmountain.jpg&quot alt=&quotboat on a lake with mountain in background&quot&gt</dr-icon-info>;Change or set ALT text of image: <dr-icon-info>Images can have an alternative (alt) text to describe the contents of the image.<br>This is useful for SEO purposes, text-based browsers, screen readers and if image can not be displayed because of an error.<br>Example: &ltimg src=&quotmountain.jpg&quot alt=&quotboat on a lake with mountain in background&quot&gt</dr-icon-info>
+dr-input-upload-altsetbutton;Set text;Set text
+dr-input-upload-copyurltoclipboard;Copy URL to clipboard;Copy URL to clipboard
+dr-input-upload-copyurltoclipboarddone;Copied URL to clipboard:;Copied URL to clipboard:
+dr-input-upload-close;Close;Close
+dr-input-upload-cancel;Cancel;Cancel
+dr-input-upload-error;Error;Error
+dr-input-upload-errorunknown;Error occurred when uploading.<br>Do you have a working network/internet connection?;Error occurred when uploading.<br>Do you have a working network/internet connection?
+dr-input-upload-errortimeout;Connection timed out;Connection timed out
+dr-input-upload-ok;Ok;Ok
+dr-input-upload-uploading;Uploading file ...;Uploading file ...
+dr-input-upload-processing;Processing file ...;Processing file ...
+dr-input-upload-queue;In queue ...;In queue ...
+dr-input-upload-abort;Abort upload;Abort upload
+dr-input-upload-maxfilesizeexceeded;Maximum file size exceeded.<br>Max file size: ;Maximum file size exceeded.<br>Max file size: 

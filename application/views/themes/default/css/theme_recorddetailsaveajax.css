@@ -91,7 +91,7 @@
     flex-shrink: 1;
     flex-basis: auto;
     /* height: 300px; */
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 /* ==== Buttons ==== */

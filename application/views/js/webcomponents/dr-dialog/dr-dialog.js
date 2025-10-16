@@ -180,7 +180,7 @@ class DRDialog extends HTMLElement
                 font-size: 0.75rem;
                 line-height: 1.0rem;
                 text-align: center;    
-                overflow: scroll;
+                overflow: auto;
                 box-sizing: border-box;
             }
             
