@@ -53,10 +53,12 @@ class list_productcategories extends TCRUDListControllerAJAX
             TSysLanguages::FIELD_LANGUAGE,
                                 ), new TSysLanguages());   
 
-        $objModel->joinLeft(TProductCategories::getTable(), TProductCategories::FIELD_ID, TProductCategoriesLanguages::getTable(), TProductCategoriesLanguages::FIELD_TRANSLATIONLANGUAGEID);                                
+        $objModel->joinLeft(TProductCategories::getTable(), TProductCategories::FIELD_ID, TProductCategoriesLanguages::getTable(), TProductCategoriesLanguages::FIELD_PRODUCTCATEGORYID);                                
+        $objModel->joinLeft(TProductCategoriesLanguages::getTable(), TProductCategoriesLanguages::FIELD_TRANSLATIONLANGUAGEID, TSysLanguages::getTable(), TSysLanguages::FIELD_ID);
 
         $objModel->where(TSysLanguages::FIELD_ISDEFAULT, true, COMPARISON_OPERATOR_EQUAL_TO, TSysLanguages::getTable()); //i need at least 1 field from TSysLanguages for where to work
         
+        $table = TProductCategoriesLanguages::getTable();
         //===show what?
         $this->arrTableColumnsShow = array(
             array('', TProductCategories::FIELD_ID, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ID, 'ID')),

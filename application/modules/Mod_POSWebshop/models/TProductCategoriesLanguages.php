@@ -112,7 +112,7 @@ class TProductCategoriesLanguages extends TSysModel
 	*/
 	public static function getTable()
 	{
-		return APP_DB_TABLEPREFIX.'ProductCategories-Languages';
+		return APP_DB_TABLEPREFIX.'ProductCategoriesLanguages';
 	}
 	
 	

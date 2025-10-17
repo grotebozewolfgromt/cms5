@@ -24,3 +24,25 @@ detailsave_button_exit;Exit;Exit
 detailsavetemplate_button_save;Save;Save
 detailsave_message_save_sucess_message;Your record was saved with id: ;Your record was saved with id: 
 menuitem_modulename;Localisation;Localisation
+overview_column_sWebsiteName;website;website
+overview_column_sLanguage;language;language
+overview_column_sLocale;locale;locale
+modulename_title_languagespersite;Languages on sites;Languages on sites
+countries_overview_column_sCountryName;Country;Country
+countries_overview_column_iCountryCodePhone;Phone;Phone
+countries_overview_column_sISO2;ISO 2;ISO 2
+countries_overview_column_sISO3;ISO 3;ISO 3
+countries_overview_column_bIsEEA;In EU;In EU
+countries_overview_column_bIsDefault;Default;Default
+countries_overview_column_bIsFavorite;Favorite;Favorite
+countries_overview_column_bIsUnknown;Unknown;Unknown
+modulename_title_countries;All system Countries;All system Countries
+currencies_overview_column_sCurrencyName;Currency;Currency
+currencies_overview_column_sCurrencySymbol;Symbol;Symbol
+currencies_overview_column_sISOAlphabetic;ISO A;ISO A
+currencies_overview_column_iISONumeric;ISO N;ISO N
+currencies_overview_column_iDecimalPrecision;Dec;Dec
+currencies_overview_column_bIsFavorite;Favorite;Favorite
+currencies_overview_column_bIsDefault;Default;Default
+currencies_overview_column_iPosition;Order;Order
+modulename_title_currencies;All system currencies;All system currencies

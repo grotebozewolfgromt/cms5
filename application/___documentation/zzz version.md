@@ -34,7 +34,8 @@
 * 17 okt 2025: TSysModel: loadFromDBByXXX() doesn't do database load when parameter is invalid. This could have been a security risk
 * verder bouwen aan integratie CRudDetailSave controller
 * bugfix: database klassen die geen getSafeTable() op vroeg, waardoor '-' gefilterd werd en een numeric fout op id gaf
-* 
+*  nu bug fixen: 	Undefined array key "sLanguage" ==> array_key_exists in TSysModel
+
  * gebleven bij: function onLanguageTranslationChange(objSource)
     //@todo save form values to db: current language
     //@todo load values from in form: new language
