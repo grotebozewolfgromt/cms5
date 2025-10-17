@@ -66,10 +66,12 @@ use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
 
 abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
 {
-    protected $objModel = null;
+    protected $objModel = null; //TSysModel: current model
+    protected $objModelTranslation = null; //TSysModel: external translation record for $objModel
+    protected $objLanguagesTranslations = null; //TSysModel: list of all favorited system languages which are shown in $objCbxLanguagesTranslations. Only available when $objModelTranslation != null
+
     private $sReturnURL = '';
-    protected $bstopHandlingURLParams = false; //stops handling url parameters. Could happen when components (like dr-file-upload) already handled their own stuff.
-    protected $objLanguagesTranslations = null; //TSysModel
+    protected $bStopHandlingURLParams = false; //stops handling further url parameters. Could happen when components (like dr-file-upload) already handled their own stuff. Only available when $objModelTranslation != null
 
     protected $objCbxLanguagesTranslations = null;//DRInputCombobox
 
@@ -85,8 +87,9 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         //parent::__construct();        
 
         $this->objModel = $this->getNewModel();
+        $this->objModelTranslation = $this->getNewModelTranslation();
         $this->sReturnURL = $this->getReturnURL();
-        if ($this->getUseTranslations())
+        if ($this->objModelTranslation)
             $this->objLanguagesTranslations = new TSysLanguages();
 
         // includeCSS(APP_PATH_CMS_JAVASCRIPTS.DIRECTORY_SEPARATOR.'webcomponents'.DIRECTORY_SEPARATOR.'dr-icon-info'.DIRECTORY_SEPARATOR.'style.css');
@@ -104,12 +107,15 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         $this->onCreate();
 
         //create components for form
-        if ($this->getUseTranslations())
+        if ($this->objModelTranslation)
+        {
             $this->objCbxLanguagesTranslations = new DRInputCombobox();
+            $this->objCbxLanguagesTranslations->setNameAndID('cbxLanguagesTranslations');
+        }
         $this->populateParent();
 
         //stop handling url parameters? ==> could happen when components (like dr-file-upload) already handled their own stuff.
-        if ($this->bstopHandlingURLParams)
+        if ($this->bStopHandlingURLParams)
             return;
 
         //HANDLE: VALIDATE FIELD
@@ -156,7 +162,7 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         else //HANDLE: LOAD record
         {
             $this->onLoadPre();
-            if ($this->getUseTranslations())
+            if ($this->objModelTranslation)
                 $this->loadLanguagesTranslationsFromDB();
             $this->handleCreateLoad(); //load and create record
             $this->onLoadPost();
@@ -174,7 +180,7 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
      */
     protected function stopHandlingURLParams()
     {
-        $this->bstopHandlingURLParams = true;
+        $this->bStopHandlingURLParams = true;
     }
     
     /**
@@ -182,7 +188,7 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
      */
     protected function getstopHandlingURLParams()
     {
-        return $this->bstopHandlingURLParams;
+        return $this->bStopHandlingURLParams;
     }
 
     /**
@@ -191,12 +197,20 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
      */
     private function loadLanguagesTranslationsFromDB()
     {
+        //init
+        $bSuccess = true;
+
+        //conditions
+        if ($this->objLanguagesTranslations->count() > 0)
+            return true;
+
         //load languages for translation combobox
         $this->objLanguagesTranslations->select(array(TSysModel::FIELD_ID, TSysLanguages::FIELD_LANGUAGE, TSysLanguages::FIELD_ISDEFAULT, TSysLanguages::FIELD_ISFAVORITE));
         $this->objLanguagesTranslations->where(TSysLanguages::FIELD_ISFAVORITE, true, COMPARISON_OPERATOR_EQUAL_TO, '', TP_BOOL);
         $this->objLanguagesTranslations->sort(TSysLanguages::FIELD_LANGUAGE, SORT_ORDER_ASCENDING);
         $this->objLanguagesTranslations->limit(1000);
-        $this->objLanguagesTranslations->loadFromDB();
+        if (!$this->objLanguagesTranslations->loadFromDB());
+            $bSuccess = false;
 
         //show
         $this->objCbxLanguagesTranslations->clear();
@@ -212,6 +226,8 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
 
         //attach JS event listener
         $this->objCbxLanguagesTranslations->setOnchange("onLanguageTranslationChange(this)");
+
+        return $bSuccess;
     }
 
 
@@ -241,6 +257,8 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
     protected function handleSubmit()
     {
         global $objDBConnection;
+        $iTranslationLanguageID = 0;
+        $sFieldTranslationRefModel = '';
 
         if (!parent::handleSubmit())
             return false;
@@ -265,6 +283,7 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
                 return false; //stop further execution to display the error                  
             }
 
+            //load model
             if (!$this->objModel->loadFromDBByID($_POST[ACTION_VARIABLE_ID]))
             {
                 logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'Load of record ID "'.$_POST[ACTION_VARIABLE_ID].'" FAILED');
@@ -277,6 +296,29 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
                 echo json_encode($this->arrJSONResponse);               
                 return false; //stop further execution to display the error                    
             }            
+
+            //load translation model
+            if ($this->objModelTranslation)
+            {
+                $sFieldTranslationRefModel = $this->getFieldTranslationRefModel();
+                
+                $this->objModelTranslation->clear();
+                $this->objModelTranslation->find($sFieldTranslationRefModel, $_POST[ACTION_VARIABLE_ID], COMPARISON_OPERATOR_EQUAL_TO, $this->objModelTranslation::getTable(), CT_INTEGER64);
+                $this->objModelTranslation->limitOne();
+                if (!$this->objModelTranslation->loadFromDB())
+                {
+                    logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'Load of record ID "'.$_POST[ACTION_VARIABLE_ID].'" FAILED');
+
+                    $this->arrJSONResponse[JSONAK_RESPONSE_MESSAGE] = transg('tcruddetailsavecontrollerajax_message_save_nosuccess_loadfailed', 'Loading record with id: [id] failed', 'id', $_POST[ACTION_VARIABLE_ID]);
+                    $this->arrJSONResponse[JSONAK_RESPONSE_ERRORCODE] = TAJAXFormController::JSON_ERRORCODE_LOADFAILED;
+                    $this->arrJSONResponse[JSONAK_RESPONSE_ERRORCOUNT] = 1;
+        
+                    header(JSONAK_RESPONSE_HEADER);
+                    echo json_encode($this->arrJSONResponse);               
+                    return false; //stop further execution to display the error                    
+                }            
+            }
+
         }
 
 
@@ -295,6 +337,14 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
             echo json_encode($this->arrJSONResponse);               
             return false; //stop further execution to display the error            
         }
+
+        //===== GET LANGUAGE ID =====
+        if ($this->objCbxLanguagesTranslations)
+        {
+            $iTranslationLanguageID = $this->objCbxLanguagesTranslations->getValueSubmitted();
+            $this->objModelTranslation->setTranslationLanguageID($iTranslationLanguageID);
+        }
+
 
         //===== PRE SAVE CHECKS =====
         $arrErrors = array();
@@ -344,11 +394,18 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         }
 
 
-        //===== ACTUALLY SAVING ======
+        //===== SAVING ======
         $bSaveSuccess = true;
         $this->viewToModel();
-        
-        $bSaveSuccess = $this->objModel->saveToDBAll(true, false); //===== ACTUAL SAVE HERE!!!!!
+                
+        //save model
+        if (!$this->objModel->saveToDBAll(true, false)) //===== ACTUAL SAVE HERE!!!!!
+            $bSaveSuccess = false;
+
+        //save translation
+        if ($this->objModelTranslation) //can be null when there is no translation
+            if (!$this->objModelTranslation->saveToDB(true, false))
+                $bSaveSuccess = false;
 
         if (!$bSaveSuccess)
         {
@@ -456,6 +513,8 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
      */
     protected function handleCreateLoad()
     {
+        $sFieldTranslationRefModel = '';
+        $sFieldTranslationRefModel = $this->getFieldTranslationRefModel();
 
         //==== CREATE OR LOAD RECORD
         if ($this->isNewRecord()) //==== CREATE
@@ -469,10 +528,24 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
 
             //save
             $this->objModel->newRecord();
+            if ($this->objModelTranslation)
+                $this->objModelTranslation->newRecord();
+
             $this->initModel();
+
             if ($this->getUseCheckinout()) 
                 $this->objModel->checkout($this->getCheckoutSource());   
+
             $this->objModel->saveToDB(); //create an empty record, so we have always a record
+            if ($sFieldTranslationRefModel != '')
+            {
+                if (!$this->objLanguagesTranslations->setRecordPointerToValue($this->objLanguagesTranslations::FIELD_ISDEFAULT, true))
+                    $this->objLanguagesTranslations->resetRecordPointer(); //if cant find value, take the first record                    
+
+                $this->objModelTranslation->set($sFieldTranslationRefModel, $this->objModel->getID());
+                $this->objModelTranslation->setTranslationLanguageID($this->objLanguagesTranslations->getID());
+                $this->objModelTranslation->saveToDB();
+            }
         }
         else // ==== LOAD
         {
@@ -483,13 +556,30 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
                 die();            
             }
 
-            //load
+            //load model
             if (!$this->objModel->loadFromDBByID($_GET[ACTION_VARIABLE_ID]))
             {
                 error_log(__CLASS__.': loadFromDB() error with record id: '.$_GET[ACTION_VARIABLE_ID]);
                 sendMessageError(transg('tcruddetailsavecontrollerajax_message_error_load_failed', 'Failed to load record with id: '.$_GET[ACTION_VARIABLE_ID]));
                 return;
             }
+
+
+            //load translation model
+            if ($sFieldTranslationRefModel != '')
+            {
+                $this->objModelTranslation->where($sFieldTranslationRefModel, $this->objModel->getID());
+                $this->objModelTranslation->limitOne();
+                if (!$this->objModelTranslation->loadFromDB())
+                {
+                    error_log(__CLASS__.': loadFromDB() error with record id: '.$_GET[ACTION_VARIABLE_ID]);
+                    sendMessageError(transg('tcruddetailsavecontrollerajax_message_error_load_failed', 'Failed to load record with id: '.$_GET[ACTION_VARIABLE_ID]));
+                    return;
+                }
+            }
+            
+
+
 
             //check if record is checked out
             if ($this->getAuthChange()) //only if you have rights to save: check in. otherwise when saving you need to checkin again
@@ -544,6 +634,33 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
         }
     }   
     
+
+    /**
+     * which field in $objModelTranslation refers to $objModel?
+     * 
+     * @return string returns empty string when field not found or $this->objModelTranslation == null
+     */
+    private function getFieldTranslationRefModel()
+    {
+        //init
+        $arrFields = array();
+
+        //conditions
+        if ($this->objModelTranslation === null) //can be null when there are no translations
+            return '';
+
+            
+        //figure out which field is the external field, that way I can request the id
+        $arrFields = $this->objModelTranslation->getFieldsDefinedJoined();
+        foreach ($arrFields as $sField)
+        {
+            if ($this->objModelTranslation->getFieldForeignKeyTable($sField) == $this->objModel::getTable())
+                return $sField;
+        }
+
+        return '';
+    }
+
     
     /**
      * handle cancel button click
@@ -750,12 +867,23 @@ abstract class TCRUDDetailSaveControllerAJAX extends TAJAXFormController
 
     /**
      * use translations?
-     * When getUseTranslations() the parent CRUD controller will do the following
-     * 1. instantiates $objLanguagesTranslations
-     * 2. shows a combobox with translations on top of the page
-     * 3. loads database to show these translations
      * 
      * @return bool
      */
-    abstract public function getUseTranslations();
+
+    /**
+     * returns a new model object or null
+     * 
+     * When getNewModelTranslation() != null the parent CRUD controller will do the following:
+     * 1. instantiates $objLanguagesTranslations
+     * 2. fills $objModelTranslation
+     * 3. shows a combobox with translations on top of the page $objCbxLanguagesTranslations
+     * 4. loads list of favorited languages from database in $objLanguagesTranslations
+     * 5. loads translation record from exteral table for current record
+     * 6. saves translation as well when user hits 'save'
+     * 
+     * @return TSysModel object or null when using no translations
+     */
+    abstract public function getNewModelTranslation();    
+
 }

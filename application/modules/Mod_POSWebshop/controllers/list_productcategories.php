@@ -9,6 +9,7 @@ use dr\classes\dom\tag\webcomponents\DRInputCombobox;
 use dr\classes\models\TSysModel;
 use dr\modules\Mod_POSWebshop\Mod_POSWebshop;
 use dr\modules\Mod_POSWebshop\models\TProductCategories;
+use dr\modules\Mod_POSWebshop\models\TProductCategoriesLanguages;
 use dr\modules\Mod_POSWebshop\models\TProducts;
 use dr\modules\Mod_POSWebshop\models\TProductsLanguages;
 use dr\modules\Mod_POSWebshop\models\TVATClasses;
@@ -17,6 +18,9 @@ use dr\modules\Mod_Sys_Localisation\models\TSysLanguages;
 include_once(APP_PATH_CMS.DIRECTORY_SEPARATOR.'bootstrap_admin_auth.php');
 
 
+/**
+ * I assume the parent TProductCategories as primary (for id and position and depth level) and the translations is secondary
+ */
 class list_productcategories extends TCRUDListControllerAJAX
 {
     
@@ -30,8 +34,6 @@ class list_productcategories extends TCRUDListControllerAJAX
         $objModel = $this->objModel;
         $objModel->select(array(
             TProductCategories::FIELD_ID,
-            TProductCategories::FIELD_NAME,
-            TProductCategories::FIELD_URLSLUG,
             TProductCategories::FIELD_META_DEPTHLEVEL,
             TProductCategories::FIELD_CHECKOUTEXPIRES,
             TProductCategories::FIELD_CHECKOUTSOURCE,
@@ -42,14 +44,24 @@ class list_productcategories extends TCRUDListControllerAJAX
             TProductCategories::FIELD_POSITION,
             TProductCategories::FIELD_ISDEFAULT,
             TProductCategories::FIELD_ISFAVORITE,
-                                ));      
-        //===show what?
+                                ));   
+        $objModel->select(array(
+            TProductCategoriesLanguages::FIELD_NAME,
+            TProductCategoriesLanguages::FIELD_URLSLUG,
+                                ), new TProductCategoriesLanguages());   
+        $objModel->select(array(
+            TSysLanguages::FIELD_LANGUAGE,
+                                ), new TSysLanguages());   
 
-        // $arrTableColumnsShow = array(
+        $objModel->joinLeft(TProductCategories::getTable(), TProductCategories::FIELD_ID, TProductCategoriesLanguages::getTable(), TProductCategoriesLanguages::FIELD_TRANSLATIONLANGUAGEID);                                
+
+        $objModel->where(TSysLanguages::FIELD_ISDEFAULT, true, COMPARISON_OPERATOR_EQUAL_TO, TSysLanguages::getTable()); //i need at least 1 field from TSysLanguages for where to work
+        
+        //===show what?
         $this->arrTableColumnsShow = array(
             array('', TProductCategories::FIELD_ID, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ID, 'ID')),
-            array('', TProductCategories::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_NAME, 'Name')),
-            array('', TProductCategories::FIELD_URLSLUG, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_URLSLUG, 'Slug')),
+            array(TProductCategoriesLanguages::getTable(), TProductCategoriesLanguages::FIELD_NAME, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategoriesLanguages::FIELD_NAME, 'Name')),
+            array(TProductCategoriesLanguages::getTable(), TProductCategoriesLanguages::FIELD_URLSLUG, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategoriesLanguages::FIELD_URLSLUG, 'Slug')),
             array('', TProductCategories::FIELD_ISDEFAULT, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ISDEFAULT, 'Default')),
             array('', TProductCategories::FIELD_ISFAVORITE, transm(APP_ADMIN_CURRENTMODULE, 'list_productcategories_column_'.TProductCategories::FIELD_ISFAVORITE, 'Favorite')),
             array('', TSysModel::FIELD_RECORDCREATED, transm(APP_ADMIN_CURRENTMODULE, 'list_products_column_'.TProducts::FIELD_RECORDCREATED, 'Created')),
@@ -65,8 +77,8 @@ class list_productcategories extends TCRUDListControllerAJAX
         $objFilter->setStatus(DRDBFilter::STATUS_AVAILABLE); //showing in menu instead of directly visible
         $objFilter->setDisabled(true);//disabled by default when adding filter chip
         $objFilter->setType(DRDBFilter::TYPE_STRING);
-        $objFilter->setDBTableField(TProductCategories::getTable(), TProductCategories::FIELD_NAME);
-        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TProductCategories::FIELD_NAME, 'Name'));
+        $objFilter->setDBTableField(TProductCategories::getTable(), TProductCategoriesLanguages::FIELD_NAME);
+        $objFilter->setNameNice(transm(APP_ADMIN_CURRENTMODULE, 'dbfilter_column_'.TProductCategoriesLanguages::FIELD_NAME, 'Name'));
         $objFilters->addFilter($objFilter);
         
         return 0;

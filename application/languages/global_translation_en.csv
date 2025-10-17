@@ -84,3 +84,12 @@ Next [x] results (page [y]);Next [x] results (page [y]);Next [x] results (page [
 Previous [x] results (page [y]);Previous [x] results (page [y]);Previous [x] results (page [y])
 validator_minlength_error_minlengthatleast;Input needs to be at least [length] characters;Input needs to be at least [length] characters
 tcruddetailsavecontrollerajax_message_error_recordcheckedout;This record is checked out by "[checkoutsource]".<br>The other user should exit this record before you can view/edit it;This record is checked out by "[checkoutsource]".<br>The other user should exit this record before you can view/edit it
+weekday_sunday_full;Sunday;Sunday
+weekday_monday_full;Monday;Monday
+weekday_tuesday_full;Tuesday;Tuesday
+weekday_wednesday_full;Wednesday;Wednesday
+weekday_thursday_full;Thursday;Thursday
+weekday_friday_full;Friday;Friday
+weekday_saturday_full;Saturday;Saturday
+tcruddetailsavecontrollerajax_message_save_nosuccess_csrftokeninvalid;Form validation failed;Form validation failed
+tcruddetailsavecontrollerajax_message_save_failed;Sorry, save FAILED!;Sorry, save FAILED!

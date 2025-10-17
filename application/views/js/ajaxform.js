@@ -379,8 +379,11 @@ function handleExitAFC(fnCallbackAfterSave = null, objSpinner = null)
  **/
 async function handleSaveAFC(fnCallbackAfterSave = null, objSpinner = null)
 {
+    // debugger
+    
     const objSaveButton = document.getElementById("btnSave");
     const objProgressbar = document.getElementById("progressbar");
+    const objCbxLanguagesTranslations = document.getElementById("cbxLanguagesTranslations");
     // const sIdIconNormal = "svgSaveIcon";
     // const sIdIconSpinner = "svgSaveIconSpinner";
 
@@ -407,6 +410,8 @@ async function handleSaveAFC(fnCallbackAfterSave = null, objSpinner = null)
     const objFormData = new FormData(objFormElement);
     objFormData.append('<?php echo ACTION_VARIABLE_ID; ?>', iRecordID);
     objFormData.append('<?php echo ACTION_VARIABLE_ANTICSRFTOKEN; ?>', document.getElementById('<?php echo ACTION_VARIABLE_ANTICSRFTOKEN; ?>').value);
+    if (objCbxLanguagesTranslations)
+        objFormData.append(objCbxLanguagesTranslations.id, objCbxLanguagesTranslations.value);    
 
     // debugger
 

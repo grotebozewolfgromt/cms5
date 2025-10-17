@@ -1001,18 +1001,22 @@ class detailsave_contacts extends TCRUDDetailSaveControllerAJAX
     }    
 
     /**
-     * use translations?
-     * When getUseTranslations() the parent CRUD controller will do the following
-     * 1. instantiates $objLanguagesTranslations
-     * 2. shows a combobox with translations on top of the page
-     * 3. loads database to show these translations
+     * returns a new model object or null
      * 
-     * @return bool
+     * When getNewModelTranslation() != null the parent CRUD controller will do the following:
+     * 1. instantiates $objLanguagesTranslations
+     * 2. fills $objModelTranslation
+     * 3. shows a combobox with translations on top of the page $objCbxLanguagesTranslations
+     * 4. loads list of favorited languages from database in $objLanguagesTranslations
+     * 5. loads translation record from exteral table for current record
+     * 6. saves translation as well when user hits 'save'
+     * 
+     * @return TSysModel object or null when using no translations
      */
-    public function getUseTranslations()
+    public function getNewModelTranslation()
     {
-        return false;
-    }    
+        return null;
+    }   
     
     /**
      * correct additional fields

@@ -51,6 +51,7 @@ use dr\classes\models\TTreeModel;
 use dr\classes\patterns\TModuleAbstract;
 use dr\modules\Mod_POSWebshop\Mod_POSWebshop;
 use dr\modules\Mod_POSWebshop\models\TProductCategories;
+use dr\modules\Mod_POSWebshop\models\TProductCategoriesLanguages;
 use dr\modules\Mod_POSWebshop\models\TProducts;
 use dr\modules\Mod_POSWebshop\models\TVATClasses;
 use dr\modules\Mod_POSWebshop\models\TVATClassesCountries;
@@ -74,8 +75,8 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
     private $objChkDefault = null; //dr\classes\dom\tag\webcomponents\DRCheckbox
     private $objChkFavorite = null; //dr\classes\dom\tag\webcomponents\DRCheckbox
    
-    private $objParentCategories = null; //TProductCategories to select a new parent
-    private $objSiblingNodes = null; //TProductCategories
+    // private $objParentCategories = null; //TProductCategories to select a new parent
+    // private $objSiblingNodes = null; //TProductCategories
 
     public function initModel()
     {         
@@ -226,10 +227,10 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
     protected function viewToModel()
     {
         //name
-        $this->getModel()->set(TProductCategories::FIELD_NAME, $this->objEdtName->getValueSubmitted());
+        $this->objModelTranslation->set(TProductCategoriesLanguages::FIELD_NAME, $this->objEdtName->getValueSubmitted());
 
         //slug
-        $this->getModel()->set(TProductCategories::FIELD_URLSLUG, $this->objEdtURLSlug->getValueSubmitted());         
+        $this->objModelTranslation->set(TProductCategoriesLanguages::FIELD_URLSLUG, $this->objEdtURLSlug->getValueSubmitted());         
         
         //image upload
         $this->objImage->viewToModelImage($this->getModel());
@@ -252,10 +253,10 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
     protected function modelToView()
     {  
         //name
-        $this->objEdtName->setValue($this->getModel()->get(TProductCategories::FIELD_NAME));
+        $this->objEdtName->setValue($this->objModelTranslation->get(TProductCategoriesLanguages::FIELD_NAME));
 
         //slug
-        $this->objEdtURLSlug->setValue($this->getModel()->get(TProductCategories::FIELD_URLSLUG));
+        $this->objEdtURLSlug->setValue($this->objModelTranslation->get(TProductCategoriesLanguages::FIELD_URLSLUG));
 
         //image upload
         $this->objImage->modelToViewImage($this->getModel());
@@ -468,17 +469,21 @@ class detailsave_productcategories extends TCRUDDetailSaveControllerAJAX
     }
 
     /**
-     * use translations?
-     * When getUseTranslations() the parent CRUD controller will do the following
-     * 1. instantiates $objLanguagesTranslations
-     * 2. shows a combobox with translations on top of the page
-     * 3. loads database to show these translations
+     * returns a new model object or null
      * 
-     * @return bool
+     * When getNewModelTranslation() != null the parent CRUD controller will do the following:
+     * 1. instantiates $objLanguagesTranslations
+     * 2. fills $objModelTranslation
+     * 3. shows a combobox with translations on top of the page $objCbxLanguagesTranslations
+     * 4. loads list of favorited languages from database in $objLanguagesTranslations
+     * 5. loads translation record from exteral table for current record
+     * 6. saves translation as well when user hits 'save'
+     * 
+     * @return TSysModel object or null when using no translations
      */
-    public function getUseTranslations()
+    public function getNewModelTranslation()
     {
-        return true;
-    }    
+        return new TProductCategoriesLanguages();
+    }   
 
 }

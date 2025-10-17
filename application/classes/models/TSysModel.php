@@ -288,6 +288,7 @@ include_once(APP_PATH_LIBRARIES.DIRECTORY_SEPARATOR.'lib_security.php');
  * 21 aug 2025: TSysModel: added recordExistsTableDB()
  * 17 sept 2025: TSysModel: added trashcan field
  * 17 sept 2025: TSysModel: added image alt text field
+ * 17 okt 2025: TSysModel: loadFromDBByXXX() doesn't do database load when parameter is invalid. This could have been a security risk
  * 
  * @todo check for too large integer values
  */
@@ -448,7 +449,7 @@ abstract class TSysModel
 			if (!method_exists($this, 'getTable'))
 			{
 				logError(__FILE__.__CLASS__.__LINE__, 'static function getTable() IS NOT DEFINED IN CHILD CLASS of TSysModel (this error is thrown in TSysModel->__construct() to enforce static method exists in child class). TIP: make sure the method is STATIC!!');
-				throw new Exception('static function getTable() IS NOT DEFINED IN CHILD CLASS of TSysModel (this error is thrown in TSysModel->__construct() to enforce static method exists in child class). TIP: make sure the method is STATIC!!');
+				// throw new Exception('static function getTable() IS NOT DEFINED IN CHILD CLASS of TSysModel (this error is thrown in TSysModel->__construct() to enforce static method exists in child class). TIP: make sure the method is STATIC!!');
 			}
 		}
                 
@@ -1485,9 +1486,16 @@ abstract class TSysModel
 	public function loadFromDBByID($iID, $mAutoJoinDefinedTables = 0)
 	{
 		if (is_numeric($iID)) //only add when numeric
+		{
 			$this->find(TSysModel::FIELD_ID, $iID, COMPARISON_OPERATOR_EQUAL_TO, $this::getTable(), CT_INTEGER64);
-		$this->limitOne();
-		return $this->loadFromDB($mAutoJoinDefinedTables);
+			$this->limitOne();
+			return $this->loadFromDB($mAutoJoinDefinedTables);
+		}
+		else
+		{
+			logError( __CLASS__.': '.__FUNCTION__.': '.__LINE__, 'Unique ID is not a valid Unique ID (determined by isUniqueidRealValid()). Might be the result of tampering with ids');
+			return false;
+		}		
 	}	
 
 	/**
@@ -1513,14 +1521,16 @@ abstract class TSysModel
 	public function loadFromDBByUniqueID($sUniqueID, $mAutoJoinDefinedTables = 0)
 	{
 		if (isUniqueidRealValid($sUniqueID)) //only add when numeric
+		{
 			$this->find(TSysModel::FIELD_UNIQUEID, $sUniqueID, COMPARISON_OPERATOR_EQUAL_TO, $this::getTable(), CT_INTEGER64);
+			$this->limitOne();
+			return $this->loadFromDB($mAutoJoinDefinedTables);
+		}
 		else
 		{
 			logError( __CLASS__.': '.__FUNCTION__.': '.__LINE__, 'Unique ID is not a valid Unique ID (determined by isUniqueidRealValid()). Might be the result of tampering with ids');
 			return false;
 		}
-		$this->limitOne();
-		return $this->loadFromDB($mAutoJoinDefinedTables);
 	}	
 
 	/**
@@ -1550,13 +1560,16 @@ abstract class TSysModel
 	protected function loadFromDBByIPAddressInternal($sField, $sIPAddress, $mAutoJoinDefinedTables = 0)
 	{
 		if (filter_var($sIPAddress, FILTER_VALIDATE_IP))
+		{
 			$this->find($sField, $sIPAddress, COMPARISON_OPERATOR_EQUAL_TO, $this::getTable(), CT_HEX);
+			return $this->loadFromDB($mAutoJoinDefinedTables);		
+		}
 		else
 		{
 			logError( __CLASS__.': '.__FUNCTION__.': '.__LINE__, 'IP addres '.$sIPAddress.' is not a valid ip address');
 			return false;
 		}			
-		return $this->loadFromDB($mAutoJoinDefinedTables);		
+
 	}
 
 
@@ -1630,7 +1643,8 @@ abstract class TSysModel
 	{
 		$this->find(TTreeModel::FIELD_POSITION, $iPosition, COMPARISON_OPERATOR_EQUAL_TO, $this::getTable(), TP_INTEGER);
 		return $this->loadFromDB($mAutoJoinDefinedTables);
-	}		
+	}	
+
 
 	/**
 	 * is called from loadFromDB()
@@ -3819,7 +3833,8 @@ abstract class TSysModel
                                 else
                                 {
                                     $bSuccess = false;
-                                    throw new \Exception('saveToDB(): id is not numeric. Possible SQL injection. Save record NOT completed');
+									logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'saveToDB(): id is not numeric ('.$this->getID().'). Possible SQL injection. Save record NOT completed');
+                                    throw new \Exception('saveToDB(): id is not numeric ('.$this->getID().'). Possible SQL injection. Save record NOT completed');
                                 }
                             }
                             else//without id field no extra checks, just save
@@ -5398,9 +5413,28 @@ abstract class TSysModel
 	 */
 	public function getFieldsDefinedExists($sFieldName)
 	{
-		return array_key_exists($sFieldName, $this->arrFieldInfo);
+		return isset($sFieldName, $this->arrFieldInfo); //changed from array_key_exists => isset on 17-10-2025
 	}
 	
+	/**
+	 * looks in the defined fields for the ones that refer to external tables
+	 * @return array of strings with defined fields that refer to external tables
+	 */
+	public function getFieldsDefinedJoined()
+	{
+		$arrFields = array_keys($this->arrFieldInfo);
+		$arrReturn = array();
+
+		foreach ($arrFields as $sField)
+		{
+			if (isset($this->arrFieldInfo[$sField][TSysModel::FI_FOREIGNKEY_FIELD]))
+				$arrReturn[] = $sField;
+		}
+
+		return $arrReturn;
+	}
+	
+
 	/**
 	 * return all fieldnames of the resulset (including fields of external tables)
 	 * 
@@ -5436,6 +5470,9 @@ abstract class TSysModel
 		return array(TSysModel::FIELD_SYS_DIRTY, TSysModel::FIELD_SYS_NEW);
 	}
 	
+
+
+
 	/**
 	 * looping through the rows
 	 * 

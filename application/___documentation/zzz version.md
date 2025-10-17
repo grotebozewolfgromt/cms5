@@ -28,6 +28,18 @@
 * @todo als pagebuilder niet op slaat, moet je een form toevoegen waarin de textboxen vallen
 
 
+## 17 okt 2025: vertalingne
+* verder met vertalingen
+* ombouwen detailsave CRUD controller
+* 17 okt 2025: TSysModel: loadFromDBByXXX() doesn't do database load when parameter is invalid. This could have been a security risk
+* verder bouwen aan integratie CRudDetailSave controller
+* bugfix: database klassen die geen getSafeTable() op vroeg, waardoor '-' gefilterd werd en een numeric fout op id gaf
+* 
+ * gebleven bij: function onLanguageTranslationChange(objSource)
+    //@todo save form values to db: current language
+    //@todo load values from in form: new language
+
+
 ## 16 okt 2025: labels component
 * 16 okt 2025 lib_string.js add: sanitizeWhitelist()
 * 16 okt 2025 DRComponentsLib.js add: sanitizeWhitelist()
@@ -42,9 +54,6 @@
  * 16 okt 2025 dr-input-combobox.js add: getValuePrevious(); en get valueprevious()
  * 16 okt 2025 dr-input-combobox.js bugfixes: valuePrevious and valueInit wordt nu geset bij het kopieren naar shadowRoot
  
- * gebleven bij: function onLanguageTranslationChange(objSource)
-    //@todo save form values to db: current language
-    //@todo load values from in form: new language
 
 ## 15 okt 2025: dbfilters + labels component
 * bugfix: applied filters werden verkeerde databasevelden uitgelezen

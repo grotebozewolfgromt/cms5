@@ -696,13 +696,14 @@ class TDBPreparedStatementMySQL extends TDBPreparedStatement
 	    	
         // logSQL(__CLASS__.': '.__FUNCTION__.': '.__LINE__, $sSQL);  
         
-        if (APP_DEBUGMODE)
-            logSQL(__CLASS__.': '.__FUNCTION__.': '.__LINE__, $sSQL, 'upcoming query to execute');           
+        
+        logSQL(__CLASS__.': '.__FUNCTION__.': '.__LINE__, $sSQL, 'upcoming query to execute');           
 
         if ($objTempMySQLResult = $objMySQLAPI->query($sSQL))
         {
             $this->setExecutionSQLOK(true);
-            logSQL(__CLASS__.': '.__FUNCTION__.': '.__LINE__, ''.$sSQL, 'success');    
+            if (APP_DEBUGMODE)
+                logSQL(__CLASS__.': '.__FUNCTION__.': '.__LINE__, ''.$sSQL, 'success');    
         
             if (is_object($objTempMySQLResult)) //returns a resultset or not ?
             {
@@ -731,7 +732,7 @@ class TDBPreparedStatementMySQL extends TDBPreparedStatement
                 $sTableName = '';
                 $sTableNameOriginal = '';
                 $sTableNameEmptyIfSameAsModel = ''; //is table, except if its the current table from TSysModel --> this makes searching for the default table in TSysModel faster
-                $sTableNameFromModel = $objModel::getTable();
+                $sTableNameFromModel = $this->getSafeTableName($objModel::getTable());
                 
                 $objFieldInfo = null;
 

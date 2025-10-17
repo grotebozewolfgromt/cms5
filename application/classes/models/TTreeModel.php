@@ -981,18 +981,6 @@ abstract class TTreeModel extends TSysModel
 		return parent::deleteFromDB($bYesISpecifiedAWhereInMyModel, $bCheckAffectedRows);
 	}
 	
-
-
-	/**
-	 * return the table & column that displays the record in the GUI
-	 * 
-	 * return either '' or $this::getTable() for current table
-	 * 
-	 * getDisplayRecordColumn() and getDisplayRecordTable() belong together!
-	 */
-	abstract public function getDisplayRecordColumn();
-	abstract public function getDisplayRecordTable();
-
 }
 
 ?>

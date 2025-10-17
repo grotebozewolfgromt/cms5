@@ -21,30 +21,7 @@ use dr\modules\Mod_POSWebshop\models\TVATClasses;
 
 class TProductCategories extends TTreeModel
 {
-	const FIELD_URLSLUG 	= 'sURLSlug'; //the last part of the url in the browser
-	const FIELD_NAME 		= 'sName'; //we store a name so we have a standardized name to display in the GUI. If you need more fields, like language-aware names: add them via inheritance
-
-
-
-	public function getURLSlug()
-	{
-		return $this->get(TProductCategories::FIELD_URLSLUG);
-	}
-
-	public function setURLSlug($sSlug)
-	{
-		$this->set(TProductCategories::FIELD_URLSLUG, $sSlug);
-	}
-
-	public function getName()
-	{
-		return $this->get(TProductCategories::FIELD_NAME);
-	}
-
-	public function setName($sName)
-	{
-		$this->set(TProductCategories::FIELD_NAME, $sName);
-	}
+	//no fields except standard
 		
 	/**
 	 * This function is called in the constructor and the clear() function
@@ -67,11 +44,7 @@ class TProductCategories extends TTreeModel
 	{
 		parent::defineTable();
 
-		//url slug
-		$this->setFieldDefaultsVarChar(TProductCategories::FIELD_URLSLUG, 50);
-
-		//name
-		$this->setFieldDefaultsVarChar(TProductCategories::FIELD_NAME, 50);		
+		//no field except standard
 	}
 	
 	
@@ -90,8 +63,6 @@ class TProductCategories extends TTreeModel
 			TProductCategories::FIELD_IMAGEFILE_MEDIUM, 
 			TProductCategories::FIELD_IMAGEFILE_LARGE,
 			TProductCategories::FIELD_IMAGEFILE_MAX,
-			TProductCategories::FIELD_NAME, 
-			TProductCategories::FIELD_URLSLUG, 
 			TTreeModel::FIELD_PARENTID, 
 			TTreeModel::FIELD_POSITION,
 			TTreeModel::FIELD_META_DEPTHLEVEL
@@ -123,7 +94,7 @@ class TProductCategories extends TTreeModel
 	*/
 	public function getDisplayRecordShort()
 	{
-		return $this->get(TProductCategories::FIELD_NAME);
+		return $this->get(TProductCategories::FIELD_ID);
 	}
 	
 	/**
@@ -183,13 +154,13 @@ class TProductCategories extends TTreeModel
 	 * 
 	 * @param array $arrPreviousDependenciesModelClasses
 	 */
-	public function install($arrPreviousDependenciesModelClasses = null)
-	{
-		$bSuccess = true;
-		$bSuccess = parent::install($arrPreviousDependenciesModelClasses);
+	// public function install($arrPreviousDependenciesModelClasses = null)
+	// {
+	// 	$bSuccess = true;
+	// 	$bSuccess = parent::install($arrPreviousDependenciesModelClasses);
 		
-		return $bSuccess;
-	}        	
+	// 	return $bSuccess;
+	// }        	
 
 	/**
 	 * erf deze functie over om je eigen checksum te maken voor je tabel.
@@ -206,7 +177,7 @@ class TProductCategories extends TTreeModel
 	*/
 	public function getChecksumUncrypted()
 	{
-		return 'helaholahouderdemoedmaarin'.$this->get(TProductCategories::FIELD_NAME).'maarnietheus'.$this->get(TTreeModel::FIELD_PARENTID).'echtwel'.$this->get(TTreeModel::FIELD_POSITION);
+		return 'helaholahouderdemoedmaarin'.$this->get(TProductCategories::FIELD_ID).'maarnietheus'.$this->get(TTreeModel::FIELD_PARENTID).'echtwel'.$this->get(TTreeModel::FIELD_POSITION);
 	}
 		
 	/**
@@ -245,16 +216,16 @@ class TProductCategories extends TTreeModel
 
 	public function getDisplayRecordColumn()
 	{
-		return TProductCategories::FIELD_NAME;
+		return TProductCategoriesLanguages::FIELD_NAME;
 	}
 
 	public function getDisplayRecordTable()
 	{
-		return $this::getTable();
+		return TProductCategoriesLanguages::getTable();
 	}
 
 	/**
-	 * can record be transcanned?
+	 * can record be trashcanned?
 	 * Trashcan is an extra step in for deleting a record
 	 *
 	 * @return bool
@@ -272,7 +243,7 @@ class TProductCategories extends TTreeModel
 	 */
 	public function getTableUseSearchKeywords()
 	{
-		return false;
+		return true;
 	}		
 } 
 ?>

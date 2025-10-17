@@ -157,29 +157,23 @@ abstract class TDBPreparedStatement
      */
     protected function getAPIConnObject()
     {
-        try
+        //uitzoeken of direct teruggeven ? (kan alleen direct teruggeven als het al eens eerder uitgezocht is)
+        if ($this->objInternalDatabaseAPIObject == null)
         {
-            //uitzoeken of direct teruggeven ? (kan alleen direct teruggeven als het al eens eerder uitgezocht is)
-            if ($this->objInternalDatabaseAPIObject == null)
+            $objOwner = $this->getOwnerObject();
+
+            if (APP_DEMOMODE)
             {
-                $objOwner = $this->getOwnerObject();
                 if ($objOwner instanceof TDBConnection)
-                {
                     return $objOwner->getAPIConnObject();
-                }
                 else
-                {
-                    throw new Exception('getAPIObject() : vreemd component gevonden als owner klasse (niet van het type TDBConnection) : '.get_class($objOwner));
-                }
+                    logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, 'getAPIObject() : vreemd component gevonden als owner klasse (niet van het type TDBConnection) : '.get_class($objOwner));
             }
             else
-                return $this->objInternalDatabaseAPIObject;
+                return $objOwner->getAPIConnObject();
         }
-        catch (Exception $objException)
-        {
-            logError(__CLASS__.': '.__FUNCTION__.': '.__LINE__, $objException, $this);
-            return null;
-        }
+        else
+            return $this->objInternalDatabaseAPIObject;
     }
 
     /**

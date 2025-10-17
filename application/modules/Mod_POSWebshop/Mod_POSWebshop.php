@@ -3,6 +3,7 @@ namespace dr\modules\Mod_POSWebshop;
 
 use dr\classes\patterns\TModuleAbstract;
 use dr\modules\Mod_POSWebshop\models\TProductCategories;
+use dr\modules\Mod_POSWebshop\models\TProductCategoriesLanguages;
 use dr\modules\Mod_POSWebshop\models\TProducts;
 use dr\modules\Mod_POSWebshop\models\TProductsLanguages;
 use dr\modules\Mod_POSWebshop\models\TProductsSKUs;
@@ -63,6 +64,7 @@ class Mod_POSWebshop extends TModuleAbstract
             new TTransactionsLines(),
             new TVATClassesCountries(),      
             new TProductCategories(),
+            new TProductCategoriesLanguages(),
             new TProducts(),
             new TProductsSKUs(), 
             new TProductsLanguages()                  
