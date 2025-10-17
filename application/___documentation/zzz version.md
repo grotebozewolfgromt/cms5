@@ -43,7 +43,7 @@
     //@todo save form values to db: current language
     //@todo load values from in form: new language
     //@todo model: minimaal 1 isdefault in tabel. check if there is at least 1 isDefault in table, if not: add current record as default: makeUniqueBooleanValueInField($sTable, $sIDFieldName, $iCurrentRecordID)
-    //@todo kijken of cruddetailsave het oppakt
+    //@todo kijken of cruddetailsave makeUniqueBooleanValueInField oppakt
 
 
 ## 16 okt 2025: labels component
