@@ -36,11 +36,14 @@
 * bugfix: database klassen die geen getSafeTable() op vroeg, waardoor '-' gefilterd werd en een numeric fout op id gaf
 *  nu bug fixen: 	Undefined array key "sLanguage" ==> array_key_exists in TSysModel
 * bug gefixed in TSysModel->getFieldsDefinedExists()
-* bugfix: renderJSONTable(): depthlevel gaf fout als displaycolumn+displayfield naar extern veld verwezen
+* bugfix: renderJSONTable(): depthlevel gaf fout als displaycolumn+displayfield naar extern veld verwezen\
+* rename: preparedstatment: getIDplus1() => getMaxIDPlus1()
 
  * gebleven bij: function onLanguageTranslationChange(objSource)
     //@todo save form values to db: current language
     //@todo load values from in form: new language
+    //@todo model: minimaal 1 isdefault in tabel. check if there is at least 1 isDefault in table, if not: add current record as default: makeUniqueBooleanValueInField($sTable, $sIDFieldName, $iCurrentRecordID)
+    //@todo kijken of cruddetailsave het oppakt
 
 
 ## 16 okt 2025: labels component

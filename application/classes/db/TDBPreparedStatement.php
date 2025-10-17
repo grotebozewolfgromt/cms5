@@ -400,15 +400,14 @@ abstract class TDBPreparedStatement
      
      
      /**
-      * Opvragen van laatste ID van een database-tabel en hier 1 bij op tellen
-      * dit is te gebruiken voor het makkelijk genereren van een nieuwe ID voor
-      * een volgende record in de database tabel
+      * request last id of table and add 1
+      * this is an alternative for when auto increment is not implemented in table
       *
       * @param string $sTable
       * @param string $sIDFieldName
       * @return integer het ID van een database tabel + 1
       */
-     abstract public function getIDPlus1($sTable, $sIDFieldName);
+     abstract public function getLastIDPlus1($sTable, $sIDFieldName);
 
      /**
       * verkrijgen van de veldnamen van een databasetabel

@@ -3639,7 +3639,7 @@ abstract class TSysModel
 
                 //if no auto increment dan id opvragen en met 1 ophogen
                 if ($this->getTableIDFieldType() != CT_AUTOINCREMENT)
-                    $this->setID($objPrepStat->getIDPlus1($this::getTable(), TSysModel::FIELD_ID ) );
+                    $this->setID($objPrepStat->getLastIDPlus1($this::getTable(), TSysModel::FIELD_ID ) );
                 
                 //generate a new unique-id
                 if ($this->getNew())
@@ -3770,7 +3770,7 @@ abstract class TSysModel
                 if ($this->getTableUseOrderField())
 				{
                     if ($this->getPosition() == 0) //new records have zero. Also, don't overwrite new records with custom assigned order numbers which are always higher than 0 (custom order numbers can happen)
-                        $this->setPosition($objPrepStat->getIDPlus1($this::getTable(), TSysModel::FIELD_POSITION ) );
+                        $this->setPosition($objPrepStat->getLastIDPlus1($this::getTable(), TSysModel::FIELD_POSITION ) );
 				}
 
                 //checksum
@@ -3788,7 +3788,6 @@ abstract class TSysModel
                         //als auto-increment dan id setten
                         if ($this->getTableIDFieldType() == CT_AUTOINCREMENT)
 							$this->setID( $objPrepStat->getLastInsertID() );    
-							
                     }
                 }
                 else //if NOT new
@@ -3847,12 +3846,17 @@ abstract class TSysModel
                 }
 
 
-				//there can only be one record default
+				//there can only be one record default: set rest of records to false
 				if ($this->getTableUseIsDefault() && $bSuccess)
 				{
 					if ($this->getIsDefault())
 					{
 						$objPrepStat->updateField($this->getTable(), TSysModel::FIELD_ISDEFAULT, '0', TSysModel::FIELD_ID, $this->getID(), COMPARISON_OPERATOR_NOT_EQUAL_TO);
+					}
+					else
+					{
+						//@todo check if there is at least 1 isDefault in table, if not: add current record as default
+						//@todo if success then set current record in TSysModel also as isdefault
 					}
 				}
 
