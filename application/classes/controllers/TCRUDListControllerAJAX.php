@@ -572,7 +572,7 @@ abstract class TCRUDListControllerAJAX
                 if ($bInstanceOfTree)
                 {
                     //ident the name field
-                    if (($sColumnName === $objModel->getDisplayRecordColumn()) && ($sTableName === $objModel->getDisplayRecordTable() || ($sTableName === '')))
+                    if ($sTableName === '') //current table
                     {
                         $iIdentSpaces = $objModel->get(TTreeModel::FIELD_META_DEPTHLEVEL, $sTableName, false);
                         $sIdentSpaces = '<span class="treeinvisibleident">'.generateChars('-', $iIdentSpaces * 3).'</span>'; //3 spaces

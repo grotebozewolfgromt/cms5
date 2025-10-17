@@ -36,6 +36,7 @@
 * bugfix: database klassen die geen getSafeTable() op vroeg, waardoor '-' gefilterd werd en een numeric fout op id gaf
 *  nu bug fixen: 	Undefined array key "sLanguage" ==> array_key_exists in TSysModel
 * bug gefixed in TSysModel->getFieldsDefinedExists()
+* bugfix: renderJSONTable(): depthlevel gaf fout als displaycolumn+displayfield naar extern veld verwezen
 
  * gebleven bij: function onLanguageTranslationChange(objSource)
     //@todo save form values to db: current language
