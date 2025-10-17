@@ -66,3 +66,17 @@ form_field_image_size_large;Large size (width px, height px);Large size (width p
 form_field_image_size_medium;Medium size (width px, height px);Medium size (width px, height px)
 form_field_image_size_thumbnail;Small/thumbnail size (width px, height px);Small/thumbnail size (width px, height px)
 pagetitle_settingsglobal_edit;Settings global;Settings global
+list_cmsmenu_column_iID;ID;ID
+list_cmsmenu_column_sSVGIcon;Icon;Icon
+list_cmsmenu_column_sNameDefault;Name default;Name default
+list_cmsmenu_column_bIsFavorite;Favorite;Favorite
+list_cmsmenu_column_bIsVisibleMenu;Menu;Menu
+list_cmsmenu_column_bIsVisibleToolbar;Toolbar;Toolbar
+list_cmsmenu_column_bOpenNewTab;New tab;New tab
+dbfilter_column_sNameDefault;Name default;Name default
+dbfilter_column_sController;Module URL;Module URL
+dbfilter_column_sURL;URL;URL
+dbfilter_column_sPermissionResource;Permission resource;Permission resource
+dbfilter_column_bIsVisibleToolbar;Visible in toolbar;Visible in toolbar
+dbfilter_column_bOpenNewTab;Open in new tab;Open in new tab
+tab_title_cmsmenu;CMS menu;CMS menu

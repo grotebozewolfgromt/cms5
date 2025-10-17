@@ -35,6 +35,7 @@
 * verder bouwen aan integratie CRudDetailSave controller
 * bugfix: database klassen die geen getSafeTable() op vroeg, waardoor '-' gefilterd werd en een numeric fout op id gaf
 *  nu bug fixen: 	Undefined array key "sLanguage" ==> array_key_exists in TSysModel
+* bug gefixed in TSysModel->getFieldsDefinedExists()
 
  * gebleven bij: function onLanguageTranslationChange(objSource)
     //@todo save form values to db: current language

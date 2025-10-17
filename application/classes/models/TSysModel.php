@@ -5413,7 +5413,8 @@ abstract class TSysModel
 	 */
 	public function getFieldsDefinedExists($sFieldName)
 	{
-		return isset($this->arrFieldInfo[$sFieldName][$this->arrFieldInfo]); //changed from array_key_exists => isset on 17-10-2025
+		// return array_key_exists($sFieldName, $this->arrFieldInfo); ==>original
+		return isset($this->arrFieldInfo[$sFieldName]); //changed from array_key_exists => isset on 17-10-2025
 	}
 	
 	/**
